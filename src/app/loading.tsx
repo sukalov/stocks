@@ -1,9 +1,10 @@
 import React from 'react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 export default function Loading() {
   return (
-    <div className=' p-26 w-screen h-screen'>
-        <div className="bg-red-400 w-full h-full"></div>
+    <div className=' w-full mt-16 sm:px-16 lg:px-32'>
+        <Skeleton className='w-full h-full' />
     </div>
   )
 }

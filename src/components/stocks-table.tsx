@@ -28,6 +28,7 @@ const StocksTable: React.FC = async () => {
   const stocks = await db.select().from(stocks_data)
 
     return (
+      <div className='py-4'>
         <Table>
             <TableHeader>
             <TableRow>
@@ -50,14 +51,15 @@ const StocksTable: React.FC = async () => {
                 <TableCell>{stock.exchange}</TableCell>
                 <TableCell>{stock.mic}</TableCell>
                 <TableCell>{stock.date?.toLocaleDateString()}</TableCell>
-                <TableCell>{Math.round(stock.open * 100) / 100}</TableCell>
-                <TableCell>{Math.round(stock.low * 100) / 100}</TableCell>
-                <TableCell>{Math.round(stock.high * 100) / 100}</TableCell>
-                <TableCell>{Math.round(stock.close * 100) / 100}</TableCell>
+                <TableCell>{Math.round(Number(stock.open) * 100) / 100}</TableCell>
+                <TableCell>{Math.round(Number(stock.low) * 100) / 100}</TableCell>
+                <TableCell>{Math.round(Number(stock.high) * 100) / 100}</TableCell>
+                <TableCell>{Math.round(Number(stock.close) * 100) / 100}</TableCell>
                 </TableRow>
             ))}
             </TableBody>
         </Table>
+        </div>
     );
 }
  
