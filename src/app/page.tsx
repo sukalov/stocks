@@ -8,8 +8,8 @@ import { ModeToggle } from '@/components/mode-toggle'
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between sm:p-24">
-      <p>Use navigation bar</p>
+    <div className="flex h-[calc(100vh-4rem)] flex-col items-center justify-between p-8  min-w-screen">
+      <p>use navigation</p>
     </div>
   )
 }

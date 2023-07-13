@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export default function Loading() {
   return (
-    <div className=' w-full mt-16 sm:px-16 lg:px-32'>
+    <div className="flex h-[calc(100vh-4rem)] flex-col items-center justify-between py-8  min-w-screen">
         <Skeleton className='w-full h-full' />
     </div>
   )
