@@ -1,4 +1,4 @@
-import getDataFromEOD from "@/lib/getDataFromEOD"
+import getDataFromEOD from "@/lib/get-data-from-eod"
 import path from 'path';
 import * as d3 from 'd3';
 import { promises as fs } from 'fs';
@@ -98,7 +98,7 @@ const getInitialPrices = async () => {
 const getCurrenencyPrices = async () => {
   const req = await fetch(`${url2}KRW.FOREX`)
   const res = await req.json()
-  const firstJanIndex = res.findIndex(day => day.Date === 1672358400000)
+  const firstJanIndex = res.findIndex((day) => day.Date === 1672358400000)
   res.splice(0, firstJanIndex)
   const newData = res.map(obj => {
     const date = new Date(obj.Date)
@@ -185,9 +185,6 @@ const getIndexHistory = async () => {
         const stockPriceKRW = Number(day[String(stock.Symbol)]) * Number(stock.SHARE) / 100
         const stockPriceUSD = stockPriceKRW / Number(day.KRW)
         sharePriceUSD += stockPriceUSD
-        if (day.date === '2023-06-29') {
-          console.log(sharePriceUSD, stockPriceUSD, stock.Symbol)
-        }
       })
       currencyExchanges[i].share_price_usd = String(sharePriceUSD)
       currencyExchanges[i].KPOP_INDEX = String(sharePriceUSD / Number(currencyExchanges[0].share_price_usd) * 100)

@@ -11,7 +11,7 @@ const getDataFromEOD = async (props: EODProps) => {
     const from = props.from || ''
     const res = await fetch(`${url}${props.symbol}?api_token=${process.env.EOD_API_KEY}&${from}&fmt=json`)
     if (!res.ok) throw new Error('failed to fetch data from EOD')
-    return res.json;
+    return await res.json();
 }
  
 export default getDataFromEOD;
