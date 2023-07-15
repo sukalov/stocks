@@ -1,11 +1,11 @@
-import { DataTable } from "@/components/data-table"
+import { DataTable } from "@/components/data-table";
 
 function MarketData() {
   return (
     <div>
-        <DataTable data=''/>
+      <DataTable data="" />
     </div>
-  )
+  );
 }
 
-export default MarketData
+export default MarketData;
