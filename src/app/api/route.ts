@@ -3,13 +3,13 @@ import * as d3 from "d3";
 // import { promises as fs } from 'fs';
 import axios from "axios";
 import { get } from "@/lib/get-from-eod";
-import * as csv from "@/lib/read-write-csv";
-import { DataOnlySymbol } from "@/types/data-functions";
+import { csv } from "@/lib/read-write-csv";
 
 export async function GET(request: Request) {
   const theData = await csv.read("kpop_shares_initialPrice");
+  const res = await get.historical('2502.T')
 
-  const getSharesOutstanding = async (data: Array<DataOnlySymbol>) => {
+  const getSharesOutstanding = async (data: Array<DataOnlySymbol>): Promise<DataSharesOutstanding[]> => {
     try {
       const requests = data.map((stock) => get.fundamentalAsync(stock.symbol));
       const responses = await Promise.all(requests);
@@ -20,14 +20,19 @@ export async function GET(request: Request) {
       }
 
       const json = responses.map((response) => response.json());
-      const result = await Promise.all(json);
-
+      const result = await Promise.all(json) as Array<ResponseFundamental>;
+      const dataWithShares: Array<DataSharesOutstanding> = []
       result.forEach(
-        (datum, i) => (data[i].shares = datum.SharesStats.SharesOutstanding),
+        (datum, i) => {
+            const shares = datum.SharesStats.SharesOutstanding
+            dataWithShares[i] = {...data[i], shares}
+        },
       );
     } catch (error) {
       console.error(error);
     }
+
+    return 
   };
 
   const getInitialPrices = async () => {
@@ -199,13 +204,14 @@ export async function GET(request: Request) {
     return csvContent;
   };
 
-  // const csv = await getSharesOutstanding()
+  // const csv2 = await getSharesOutstanding(theData);
+
   // const csv = await getInitialPrices()
   // const csv = await getCurrenencyPrices()
   // const csv = await getAdjustedShare()
   // const res = await getIndexHistory()
 
-  return new Response(JSON.stringify(theData), {
+  return new Response(JSON.stringify(res), {
     status: 200,
   });
 }
