@@ -34,4 +34,4 @@ const write = async (file: string, data: any[]) => {
   return csvContent;
 };
 
-export { read, write };
+export const csv = { read, write };
