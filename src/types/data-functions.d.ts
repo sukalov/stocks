@@ -9,15 +9,24 @@ interface  DataOnlySymbol {
       [otherOptions: string]: unknown;
   }
 
+  interface DataInitialPrices {
+      symbol: string;
+      initial_price: number;
+      [otherOptions: string]: unknown;
+  }
+
   interface ResponseFundamental {
     SharesStats: {
       SharesOutstanding: number
     }
   }
-  
 
-  // export default {
-  //     DataOnlySymbol,
-  //     DataSharesOutstanding,
-  //     ResponseFundamental
-  //   };
+  interface ResponseHistorical {
+    date: string,
+    open: number,
+    high: number,
+    low: number,
+    close: number,
+    adjusted_close: number,
+    volume: number
+  }
