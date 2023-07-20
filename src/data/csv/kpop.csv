@@ -1,32 +1,32 @@
-#,Name,Market Cap. USD mllion,Country,Symbol,Price (USD),Index
-1,HYBE,9392,South Korea,352820.KO,227.12,Mid Cap
-2,JYP Entertainment,3095,South Korea,035900.KQ,93.52,Mid Cap
-3,SM Entertainment,2031,South Korea,041510.KQ,86.97,Mid Cap
-4,Studio Dragon ,1394,South Korea,253450.KQ,49.69,Small Cap
-5,YG Entertainment,1353,South Korea,122870.KQ,74.36,Small Cap
-6,CJ ENM,1291,South Korea,035760.KQ,58.86,Small Cap
-7,AfreecaTV,672,South Korea,067160.KQ,62.09,Small Cap
-8,CJ CGV,567,South Korea,079160.KO,11.87,Small Cap
-9,KEYEAST,548,South Korea,054780.KQ,6.43,Small Cap
-10,Cube Entertainment,470,South Korea,182360.KQ,17.70,Small Cap
-11,Chorokbaem Media,416,South Korea,047820.KQ,5.44,Small Cap
-12,GIANTSTEP,317,South Korea,289220.KQ,14.08,Small Cap
-13,Dexter Studios,210,South Korea,206560.KQ,8.52,Micro Cap
-14,SM Culture & Contents,207,South Korea,048550.KQ,2.24,Micro Cap
-15,Genie Music,179,South Korea,043610.KQ,3.08,Micro Cap
-16,Showbox,172,South Korea,086980.KQ,2.76,Micro Cap
-17,Next Entertainment World,162,South Korea,160550.KQ,5.81,Micro Cap
-18,ASTORY,149,South Korea,241840.KQ,15.76,Micro Cap
-19,RaemongRaein,113,South Korea,200350.KQ,17.58,Micro Cap
-20,SBS Contents Hub,113,South Korea,046140.KQ,5.28,Micro Cap
-21,RBW (RAINBOW BRIDGE WORLD),112,South Korea,361570.KQ,11.74,Micro Cap
-22,Samhwa Networks,87,South Korea,046390.KQ,2.16,Micro Cap
-23,NHN BUGS,65,South Korea,104200.KQ,4.60,Micro Cap
-24,Pan Entertainment,59,South Korea,068050.KQ,4.32,Micro Cap
-25,IHQ,45,South Korea,003560.KO,0.19,Micro Cap
-26,Daewon Media,158,South Korea,048910.KQ,12.87,Micro Cap
-27,4by4,112,South Korea,389140.KQ,10.29,Micro Cap
-28,Wysiwyg Studios,25,South Korea,299900.KQ,2.81,Micro Cap
-29,Aniplus,9,South Korea,310200.KQ,3.04,Micro Cap
-30,Naver,26293,South Korea,035420.KO,174.99,Blue Chip
-31,Kakao,20550,South Korea,035720.KO,46.8,Blue Chip
+name,country,symbol,index 
+HYBE,South Korea,352820.KO,Mid Cap
+JYP Entertainment,South Korea,035900.KQ,Mid Cap
+SM Entertainment,South Korea,041510.KQ,Mid Cap
+"Studio Dragon ",South Korea,253450.KQ,Small Cap
+YG Entertainment,South Korea,122870.KQ,Small Cap
+CJ ENM,South Korea,035760.KQ,Small Cap
+AfreecaTV,South Korea,067160.KQ,Small Cap
+CJ CGV,South Korea,079160.KO,Small Cap
+KEYEAST,South Korea,054780.KQ,Small Cap
+Cube Entertainment,South Korea,182360.KQ,Small Cap
+Chorokbaem Media,South Korea,047820.KQ,Small Cap
+GIANTSTEP,South Korea,289220.KQ,Small Cap
+Dexter Studios,South Korea,206560.KQ,Micro Cap
+SM Culture & Contents,South Korea,048550.KQ,Micro Cap
+Genie Music,South Korea,043610.KQ,Micro Cap
+Showbox,South Korea,086980.KQ,Micro Cap
+Next Entertainment World,South Korea,160550.KQ,Micro Cap
+ASTORY,South Korea,241840.KQ,Micro Cap
+RaemongRaein,South Korea,200350.KQ,Micro Cap
+SBS Contents Hub,South Korea,046140.KQ,Micro Cap
+RBW (RAINBOW BRIDGE WORLD),South Korea,361570.KQ,Micro Cap
+Samhwa Networks,South Korea,046390.KQ,Micro Cap
+NHN BUGS,South Korea,104200.KQ,Micro Cap
+Pan Entertainment,South Korea,068050.KQ,Micro Cap
+IHQ,South Korea,003560.KO,Micro Cap
+Daewon Media,South Korea,048910.KQ,Micro Cap
+4by4,South Korea,389140.KQ,Micro Cap
+Wysiwyg Studios,South Korea,299900.KQ,Micro Cap
+Aniplus,South Korea,310200.KQ,Micro Cap
+Naver,South Korea,035420.KO,Blue Chip
+Kakao,South Korea,035720.KO,Blue Chip

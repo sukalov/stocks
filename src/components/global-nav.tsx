@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import { pages, type Item } from "@/lib/pages";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
-import { X, MenuIcon } from "lucide-react";
-import clsx from "clsx";
-import { ModeToggle } from "./mode-toggle";
-import { Button } from "./ui/button";
+import { pages, type Item } from '@/lib/pages';
+import Link from 'next/link';
+import { useSelectedLayoutSegment } from 'next/navigation';
+import { X, MenuIcon } from 'lucide-react';
+import clsx from 'clsx';
+import { ModeToggle } from './mode-toggle';
+import { Button } from './ui/button';
 
 export function GlobalNav() {
   return (
@@ -17,7 +17,7 @@ export function GlobalNav() {
             <Link
               href={`/`}
               className={clsx(
-                "text-muted-foreground opacity-50 hover:opacity-80 transition-all duration-1000",
+                'text-muted-foreground opacity-50 hover:opacity-80 transition-all duration-1000'
               )}
             >
               JaKoTa
@@ -49,7 +49,7 @@ function GlobalNavItem({ item }: { item: Item }) {
     <Link
       href={`/${item.slug}`}
       className={clsx({
-        "text-primary": isActive,
+        'text-primary': isActive,
       })}
     >
       <Button variant="ghost">{item.name}</Button>

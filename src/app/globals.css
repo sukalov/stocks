@@ -37,7 +37,7 @@
   }
 
   .dark,
-  [data-theme="dark"] {
+  [data-theme='dark'] {
     --background: 20 14.3% 4.1%;
     --foreground: 60 9.1% 97.8%;
 

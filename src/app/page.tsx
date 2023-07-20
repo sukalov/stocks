@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button'
-import Table from '@/components/stocks-table'
-import { useState } from 'react'
-import SearchTickers from '@/components/search-tickers'
-import { DataTable } from '@/components/data-table'
-import { ModeToggle } from '@/components/mode-toggle'
-import Link from 'next/link'
+import { Button } from '@/components/ui/button';
+import Table from '@/components/stocks-table';
+import { useState } from 'react';
+import SearchTickers from '@/components/search-tickers';
+import { DataTable } from '@/components/data-table';
+import { ModeToggle } from '@/components/mode-toggle';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -16,5 +16,5 @@ export default function Home() {
       <Button></Button>
       <Button>jhjh</Button>
     </div>
-  )
+  );
 }
