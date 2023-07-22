@@ -1,13 +1,8 @@
 import path from 'path';
 import * as d3 from 'd3';
-// import { promises as fs } from 'fs';
-import axios from 'axios';
 import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
-import { inspect } from 'eyes';
 import toUSD from '@/lib/translate-to-usd';
-import { Share } from 'next/font/google';
-import { LucideAlignVerticalSpaceAround } from 'lucide-react';
 
 export async function GET(request: Request) {
   const dataOnlySymbol = (await csv.read(
@@ -167,27 +162,27 @@ export async function GET(request: Request) {
         Number(b.initial_MC_USD) - Number(a.initial_MC_USD)
     ).splice(indexVolume)
 
-    const totalMC = data.reduce((acc, current) => acc + current.initial_MC_USD, 0);
+    const totalMC = data.reduce((acc: number, current: DataSharesInitialDay) => {
+      if (current.initial_MC_USD) return acc + current.initial_MC_USD
+      else return acc
+    }, 0);
 
     data.forEach((stock: DataSharesInitialDay, i: number) => {
       stock.share = Number(stock.initial_MC_USD) / totalMC
-    });
+      stock.share_adj = Number(stock.initial_MC_USD) / totalMC
+    })
 
-    const dataCopy = JSON.parse(JSON.stringify(data))
+    const dataCopy = JSON.parse(JSON.stringify(data)) as DataShareAdjusted[]
     let remainingSUM = totalMC
-    data.forEach((stock: DataSharesInitialDay, i: number) => {
-      console.log(remainingSUM)
+    data.forEach((stock, i: number) => {
       if (stock.share > 0.1) {
         stock.share_adj = 0.1
         const remains = stock.initial_MC_USD - (totalMC / 10) // то что надо раскидать по всем оставшимся акциям
         remainingSUM -= stock.initial_MC_USD
         stock.initial_MC_USD = totalMC / 10 
-        let percent = 0
         data.forEach((el: DataSharesInitialDay, j: number) => {
           if (j > i) {
-            // if (j === 10) console.log({'1-----': el.initial_MC_USD, elshare: el.share, remains})
             const addition = (el.initial_MC_USD / remainingSUM) * remains
-            percent += el.initial_MC_USD / remainingSUM
             el.initial_MC_USD = el.initial_MC_USD + addition
             el.share = el.initial_MC_USD / totalMC
           }
@@ -199,32 +194,32 @@ export async function GET(request: Request) {
     });
 
     data.forEach((stock, i) => {
-      stock.initial_MC_USD = dataCopy[i].initial_MC_USD
-      stock.share = dataCopy[i].share
+      stock.initial_MC_USD = dataCopy[i]?.initial_MC_USD ?? 0
+      stock.share = dataCopy[i]?.share ?? 0
     })
+
     csv.write('kpop-test', data)
 
     return data;
   };
 
-  const getIndexHistory = async () => {
+  const getIndexHistory = async (data: DataShareAdjusted[], startDate: string = '2022-12-29') => {
     try {
-      const requests = data.map((stock: { Symbol: any }) =>
-        fetch(`${url3}${stock.Symbol}${url3_2}`)
+      const requests = data.map((stock) =>
+        get.historicalAsync(`${stock.symbol}`, startDate)
       );
       const responses = await Promise.all(requests);
       const errors = responses.filter((response: { ok: any }) => !response.ok);
 
       if (errors.length > 0) {
-        errors.map((response: { statusText: any }) =>
-          console.log(response.statusText)
+        throw errors.map((response: { statusText: string | undefined }) =>
+          Error(response.statusText)
         );
       }
-
       const json = responses.map((response: { json: () => any }) =>
         response.json()
       );
-      const result = await Promise.all(json);
+      const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
 
       result.forEach((datum: any[], i: string | number) => {
         let start = datum.findIndex(

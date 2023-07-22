@@ -33,6 +33,20 @@ interface ResponseHistorical {
 
 interface DataSharesInitialDay {
   symbol: string;
+  country: 'Japan' | 'South Korea' | 'Taiwan';
+  initial_price: number;
+  shares: number;
+  initial_date: string;
+  initial_MC?: number
+  initial_MC_USD: number;
+  share: number;
+  share_adj?: number;
+  [otherOptions: string]: any;
+}
+
+interface DataShareAdjusted {
+  symbol: string;
+  country: 'Japan' | 'South Korea' | 'Taiwan';
   initial_price: number;
   shares: number;
   initial_date: string;
@@ -40,6 +54,5 @@ interface DataSharesInitialDay {
   initial_MC_USD: number;
   share: number;
   share_adj: number;
-  country: 'Japan' | 'South Korea' | 'Taiwan';
   [otherOptions: string]: any;
 }
