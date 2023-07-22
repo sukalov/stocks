@@ -35,5 +35,11 @@ interface DataSharesInitialDay {
   symbol: string;
   initial_price: number;
   shares: number;
-  [otherOptions: string]: unknown;
+  initial_date: string;
+  initial_MC: number
+  initial_MC_USD: number;
+  share: number;
+  share_adj: number;
+  country: 'Japan' | 'South Korea' | 'Taiwan';
+  [otherOptions: string]: any;
 }
