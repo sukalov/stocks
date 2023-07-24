@@ -3,18 +3,13 @@ import * as d3 from 'd3';
 import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
+import { getInitialIndexDates, addMissingValues } from '@/lib/utils';
 
 export async function GET(request: Request) {
-  const dataOnlySymbol = (await csv.read(
-    'kpop_shares_new'
-  )) as DataOnlySymbol[];
-  const dataSharesInitialDay = (await csv.read(
-    'kpop_shares_initial'
-  )) as DataSharesInitialDay[];
-  const currenciesData = await csv.read('currencies');
 
   const getSharesOutstanding = async (
-    data: Array<DataOnlySymbol>
+    data: Array<DataOnlySymbol>,
+    indexName: string
   ): Promise<DataSharesOutstanding[]> => {
     const dataWithShares: Array<DataSharesOutstanding> = [];
     try {
@@ -35,22 +30,25 @@ export async function GET(request: Request) {
 
       result.forEach((datum, i) => {
         const shares = datum.SharesStats.SharesOutstanding;
+        const currency = datum.General.CurrencyCode
         dataWithShares.push({
           symbol: data[i]?.symbol ?? '',
           ...data[i],
           shares,
+          currency
         });
       });
     } catch (error) {
       console.error(error);
     }
-    csv.write('kpop-shares', dataWithShares);
+    csv.write(`${indexName}_step1`, dataWithShares);
     return dataWithShares;
   };
 
   const getInitialPrices = async (
-    data: Array<DataOnlySymbol>,
-    startDate: string = '2022-12-29'
+    data: Array<DataSharesOutstanding>,
+    startDate: string = '2022-12-29',
+    indexName: string
   ) => {
     const newData: Array<DataInitialPrices> = [];
     try {
@@ -77,12 +75,13 @@ export async function GET(request: Request) {
           initial_date: startDate,
           initial_price: datum[0]?.adjusted_close ?? 0,
           symbol: data[i]?.symbol ?? '',
+          currency: data[i]?.currency ?? 'USD',
         });
       });
     } catch (error) {
       console.error(error);
     }
-    csv.write('kpop_shares_initial.csv', newData);
+    csv.write(`${indexName}_step2`, newData);
     return newData;
   };
 
@@ -139,16 +138,14 @@ export async function GET(request: Request) {
   const getAdjustedShare = (
     data: DataSharesInitialDay[],
     currencies: any[],
-    indexVolume: number = 25
+    indexVolume: number = 25,
+    indexName: string
   ) => {
-    const startingDateIndex = currencies.findIndex(
-      (day) => day.date === dataSharesInitialDay[0]?.initial_date
-    );
 
     data.map((stock: DataSharesInitialDay, i: number) => {
       stock.initial_price_USD = toUSD(
         stock.initial_price,
-        stock.country,
+        stock.currency,
         stock.initial_date,
         currencies
       );
@@ -198,74 +195,91 @@ export async function GET(request: Request) {
       stock.share = dataCopy[i]?.share ?? 0
     })
 
-    csv.write('kpop-test', data)
+    csv.write(`${indexName}_share`, data)
 
     return data;
   };
 
-  const getIndexHistory = async (data: DataShareAdjusted[], startDate: string = '2022-12-29') => {
+  const getIndexHistory = async (data: DataShareAdjusted[], currencies: CurrenciesPrice[], startDate: string = '2022-12-29', indexName: string = 'kpop') => {
     try {
       const requests = data.map((stock) =>
-        get.historicalAsync(`${stock.symbol}`, startDate)
+        get.historicalAsync(stock.symbol, startDate)
       );
       const responses = await Promise.all(requests);
-      const errors = responses.filter((response: { ok: any }) => !response.ok);
+      const errors = responses.filter((response: Response) => !response.ok);
 
       if (errors.length > 0) {
-        throw errors.map((response: { statusText: string | undefined }) =>
+        throw errors.map((response: Response) =>
           Error(response.statusText)
         );
       }
-      const json = responses.map((response: { json: () => any }) =>
+      const json = responses.map((response: Response) =>
         response.json()
       );
       const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
 
-      result.forEach((datum: any[], i: string | number) => {
-        let start = datum.findIndex(
-          (el: { date: string }) => el.date === '2022-12-30'
-        );
-        if ((start = -1))
-          start = datum.findIndex(
-            (el: { date: string }) => el.date === '2022-12-29'
-          );
-        datum.splice(0, start);
-        datum.forEach((day: { date: any; adjusted_close: any }) => {
-          const destinationIndex = currencyExchanges.findIndex(
-            (row: { date: any }) => row.date === day.date
-          );
-          currencyExchanges[destinationIndex][String(data[i].Symbol)] =
-            day.adjusted_close;
+      const indexHistory = JSON.parse(JSON.stringify(currencies)) as IndexDay[]
+
+      result.forEach((stockHistory: ResponseHistorical[], i: number) => {
+        stockHistory.forEach(day => {
+          const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
+          indexHistory[destinationIndex] = {
+            ...indexHistory[destinationIndex],
+            date: indexHistory[destinationIndex]?.date || '',
+            [String(data[i]?.symbol)]: day.adjusted_close,
+          }
         });
       });
 
-      currencyExchanges.forEach(
-        (day: { [x: string]: any; KRW: any }, i: string | number) => {
+      indexHistory.forEach(
+        (day: IndexDay, i: number) => {
           let sharePriceUSD = 0;
-          data.forEach((stock: { Symbol: any; SHARE: any }) => {
-            const stockPriceKRW =
-              (Number(day[String(stock.Symbol)]) * Number(stock.SHARE)) / 100;
-            const stockPriceUSD = stockPriceKRW / Number(day.KRW);
+          data.forEach((stock: DataShareAdjusted) => {
+            const stockPrice = (day[stock.symbol] * stock.share_adj);
+            const stockPriceUSD = toUSD(stockPrice, stock.currency, day.date, currencies) 
             sharePriceUSD += stockPriceUSD;
           });
-          currencyExchanges[i].share_price_usd = String(sharePriceUSD);
-          currencyExchanges[i].KPOP_INDEX = String(
-            (sharePriceUSD / Number(currencyExchanges[0].share_price_usd)) * 100
-          );
+          day.share_price_usd = sharePriceUSD;
+          day[indexName] = sharePriceUSD / Number(indexHistory[0]?.share_price_usd);
         }
       );
+
+      const completeData = addMissingValues(indexHistory)
+      csv.write(`${indexName}_index`, completeData)
+
+      return completeData
     } catch (error) {
       console.error(error);
     }
-
-    return csvContent;
   };
+
+  const mainCollectingSharesOutstanding = async (symbolsFileName: string, startDate: string) => {
+    const dataOnlySymbol = (await csv.read(symbolsFileName)) as DataOnlySymbol[];
+    const dataSharesOutstanding = (await getSharesOutstanding(dataOnlySymbol, symbolsFileName)) as DataSharesOutstanding[];
+    const dataInitialPrices = (await getInitialPrices(dataSharesOutstanding, startDate, symbolsFileName)) as DataSharesInitialDay[];
+    const currencies = (await getCurrenencyPrices(['KRW', 'JPY', 'TWD'], startDate)) as CurrenciesPrice[];
+    const dataAdjustedShare = getAdjustedShare(dataInitialPrices, currencies, 25, symbolsFileName) as DataShareAdjusted[];
+    const dataIndexHistory = (await getIndexHistory(dataAdjustedShare, currencies, startDate, symbolsFileName))
+    return dataIndexHistory
+  }
+
+    const mainWIthGivenSharesOutstanding = async (symbolsFileName: string, startDate: string) => {
+    const dataSharesOutstanding = (await csv.read(`${symbolsFileName}_step1`)) as DataSharesOutstanding[];
+    const dataInitialPrices = (await getInitialPrices(dataSharesOutstanding, startDate, symbolsFileName)) as DataSharesInitialDay[];
+    const currencies = (await getCurrenencyPrices(['KRW', 'JPY', 'TWD'], startDate)) as CurrenciesPrice[];
+    const dataAdjustedShare = getAdjustedShare(dataInitialPrices, currencies, 25, symbolsFileName) as DataShareAdjusted[];
+    const dataIndexHistory = (await getIndexHistory(dataAdjustedShare, currencies, startDate, symbolsFileName))
+    return dataIndexHistory
+  }
 
   // const res = await getSharesOutstanding(dataOnlySymbol);
   // const res = await getInitialPrices(dataOnlySymbol)
   // const res = await getCurrenencyPrices();
-  const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
-  // const res = await getIndexHistory(theData)
+  // const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
+  // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
+  // const res = getInitialIndexDates()
+
+  const res = await mainWIthGivenSharesOutstanding('kpop', '2022-12-29')
 
   return new Response(JSON.stringify(res), {
     status: 200,

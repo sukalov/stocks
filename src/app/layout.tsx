@@ -1,7 +1,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
-import { ServerThemeProvider } from 'next-themes';
+import { ServerThemeProvider} from 'next-themes';
 import { GlobalNav } from '@/components/global-nav';
 import '@total-typescript/ts-reset';
 
@@ -18,10 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ServerThemeProvider disableTransitionOnChange>
+    <ServerThemeProvider disableTransitionOnChange attribute="class" defaultTheme="system" enableSystem>
       <html lang="en">
         <body className={inter.className}>
-          <ThemeProvider disableTransitionOnChange>
+          <ThemeProvider disableTransitionOnChange attribute="class" defaultTheme="system" enableSystem>
             <GlobalNav />
             <main className="mt-16 sm:px-16 lg:px-32">{children}</main>
           </ThemeProvider>

@@ -6,12 +6,14 @@ interface DataOnlySymbol {
 interface DataSharesOutstanding extends d3.DSVRowString {
   symbol: string;
   shares: number;
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
   [otherOptions: string]: unknown;
 }
 
 interface DataInitialPrices extends d3.DSVRowString {
   symbol: string;
   initial_price: number;
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
   [otherOptions: string]: unknown;
 }
 
@@ -19,6 +21,9 @@ interface ResponseFundamental {
   SharesStats: {
     SharesOutstanding: number;
   };
+  General: {
+    CurrencyCode: 'TWD' | 'JPY' | 'USD' | 'KRW';
+  }
 }
 
 interface ResponseHistorical {
@@ -33,7 +38,7 @@ interface ResponseHistorical {
 
 interface DataSharesInitialDay {
   symbol: string;
-  country: 'Japan' | 'South Korea' | 'Taiwan';
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
   initial_price: number;
   shares: number;
   initial_date: string;
@@ -46,7 +51,7 @@ interface DataSharesInitialDay {
 
 interface DataShareAdjusted {
   symbol: string;
-  country: 'Japan' | 'South Korea' | 'Taiwan';
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
   initial_price: number;
   shares: number;
   initial_date: string;
@@ -54,5 +59,17 @@ interface DataShareAdjusted {
   initial_MC_USD: number;
   share: number;
   share_adj: number;
+  [otherOptions: string]: any;
+}
+
+interface CurrenciesPrice {
+  date: string;
+  KRW: number;
+  TWD: number;
+  JPY: number;
+}
+
+interface IndexDay {
+  date: string;
   [otherOptions: string]: any;
 }
