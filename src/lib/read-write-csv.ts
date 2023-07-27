@@ -13,16 +13,16 @@ const write = async (file: string, data: any[]) => {
   const csvDir = path.join(process.cwd(), 'src/data/csv/');
   const newData: Array<any> = data.reduce((acc, current, i) => {
     if (i === 0) acc.push(Object.keys(current));
-    if (Object.values(current)) acc.push(Object.values(current));  
+    if (Object.values(current)) acc.push(Object.values(current));
     return acc;
   }, []);
 
   let csvContent = '';
   let headerCommas = 0;
-  
+
   newData.forEach((row, i) => {
     let theRow = row.join(',');
-    csvContent += (theRow + '\n');
+    csvContent += theRow + '\n';
   });
 
   fs.writeFile(csvDir + file + '.csv', csvContent, 'utf-8');

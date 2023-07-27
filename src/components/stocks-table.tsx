@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-} from './ui/table';
+import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption } from './ui/table';
 import axios from 'axios';
 import { db } from '@/lib/db';
 import { stocks_data } from '@/lib/db/schema';
@@ -51,16 +42,10 @@ const StocksTable: React.FC = async () => {
               <TableCell>{stock.exchange}</TableCell>
               <TableCell>{stock.mic}</TableCell>
               <TableCell>{stock.date?.toLocaleDateString()}</TableCell>
-              <TableCell>
-                {Math.round(Number(stock.open) * 100) / 100}
-              </TableCell>
+              <TableCell>{Math.round(Number(stock.open) * 100) / 100}</TableCell>
               <TableCell>{Math.round(Number(stock.low) * 100) / 100}</TableCell>
-              <TableCell>
-                {Math.round(Number(stock.high) * 100) / 100}
-              </TableCell>
-              <TableCell>
-                {Math.round(Number(stock.close) * 100) / 100}
-              </TableCell>
+              <TableCell>{Math.round(Number(stock.high) * 100) / 100}</TableCell>
+              <TableCell>{Math.round(Number(stock.close) * 100) / 100}</TableCell>
             </TableRow>
           ))}
         </TableBody>

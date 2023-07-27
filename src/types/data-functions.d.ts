@@ -23,7 +23,7 @@ interface ResponseFundamental {
   };
   General: {
     CurrencyCode: 'TWD' | 'JPY' | 'USD' | 'KRW';
-  }
+  };
 }
 
 interface ResponseHistorical {
@@ -42,7 +42,7 @@ interface DataSharesInitialDay {
   initial_price: number;
   shares: number;
   initial_date: string;
-  initial_MC?: number
+  initial_MC?: number;
   initial_MC_USD: number;
   share: number;
   share_adj?: number;
@@ -55,7 +55,7 @@ interface DataShareAdjusted {
   initial_price: number;
   shares: number;
   initial_date: string;
-  initial_MC: number
+  initial_MC: number;
   initial_MC_USD: number;
   share: number;
   share_adj: number;

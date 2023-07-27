@@ -16,9 +16,7 @@ export function GlobalNav() {
           <div className="my-1.5 text-lg pr-5 pl-2 font-extralight tracking-wider">
             <Link
               href={`/`}
-              className={clsx(
-                'text-muted-foreground opacity-50 hover:opacity-80 transition-all duration-1000'
-              )}
+              className={clsx('text-muted-foreground opacity-50 hover:opacity-80 transition-all duration-1000')}
             >
               JaKoTa
             </Link>
@@ -46,13 +44,13 @@ function GlobalNavItem({ item }: { item: Item }) {
   const isActive = item.slug === segment;
 
   return (
-    <Link
-      href={`/${item.slug}`}
-      className={clsx({
-        'text-primary': isActive,
-      })}
-    >
-      <Button variant="ghost">{item.name}</Button>
+    <Link href={`/${item.slug}`}>
+      <Button variant={isActive ? 'secondary' : 'ghost'}>{item.name}</Button>
     </Link>
   );
 }
+
+// className={clsx({
+//   ' text-accent-foreground  bg-muted' : isActive,
+//   ' text-muted-foreground' : !isActive,
+// })}

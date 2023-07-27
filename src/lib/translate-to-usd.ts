@@ -4,9 +4,9 @@ export default function toUSD(
   date: string,
   currencies: any[]
 ) {
-    if (currencyName === 'USD') return price
-    const index = currencies.findIndex((day) => date === day.date);
-    const neededExchange = currencies[index][currencyName];
-    const priceUSD = price / neededExchange;
-    return priceUSD;
+  if (currencyName === 'USD') return price;
+  const index = currencies.findIndex((day) => date === day.date);
+  const neededExchange = currencies[index][currencyName];
+  const priceUSD = price / neededExchange;
+  return priceUSD;
 }

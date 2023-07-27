@@ -5,6 +5,7 @@ import SearchTickers from '@/components/search-tickers';
 import { DataTable } from '@/components/data-table';
 import { ModeToggle } from '@/components/mode-toggle';
 import Link from 'next/link';
+import { GlobalNav } from '@/components/global-nav';
 
 export default function Home() {
   return (
