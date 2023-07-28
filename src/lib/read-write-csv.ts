@@ -13,7 +13,16 @@ const write = async (file: string, data: any[]) => {
   const csvDir = path.join(process.cwd(), 'src/data/csv/');
   const newData: Array<any> = data.reduce((acc, current, i) => {
     if (i === 0) acc.push(Object.keys(current));
-    if (Object.values(current)) acc.push(Object.values(current));
+    if (Object.values(current)) {
+      const arr = Object.values(current)
+      const arr2 = arr.map(val => {
+        if (typeof val === 'object') {
+          return `"${JSON.stringify(val).replace(/"/g, '')}"`
+        }
+        return val
+      })
+      acc.push(arr2);
+    }
     return acc;
   }, []);
 

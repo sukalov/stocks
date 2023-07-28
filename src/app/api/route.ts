@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
-import { getInitialIndexDates, addMissingValues } from '@/lib/utils';
+import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 
 export async function GET(request: Request) {
   const getSharesOutstanding = async (
@@ -197,7 +197,9 @@ export async function GET(request: Request) {
           const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
           indexHistory[destinationIndex] = {
             ...indexHistory[destinationIndex],
-            date: indexHistory[destinationIndex]?.date || '',
+            date: indexHistory[destinationIndex]?.date ?? '',
+            index: indexHistory[destinationIndex]?.index || 0,
+            share_price_usd: indexHistory[destinationIndex]?.share_price_usd ?? 0,
             [String(data[i]?.symbol)]: day.adjusted_close,
           };
         });
@@ -211,7 +213,7 @@ export async function GET(request: Request) {
           sharePriceUSD += stockPriceUSD;
         });
         day.share_price_usd = sharePriceUSD;
-        day[indexName] = sharePriceUSD / Number(indexHistory[0]?.share_price_usd);
+        day.index = sharePriceUSD / Number(indexHistory[0]?.share_price_usd);
       });
 
       const completeData = addMissingValues(indexHistory);
@@ -223,8 +225,62 @@ export async function GET(request: Request) {
     }
   };
 
-  const mergeIndecies = (dataOld: IndexDay[], dataNew: IndexDay[], ) => {
+  const mergeIndecies = (dataTotal: DataTotal[] = [], dataNew: IndexDay[], dataOld: IndexDay[], ): DataTotal[] => {
+    const newDataTotal = JSON.parse(JSON.stringify(dataTotal)) as DataTotal[]
+    if (dataTotal.length === 0) {
+      let mergingDay = dataOld.findIndex(day => day.date === dataNew[0]?.date)
+      const keys = dataOld[0] ?? {}
+      let shares = Object.keys(keys).filter((el, i) => (i > 3) && i < (Object.keys(keys).length - 2))
+      for (let i = 0; i <= mergingDay; i++) {
+        newDataTotal.push({
+          date: dataOld[i]?.date ?? '',
+          price: dataOld[i]?.share_price_usd,
+          index: dataOld[i]?.index ?? 0,
+          index_adjusted: dataOld[i]?.index ?? 0,
+          index_shares: shares,
+          refactor: null,
+        })
+      }
+    }
+    const newDataTotal2 = addNewDataToTotal(newDataTotal, dataNew)
+
+    csv.write('test', newDataTotal2)
+
+    return newDataTotal2
+  };
+
+  const addNewDataToTotal = (dataTotal: DataTotal[], dataNew: IndexDay[]) => {
+    let mergingDay = dataTotal.findIndex(day => day.date === dataNew[0]?.date)
+    let newDataTotal = dataTotal.slice(0, mergingDay + 1)
+    const keys2 = dataNew[0] ?? {}
+    const shares2 = Object.keys(keys2).filter((el, i) => (i > 3) && i < (Object.keys(keys2).length - 2))
+    const lastElement = newDataTotal[newDataTotal.length-1]!
+    const shares = lastElement.index_shares
     
+    lastElement.refactor = {
+      new_index: dataNew[0]!.index,
+      new_price: dataNew[0]!.share_price_usd,
+      shares_removed: findUnique(shares, shares2)[0],
+      shares_added: findUnique(shares, shares2)[1]
+    }
+
+    newDataTotal.forEach(el => {
+      el.index_adjusted = el.price / Number(newDataTotal[newDataTotal.length-1]?.refactor?.new_price)
+    })
+
+    dataNew.forEach((el, i) => {
+      if (i > 0) {
+        newDataTotal.push({
+          date: el.date ?? '',
+          price: el.share_price_usd,
+          index: el.index,
+          index_adjusted: el.index,
+          index_shares: shares2,
+          refactor: null,
+        })
+      }
+    })
+    return newDataTotal
   };
 
   const mainCollectingSharesOutstanding = async (symbolsFileName: string, startDate: string) => {
@@ -267,6 +323,26 @@ export async function GET(request: Request) {
     return dataIndexHistory;
   };
 
+  const mainRefactorEveryQuartile = async (symbolsFileName: string, startDate: string) => {
+    const dates = getQuarterlyStartDates(startDate) as string[]
+    dates.shift()
+    let data1 = await mainWIthGivenSharesOutstanding(symbolsFileName, startDate) as IndexDay[]
+    let newDataTotal: DataTotal[] = []
+    // dates.forEach(async (date, i) => {
+    //   console.log(newDataTotal)
+    //     const data2 = await mainWIthGivenSharesOutstanding(symbolsFileName, date) as IndexDay[]
+    //     newDataTotal = mergeIndecies(newDataTotal, data2, data1)
+    // })
+    let i = 0
+    while (i < dates.length) {
+    const data2 = await mainWIthGivenSharesOutstanding(symbolsFileName, dates[i]!) as IndexDay[]
+    newDataTotal = mergeIndecies(newDataTotal, data2, data1)
+    i++ 
+    }
+
+    return newDataTotal
+  };
+
 
   // const res = await getSharesOutstanding(dataOnlySymbol);
   // const res = await getInitialPrices(dataOnlySymbol)
@@ -275,7 +351,13 @@ export async function GET(request: Request) {
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
 
-  const res = await mainWIthGivenSharesOutstanding('kpop2', '2023-06-28');
+  // const res = await mainWIthGivenSharesOutstanding('kpop2', '2023-06-29');
+  // const data1 = await csv.read('kpop_index') as IndexDay[];
+  // const data2 = await csv.read('kpop2_index') as IndexDay[];
+
+  const res = await mainRefactorEveryQuartile('kpop', '2022-12-29');
+
+
 
   return new Response(JSON.stringify(res), {
     status: 200,

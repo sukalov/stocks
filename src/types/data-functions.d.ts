@@ -71,5 +71,21 @@ interface CurrenciesPrice {
 
 interface IndexDay {
   date: string;
+  index: number;
+  share_price_usd;
   [otherOptions: string]: any;
+}
+
+interface DataTotal {
+  date: string;
+  index: number;
+  price: number;
+  index_adjusted: number;
+  index_shares: string[];
+  refactor: null | {
+    new_index: number;
+    new_price: number;
+    shares_added: string[];
+    shares_removed: string[];
+  }
 }
