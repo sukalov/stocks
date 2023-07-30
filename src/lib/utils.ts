@@ -1,17 +1,19 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import * as get from '@/lib/get-from-eod'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function getInitialIndexDates(startDate: string = '2022-12-29') {
+export function getInitialIndexDates(startDate: string) {
   const getDaysArray = (start: string) => {
-    let arr = [];
+    let dates = [];
     for (let dt = new Date(start); dt <= new Date(); dt.setDate(dt.getDate() + 1)) {
-      arr.push(new Date(dt).toISOString().slice(0, 10));
+      dates.push(new Date(dt).toISOString().slice(0, 10));
     }
-    return arr;
+
+    return dates;
   };
   const dayList = getDaysArray(startDate).map((dat) => {
     return { date: dat };
@@ -22,14 +24,16 @@ export function getInitialIndexDates(startDate: string = '2022-12-29') {
 export function addMissingValues(data: IndexDay[]) {
   const keys = Object.keys(data[0] as IndexDay);
 
-  const newData = data.map((obj) => {
+  let newData: IndexDay[] = []
+   data.forEach((obj, i) => {
     const newObj = {} as IndexDay;
     keys.forEach((key) => {
-      newObj[key] = obj[key] || null;
+      const prevDay = newData[i-1];
+      if (prevDay !== undefined) {newObj[key] = obj[key] || newData[i-1]![key]}
+      else {newObj[key] = obj[key] || 0};
     });
-    return newObj;
+    newData.push(newObj)
   });
-
   return newData;
 }
 
@@ -66,7 +70,20 @@ export function getQuarterlyStartDates(start_date: string) {
   }
   addDate(quarterlyStartDates)
   quarterlyStartDates.pop()
-  console.log(quarterlyStartDates)
+
+  const convertedDates = [];
   
-  return quarterlyStartDates
+  for (let i = 1; i < quarterlyStartDates.length; i++) {
+    const date = new Date(quarterlyStartDates[i]!);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Adding 1 because getMonth() returns zero-based index
+    const lastDay = new Date(year, month, 0).getDate();
+    const convertedDate = `${year}-${month.toString().padStart(2, '0')}-${lastDay.toString().padStart(2, '0')}`;
+    convertedDates.push(convertedDate);
+  }
+
+  console.log(convertedDates);
+  
+  
+  return convertedDates
 }

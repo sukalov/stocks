@@ -1,5 +1,3 @@
-import path from 'path';
-import * as d3 from 'd3';
 import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
@@ -42,7 +40,7 @@ export async function GET(request: Request) {
 
   const getInitialPrices = async (
     data: Array<DataSharesOutstanding>,
-    startDate: string = '2022-12-29',
+    startDate: string,
     indexName: string
   ) => {
     const newData: Array<DataInitialPrices> = [];
@@ -76,7 +74,7 @@ export async function GET(request: Request) {
 
   const getCurrenencyPrices = async (
     currencies: Array<string> = ['KRW', 'JPY', 'TWD'],
-    startDate: string = '2022-12-29'
+    startDate: string
   ) => {
     try {
       const requests = currencies.map((stock) => get.historicalAsync(`${stock}.FOREX`, startDate));
@@ -175,9 +173,9 @@ export async function GET(request: Request) {
 
   const getIndexHistory = async (
     data: DataShareAdjusted[],
-    currencies: CurrenciesPrice[],
-    startDate: string = '2022-12-29',
-    indexName: string = 'kpop'
+    currencies: any[],
+    startDate: string,
+    indexName: string
   ) => {
     try {
       const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
@@ -190,33 +188,38 @@ export async function GET(request: Request) {
       const json = responses.map((response: Response) => response.json());
       const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
 
-      const indexHistory = JSON.parse(JSON.stringify(currencies)) as IndexDay[];
+      const indexHistory = getInitialIndexDates(startDate) as IndexDay[];
+      currencies.forEach(cur => {
+        const i = indexHistory.findIndex(day => day.date === cur.date)
+        indexHistory[i] = cur
+      })
 
       result.forEach((stockHistory: ResponseHistorical[], i: number) => {
         stockHistory.forEach((day) => {
           const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
           indexHistory[destinationIndex] = {
             ...indexHistory[destinationIndex],
-            date: indexHistory[destinationIndex]?.date ?? '',
-            index: indexHistory[destinationIndex]?.index || 0,
-            share_price_usd: indexHistory[destinationIndex]?.share_price_usd ?? 0,
+            date: indexHistory[destinationIndex]!.date,
+            index: 0,
+            share_price_usd: 0,
             [String(data[i]?.symbol)]: day.adjusted_close,
           };
         });
       });
 
-      indexHistory.forEach((day: IndexDay, i: number) => {
+      const completeData = addMissingValues(indexHistory);
+
+      completeData.forEach((day: IndexDay, i: number) => {
         let sharePriceUSD = 0;
         data.forEach((stock: DataShareAdjusted) => {
           const stockPrice = day[stock.symbol] * stock.share_adj;
-          const stockPriceUSD = toUSD(stockPrice, stock.currency, day.date, currencies);
+          const stockPriceUSD = toUSD(stockPrice, stock.currency, day.date, completeData);
           sharePriceUSD += stockPriceUSD;
         });
         day.share_price_usd = sharePriceUSD;
-        day.index = sharePriceUSD / Number(indexHistory[0]?.share_price_usd);
+        day.index = sharePriceUSD / Number(completeData[0]?.share_price_usd);
       });
 
-      const completeData = addMissingValues(indexHistory);
       csv.write(`${indexName}_index`, completeData);
 
       return completeData;
@@ -225,12 +228,12 @@ export async function GET(request: Request) {
     }
   };
 
-  const mergeIndecies = (dataTotal: DataTotal[] = [], dataNew: IndexDay[], dataOld: IndexDay[], ): DataTotal[] => {
+  const mergeIndecies = (dataTotal: DataTotal[] = [], dataNew: IndexDay[], dataOld: IndexDay[], indexName: string = 'test'): DataTotal[] => {
     const newDataTotal = JSON.parse(JSON.stringify(dataTotal)) as DataTotal[]
     if (dataTotal.length === 0) {
       let mergingDay = dataOld.findIndex(day => day.date === dataNew[0]?.date)
       const keys = dataOld[0] ?? {}
-      let shares = Object.keys(keys).filter((el, i) => (i > 3) && i < (Object.keys(keys).length - 2))
+      let shares = Object.keys(keys).filter((el, i) => (i > 5) && i < (Object.keys(keys).length - 2))
       for (let i = 0; i <= mergingDay; i++) {
         newDataTotal.push({
           date: dataOld[i]?.date ?? '',
@@ -244,7 +247,7 @@ export async function GET(request: Request) {
     }
     const newDataTotal2 = addNewDataToTotal(newDataTotal, dataNew)
 
-    csv.write('test', newDataTotal2)
+    csv.write(indexName, newDataTotal2)
 
     return newDataTotal2
   };
@@ -253,7 +256,7 @@ export async function GET(request: Request) {
     let mergingDay = dataTotal.findIndex(day => day.date === dataNew[0]?.date)
     let newDataTotal = dataTotal.slice(0, mergingDay + 1)
     const keys2 = dataNew[0] ?? {}
-    const shares2 = Object.keys(keys2).filter((el, i) => (i > 3) && i < (Object.keys(keys2).length - 2))
+    const shares2 = Object.keys(keys2).filter((el, i) => (i > 5) && i < (Object.keys(keys2).length - 2))
     const lastElement = newDataTotal[newDataTotal.length-1]!
     const shares = lastElement.index_shares
     
@@ -351,7 +354,7 @@ export async function GET(request: Request) {
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
 
-  // const res = await mainWIthGivenSharesOutstanding('kpop2', '2023-06-29');
+  // const res = await mainWIthGivenSharesOutstanding('kpop', '2022-12-29');
   // const data1 = await csv.read('kpop_index') as IndexDay[];
   // const data2 = await csv.read('kpop2_index') as IndexDay[];
 
