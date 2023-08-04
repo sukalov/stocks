@@ -1,101 +1,16 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "24ea09b6-5859-4a3d-9c83-c7fff1216269",
+  "id": "af050c46-db00-47db-80d6-ba08580627de",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "stocks_data": {
-      "name": "stocks_data",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "serial",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": true
-        },
-        "symbol": {
-          "name": "symbol",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "currency": {
-          "name": "currency",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "exchange": {
-          "name": "exchange",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "mic": {
-          "name": "mic",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "open": {
-          "name": "open",
-          "type": "decimal",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "high": {
-          "name": "high",
-          "type": "decimal",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "low": {
-          "name": "low",
-          "type": "decimal",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "close": {
-          "name": "close",
-          "type": "decimal",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "volume": {
-          "name": "volume",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {}
-    },
     "stocks_info": {
       "name": "stocks_info",
       "columns": {
         "id": {
           "name": "id",
           "type": "serial",
-          "primaryKey": true,
+          "primaryKey": false,
           "notNull": true,
           "autoincrement": true
         },
@@ -120,20 +35,6 @@
           "notNull": false,
           "autoincrement": false
         },
-        "exchange": {
-          "name": "exchange",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "mic_code": {
-          "name": "mic_code",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
         "country": {
           "name": "country",
           "type": "text",
@@ -141,9 +42,23 @@
           "notNull": false,
           "autoincrement": false
         },
-        "type": {
-          "name": "type",
+        "shares": {
+          "name": "shares",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "cap_index": {
+          "name": "cap_index",
           "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "indecies": {
+          "name": "indecies",
+          "type": "json",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
@@ -151,7 +66,66 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {}
+      "compositePrimaryKeys": {
+        "stocks_info_id": {
+          "name": "stocks_info_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "stocks_prices": {
+      "name": "stocks_prices",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "symbol": {
+          "name": "symbol",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "currency": {
+          "name": "currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "close": {
+          "name": "close",
+          "type": "decimal",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "stocks_prices_id": {
+          "name": "stocks_prices_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
     }
   },
   "schemas": {},

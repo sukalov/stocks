@@ -1,17 +1,11 @@
-import { mysqlTable, serial, text, int, date, decimal } from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, text, int, date, decimal, json, bigint } from 'drizzle-orm/mysql-core';
 
-export const stocks_data = mysqlTable('stocks_data', {
+export const stocks_prices = mysqlTable('stocks_prices', {
   id: serial('id').primaryKey(),
-  symbol: text('symbol'),
+  symbol: text('symbol').primaryKey(),
   currency: text('currency'),
-  exchange: text('exchange'),
-  mic: text('mic'),
   date: date('date'),
-  open: decimal('open'),
-  high: decimal('high'),
-  low: decimal('low'),
   close: decimal('close'),
-  volume: int('volume'),
 });
 
 export const stocks_info = mysqlTable('stocks_info', {
@@ -19,8 +13,8 @@ export const stocks_info = mysqlTable('stocks_info', {
   symbol: text('symbol'),
   name: text('name'),
   currency: text('currency'),
-  exchange: text('exchange'),
-  mic_code: text('mic_code'),
   country: text('country'),
-  type: text('type'),
+  shares: bigint('shares', { mode: 'number' }),
+  cap_index: text('cap_index'),
+  indicies: json('indicies')
 });

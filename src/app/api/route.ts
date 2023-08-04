@@ -2,6 +2,10 @@ import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
+import { LucideMonitorSmartphone } from 'lucide-react';
+import { db } from '@/lib/db';
+import { stocks_info } from '@/lib/db/schema';
+import { eq, gt, gte } from 'drizzle-orm';
 
 export async function GET(request: Request) {
   const getSharesOutstanding = async (
@@ -29,12 +33,16 @@ export async function GET(request: Request) {
           ...data[i],
           shares,
           currency,
+          indicies: ['anime-10']
         });
       });
     } catch (error) {
       console.error(error);
     }
-    csv.write(`${indexName}_step1`, dataWithShares);
+
+    // await db.insert(stocks_info).values(dataWithShares)
+    // await db.delete(stocks_info)
+    csv.write(indexName + '_step1', dataWithShares)
     return dataWithShares;
   };
 
@@ -44,13 +52,13 @@ export async function GET(request: Request) {
     indexName: string
   ) => {
     const newData: Array<DataInitialPrices> = [];
-    try {
       const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
       const responses = await Promise.all(requests);
       const errors = responses.filter((response: { ok: any }) => !response.ok);
 
       if (errors.length > 0) {
         throw errors.map((response: { statusText: string | undefined }) => Error(response.statusText));
+        console.log({errors: errors.length})
       }
 
       const json = responses.map((response: { json: () => any }) => response.json());
@@ -65,9 +73,7 @@ export async function GET(request: Request) {
           currency: data[i]?.currency ?? 'USD',
         });
       });
-    } catch (error) {
-      console.error(error);
-    }
+
     csv.write(`${indexName}_step2`, newData);
     return newData;
   };
@@ -228,7 +234,7 @@ export async function GET(request: Request) {
     }
   };
 
-  const mergeIndecies = (dataTotal: DataTotal[] = [], dataNew: IndexDay[], dataOld: IndexDay[], indexName: string = 'test'): DataTotal[] => {
+  const mergeIndicies = (dataTotal: DataTotal[] = [], dataNew: IndexDay[], dataOld: IndexDay[], indexName: string = 'test'): DataTotal[] => {
     const newDataTotal = JSON.parse(JSON.stringify(dataTotal)) as DataTotal[]
     if (dataTotal.length === 0) {
       let mergingDay = dataOld.findIndex(day => day.date === dataNew[0]?.date)
@@ -334,31 +340,57 @@ export async function GET(request: Request) {
     // dates.forEach(async (date, i) => {
     //   console.log(newDataTotal)
     //     const data2 = await mainWIthGivenSharesOutstanding(symbolsFileName, date) as IndexDay[]
-    //     newDataTotal = mergeIndecies(newDataTotal, data2, data1)
+    //     newDataTotal = mergeindicies(newDataTotal, data2, data1)
     // })
     let i = 0
     while (i < dates.length) {
     const data2 = await mainWIthGivenSharesOutstanding(symbolsFileName, dates[i]!) as IndexDay[]
-    newDataTotal = mergeIndecies(newDataTotal, data2, data1)
+    newDataTotal = mergeindicies(newDataTotal, data2, data1)
     i++ 
     }
+
+    csv.write(symbolsFileName + '_final', newDataTotal)
 
     return newDataTotal
   };
 
-
-  // const res = await getSharesOutstanding(dataOnlySymbol);
+  // const res = await getSharesOutstanding(dt, 'entertain100');
   // const res = await getInitialPrices(dataOnlySymbol)
   // const res = await getCurrenencyPrices();
   // const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
 
-  // const res = await mainWIthGivenSharesOutstanding('kpop', '2022-12-29');
-  // const data1 = await csv.read('kpop_index') as IndexDay[];
-  // const data2 = await csv.read('kpop2_index') as IndexDay[];
+  const res = await mainWIthGivenSharesOutstanding('kpop', '2022-12-29');
+  const data = await csv.read('semiconductors_step1') as DataOnlySymbol[]
+  const data2 = data.map(el => {
+    return {
+      ...el, 
+      indicies: ['semiconductors-25'],
+      shares: Number(el.shares)
 
-  const res = await mainRefactorEveryQuartile('kpop', '2022-12-29');
+    }
+  })
+
+  // const topush = []
+  // for (let i = 0; i < data2.length; i++) {
+  //   let element = data2[i]!;
+  //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
+  //   if (search.length === 0) {
+  //     topush.push(element)
+  //   }
+  //   else {
+  //     console.log(search[0]?.indicies.concat(element.indicies))
+  //   }
+  //     await db
+  //     .insert(stocks_info).values(element)
+  //     .onDuplicateKeyUpdate({ set: { cap_index: element.cap_index }});
+
+  // };
+  // if (topush.length > 0) await db.insert(stocks_info).values(topush)
+  // await db.delete(stocks_info).where(gte(stocks_info.id, 9));
+  // const data2 = await csv.read('kpop2_index') as IndexDay[];
+  // const res = await getSharesOutstanding(data1, 'anime10');
 
 
 

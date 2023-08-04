@@ -1,0 +1,1 @@
+ALTER TABLE `stocks_info` MODIFY COLUMN `shares` bigint;
