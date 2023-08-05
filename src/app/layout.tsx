@@ -16,8 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider disableTransitionOnChange attribute="class" enableSystem={false} defaultTheme="light">
-          <GlobalNav />
-          <main className="mt-16 sm:px-16 lg:px-32">{children}</main>
+          <GlobalNav className="min-w-[300px]" />
+          <main className="mt-16 sm:px-16 lg:px-32 min-w-[300px]">{children}</main>
         </ThemeProvider>
       </body>
     </html>

@@ -6,6 +6,9 @@ import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments } from '@/lib/db/schema';
 import { eq, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
+import getIndexHistory from '@/lib/data-manipulations/get-index-history';
+import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
+import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
 
 export async function GET(request: Request) {
   const initialSteps = async () => {
@@ -103,55 +106,6 @@ export async function GET(request: Request) {
     return data;
   };
 
-  const getIndexPrices = async (
-    data: DataSharesOutstanding[],
-    currenciesData: any[],
-    startDate: string,
-    indexName: string
-  ) => {
-    try {
-      const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
-      const responses = await Promise.all(requests);
-      const errors = responses.filter((response: Response) => !response.ok);
-
-      if (errors.length > 0) {
-        throw errors.map((response: Response) => Error(response.statusText));
-      }
-      const json = responses.map((response: Response) => response.json());
-      const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
-
-      const indexHistory = getInitialIndexDates(startDate) as IndexDay[];
-
-      currenciesData.forEach((cur) => {
-        const i = indexHistory.findIndex((day) => day.date === cur.date);
-        indexHistory[i] = cur;
-      });
-
-      result.forEach((stockHistory: ResponseHistorical[], i: number) => {
-        stockHistory.forEach((day) => {
-          const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
-          indexHistory[destinationIndex] = {
-            ...indexHistory[destinationIndex],
-            date: indexHistory[destinationIndex]!.date,
-            [String(data[i]?.symbol)]: day.adjusted_close,
-          };
-        });
-      });
-
-      const completeData = addMissingValues(indexHistory);
-
-      completeData.forEach((day: IndexDay, i: number) => {
-        data.forEach((stock: DataSharesOutstanding) => {
-          day[stock.symbol] = toUSD(day[stock.symbol], stock.currency, day.date, currenciesData);
-        });
-      });
-
-      return completeData;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const getDataForAdjustments = (indexPriceHistory: any) => {
     const adjustmentDates = getQuarterlyStartDates('2022-12-29');
     const adjustmentDaysFull = indexPriceHistory.filter((day: any) => adjustmentDates.includes(day.date));
@@ -226,45 +180,6 @@ export async function GET(request: Request) {
     });
 
     return newAdjustments;
-  };
-
-  const getIndexHistory = (dataIndexPrices: any, dataAdjustments: any, indexName: any) => {
-    while (new Date(dataIndexPrices[0].date) < new Date('2022-12-31')) {
-      dataIndexPrices.shift();
-    }
-    let baseIndexPrice = 0;
-    let i = 0;
-    let indexHistory: { date: any; adjustment: any; index_price: number; index: number; name: string }[] = [];
-    dataIndexPrices.forEach((day: any, ind: number) => {
-      const dayDate = new Date(day.date);
-      const today = new Date();
-      const tomorrow = new Date(today);
-      tomorrow.setDate(today.getDate() + 1);
-      let checkAdjDate;
-      if (i < dataAdjustments.length - 1) {
-        checkAdjDate = dataAdjustments[i + 1].date;
-      } else {
-        checkAdjDate = tomorrow;
-      }
-      if (dayDate.toLocaleDateString() === checkAdjDate.toLocaleDateString()) i += 1;
-
-      const percents = dataAdjustments[i].percents;
-      let index_price = 0;
-      Object.keys(percents).forEach((symbol) => {
-        index_price += day[symbol] * percents[symbol];
-      });
-      if (ind === 0) baseIndexPrice = index_price;
-
-      indexHistory.push({
-        date: day.date,
-        name: indexName,
-        adjustment: dataAdjustments[i].date.toISOString().slice(0, 10),
-        index_price,
-        index: (index_price / baseIndexPrice) * 100,
-      });
-    });
-
-    return indexHistory;
   };
 
   const mergeIndicies = (
@@ -398,44 +313,43 @@ export async function GET(request: Request) {
   //   return newDataTotal;
   // };
 
-  // const res = await getSharesOutstanding(dt, 'entertain100');
   // const res = await getInitialPrices(dataOnlySymbol)
   // const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
-
+  
   // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
-  // const data = await csv.read('semiconductors_step1') as DataOnlySymbol[]
   // const data2 = data.map(el => {
-  //   return {
-  //     ...el,
-  //     indicies: ['semiconductors-25'],
-  //     shares: Number(el.shares)
-
-  //   }
-  // })
-
-  // const topush = []
-  // for (let i = 0; i < data2.length; i++) {
-  //   let element = data2[i]!;
-  //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
-  //   if (search.length === 0) {
-  //     topush.push(element)
-  //   }
-  //   else {
-  //     console.log(search[0]?.indicies.concat(element.indicies))
-  //   }
-  //     await db
-  //     .insert(stocks_info).values(element)
-  //     .onDuplicateKeyUpdate({ set: { cap_index: element.cap_index }});
-
-  // };
-  // if (topush.length > 0) await db.insert(stocks_info).values(topush)
+    //   return {
+      //     ...el,
+      //     indicies: ['semiconductors-25'],
+      //     shares: Number(el.shares)
+      
+      //   }
+      // })
+      // const res = await getSharesOutstanding(data2, 'entertain100');
+      
+      // const topush = []
+      // for (let i = 0; i < data2.length; i++) {
+        //   let element = data2[i]!;
+        //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
+        //   if (search.length === 0) {
+          //     topush.push(element)
+          //   }
+          //   else {
+            //     console.log(search[0]?.indicies.concat(element.indicies))
+            //   }
+            //     await db
+            //     .insert(stocks_info).values(element)
+            //     .onDuplicateKeyUpdate({ set: { cap_index: element.cap_index }});
+            
+            // };
+            // if (topush.length > 0) await db.insert(stocks_info).values(topush)
   // await db.delete(stocks_info).where(gte(stocks_info.id, 9));
   // const data2 = await csv.read('kpop2_index') as IndexDay[];
   // const res = await getSharesOutstanding(data1, 'anime10');
 
-  const indexName = 'kpop-25';
+  const indexName = 'consumer-50';
   const nameForSQL = `"${indexName}"`;
   const dataSharesOutstanding = (await db
     .select()
@@ -449,19 +363,20 @@ export async function GET(request: Request) {
     .orderBy(adjustments.date);
 
   const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
-  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
-  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
+  const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
+  const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
-  const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, indexName);
+  // const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, indexName);
 
   // await db.insert(adjustments).values(newAdjustments)
   // await db.delete(adjustments)
   // await initialSteps();
 
-  return new Response(JSON.stringify(indexHistory), {
+const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
-      'Content-Type': 'text/json',
+      'Content-Type': 'text/plain',
     },
   });
 }
