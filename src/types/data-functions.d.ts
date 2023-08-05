@@ -63,10 +63,10 @@ interface DataShareAdjusted {
 }
 
 interface CurrenciesPrice {
-  date: string;
-  KRW: number;
-  TWD: number;
-  JPY: number;
+  date: Date | string;
+  krw: number;
+  twd: number;
+  twd: number;
 }
 
 interface IndexDay {

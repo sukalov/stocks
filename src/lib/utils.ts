@@ -21,12 +21,12 @@ export function getInitialIndexDates(startDate: string) {
   return dayList;
 }
 
-export function addMissingValues(data: IndexDay[]) {
-  const keys = Object.keys(data[0] as IndexDay);
+export function addMissingValues(data: Array<Object<any>>) {
+  const keys = Object.keys(data[0]);
 
-  let newData: IndexDay[] = []
+  let newData: any[] = []
    data.forEach((obj, i) => {
-    const newObj = {} as IndexDay;
+    const newObj = {} as any[];
     keys.forEach((key) => {
       const prevDay = newData[i-1];
       if (prevDay !== undefined) {newObj[key] = obj[key] || newData[i-1]![key]}

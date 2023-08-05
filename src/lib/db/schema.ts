@@ -1,16 +1,15 @@
-import { mysqlTable, serial, text, int, date, decimal, json, bigint } from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, text, int, date, json, bigint, float } from 'drizzle-orm/mysql-core';
 
-export const stocks_prices = mysqlTable('stocks_prices', {
-  id: serial('id').primaryKey(),
-  symbol: text('symbol').primaryKey(),
-  currency: text('currency'),
-  date: date('date'),
-  close: decimal('close'),
+export const currencies = mysqlTable('currencies', {
+  date: date('date').primaryKey(),
+  KRW: float('KRW'),
+  JPY: float('JPY'),
+  TWD: float('TWD'),
 });
 
 export const stocks_info = mysqlTable('stocks_info', {
-  id: serial('id').primaryKey(),
-  symbol: text('symbol'),
+  id: serial('id').notNull().unique(),
+  symbol: text('symbol').primaryKey(),
   name: text('name'),
   currency: text('currency'),
   country: text('country'),

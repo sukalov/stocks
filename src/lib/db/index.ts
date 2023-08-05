@@ -6,4 +6,4 @@ const connection = connect({
   url: process.env.DATABASE_URL,
 });
 
-export const db = drizzle(connection);
+export const db = drizzle(connection, { logger: false });

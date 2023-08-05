@@ -2,49 +2,20 @@ import get from '@/lib/get-from-eod';
 import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
-import { LucideMonitorSmartphone } from 'lucide-react';
 import { db } from '@/lib/db';
-import { stocks_info } from '@/lib/db/schema';
-import { eq, gt, gte } from 'drizzle-orm';
+import { stocks_info, currencies } from '@/lib/db/schema';
+import { eq, gt, gte, sql } from 'drizzle-orm';
+import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 
 export async function GET(request: Request) {
-  const getSharesOutstanding = async (
-    data: Array<DataOnlySymbol>,
-    indexName: string
-  ): Promise<DataSharesOutstanding[]> => {
-    const dataWithShares: Array<DataSharesOutstanding> = [];
-    try {
-      const requests = data.map((stock) => get.fundamentalAsync(stock.symbol));
-      const responses = await Promise.all(requests);
-      const errors = responses.filter((response: { ok: any }) => !response.ok);
 
-      if (errors.length > 0) {
-        throw errors.map((response: { statusText: string | undefined }) => Error(response.statusText));
-      }
-
-      const json = responses.map((response: { json: () => any }) => response.json());
-      const result = (await Promise.all(json)) as Array<ResponseFundamental>;
-
-      result.forEach((datum, i) => {
-        const shares = datum.SharesStats.SharesOutstanding;
-        const currency = datum.General.CurrencyCode;
-        dataWithShares.push({
-          symbol: data[i]?.symbol ?? '',
-          ...data[i],
-          shares,
-          currency,
-          indicies: ['anime-10']
-        });
-      });
-    } catch (error) {
-      console.error(error);
+  const initialSteps = async () => {
+    const last_date = await db.select().from(currencies).orderBy(sql`${currencies.date} desc limit 1`)
+    const today = new Date()
+    if (today.toLocaleDateString() > last_date[0]!.date.toLocaleDateString()) {
+      getCurrenencyPrices()
     }
-
-    // await db.insert(stocks_info).values(dataWithShares)
-    // await db.delete(stocks_info)
-    csv.write(indexName + '_step1', dataWithShares)
-    return dataWithShares;
-  };
+  }
 
   const getInitialPrices = async (
     data: Array<DataSharesOutstanding>,
@@ -58,7 +29,6 @@ export async function GET(request: Request) {
 
       if (errors.length > 0) {
         throw errors.map((response: { statusText: string | undefined }) => Error(response.statusText));
-        console.log({errors: errors.length})
       }
 
       const json = responses.map((response: { json: () => any }) => response.json());
@@ -76,48 +46,6 @@ export async function GET(request: Request) {
 
     csv.write(`${indexName}_step2`, newData);
     return newData;
-  };
-
-  const getCurrenencyPrices = async (
-    currencies: Array<string> = ['KRW', 'JPY', 'TWD'],
-    startDate: string
-  ) => {
-    try {
-      const requests = currencies.map((stock) => get.historicalAsync(`${stock}.FOREX`, startDate));
-      const responses = await Promise.all(requests);
-      const errors = responses.filter((response: { ok: any }) => !response.ok);
-
-      if (errors.length > 0) {
-        throw errors.map((response: { statusText: string | undefined }) => Error(response.statusText));
-      }
-      const json = responses.map((response: { json: () => any }) => response.json());
-      const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
-
-      const newData: any[] = [];
-
-      result.forEach((data, i) => {
-        data.forEach((day) => {
-          const currencyName = currencies[i] ?? '';
-          if (i === 0) {
-            newData.push({
-              date: day.date,
-              [currencyName]: day.adjusted_close,
-            });
-          } else {
-            const destinationIndex = newData.findIndex((NDday) => NDday.date === day.date);
-            newData[destinationIndex] = {
-              ...newData[destinationIndex],
-              [currencyName]: day.adjusted_close,
-            };
-          }
-        });
-      });
-
-      csv.write('currencies', newData);
-      return newData;
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const getAdjustedShare = (
@@ -177,9 +105,9 @@ export async function GET(request: Request) {
     return data;
   };
 
-  const getIndexHistory = async (
-    data: DataShareAdjusted[],
-    currencies: any[],
+  const getIndexPrices = async (
+    data: DataSharesOutstanding[],
+    currenciesData: any[],
     startDate: string,
     indexName: string
   ) => {
@@ -195,7 +123,8 @@ export async function GET(request: Request) {
       const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
 
       const indexHistory = getInitialIndexDates(startDate) as IndexDay[];
-      currencies.forEach(cur => {
+
+      currenciesData.forEach(cur => {
         const i = indexHistory.findIndex(day => day.date === cur.date)
         indexHistory[i] = cur
       })
@@ -206,8 +135,6 @@ export async function GET(request: Request) {
           indexHistory[destinationIndex] = {
             ...indexHistory[destinationIndex],
             date: indexHistory[destinationIndex]!.date,
-            index: 0,
-            share_price_usd: 0,
             [String(data[i]?.symbol)]: day.adjusted_close,
           };
         });
@@ -216,14 +143,11 @@ export async function GET(request: Request) {
       const completeData = addMissingValues(indexHistory);
 
       completeData.forEach((day: IndexDay, i: number) => {
-        let sharePriceUSD = 0;
-        data.forEach((stock: DataShareAdjusted) => {
-          const stockPrice = day[stock.symbol] * stock.share_adj;
-          const stockPriceUSD = toUSD(stockPrice, stock.currency, day.date, completeData);
-          sharePriceUSD += stockPriceUSD;
+        data.forEach((stock: DataSharesOutstanding) => {
+          console.log(day[stock.symbol], stock.symbol, day.date, stock.currency);
+          day[stock.symbol] = toUSD(day[stock.symbol], stock.currency, day.date, currenciesData);
+          
         });
-        day.share_price_usd = sharePriceUSD;
-        day.index = sharePriceUSD / Number(completeData[0]?.share_price_usd);
       });
 
       csv.write(`${indexName}_index`, completeData);
@@ -315,7 +239,10 @@ export async function GET(request: Request) {
   };
 
   const mainWIthGivenSharesOutstanding = async (symbolsFileName: string, startDate: string) => {
-    const dataSharesOutstanding = (await csv.read(`${symbolsFileName}_step1`)) as DataSharesOutstanding[];
+    const command = `JSON_CONTAINS(indicies, '"cosmetics-15"')`
+    const dataSharesOutstanding = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(indicies, '"cosmetics-15"')`) as DataSharesOutstanding[]
+    console.log(dataSharesOutstanding);
+    
     const dataInitialPrices = (await getInitialPrices(
       dataSharesOutstanding,
       startDate,
@@ -345,7 +272,7 @@ export async function GET(request: Request) {
     let i = 0
     while (i < dates.length) {
     const data2 = await mainWIthGivenSharesOutstanding(symbolsFileName, dates[i]!) as IndexDay[]
-    newDataTotal = mergeindicies(newDataTotal, data2, data1)
+    newDataTotal = mergeIndicies(newDataTotal, data2, data1)
     i++ 
     }
 
@@ -356,21 +283,21 @@ export async function GET(request: Request) {
 
   // const res = await getSharesOutstanding(dt, 'entertain100');
   // const res = await getInitialPrices(dataOnlySymbol)
-  // const res = await getCurrenencyPrices();
   // const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
 
-  const res = await mainWIthGivenSharesOutstanding('kpop', '2022-12-29');
-  const data = await csv.read('semiconductors_step1') as DataOnlySymbol[]
-  const data2 = data.map(el => {
-    return {
-      ...el, 
-      indicies: ['semiconductors-25'],
-      shares: Number(el.shares)
+  // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
+  // const data = await csv.read('semiconductors_step1') as DataOnlySymbol[]
+  // const data2 = data.map(el => {
+  //   return {
+  //     ...el, 
+  //     indicies: ['semiconductors-25'],
+  //     shares: Number(el.shares)
 
-    }
-  })
+  //   }
+  // })
+  
 
   // const topush = []
   // for (let i = 0; i < data2.length; i++) {
@@ -392,9 +319,15 @@ export async function GET(request: Request) {
   // const data2 = await csv.read('kpop2_index') as IndexDay[];
   // const res = await getSharesOutstanding(data1, 'anime10');
 
+  const indexName = 'cosmetics-15'
+  const nameForSQL = `"${indexName}"`
+  const dataSharesOutstanding = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`) as DataSharesOutstanding[]
+  const currData = await db.select().from(currencies)
+  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName)
 
+  // await initialSteps();
 
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify(dataIndexPrices), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

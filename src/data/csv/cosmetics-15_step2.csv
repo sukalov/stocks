@@ -1,0 +1,16 @@
+id,symbol,name,currency,country,shares,cap_index,indicies,initial_date,initial_price
+149,024720.KO,Kolmar Korea Holdings,KRW,South Korea,18385600,Micro Cap,"[consumer-50,cosmetics-15]",2022-12-29,15750
+150,078520.KO,Able C&C,KRW,South Korea,26014200,Micro Cap,"[consumer-50,cosmetics-15]",2022-12-29,5240
+108,090430.KO,Amorepacific,KRW,South Korea,58460800,Mid Cap,"[consumer-50,cosmetics-15]",2022-12-29,137500
+128,192820.KO,Cosmax,KRW,South Korea,11345700,Small Cap,"[consumer-50,cosmetics-15]",2022-12-29,74100
+135,214420.KO,Tonymoly,KRW,South Korea,23902700,Micro Cap,"[consumer-50,cosmetics-15]",2022-12-29,4395
+133,226320.KO,It's Hanbul,KRW,South Korea,17616700,Micro Cap,"[consumer-50,cosmetics-15]",2022-12-29,17850
+146,4137.TW,Chlitina Holding,TWD,Taiwan,78989000,Small Cap,"[consumer-50,cosmetics-15]",2022-12-29,201.5
+139,4452.TSE,Kaō,JPY,Japan,464833984,Blue Chip,"[consumer-50,cosmetics-15]",2022-12-29,5219.882
+136,4747.TWO,Johnson Chemical Pharmaceutical Works,TWD,Taiwan,30019000,Micro Cap,"[consumer-50,cosmetics-15]",2022-12-29,52.75
+153,4911.TSE,Shiseido,JPY,Japan,399548000,Blue Chip,"[consumer-50,cosmetics-15]",2022-12-29,6369.803
+162,4917.TSE,Mandom Corp.,JPY,Japan,44965400,Small Cap,"[consumer-50,cosmetics-15]",2022-12-29,1444.5057
+158,4921.TSE,Fancl Corp.,JPY,Japan,120923000,Mid Cap,"[consumer-50,cosmetics-15]",2022-12-29,2644.8553
+140,4922.TSE,Kosé,JPY,Japan,57050500,Mid Cap,"[consumer-50,cosmetics-15]",2022-12-29,14430.3124
+157,4927.TSE,Pola Orbis Holdings,JPY,Japan,221232000,Mid Cap,"[consumer-50,cosmetics-15]",2022-12-29,1841.6361
+160,PERF,Perfect Corp.,USD,Taiwan,101475000,Small Cap,"[consumer-50,cosmetics-15]",2022-12-29,7.14
