@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { cn } from '@/lib/utils';
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 type ModeToggleProps = {
@@ -12,21 +12,23 @@ type ModeToggleProps = {
 };
 
 export function ModeToggle({ className }: ModeToggleProps) {
-	const { theme, setTheme } = useTheme()
-	const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const onClick = () => {
     if (theme === 'light') setTheme('dark');
     else setTheme('light');
   };
 
-	useEffect(() => {setMounted(true)}, [])
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-	if (!mounted) {
+  if (!mounted) {
     return (
       <Button className={cn(className)} variant="outline" size="icon" onClick={onClick} suppressHydrationWarning>
         <Moon className="h-[1.2rem] w-[1.2rem]" />
       </Button>
-    )
+    );
   }
 
   return (

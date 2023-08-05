@@ -5,7 +5,7 @@ import { db } from '@/lib/db';
 import { stocks_info } from '@/lib/db/schema';
 
 const StocksTable: React.FC = async () => {
-  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies)
+  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies);
   return (
     <div className="py-4">
       <Table>
@@ -19,14 +19,13 @@ const StocksTable: React.FC = async () => {
             <TableHead>Shares </TableHead>
             <TableHead>Cap Index</TableHead>
             <TableHead className="w-[200px]">Indicies</TableHead>
-
           </TableRow>
         </TableHeader>
         <TableBody>
-          {stocks.map((stock) => (
+          {stocks.map((stock: any) => (
             <TableRow key={stock.id}>
               <TableCell>{stock.name}</TableCell>
-              <TableCell className='font-bold'>{stock.symbol}</TableCell>
+              <TableCell className="font-bold">{stock.symbol}</TableCell>
               <TableCell>{stock.country}</TableCell>
               <TableCell>{stock.currency}</TableCell>
               <TableCell>{stock.shares}</TableCell>

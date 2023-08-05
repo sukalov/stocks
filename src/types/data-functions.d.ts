@@ -64,15 +64,13 @@ interface DataShareAdjusted {
 
 interface CurrenciesPrice {
   date: Date | string;
-  krw: number;
-  twd: number;
-  twd: number;
+  KRW: number;
+  TWD: number;
+  JPY: number;
 }
 
 interface IndexDay {
   date: string;
-  index: number;
-  share_price_usd;
   [otherOptions: string]: any;
 }
 
@@ -87,5 +85,6 @@ interface DataTotal {
     new_price: number;
     shares_added: string[];
     shares_removed: string[];
-  }
+  };
 }
+

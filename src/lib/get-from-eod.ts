@@ -3,7 +3,7 @@ import 'server-only';
 
 const url_eod = 'https://eodhistoricaldata.com/api/eod/';
 const url_fundamental = 'https://eodhistoricaldata.com/api/fundamentals/';
-const url_div = 'https://eodhistoricaldata.com/api/div/'
+const url_div = 'https://eodhistoricaldata.com/api/div/';
 
 const fundamental = async (symbol: string): Promise<ResponseFundamental> => {
   const link = `${url_fundamental}${symbol}?api_token=${process.env.EOD_API_KEY}&fmt=json`;
@@ -45,5 +45,5 @@ export default {
   historicalAsync,
   fundamental,
   fundamentalAsync,
-  dividentsAsync
+  dividentsAsync,
 };

@@ -14,13 +14,13 @@ const write = async (file: string, data: any[]) => {
   const newData: Array<any> = data.reduce((acc, current, i) => {
     if (i === 0) acc.push(Object.keys(current));
     if (Object.values(current)) {
-      const arr = Object.values(current)
-      const arr2 = arr.map(val => {
+      const arr = Object.values(current);
+      const arr2 = arr.map((val) => {
         if (typeof val === 'object') {
-          return `"${JSON.stringify(val).replace(/"/g, '')}"`
+          return `"${JSON.stringify(val).replace(/"/g, '')}"`;
         }
-        return val
-      })
+        return val;
+      });
       acc.push(arr2);
     }
     return acc;
