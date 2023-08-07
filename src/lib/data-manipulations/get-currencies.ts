@@ -10,7 +10,7 @@ export default async function getCurrenencyPrices(
   try {
     const requests = currenciesToCollect.map((stock) => get.historicalAsync(`${stock}.FOREX`, startDate));
     const responses = await Promise.all(requests);
-    const errors = responses.filter((response: { ok: any }) => !response.ok);
+    const errors = responses.filter((response: { ok: boolean }) => !response.ok);
 
     if (errors.length > 0) {
       throw errors.map((response: { statusText: string | undefined }) => Error(response.statusText));
@@ -46,7 +46,9 @@ export default async function getCurrenencyPrices(
 
     const newData2 = addMissingValues(indexHistory) as any[];
 
-    // await db.insert(currencies).values(newData2).onDuplicateKeyUpdate({ set: { newData2 } });
+    
+    await db.delete(currencies)
+    await db.insert(currencies).values(newData2)
 
     return newData2;
   } catch (error) {

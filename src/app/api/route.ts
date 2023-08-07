@@ -16,10 +16,12 @@ export async function GET(request: Request) {
       .select()
       .from(currencies)
       .orderBy(sql`${currencies.date} desc limit 1`);
+    let a = []
     const today = new Date();
     if (today.toLocaleDateString() > last_date[0]!.date.toLocaleDateString()) {
-      getCurrenencyPrices();
+      a = await getCurrenencyPrices() ?? [];
     }
+    return a
   };
 
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
@@ -363,17 +365,17 @@ export async function GET(request: Request) {
     .orderBy(adjustments.date);
 
   const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
-  const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
-  const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
+  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
+  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
   // const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, indexName);
 
   // await db.insert(adjustments).values(newAdjustments)
   // await db.delete(adjustments)
-  // await initialSteps();
+  // const res = await initialSteps();
 
-const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify(res), {
+// const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
+  return new Response(JSON.stringify(''), {
     status: 200,
     headers: {
       'Content-Type': 'text/plain',
