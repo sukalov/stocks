@@ -146,7 +146,14 @@ export const columns: ColumnDef<StockInfo>[] = [
         </div>
       );
     },
-    cell: ({ row }) => <div className="ml-4 w-36">{row.getValue('indicies').join('\r\n')}</div>,
+    cell: ({ row }) => {
+      const indicies = row.getValue('indicies') as IndexName[]
+      return (
+        <div className="ml-4 w-36">
+          {indicies ? indicies.join('\r\n') : null}
+        </div>
+      )
+    }
   },
 ];
 
