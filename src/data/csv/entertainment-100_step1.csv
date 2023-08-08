@@ -1,4 +1,4 @@
-symbol,name,country,cap,shares-old,currency
+symbol,name,country,cap_index,shares-old,currency
 4661.TSE,Oriental Land,Japan,Blue Chip,1638089984,JPY
 6758.TSE,Sony,Japan,Blue Chip,1233980032,JPY
 7974.TSE,Nintendo,Japan,Blue Chip,1164230016,JPY
