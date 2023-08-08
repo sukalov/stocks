@@ -312,38 +312,51 @@ export async function GET(request: Request) {
 
 
 
-  const data2 = await csv.read('video-new') as DataOnlySymbol[];
-  const res = await getSharesOutstanding(data2, 'video-new');
-      
-      // const topush = []
-      // for (let i = 0; i < data2.length; i++) {
-      //   let element = data2[i]!;
-      //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
-      //   if (search.length === 0) {
-      //     topush.push(element)
-      //   }
-      //   else {
-      //     console.log(search[0]?.indicies.concat(element.indicies))
-      //   }
-      // };
-      // if (topush.length > 0) await db.insert(stocks_info).values(topush)
-  // const data2 = await csv.read('kpop2_index') as IndexDay[];
-  // const res = await getSharesOutstanding(data1, 'anime10');
+  // const data2 = await csv.read('video-new') as DataOnlySymbol[];
+  // const res = await getSharesOutstanding(data2, 'video-new');
 
-  const indexName = 'consumer-50';
-  const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding = (await db
-    .select()
-    .from(stocks_info)
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  const currData = await db.select().from(currencies);
-  const oldAdjustments = await db
-    .select()
-    .from(adjustments)
-    .where(eq(adjustments.index, indexName))
-    .orderBy(adjustments.date);
+  
+  //  ==============  REMOVE DUPLICATE INDICIES FROM DB ================
+  // const data = await db.select().from(stocks_info)
+  // data.forEach(async (dat) => {
+  //   if (dat.indicies) await db.update(stocks_info).set({indicies: [...new Set(dat.indicies)]}).where(eq(stocks_info.id, dat.id))
+  // })
 
-  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
+    // const data2 = await csv.read('video-75') as DataOnlySymbol[];
+    //   const topush = []
+    //   for (let i = 0; i < data2.length; i++) {
+    //     let element = data2[i]!;
+    //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
+    //     if (search.length === 0) {
+    //       element.indicies = ['video-75']
+    //       topush.push(element)
+    //       console.log({'N=======E========W': element})
+    //     }
+    //     else if (!search[0]?.indicies.includes(element.indicies[0])) {
+    //       console.log(search[0]?.indicies.concat(element.indicies))
+    //       const theId = search[0].id
+    //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
+    //     } else {
+
+    //     }
+    //   };
+    //   if (topush.length > 0) await db.insert(stocks_info).values(topush)
+
+
+  // const indexName = 'consumer-50';
+  // const nameForSQL = `"${indexName}"`;
+  // const dataSharesOutstanding = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  // const currData = await db.select().from(currencies);
+  // const oldAdjustments = await db
+  //   .select()
+  //   .from(adjustments)
+  //   .where(eq(adjustments.index, indexName))
+  //   .orderBy(adjustments.date);
+
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
   // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
@@ -354,7 +367,7 @@ export async function GET(request: Request) {
   // const res = await initialSteps();
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify(''), {
     status: 200,
     headers: {
       'Content-Type': 'text/plain',

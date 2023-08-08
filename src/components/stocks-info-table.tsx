@@ -188,13 +188,13 @@ export function StocksInfoTable({ data }: {data: StockInfo[]}) {
           placeholder="search for company name"
           value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
           onChange={(event) => table.getColumn('name')?.setFilterValue(event.target.value)}
-          className="max-w-full mr-8"
+          className="max-w-full sm:mr-8 mr-2"
         />
         <Input
           placeholder="search for symbol"
           value={(table.getColumn('symbol')?.getFilterValue() as string) ?? ''}
           onChange={(event) => table.getColumn('symbol')?.setFilterValue(event.target.value)}
-          className="max-w-full mr-8"
+          className="max-w-full sm:mr-8 mr-2"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

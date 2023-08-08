@@ -6,15 +6,22 @@ import { DataTable } from '@/components/data-table';
 import { ModeToggle } from '@/components/mode-toggle';
 import Link from 'next/link';
 import { GlobalNav } from '@/components/global-nav';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
-  const indicies = ['kpop-25', 'cosmetics-15', 'consumer-50']
+  const indicies = ['kpop-25', 'cosmetics-15', 'consumer-50', 'entertainment-100', 'video-75']
   return (
-    <div className='p-8 text-muted-foreground table'>
+    <div className='py-8 flex flex-1 gap-4 justify-center items-start flex-wrap'>
     {
     indicies.map(indexName => (
+      <Card key={indexName} className="md:w-80 sm:w-[28rem] sm:mx-2 mx-2 w-[28rem] flex-grow">
+        <CardHeader>
+        <CardTitle className=' text-muted-foreground'>
+        {indexName}
+        </CardTitle>
+        </CardHeader>
+        <CardContent>
       <div key={indexName} className='pb-6'>
-        <p className=' text-lg p-0'>{indexName}</p>
         <Link href={`/api/stocks-info/${indexName}`}>
           <Button variant={'link'}>info</Button>
         </Link><br />
@@ -25,6 +32,8 @@ export default function Home() {
           <Button variant={'link'}>index</Button>
         </Link>
       </div>
+      </CardContent>
+      </Card>
     ))
   }
     </div>

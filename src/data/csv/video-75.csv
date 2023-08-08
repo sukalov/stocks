@@ -1,0 +1,84 @@
+symbol,name,country,cap_index,shares,currency,indicies
+036570.KO,NCsoft,South Korea,Mid Cap,20307400,KRW,video-75
+069080.KQ,Webzen,South Korea,Small Cap,34950884,KRW,video-75
+078340.KQ,Com2uS,South Korea,Small Cap,6595192,KRW,video-75
+095660.KQ,Neowiz Games,South Korea,Small Cap,8856866,KRW,video-75
+112040.KQ,Wemade,South Korea,Small Cap,33796962,KRW,video-75
+181710.KO,NHN Corp,South Korea,Small Cap,33705800,KRW,video-75
+192080.KO,DoubleUGames,South Korea,Small Cap,16525700,KRW,video-75
+2121.TSE,Mixi,Japan,Small Cap,72973000,JPY,video-75
+2138.TSE,CROOZ,Japan,Micro Cap,11122400,JPY,video-75
+2432.TSE,DeNA,Japan,Small Cap,111340000,JPY,video-75
+2497.TSE,UNITED,Japan,Micro Cap,38081600,JPY,video-75
+251270.KO,Netmarble,South Korea,Mid Cap,81934600,KRW,video-75
+259960.KO,Krafton,South Korea,Mid Cap,46212100,KRW,video-75
+263750.KQ,Pearl Abyss,South Korea,Small Cap,64247855,KRW,video-75
+2706.TSE,Broccoli,Japan,Micro Cap,8747270,JPY,video-75
+3064.TWO,Astro Corporation,Taiwan,Micro Cap,43372000,TWD,video-75
+3083.TWO,Chinese Gamer International,Taiwan,Micro Cap,86433000,TWD,video-75
+3086.TWO,Wayi International Digital Entertainment,Taiwan,Micro Cap,22274000,TWD,video-75
+3293.TWO,International Games System,Taiwan,Mid Cap,140900992,TWD,video-75
+3546.TWO,Userjoy Technology,Taiwan,Micro Cap,48177000,TWD,video-75
+3624.TSE,Axel Mark,Japan,Micro Cap,10646300,JPY,video-75
+3632.TSE,Gree,Japan,Small Cap,173364992,JPY,video-75
+3635.TSE,Koei Tecmo,Japan,Mid Cap,315369984,JPY,video-75
+3639.TSE,Voltage,Japan,Micro Cap,6422090,JPY,video-75
+3656.TSE,KLab,Japan,Micro Cap,40450700,JPY,video-75
+3659.TSE,Nexon,Japan,Blue Chip,854155008,JPY,video-75
+3662.TSE,Ateam,Japan,Micro Cap,18533000,JPY,video-75
+3664.TSE,Mobcast,Japan,Micro Cap,44638400,JPY,video-75
+3667.TSE,enish,Japan,Micro Cap,17243500,JPY,video-75
+3668.TSE,COLOPL,Japan,Small Cap,128276000,JPY,video-75
+3672.TSE,AltPlus,Japan,Micro Cap,17440200,JPY,video-75
+3687.TWO,MacroWell OMG Digital Entertainment,Taiwan,Micro Cap,30060000,TWD,video-75
+3723.TSE,Nihon Falcom,Japan,Micro Cap,10279800,JPY,video-75
+3758.TSE,Aeria,Japan,Micro Cap,22162400,JPY,video-75
+3760.TSE,CAVE Interactive,Japan,Micro Cap,6466970,JPY,video-75
+3765.TSE,GungHo Online Entertainment,Japan,Small Cap,59896300,JPY,video-75
+3793.TSE,Drecom,Japan,Micro Cap,28492200,JPY,video-75
+3810.TSE,CyberStep,Japan,Micro Cap,10803500,JPY,video-75
+3851.TSE,Nippon Ichi Software,Japan,Micro Cap,5040540,JPY,video-75
+3903.TSE,gumi,Japan,Micro Cap,39249200,JPY,video-75
+3904.TSE,Kayak Inc,Japan,Micro Cap,15960200,JPY,video-75
+3907.TSE,Silicon Studio,Japan,Micro Cap,2948880,JPY,video-75
+3911.TSE,Aiming Inc,Japan,Micro Cap,40133500,JPY,video-75
+3912.TSE,Mobile Factory,Japan,Micro Cap,7881340,JPY,video-75
+3928.TSE,Mynet,Japan,Micro Cap,8438710,JPY,video-75
+3932.TSE,Akatsuki Inc,Japan,Micro Cap,13592800,JPY,video-75
+3935.TSE,Edia,Japan,Micro Cap,6127860,JPY,video-75
+4174.TSE,Appirits,Japan,Micro Cap,4101360,JPY,video-75
+4175.TSE,coly,Japan,Micro Cap,5502820,JPY,video-75
+4198.TSE,TENDA,Japan,Micro Cap,2169500,JPY,video-75
+4199.TSE,WonderPlanet,Japan,Micro Cap,2541780,JPY,video-75
+4334.TSE,Yuke's,Japan,Micro Cap,8364960,JPY,video-75
+4393.TSE,Bank of Innovation,Japan,Micro Cap,4002970,JPY,video-75
+4644.TSE,Imagineer,Japan,Micro Cap,9598000,JPY,video-75
+4728.TSE,Tose Software,Japan,Micro Cap,7579940,JPY,video-75
+4751.TSE,CyberAgent,Japan,Mid Cap,506076992,JPY,video-75
+4777.TSE,Gala Incorporated,Japan,Micro Cap,25035700,JPY,video-75
+4994.TW,X-Legend Entertainment,Taiwan,Micro Cap,110639000,TWD,video-75
+5478.TWO,Soft-World International,Taiwan,Small Cap,121338000,TWD,video-75
+6111.TWO,Softstar Entertainment,Taiwan,Micro Cap,79427000,TWD,video-75
+6169.TWO,InterServ International,Taiwan,Micro Cap,23395000,TWD,video-75
+6180.TWO,Gamania Digital,Taiwan,Small Cap,175494000,TWD,video-75
+6238.TSE,FuRyu,Japan,Micro Cap,26440000,JPY,video-75
+6460.TSE,Sega Sammy Holdings,Japan,Mid Cap,220744992,JPY,video-75
+6468.TWO,Netmarble Joybomb,Taiwan,Micro Cap,12074000,TWD,video-75
+6482.TWO,Fun Yours Technology,Taiwan,Micro Cap,18863200,TWD,video-75
+6542.TWO,Gamesparcs,Taiwan,Micro Cap,42000600,TWD,video-75
+6626.TWO,GAME HOURS,Taiwan,Micro Cap,27177000,TWD,video-75
+6736.TSE,Sun Corp,Japan,Small Cap,22206400,JPY,video-75
+6758.TSE,Sony,Japan,Blue Chip,1233980032,JPY,video-75
+7060.TSE,geechs,Japan,Micro Cap,10021200,JPY,video-75
+7552.TSE,Happinet,Japan,Small Cap,22188700,JPY,video-75
+7803.TSE,Bushiroad,Japan,Small Cap,67892096,JPY,video-75
+7832.TSE,Bandai Namco,Japan,Blue Chip,660049984,JPY,video-75
+7844.TSE,Marvelous,Japan,Small Cap,60468600,JPY,video-75
+7974.TSE,Nintendo,Japan,Blue Chip,1164230016,JPY,video-75
+9421.TSE,NJ Holdings,Japan,Micro Cap,5292850,JPY,video-75
+9468.TSE,Kadokawa,Japan,Mid Cap,140604000,JPY,video-75
+9684.TSE,Square Enix,Japan,Mid Cap,119729000,JPY,video-75
+9697.TSE,Capcom,Japan,Mid Cap,209112992,JPY,video-75
+9766.TSE,Konami Holdings,Japan,Mid Cap,135559008,JPY,video-75
+GIGM,GigaMedia,Taiwan,Micro Cap,11052200,USD,video-75
+GRVY,Gravity Co.,South Korea,Small Cap,6948900,USD,video-75

@@ -1,6 +1,7 @@
 import { csv } from '../read-write-csv';
 import { stocks_info } from '../db/schema';
 import get from '@/lib/get-from-eod'
+import { db } from '../db';
 
 export default async function getSharesOutstanding(
   data: Array<DataOnlySymbol>,
