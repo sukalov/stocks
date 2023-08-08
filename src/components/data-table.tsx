@@ -13,7 +13,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from 'lucide-react';
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from '../../node_modules/lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -28,6 +28,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { type } from 'os';
 
 const data: Payment[] = [
   {
@@ -158,6 +159,18 @@ export type Payment = {
   status: 'pending' | 'processing' | 'success' | 'failed';
   email: string;
 };
+
+export type IndexName = 'kpop-25' | 'cosmetics-15' | 'anime-10' | 'consumer-50' | 'tech-100' |'entertainment-100' | 'video-75';
+
+export type StockInfo = {
+  name: string,
+  symbol: string,
+  country: string,
+  currency: string,
+  shares: number,
+  cap_index: string,
+  indicies: IndexName[]
+}
 
 export const columns: ColumnDef<Payment>[] = [
   {

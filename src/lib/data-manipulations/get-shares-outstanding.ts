@@ -27,13 +27,14 @@ export default async function getSharesOutstanding(
         ...data[i],
         shares,
         currency,
-        indicies: ['anime-10'],
+        indicies: [`${indexName}`],
       });
     });
   } catch (error) {
     console.error(error);
   }
 
+  await csv.write(`${indexName}_step1`, dataWithShares);
   // await db.insert(stocks_info).values(dataWithShares)
   // await db.delete(stocks_info)
 

@@ -4,25 +4,13 @@ import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments } from '@/lib/db/schema';
-import { eq, sql } from 'drizzle-orm';
+import { eq, gte, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
 
 export async function GET(request: Request) {
-  const initialSteps = async () => {
-    const last_date = await db
-      .select()
-      .from(currencies)
-      .orderBy(sql`${currencies.date} desc limit 1`);
-    let a = []
-    const today = new Date();
-    if (today.toLocaleDateString() > last_date[0]!.date.toLocaleDateString()) {
-      a = await getCurrenencyPrices() ?? [];
-    }
-    return a
-  };
 
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
     const newData: Array<DataInitialPrices> = [];
@@ -321,33 +309,24 @@ export async function GET(request: Request) {
   // const res = getInitialIndexDates()
   
   // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
-  // const data2 = data.map(el => {
-    //   return {
-      //     ...el,
-      //     indicies: ['semiconductors-25'],
-      //     shares: Number(el.shares)
-      
-      //   }
-      // })
-      // const res = await getSharesOutstanding(data2, 'entertain100');
+
+
+
+  const data2 = await csv.read('video-new') as DataOnlySymbol[];
+  const res = await getSharesOutstanding(data2, 'video-new');
       
       // const topush = []
       // for (let i = 0; i < data2.length; i++) {
-        //   let element = data2[i]!;
-        //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
-        //   if (search.length === 0) {
-          //     topush.push(element)
-          //   }
-          //   else {
-            //     console.log(search[0]?.indicies.concat(element.indicies))
-            //   }
-            //     await db
-            //     .insert(stocks_info).values(element)
-            //     .onDuplicateKeyUpdate({ set: { cap_index: element.cap_index }});
-            
-            // };
-            // if (topush.length > 0) await db.insert(stocks_info).values(topush)
-  // await db.delete(stocks_info).where(gte(stocks_info.id, 9));
+      //   let element = data2[i]!;
+      //   const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
+      //   if (search.length === 0) {
+      //     topush.push(element)
+      //   }
+      //   else {
+      //     console.log(search[0]?.indicies.concat(element.indicies))
+      //   }
+      // };
+      // if (topush.length > 0) await db.insert(stocks_info).values(topush)
   // const data2 = await csv.read('kpop2_index') as IndexDay[];
   // const res = await getSharesOutstanding(data1, 'anime10');
 
@@ -375,7 +354,7 @@ export async function GET(request: Request) {
   // const res = await initialSteps();
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify(''), {
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/plain',

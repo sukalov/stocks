@@ -3,7 +3,7 @@
 import { pages, type Item } from '@/lib/pages';
 import Link from 'next/link';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { X, MenuIcon } from 'lucide-react';
+// import { X, MenuIcon } from '../../node_modules/lucide-react';
 import clsx from 'clsx';
 import { ModeToggle } from './mode-toggle';
 import { Button } from './ui/button';

@@ -3,19 +3,21 @@ import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableC
 import axios from 'axios';
 import { db } from '@/lib/db';
 import { stocks_info } from '@/lib/db/schema';
+import { sql, eq } from "drizzle-orm";
 
 const StocksTable: React.FC = async () => {
-  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies);
+  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies)
+
   return (
     <div className="py-4">
       <Table>
         <TableHeader>
           <TableRow>
             {/* <TableHead className="w-[100px]">Ticker</TableHead> */}
-            <TableHead className="w-[100px]">Name</TableHead>
-            <TableHead>Symbol </TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead className="w-[70px]">Symbol </TableHead>
             <TableHead>Country</TableHead>
-            <TableHead>Currency</TableHead>
+            <TableHead className="w-[50px]">Currency</TableHead>
             <TableHead>Shares </TableHead>
             <TableHead>Cap Index</TableHead>
             <TableHead className="w-[200px]">Indicies</TableHead>
