@@ -9,6 +9,7 @@ import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
+import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 
 export async function GET(request: Request) {
 
