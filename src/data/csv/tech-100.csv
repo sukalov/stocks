@@ -1,0 +1,106 @@
+symbol,name,country,cap_index,shares,currency,indicies
+214150.KQ,Classys,South Korea,Small Cap,64689751,KRW,tech-100
+277810.KQ,Rainbow Robotics,South Korea,Small Cap,16218270,KRW,tech-100
+039030.KQ,EO Technics,South Korea,Small Cap,12102153,KRW,tech-100
+101490.KQ,S&S Tech,South Korea,Small Cap,21451447,KRW,tech-100
+137400.KQ,People & Technology,South Korea,Small Cap,22741198,KRW,tech-100
+095660.KQ,Neowiz Games,South Korea,Small Cap,22033719,KRW,tech-100
+063080.KQ,Com2uS,South Korea,Small Cap,6595192,KRW,tech-100
+112040.KQ,Wemade,South Korea,Small Cap,33796962,KRW,tech-100
+263750.KQ,Pearl Abyss,South Korea,Small Cap,64247855,KRW,tech-100
+053800.KQ,AhnLab,South Korea,Small Cap,10013855,KRW,tech-100
+069080.KQ,Webzen,South Korea,Small Cap,34950884,KRW,tech-100
+098460.KQ,Koh Young Technology,South Korea,Micro Cap,68654755,KRW,tech-100
+4199.TSE,WonderPlanet,Japan,Micro Cap,2541780,JPY,tech-100
+3907.TSE,Silicon Studio,Japan,Micro Cap,2948880,JPY,tech-100
+4174.TSE,Appirits,Japan,Micro Cap,4101360,JPY,tech-100
+3851.TSE,Nippon Ichi Software,Japan,Micro Cap,5040540,JPY,tech-100
+9421.TSE,NJ Holdings,Japan,Micro Cap,5292850,JPY,tech-100
+4728.TSE,Tose Software,Japan,Micro Cap,7579940,JPY,tech-100
+4434.TSE,Serverworks,Japan,Micro Cap,7794960,JPY,tech-100
+3912.TSE,Mobile Factory,Japan,Micro Cap,7881340,JPY,tech-100
+7060.TSE,geechs,Japan,Micro Cap,10021200,JPY,tech-100
+3667.TSE,enish,Japan,Micro Cap,17243500,JPY,tech-100
+036570.KO,NCsoft,South Korea,Mid Cap,20307400,KRW,tech-100
+3793.TSE,Drecom,Japan,Micro Cap,28492200,JPY,tech-100
+3629.TWO,Gravity Co.,South Korea,Small Cap,33076000,TWD,tech-100
+2497.TSE,UNITED,Japan,Micro Cap,38081600,JPY,tech-100
+4165.TSE,PLAID Inc.,Japan,Micro Cap,39185500,JPY,tech-100
+3903.TSE,gumi,Japan,Micro Cap,39249200,JPY,tech-100
+3656.TSE,KLab,Japan,Micro Cap,40450700,JPY,tech-100
+259960.KO,Krafton,South Korea,Mid Cap,46212100,KRW,tech-100
+3546.TWO,Userjoy Technology,Taiwan,Micro Cap,48177000,TWD,tech-100
+3694.TSE,OPTiM,Japan,Small Cap,55052500,JPY,tech-100
+3765.TSE,GungHo Online Entertainment,Japan,Small Cap,59896300,JPY,tech-100
+7844.TSE,Marvelous,Japan,Small Cap,60468600,JPY,tech-100
+GRRR,Gorilla Technology,Taiwan,Micro Cap,67601504,USD,tech-100
+2121.TSE,Mixi,Japan,Small Cap,72973000,JPY,tech-100
+3661.TW,Alchip Technologies,Taiwan,Mid Cap,73889296,TWD,tech-100
+3529.TWO,eMemory Technology,Taiwan,Mid Cap,74622000,TWD,tech-100
+6920.TSE,Lasertec,Japan,Blue Chip,90180704,JPY,tech-100
+6963.TSE,Rohm,Japan,Mid Cap,98142600,JPY,tech-100
+PERF,Perfect Corp.,Taiwan,Small Cap,101475000,USD,tech-100
+6146.TSE,Disco Corp.,Japan,Blue Chip,108302000,JPY,tech-100
+2432.TSE,DeNA,Japan,Small Cap,111340000,JPY,tech-100
+4716.TSE,Oracle Corp Japan,Japan,Blue Chip,128157000,JPY,tech-100
+3668.TSE,COLOPL,Japan,Small Cap,128276000,JPY,tech-100
+377300.KO,Kakao Pay,South Korea,Mid Cap,133905000,KRW,tech-100
+3443.TW,Global Unichip Corp.,Taiwan,Mid Cap,134011000,TWD,tech-100
+9766.TSE,Konami Holdings,Japan,Mid Cap,135559008,JPY,tech-100
+4704.TSE,Trend Micro,Japan,Mid Cap,135760992,JPY,tech-100
+035420.KO,Naver,South Korea,Blue Chip,150564000,KRW,tech-100
+4385.TSE,Mercari,Japan,Mid Cap,161652992,JPY,tech-100
+066570.KO,LG Electronics,South Korea,Blue Chip,162884992,KRW,tech-100
+3632.TSE,Gree,Japan,Small Cap,173364992,JPY,tech-100
+HIMX,Himax,Taiwan,Small Cap,174400000,USD,tech-100
+6669.TW,Wiwynn,Taiwan,Mid Cap,174840992,TWD,tech-100
+6857.TSE,Advantest,Japan,Blue Chip,184214000,JPY,tech-100
+8454.TW,momo.com Inc.,Taiwan,Mid Cap,218491008,TWD,tech-100
+6460.TSE,Sega Sammy Holdings,Japan,Mid Cap,220744992,JPY,tech-100
+6861.TSE,Keyence,Japan,Blue Chip,242526000,JPY,tech-100
+6701.TSE,NEC Corp,Japan,Blue Chip,266348000,JPY,tech-100
+7747.TSE,Asahi Intecc,Japan,Mid Cap,271625984,JPY,tech-100
+7701.TSE,Shimadzu,Japan,Mid Cap,294671008,JPY,tech-100
+3092.TSE,ZOZO,Japan,Mid Cap,299856992,JPY,tech-100
+6789.TW,VisEra Technologies,Taiwan,Micro Cap,315776992,TWD,tech-100
+7731.TSE,Nikon,Japan,Mid Cap,346172992,JPY,tech-100
+3532.TW,Formosa Sumco Technology,Taiwan,Mid Cap,387848000,TWD,tech-100
+3105.TWO,WIN Semiconductors,Taiwan,Mid Cap,423940000,TWD,tech-100
+6488.TWO,GlobalWafers,Taiwan,Mid Cap,435236992,TWD,tech-100
+035720.KO,Kakao,South Korea,Blue Chip,444983008,KRW,tech-100
+8035.TSE,Tokyo Electron,Japan,Blue Chip,466875008,JPY,tech-100
+3064.TSE,Monotaro,Japan,Mid Cap,496907008,JPY,tech-100
+4751.TSE,CyberAgent,Japan,Mid Cap,506076992,JPY,tech-100
+2379.TW,Realtek,Taiwan,Mid Cap,512863008,TWD,tech-100
+5483.TWO,Sino-American Silicon Products,Taiwan,Mid Cap,586222016,TWD,tech-100
+3034.TW,Novatek Microelectronics,Taiwan,Mid Cap,608512000,TWD,tech-100
+6981.TSE,Murata Manufacturing (Murata Seisakusho),Japan,Blue Chip,629724032,JPY,tech-100
+8046.TW,Nan Ya PCB,Taiwan,Mid Cap,646166016,TWD,tech-100
+7832.TSE,Bandai Namco,Japan,Blue Chip,660049984,JPY,tech-100
+2413.TSE,M3 Inc,Japan,Blue Chip,678921984,JPY,tech-100
+000660.KO,SK Hynix,South Korea,Blue Chip,708217024,KRW,tech-100
+8150.TW,ChipMOS Technologies,Taiwan,Small Cap,727240000,TWD,tech-100
+2357.TW,ASUS,Taiwan,Mid Cap,742760000,TWD,tech-100
+4543.TSE,Terumo,Japan,Blue Chip,744608000,JPY,tech-100
+2395.TW,Advantech,Taiwan,Blue Chip,778486976,TWD,tech-100
+3659.TSE,Nexon,Japan,Blue Chip,854155008,JPY,tech-100
+7751.TSE,Canon,Japan,Blue Chip,999128000,JPY,tech-100
+7974.TSE,Nintendo,Japan,Blue Chip,1164230016,JPY,tech-100
+6758.TSE,Sony,Japan,Blue Chip,1233980032,JPY,tech-100
+3037.TW,Unimicron,Taiwan,Mid Cap,1523800064,TWD,tech-100
+2454.TW,MediaTek,Taiwan,Blue Chip,1591800064,TWD,tech-100
+CPNG,Coupang,South Korea,Blue Chip,1604060032,USD,tech-100
+5347.TWO,Vanguard International Semiconductor,Taiwan,Mid Cap,1638979968,TWD,tech-100
+6723.TSE,Renesas Electronics,Japan,Blue Chip,1765200000,JPY,tech-100
+4755.TSE,Rakuten,Japan,Mid Cap,2135209984,JPY,tech-100
+6752.TSE,Panasonic,Japan,Blue Chip,2334109952,JPY,tech-100
+2308.TW,Delta Electronics,Taiwan,Blue Chip,2597540096,TWD,tech-100
+2353.TW,Acer,Taiwan,Mid Cap,3001110016,TWD,tech-100
+2408.TW,Nanya Technology,Taiwan,Mid Cap,3098040064,TWD,tech-100
+6770.TW,Powerchip Semiconductor Manufacturing,Taiwan,Mid Cap,4065649920,TWD,tech-100
+3711.TW,ASE Group,Taiwan,Blue Chip,4300490240,TWD,tech-100
+005930.KO,Samsung,South Korea,Blue Chip,5969780224,KRW,tech-100
+4689.TSE,Z Holdings,Japan,Blue Chip,7530570240,JPY,tech-100
+2303.TW,United Microelectronics,Taiwan,Blue Chip,12503100416,TWD,tech-100
+2317.TW,Foxconn (Hon Hai Precision Industry),Taiwan,Blue Chip,13861499904,TWD,tech-100
+2330.TW,Taiwan Semiconductor (TSMC),Taiwan,Blue Chip,25931999232,TWD,tech-100

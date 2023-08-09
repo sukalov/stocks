@@ -9,15 +9,15 @@ import { GlobalNav } from '@/components/global-nav';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export default function Home() {
-  const indicies = ['kpop-25', 'cosmetics-15', 'consumer-50', 'entertainment-100', 'video-75']
+  const indicies = ['kpop-25', 'cosmetics-15', 'consumer-50', 'entertainment-100', 'video-75', 'tech-100']
   return (
     <div className='py-8 flex flex-1 gap-4 justify-center items-start flex-wrap'>
     {
     indicies.map(indexName => (
       <Card key={indexName} className="md:w-80 sm:w-[28rem] sm:mx-2 mx-2 w-[28rem] flex-grow">
         <CardHeader>
-        <CardTitle className=' text-muted-foreground'>
-        {indexName}
+        <CardTitle className=' text-muted-foreground capitalize'>
+        {indexName.split('-').join(' ')}
         </CardTitle>
         </CardHeader>
         <CardContent>
