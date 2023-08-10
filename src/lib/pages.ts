@@ -11,8 +11,8 @@ export const pages: Item[] = [
     description: 'Detailed information about stocks used inindicies',
   },
   {
-    name: 'kpop-25',
-    slug: 'indicies/kpop-25',
+    name: 'Indicies',
+    slug: 'indicies',
     description: 'Testing line chart for kpop-25 index'
   }
 ];
