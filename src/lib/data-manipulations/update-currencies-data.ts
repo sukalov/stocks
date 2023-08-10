@@ -10,8 +10,9 @@ export const initialSteps = async () => {
       .orderBy(sql`${currencies.date} desc limit 1`);
     let a = []
     const today = new Date();
-    if (today.toLocaleDateString() > last_date[0]!.date.toLocaleDateString()) {
-      a = await getCurrenencyPrices() ?? [];
+    
+    if (today.getUTCDay() > last_date[0]!.date.getUTCDay()) {
+      a = await getCurrenencyPrices() || [];
     }
     return a
   };

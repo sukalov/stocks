@@ -4,7 +4,7 @@ import { addMissingValues, getInitialIndexDates } from '../utils';
 import { currencies } from '../db/schema';
 
 export default async function getCurrenencyPrices(
-  startDate: string = '2022-12-29',
+  startDate: string = '2022-12-28',
   currenciesToCollect: Array<string> = ['KRW', 'JPY', 'TWD']
 ) {
   try {

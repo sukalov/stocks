@@ -21,7 +21,7 @@ export const Overview: React.FC<OverviewProps> = ({
   const theme = themes.find((theme) => theme.name === config.theme)
   return (
     <ResponsiveContainer width="100%" height={600}>
-          <LineChart width={900} data={data}>
+          <LineChart data={data}>
             <CartesianGrid strokeDasharray="2 10" strokeOpacity={mode === 'dark' ? 0.3 : 0.9}/>
             <XAxis dataKey="name" minTickGap={31}/>
             <YAxis type="number" domain={[50, 150]}/>

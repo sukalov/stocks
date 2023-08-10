@@ -22,7 +22,7 @@ export async function GET(request: any, context: any) {
     .where(eq(adjustments.index, indexName))
     .orderBy(adjustments.date);
     
-  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
+  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
   const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, indexName);
   
   return new Response(JSON.stringify(indexHistory), {

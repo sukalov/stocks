@@ -1,6 +1,6 @@
 'use client'
 
-import { LineChartProps, Overview } from "@/components/Overview";
+import { LineChartProps, Overview } from "@/components/overview";
 import { useEffect, useState } from "react";
 import { ResponsiveContainer } from "recharts";
 
