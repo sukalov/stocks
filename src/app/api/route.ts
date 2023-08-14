@@ -98,7 +98,7 @@ export async function GET(request: Request) {
   };
 
   const getDataForAdjustments = (indexPriceHistory: any) => {
-    const adjustmentDates = getQuarterlyStartDates('2022-12-29');
+    const adjustmentDates = getQuarterlyStartDates('2022-12-28');
     const adjustmentDaysFull = indexPriceHistory.filter((day: any) => adjustmentDates.includes(day.date));
     return adjustmentDaysFull;
   };
@@ -309,7 +309,7 @@ export async function GET(request: Request) {
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
   
-  // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
+  // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-28');
 
 
 
@@ -368,13 +368,13 @@ export async function GET(request: Request) {
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
   // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
-  // const res = await initialSteps();
+  const res = await initialSteps();
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
   return new Response(JSON.stringify([]), {

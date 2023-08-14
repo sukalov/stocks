@@ -11,7 +11,8 @@ export const initialSteps = async () => {
     let a = []
     const today = new Date();
     
-    if (today.getUTCDay() > last_date[0]!.date.getUTCDay()) {
+    console.log(today.getUTCDate(), last_date[0]?.date.getUTCDate(), today.getUTCDay(), last_date[0]?.date.getUTCDay())
+    if (today.getUTCDate() > last_date[0]!.date.getUTCDate()) {
       a = await getCurrenencyPrices() || [];
     }
     return a

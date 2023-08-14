@@ -46,7 +46,6 @@ export default async function getCurrenencyPrices(
 
     const newData2 = addMissingValues(indexHistory) as any[];
 
-    
     await db.delete(currencies)
     await db.insert(currencies).values(newData2)
 
