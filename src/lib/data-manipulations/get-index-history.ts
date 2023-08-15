@@ -24,6 +24,7 @@ export default function getIndexHistory (dataIndexPrices: any, dataAdjustments: 
         index_price += day[symbol] * percents[symbol];
       });
       if (ind === 0) baseIndexPrice = index_price;
+      //
 
       indexHistory.push({
         date: day.date,
