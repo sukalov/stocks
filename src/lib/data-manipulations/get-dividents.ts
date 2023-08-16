@@ -15,11 +15,23 @@ export default async function getDividents (data: DataOnlySymbol[], startDate: s
         let newData: any[] = [];
         result.forEach((divs, i) => {
             if (divs.length) {
-                newData = [...newData, data[i]?.symbol, ...divs]
+                const dividents = divs.map ((el)=> {
+                    return {
+                        symbol: data[i]?.symbol,
+                        date: el.date,
+                        value: el.value
+                    }
+                })
+                newData = [...newData, ...dividents]
             }
         });
+        const newData2 = newData.reduce((acc, curr) => {
+            acc[curr.symbol] = acc[curr.symbol] ?? {};
+            acc[curr.symbol][curr.date] = curr.value
+            return acc
+        }, {})
 
-        return newData
+        return newData2
 
     } catch (error) {
         console.error(error);

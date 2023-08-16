@@ -49,6 +49,7 @@ export default function getIndexHistory (dataIndexPrices: any, dataAdjustments: 
         // check: `${index_price}, ${baseIndexPrice}, ${basePercent}`,
       });
     });
+    const indexHistoryNoWeekends = indexHistory.filter(day => new Date(day.date).getDay() < 5)
 
-    return indexHistory;
+    return indexHistoryNoWeekends;
   };

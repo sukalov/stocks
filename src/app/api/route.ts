@@ -344,7 +344,7 @@ export async function GET(request: Request) {
     //   topush.forEach(e => console.log(e));
 
     //================================  COMPARE DB WITH CSV  ========================================
-    const indexName = 'cosmetics-15'
+    const indexName = 'anime-10'
     const index = `"${indexName}"`
     const stocks = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`) as any[]
     // const stockshere = await csv.read(indexName) as any[]
@@ -376,7 +376,7 @@ export async function GET(request: Request) {
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
 
-  // const res = await getDividents(stocks, "2022-12-31")
+  const res = await getDividents(stocks, "2022-12-31")
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
   return new Response(JSON.stringify(res), {
