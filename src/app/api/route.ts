@@ -10,6 +10,7 @@ import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
 import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
+import getDividents from '@/lib/data-manipulations/get-dividents';
 
 export async function GET(request: Request) {
 
@@ -343,9 +344,9 @@ export async function GET(request: Request) {
     //   topush.forEach(e => console.log(e));
 
     //================================  COMPARE DB WITH CSV  ========================================
-    // const indexName = 'cosmetics-15'
-    // const index = `"${indexName}"`
-    // const stocks = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`) as any[]
+    const indexName = 'cosmetics-15'
+    const index = `"${indexName}"`
+    const stocks = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`) as any[]
     // const stockshere = await csv.read(indexName) as any[]
     // const i1 = stocks.map(el => el.symbol)
     // const i2 = stockshere.map(el => el.symbol)
@@ -374,10 +375,10 @@ export async function GET(request: Request) {
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
-  // const res = await initialSteps();
+  const res = await getDividents(stocks, "2022-12-31")
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify([]), {
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/plain',

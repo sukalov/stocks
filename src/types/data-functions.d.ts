@@ -36,6 +36,11 @@ interface ResponseHistorical {
   volume: number;
 }
 
+interface ResponseDividents {
+  date: string;
+  value: string;
+}
+
 interface DataSharesInitialDay {
   symbol: string;
   currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
