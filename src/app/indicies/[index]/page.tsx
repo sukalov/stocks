@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 export default function KpopIndex() {
   const pathname = usePathname()
-  const indexName = pathname.split('/')[2]
+  const indexName = pathname.split('/')[2] ?? '';
   const [data, setData] = useState<LineChartProps[]>([]);
   const [isLoading, setLoading] = useState(true);
 
