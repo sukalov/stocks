@@ -24,7 +24,7 @@ interface OverviewProps {
   data: LineChartProps[];
 }
 
-export const Overview: React.FC<OverviewProps> = ({ data }) => {
+export const Overview: React.FC<OverviewProps> = ({ data, pathName }) => {
   const { theme: mode } = useTheme();
   const [config] = useConfig();
   const theme = themes.find((theme) => theme.name === config.theme);
@@ -45,7 +45,7 @@ export const Overview: React.FC<OverviewProps> = ({ data }) => {
                       <span className="font-bold">{payload[0]?.payload.name}</span>
                     </div>
                     <div className="flex flex-col text-right">
-                      <span className="text-[.9rem] uppercase text-muted-foreground">KPOP 25</span>
+                      <span className="text-[.9rem] uppercase text-muted-foreground">{String(pathName.split('-').join(' ')).toUpperCase()}</span>
                       <span className="font-bold">{payload[0]?.value}</span>
                     </div>
                   </div>

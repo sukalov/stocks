@@ -31,7 +31,7 @@ export default function KpopIndex() {
   return (
     <div className="py-8">
       <ResponsiveContainer>
-        <Overview data={data} />
+        <Overview data={data} pathName={pathname}/>
       </ResponsiveContainer>
     </div>
   );
