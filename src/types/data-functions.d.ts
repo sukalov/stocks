@@ -92,4 +92,3 @@ interface DataTotal {
     shares_removed: string[];
   };
 }
-

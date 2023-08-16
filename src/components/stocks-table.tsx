@@ -3,10 +3,10 @@ import { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableC
 import axios from 'axios';
 import { db } from '@/lib/db';
 import { stocks_info } from '@/lib/db/schema';
-import { sql, eq } from "drizzle-orm";
+import { sql, eq } from 'drizzle-orm';
 
 const StocksTable: React.FC = async () => {
-  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies)
+  const stocks = await db.select().from(stocks_info).orderBy(stocks_info.indicies);
 
   return (
     <div className="py-4">

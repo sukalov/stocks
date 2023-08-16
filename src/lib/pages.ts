@@ -13,6 +13,6 @@ export const pages: Item[] = [
   {
     name: 'Indicies',
     slug: 'indicies',
-    description: 'Testing line chart for kpop-25 index'
-  }
+    description: 'Testing line chart for kpop-25 index',
+  },
 ];

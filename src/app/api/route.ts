@@ -13,7 +13,6 @@ import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import getDividents from '@/lib/data-manipulations/get-dividents';
 
 export async function GET(request: Request) {
-
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
     const newData: Array<DataInitialPrices> = [];
     const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
@@ -309,15 +308,12 @@ export async function GET(request: Request) {
   // const res = getAdjustedShare(dataSharesInitialDay, currenciesData);
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
-  
+
   // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
-
-
 
   // const data2 = await csv.read('universe') as DataOnlySymbol[];
   // const res = await getSharesOutstanding(data2, 'universe');
 
-  
   //  ==============  REMOVE DUPLICATE INDICIES FROM DB ================
   // const data = await db.select().from(stocks_info)
   //   for (let index = 0; index < data.length; index++) {
@@ -325,36 +321,38 @@ export async function GET(request: Request) {
   //     await db.update(stocks_info).set({indicies: [...new Set(element.indicies)]}).where(eq(stocks_info.id, element.id))
   //   }
 
-    // const data2 = await csv.read('tech-100') as DataOnlySymbol[];
-    //   const topush = []
-    //   for (let i = 0; i < data2.length; i++) {
-    //     let element = data2[i]!;
-    //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
-        
-    //     if (search.length === 0) {
-    //       element.indicies = ['tech-100']
-    //       topush.push(element)
-    //     }
-    //     else {
-    //       console.log(search[0]?.indicies.concat(element.indicies))
-    //       const theId = search[0].id
-    //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
-    //   };}
-    //   if (topush.length > 0) await db.insert(stocks_info).values(topush)
-    //   topush.forEach(e => console.log(e));
+  // const data2 = await csv.read('tech-100') as DataOnlySymbol[];
+  //   const topush = []
+  //   for (let i = 0; i < data2.length; i++) {
+  //     let element = data2[i]!;
+  //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
 
-    //================================  COMPARE DB WITH CSV  ========================================
-    const indexName = 'anime-10'
-    const index = `"${indexName}"`
-    const stocks = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`) as any[]
-    // const stockshere = await csv.read(indexName) as any[]
-    // const i1 = stocks.map(el => el.symbol)
-    // const i2 = stockshere.map(el => el.symbol)
-    // const arr = i2.filter(el => !i1.includes(el))
-    // console.log(i1.length, i2.length, arr);
-    
-    // await csv.write('entertainment-DB-RES', stocks)
+  //     if (search.length === 0) {
+  //       element.indicies = ['tech-100']
+  //       topush.push(element)
+  //     }
+  //     else {
+  //       console.log(search[0]?.indicies.concat(element.indicies))
+  //       const theId = search[0].id
+  //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
+  //   };}
+  //   if (topush.length > 0) await db.insert(stocks_info).values(topush)
+  //   topush.forEach(e => console.log(e));
 
+  //================================  COMPARE DB WITH CSV  ========================================
+  const indexName = 'anime-10';
+  const index = `"${indexName}"`;
+  const stocks = (await db
+    .select()
+    .from(stocks_info)
+    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`)) as any[];
+  // const stockshere = await csv.read(indexName) as any[]
+  // const i1 = stocks.map(el => el.symbol)
+  // const i2 = stockshere.map(el => el.symbol)
+  // const arr = i2.filter(el => !i1.includes(el))
+  // console.log(i1.length, i2.length, arr);
+
+  // await csv.write('entertainment-DB-RES', stocks)
 
   // const indexName = 'video-75';
   // const nameForSQL = `"${indexName}"`;
@@ -376,9 +374,9 @@ export async function GET(request: Request) {
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
 
-  const res = await getDividents(stocks, "2022-12-31")
+  const res = await getDividents(stocks, '2022-12-31');
 
-// const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
+  // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
   return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
