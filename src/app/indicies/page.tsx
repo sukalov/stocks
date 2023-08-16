@@ -29,7 +29,7 @@ export default function KpopIndex() {
   return (
     <div className="py-8">
       <ResponsiveContainer>
-        <Overview data={data} />
+        <Overview data={data} indexName='kpop-25'/>
       </ResponsiveContainer>
     </div>
   );
