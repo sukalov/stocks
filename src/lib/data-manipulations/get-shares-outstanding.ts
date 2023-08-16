@@ -28,7 +28,7 @@ export default async function getSharesOutstanding(
         ...data[i],
         shares,
         currency,
-        indicies: [`${indexName}`],
+        // indicies: [`${indexName}`],
       });
     });
   } catch (error) {

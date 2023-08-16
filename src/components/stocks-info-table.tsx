@@ -226,11 +226,14 @@ export function StocksInfoTable({ data }: {data: StockInfo[]}) {
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
+                <TableHead>№</TableHead>
                 {headerGroup.headers.map((header) => {
                   return (
+                    <>
                     <TableHead key={header.id}>
                       {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
                     </TableHead>
+                    </>
                   );
                 })}
               </TableRow>
@@ -238,11 +241,14 @@ export function StocksInfoTable({ data }: {data: StockInfo[]}) {
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, i) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                  ))}
+                  <TableCell>{i + 1}</TableCell>
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                        <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    )}
+                  )}
                 </TableRow>
               ))
             ) : (

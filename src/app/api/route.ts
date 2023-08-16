@@ -314,8 +314,8 @@ export async function GET(request: Request) {
 
 
 
-  // const data2 = await csv.read('entertainment-100') as DataOnlySymbol[];
-  // const res = await getSharesOutstanding(data2, 'tech-100');
+  // const data2 = await csv.read('universe') as DataOnlySymbol[];
+  // const res = await getSharesOutstanding(data2, 'universe');
 
   
   //  ==============  REMOVE DUPLICATE INDICIES FROM DB ================
@@ -375,13 +375,14 @@ export async function GET(request: Request) {
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
-  const res = await getDividents(stocks, "2022-12-31")
+
+  // const res = await getDividents(stocks, "2022-12-31")
 
 // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
   return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain',
+      'Content-Type': 'text/json',
     },
   });
 }
