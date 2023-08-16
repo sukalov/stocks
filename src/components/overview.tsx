@@ -22,6 +22,7 @@ export type LineChartProps = {
 
 interface OverviewProps {
   data: LineChartProps[];
+  indexName: string;
 }
 
 export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
