@@ -14,7 +14,7 @@ export function GlobalNav({ className }: { className: string }) {
     <>
       <div
         className={cn(
-          `fixed top-0 z-10 w-full flex h-16 flex-1 p-3 flex-row border-b border-muted backdrop-blur-sm bg-background/70`,
+          `fixed top-0 z-20 w-full flex h-16 flex-1 p-3 flex-row border-b border-muted backdrop-blur-sm bg-background/70`,
           className
         )}
       >
