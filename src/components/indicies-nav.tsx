@@ -21,10 +21,7 @@ export function IndiciesNav({ className }: { className?: string }) {
         <nav className="px-2 align-bottom flex flex-row">
           {indicies.map((item) => {
             return (
-              <div
-                key={item}
-                className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-gray-400/80"
-              >
+              <div key={item} className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-gray-400/80">
                 <IndiciesNavItem item={item} />
               </div>
             );
@@ -36,13 +33,15 @@ export function IndiciesNav({ className }: { className?: string }) {
   );
 }
 
-function IndiciesNavItem({item}: {item: string}) {
+function IndiciesNavItem({ item }: { item: string }) {
   const segment = useSelectedLayoutSegment();
   const isActive = item === segment;
 
   return (
     <Link href={`/indicies/${item}`}>
-      <Button variant={isActive ? 'secondary': 'ghost'} size='sm' className='text-[0.8rem] my-2 capitalize'>{ item.split('-').join(' ')}</Button>
+      <Button variant={isActive ? 'secondary' : 'ghost'} size="sm" className="text-[0.8rem] my-2 capitalize">
+        {item.split('-').join(' ')}
+      </Button>
     </Link>
   );
 }

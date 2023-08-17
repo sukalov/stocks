@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function KpopIndex() {
-  const pathname = usePathname()
+  const pathname = usePathname();
   const indexName = pathname.split('/')[2] ?? '';
   const [data, setData] = useState<LineChartProps[]>([]);
   const [isLoading, setLoading] = useState(true);
@@ -27,17 +27,18 @@ export default function KpopIndex() {
       });
   }, []);
 
-  if (isLoading) return (
-    <div className="flex h-[calc(100vh-4rem)] flex-col items-center justify-between py-8  min-w-screen">
-      <Skeleton className="w-full h-full" />
-    </div>
-  );
+  if (isLoading)
+    return (
+      <div className="flex h-[calc(100vh-4rem)] flex-col items-center justify-between py-8  min-w-screen">
+        <Skeleton className="w-full h-full" />
+      </div>
+    );
   if (!data) return <p>No data</p>;
 
   return (
     <div className="py-8 -ml-12">
       <ResponsiveContainer>
-        <Overview data={data} indexName={indexName}/>
+        <Overview data={data} indexName={indexName} />
       </ResponsiveContainer>
     </div>
   );

@@ -320,17 +320,17 @@ export async function GET(request: Request) {
   //     const element = data[index];
   //     await db.update(stocks_info).set({indicies: [...new Set(element.indicies)]}).where(eq(stocks_info.id, element.id))
   //   }
-    //===============================================================================
+  //===============================================================================
 
-
-  // const data2 = await csv.read('anime-10') as DataOnlySymbol[];
+  // const indexName = 'semiconductors-25'
+  // const data2 = await csv.read(indexName) as DataOnlySymbol[];
   //   const topush = []
   //   for (let i = 0; i < data2.length; i++) {
   //     let element = data2[i]!;
   //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
 
   //     if (search.length === 0) {
-  //       element.indicies = ['anime-10']
+  //       element.indicies = indexName
   //       topush.push(element)
   //     }
   //     else {
@@ -338,11 +338,14 @@ export async function GET(request: Request) {
   //       const theId = search[0].id
   //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
   //   };}
-  //   if (topush.length > 0) await db.insert(stocks_info).values(topush)
+  //   if (topush.length > 0) {
+  //   // await db.insert(stocks_info).values(topush)
+  //   }
+  //   console.log('=============')
   //   topush.forEach(e => console.log(e));
 
   //================================  COMPARE DB WITH CSV  ========================================
-  // const indexName = 'anime-10';
+  // const indexName = 'semiconductors-25';
   // const index = `"${indexName}"`;
   // const stocks = (await db
   //   .select()
@@ -356,7 +359,6 @@ export async function GET(request: Request) {
   // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
 
-
   // const nulls = (await db
   //   .select()
   //   .from(stocks_info)
@@ -367,13 +369,13 @@ export async function GET(request: Request) {
   //     db.update(stocks_info).set({indicies: [...newIndicies, 'anime-10']}).where(eq(stocks_info.id, el.id))
   //   })
 
-  // const indexName = 'entertainment-100';
+  // const indexName = 'semiconductors-25';
   // const nameForSQL = `"${indexName}"`;
   // const dataSharesOutstanding = (await db
   //   .select()
   //   .from(stocks_info)
   //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  // const currData = await db.select().from(currencies) as CurrenciesPrice[];
+  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
@@ -381,11 +383,11 @@ export async function GET(request: Request) {
   //   .orderBy(adjustments.date);
 
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
-  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
-  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
+  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
+  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
 
-  // await db.delete(adjustments).where(eq(adjustments.index, indexName))
-  // await db.insert(adjustments).values(newAdjustments)
+  // await db.delete(adjustments).where(eq(adjustments.index, indexName));
+  // await db.insert(adjustments).values(newAdjustments);
 
   // const res = await getDividents(stocks, currData, '2022-12-31');
 

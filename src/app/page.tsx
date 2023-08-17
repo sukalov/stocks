@@ -28,6 +28,7 @@ export default function Home() {
           </CardContent>
         </Card>
       ))}
+      <div className="flex-grow"></div>
     </div>
   );
 }

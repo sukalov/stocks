@@ -34,11 +34,16 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
     <ResponsiveContainer width="100%" height={600}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="2 10" strokeOpacity={mode === 'dark' ? 0.3 : 0.9} />
-        <XAxis dataKey="name" minTickGap={31} tickLine={false} tickFormatter={(tick) => {
-          const date = new Date(tick)
-          const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-          return formattedDate
-        }}/>
+        <XAxis
+          dataKey="name"
+          minTickGap={31}
+          tickLine={false}
+          tickFormatter={(tick) => {
+            const date = new Date(tick);
+            const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            return formattedDate;
+          }}
+        />
         <YAxis domain={[75, 150]} tickLine={false} tickCount={4} />
 
         <Tooltip
@@ -52,7 +57,9 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
                       <span className="font-bold">{payload[0]?.payload.name}</span>
                     </div>
                     <div className="flex flex-col text-right">
-                      <span className="text-[.9rem] uppercase text-muted-foreground">{String(indexName.split('-').join(' ')).toUpperCase()}</span>
+                      <span className="text-[.9rem] uppercase text-muted-foreground">
+                        {String(indexName.split('-').join(' ')).toUpperCase()}
+                      </span>
                       <span className="font-bold">{payload[0]?.value}</span>
                     </div>
                   </div>

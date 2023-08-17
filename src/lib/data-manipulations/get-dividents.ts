@@ -2,7 +2,11 @@ import { currencies } from '../db/schema';
 import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 
-export default async function getDividents(data: DataSharesOutstanding[], currencies: CurrenciesPrice[], startDate: string) {
+export default async function getDividents(
+  data: DataSharesOutstanding[],
+  currencies: CurrenciesPrice[],
+  startDate: string
+) {
   try {
     const requests = data.map((stock) => get.dividentsAsync(stock.symbol, startDate));
     const responses = await Promise.all(requests);

@@ -61,7 +61,9 @@ export default function getIndexHistory(
       // check: `${index_price}, ${baseIndexPrice}, ${basePercent}`,
     });
   });
-  const indexHistoryNoWeekends = indexHistory.filter((day, i) => i === 0 || (new Date(day.date).getDay() !== 0 && new Date(day.date).getDay() !== 6));
+  const indexHistoryNoWeekends = indexHistory.filter(
+    (day, i) => i === 0 || (new Date(day.date).getDay() !== 0 && new Date(day.date).getDay() !== 6)
+  );
 
   return indexHistoryNoWeekends;
 }
