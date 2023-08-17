@@ -342,18 +342,18 @@ export async function GET(request: Request) {
   //   topush.forEach(e => console.log(e));
 
   //================================  COMPARE DB WITH CSV  ========================================
-  const indexName = 'anime-10';
-  const index = `"${indexName}"`;
-  const stocks = (await db
-    .select()
-    .from(stocks_info)
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`)) as any[];
-  const stockshere = await csv.read(indexName) as any[]
-  const i1 = stocks.map(el => el.symbol)
-  const i2 = stockshere.map(el => el.symbol)
-  const arr = i2.filter(el => !i1.includes(el))
-  console.log(i1.length, i2.length, arr);
-  await csv.write(`${indexName}_RESULT`, stocks)
+  // const indexName = 'anime-10';
+  // const index = `"${indexName}"`;
+  // const stocks = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`)) as any[];
+  // const stockshere = await csv.read(indexName) as any[]
+  // const i1 = stocks.map(el => el.symbol)
+  // const i2 = stockshere.map(el => el.symbol)
+  // const arr = i2.filter(el => !i1.includes(el))
+  // console.log(i1.length, i2.length, arr);
+  // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
 
 
@@ -390,7 +390,7 @@ export async function GET(request: Request) {
   // const res = await getDividents(stocks, currData, '2022-12-31');
 
   // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify(newAdjustments), {
+  return new Response(JSON.stringify([]), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
