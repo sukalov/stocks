@@ -1,7 +1,6 @@
-export default function Indicies() {
+import { redirect } from 'next/navigation'
 
-  return (
-    <div className="py-8 relative">
-    </div>
-  );
+export default function Indicies() {
+  redirect('/indicies/kpop-25')
 }
+
