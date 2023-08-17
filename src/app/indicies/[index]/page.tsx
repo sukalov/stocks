@@ -20,7 +20,7 @@ export default function KpopIndex() {
           data.map((el) => {
             const date = new Date(el.date);
             const date2 = date.toISOString().slice(0, 10);
-            return { name: date2, 'kpop-25': Number(el.index).toFixed(2) };
+            return { name: date2, index: Number(el.index).toFixed(2) };
           })
         );
         setLoading(false);

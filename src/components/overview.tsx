@@ -60,7 +60,7 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
         <Line
           type="monotone"
           strokeWidth={2}
-          dataKey="kpop-25"
+          dataKey="index"
           dot={<></>}
           activeDot={{
             r: 8,

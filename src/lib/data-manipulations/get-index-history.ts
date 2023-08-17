@@ -34,8 +34,11 @@ export default function getIndexHistory(
       let index_price = 0;
       Object.keys(percents).forEach((symbol) => {
         index_price += day[symbol] * percents[symbol];
+        // if ( !day[symbol] ) {
+        //   console.log(symbol, day[symbol], percents[symbol])
+        //   console.log({day})
+        // };
       });
-      // console.log(`${index_price}, ${baseIndexPrice}, ${basePercent}`)
       basePercent = (index_price / baseIndexPrice) * basePercent;
     }
 
@@ -58,7 +61,7 @@ export default function getIndexHistory(
       // check: `${index_price}, ${baseIndexPrice}, ${basePercent}`,
     });
   });
-  const indexHistoryNoWeekends = indexHistory.filter((day) => new Date(day.date).getDay() !== 0 && new Date(day.date).getDay() !== 6);
+  const indexHistoryNoWeekends = indexHistory.filter((day, i) => i === 0 || (new Date(day.date).getDay() !== 0 && new Date(day.date).getDay() !== 6));
 
   return indexHistoryNoWeekends;
 }

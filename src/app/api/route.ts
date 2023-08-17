@@ -314,21 +314,23 @@ export async function GET(request: Request) {
   // const data2 = await csv.read('universe') as DataOnlySymbol[];
   // const res = await getSharesOutstanding(data2, 'universe');
 
-  //  ==============  REMOVE DUPLICATE INDICIES FROM DB ================
+  //  =====================  REMOVE DUPLICATE INDICIES FROM DB =====================
   // const data = await db.select().from(stocks_info)
   //   for (let index = 0; index < data.length; index++) {
   //     const element = data[index];
   //     await db.update(stocks_info).set({indicies: [...new Set(element.indicies)]}).where(eq(stocks_info.id, element.id))
   //   }
+    //===============================================================================
 
-  // const data2 = await csv.read('tech-100') as DataOnlySymbol[];
+
+  // const data2 = await csv.read('anime-10') as DataOnlySymbol[];
   //   const topush = []
   //   for (let i = 0; i < data2.length; i++) {
   //     let element = data2[i]!;
   //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
 
   //     if (search.length === 0) {
-  //       element.indicies = ['tech-100']
+  //       element.indicies = ['anime-10']
   //       topush.push(element)
   //     }
   //     else {
@@ -346,38 +348,49 @@ export async function GET(request: Request) {
     .select()
     .from(stocks_info)
     .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`)) as any[];
-  // const stockshere = await csv.read(indexName) as any[]
-  // const i1 = stocks.map(el => el.symbol)
-  // const i2 = stockshere.map(el => el.symbol)
-  // const arr = i2.filter(el => !i1.includes(el))
-  // console.log(i1.length, i2.length, arr);
+  const stockshere = await csv.read(indexName) as any[]
+  const i1 = stocks.map(el => el.symbol)
+  const i2 = stockshere.map(el => el.symbol)
+  const arr = i2.filter(el => !i1.includes(el))
+  console.log(i1.length, i2.length, arr);
+  await csv.write(`${indexName}_RESULT`, stocks)
+  //================================================================================================
 
-  // await csv.write('entertainment-DB-RES', stocks)
 
-  // const indexName = 'video-75';
+  // const nulls = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, 'null')`)) as any[];
+
+  //   nulls.forEach(el => {
+  //     const newIndicies = el.indicies.filter((e: string) => e !== null)
+  //     db.update(stocks_info).set({indicies: [...newIndicies, 'anime-10']}).where(eq(stocks_info.id, el.id))
+  //   })
+
+  // const indexName = 'entertainment-100';
   // const nameForSQL = `"${indexName}"`;
   // const dataSharesOutstanding = (await db
   //   .select()
   //   .from(stocks_info)
   //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  const currData = await db.select().from(currencies) as CurrenciesPrice[];
+  // const currData = await db.select().from(currencies) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
   // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
 
-  const res = await getDividents(stocks, currData, '2022-12-31');
+  // const res = await getDividents(stocks, currData, '2022-12-31');
 
   // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify(newAdjustments), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

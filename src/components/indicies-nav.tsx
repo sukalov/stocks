@@ -7,9 +7,9 @@ import clsx from 'clsx';
 import { ModeToggle } from './mode-toggle';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import { indicies } from '@/lib/indicies';
 
 export function IndiciesNav({ className }: { className?: string }) {
-    const indicies = ['kpop-25', 'cosmetics-15', 'consumer-50', 'tech-100']
   return (
     <>
       <div
