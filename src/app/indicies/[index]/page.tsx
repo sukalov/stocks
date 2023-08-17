@@ -35,7 +35,7 @@ export default function KpopIndex() {
   if (!data) return <p>No data</p>;
 
   return (
-    <div className="py-8">
+    <div className="py-8 -ml-12">
       <ResponsiveContainer>
         <Overview data={data} indexName={indexName}/>
       </ResponsiveContainer>
