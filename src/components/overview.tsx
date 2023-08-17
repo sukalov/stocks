@@ -29,12 +29,18 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
   const { theme: mode } = useTheme();
   const [config] = useConfig();
   const theme = themes.find((theme) => theme.name === config.theme);
+
   return (
     <ResponsiveContainer width="100%" height={600}>
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="2 10" strokeOpacity={mode === 'dark' ? 0.3 : 0.9} />
-        <XAxis dataKey="name" minTickGap={31} />
-        <YAxis type="number" domain={[50, 150]} />
+        <XAxis dataKey="name" minTickGap={31} tickLine={false} tickFormatter={(tick) => {
+          const date = new Date(tick)
+          const formattedDate = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+          return formattedDate
+        }}/>
+        <YAxis domain={[75, 150]} tickLine={false} tickCount={4} />
+
         <Tooltip
           content={({ active, payload }) => {
             if (active && payload && payload.length) {
