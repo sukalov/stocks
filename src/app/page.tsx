@@ -12,23 +12,23 @@ export default function Home() {
             <CardTitle className=" text-muted-foreground capitalize">{indexName.split('-').join(' ')}</CardTitle>
           </CardHeader>
           <CardContent>
-            <div key={indexName} className="pb-6">
+            <div key={indexName} className="pb-6 grid grid-cols-2">
               <Link href={`/api/stocks-info/${indexName}`}>
                 <Button variant={'link'}>info</Button>
               </Link>
-              <br />
               <Link href={`/api/adjustments/${indexName}`}>
                 <Button variant={'link'}>adjustments</Button>
               </Link>
-              <br />
               <Link href={`/api/index/${indexName}`}>
                 <Button variant={'link'}>index</Button>
+              </Link>
+              <Link href={`/api/dividents/${indexName}`}>
+                <Button variant={'link'}>dividents</Button>
               </Link>
             </div>
           </CardContent>
         </Card>
       ))}
-      <div className="flex-grow"></div>
     </div>
   );
 }

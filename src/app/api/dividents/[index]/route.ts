@@ -15,17 +15,9 @@ export async function GET(request: any, context: any) {
     .from(stocks_info)
     .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
-  const oldAdjustments = await db
-    .select()
-    .from(adjustments)
-    .where(eq(adjustments.index, indexName))
-    .orderBy(adjustments.date);
   const dataDividents = await getDividents(dataSharesOutstanding, currData, '2022-12-31');
 
-  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
-  const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, dataDividents, indexName);
-
-  return new Response(JSON.stringify(indexHistory), {
+  return new Response(JSON.stringify(dataDividents), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

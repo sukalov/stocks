@@ -67,6 +67,12 @@ interface DataShareAdjusted {
   [otherOptions: string]: any;
 }
 
+interface DataDividents {
+  [date: string]: {
+    [symbol: string]: number
+  }
+}
+
 interface CurrenciesPrice {
   date: Date | string;
   KRW: number;
@@ -76,6 +82,11 @@ interface CurrenciesPrice {
 
 interface IndexDay {
   date: string;
+  name: string,
+  adjustment: string,
+  index_price: number,
+  index: number,
+  total_return: number,
   [otherOptions: string]: any;
 }
 

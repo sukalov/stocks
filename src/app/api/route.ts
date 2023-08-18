@@ -359,28 +359,23 @@ export async function GET(request: Request) {
   // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
 
-  // const nulls = (await db
-  //   .select()
-  //   .from(stocks_info)
-  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, 'null')`)) as any[];
-
-  //   nulls.forEach(el => {
-  //     const newIndicies = el.indicies.filter((e: string) => e !== null)
-  //     db.update(stocks_info).set({indicies: [...newIndicies, 'anime-10']}).where(eq(stocks_info.id, el.id))
-  //   })
-
-  // const indexName = 'semiconductors-25';
-  // const nameForSQL = `"${indexName}"`;
-  // const dataSharesOutstanding = (await db
-  //   .select()
-  //   .from(stocks_info)
-  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  const indexName = 'cosmetics-15';
+  const nameForSQL = `"${indexName}"`;
+    const stocks = (await db
+    .select()
+    .from(stocks_info)
+    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as any[];
+  const dataSharesOutstanding = (await db
+    .select()
+    .from(stocks_info)
+    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
+  // // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
@@ -389,10 +384,10 @@ export async function GET(request: Request) {
   // await db.delete(adjustments).where(eq(adjustments.index, indexName));
   // await db.insert(adjustments).values(newAdjustments);
 
-  // const res = await getDividents(stocks, currData, '2022-12-31');
+  const res = await getDividents(stocks, currData, '2022-12-31');
 
   // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify([]), {
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
