@@ -13,7 +13,7 @@ export default function KpopIndex() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/index/${indexName}`)
+    fetch(`/api/indicies/${indexName}`)
       .then((res) => res.json() as Promise<any[]>)
       .then((data) => {
         setData(

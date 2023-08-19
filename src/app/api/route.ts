@@ -387,7 +387,7 @@ export async function GET(request: Request) {
   // const res = await getDividents(stocks, currData, '2022-12-31');
   // const res = await initialSteps()
 
-  const res = ['type one of four api\'s [stocks-info, adjustments, index, dividents] followed by the name of the index you are interested in']
+  const res = ['type one of four api\'s [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in']
   return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
