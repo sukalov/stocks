@@ -19,7 +19,7 @@ export default function Home() {
               <Link href={`/api/adjustments/${indexName}`}>
                 <Button variant={'link'}>adjustments</Button>
               </Link>
-              <Link href={`/api/index/${indexName}`}>
+              <Link href={`/api/indicies/${indexName}`}>
                 <Button variant={'link'}>index</Button>
               </Link>
               <Link href={`/api/dividents/${indexName}`}>
