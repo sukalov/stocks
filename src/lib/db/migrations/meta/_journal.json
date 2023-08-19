@@ -15,6 +15,13 @@
       "when": 1692352677024,
       "tag": "0001_busy_vin_gonzales",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1692454426650,
+      "tag": "0002_wide_the_stranger",
+      "breakpoints": true
     }
   ]
 }

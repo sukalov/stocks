@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import { ModeToggle } from './mode-toggle';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import { indicies } from '@/lib/indicies';
+import { indexNames } from '@/lib/index-names';
 
 export function IndiciesNav({ className }: { className?: string }) {
   return (
@@ -19,7 +19,7 @@ export function IndiciesNav({ className }: { className?: string }) {
         )}
       >
         <nav className="px-2 align-bottom flex flex-row">
-          {indicies.map((item) => {
+          {indexNames.map((item) => {
             return (
               <div key={item} className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-gray-400/80">
                 <IndiciesNavItem item={item} />

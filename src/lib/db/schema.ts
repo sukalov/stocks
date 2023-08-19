@@ -27,3 +27,12 @@ export const adjustments = mysqlTable('adjustments', {
   original_percents: json('original_percents').notNull(),
   percents: json('percents').notNull(),
 });
+
+export const indicies = mysqlTable('indicies', {
+  date: date('date').notNull(),
+  name: text('name').notNull(),
+  adjustment: date('adjustment'),
+  index_price: float('index_price'),
+  index: float('index'),
+  total_return: float('total_return')
+})

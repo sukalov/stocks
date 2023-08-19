@@ -1,4 +1,4 @@
-export const indicies: string[] = [
+export const indexNames: string[] = [
   'kpop-25',
   'cosmetics-15',
   'consumer-50',

@@ -5,6 +5,7 @@ import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments, indicies } from '@/lib/db/schema';
 import { sql, eq } from 'drizzle-orm';
+import { indexNames } from '@/lib/index-names';
 
 export async function GET(request: any, context: any) {
   initialSteps();
