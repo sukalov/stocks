@@ -2,8 +2,13 @@
 
 import { LineChartProps, Overview } from '@/components/overview';
 import { useEffect, useState } from 'react';
+import { ResponsiveContainer } from 'recharts';
 import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
+import { db } from '@/lib/db';
+import { indicies } from '@/lib/db/schema';
+import { eq } from 'drizzle-orm';
+export const dynamic = 'force-dynamic'
 
 export default function KpopIndex() {
 
@@ -13,11 +18,11 @@ export default function KpopIndex() {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/indicies/${indexName}`)
-    .then((res) => res.json() as Promise<IndexDay[]>)
-    .then((data) => {
+    db.select().from(indicies).where(eq(indicies.name, indexName)).orderBy(indicies.date)
+      .then((data) => {
+        console.log(data[0])
         setData(
-          data.map((el: IndexDay) => {
+          data.map((el) => {
             const date = new Date(el.date);
             const date2 = date.toISOString().slice(0, 10);
             return { name: date2, index: Number(el.index).toFixed(2), total_return: Number(el.total_return).toFixed(2) };

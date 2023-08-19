@@ -9,7 +9,7 @@ import { indexNames } from '@/lib/index-names';
 
 export async function GET(request: any, context: any) {
   initialSteps();
-  const indexName = context.params.index;
+  const indexName = String(indexNames[0])
   const nameForSQL = `"${indexName}"`;
   const dataSharesOutstanding = (await db
     .select()
