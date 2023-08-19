@@ -146,6 +146,28 @@ export const columns: ColumnDef<StockInfo>[] = [
     },
   },
   {
+    accessorKey: 'market_cap',
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="text-xs"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Market Cap ($)
+          <ArrowUpDown className="ml-1 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const market_cap = parseFloat(row.getValue('market_cap'));
+      const formatted =
+      new Intl.NumberFormat().format(market_cap)
+
+      return <div className="ml-4 w-24">{formatted}</div>;
+    },
+  },
+  {
     accessorKey: 'cap_index',
     header: ({ column }) => {
       return (
