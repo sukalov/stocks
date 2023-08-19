@@ -160,17 +160,24 @@ export type Payment = {
   email: string;
 };
 
-export type IndexName = 'kpop-25' | 'cosmetics-15' | 'anime-10' | 'consumer-50' | 'tech-100' |'entertainment-100' | 'video-75';
+export type IndexName =
+  | 'kpop-25'
+  | 'cosmetics-15'
+  | 'anime-10'
+  | 'consumer-50'
+  | 'tech-100'
+  | 'entertainment-100'
+  | 'video-75';
 
 export type StockInfo = {
-  name: string,
-  symbol: string,
-  country: string,
-  currency: string,
-  shares: number,
-  cap_index: string,
-  indicies: IndexName[]
-}
+  name: string;
+  symbol: string;
+  country: string;
+  currency: string;
+  shares: number;
+  cap_index: string;
+  indicies: IndexName[];
+};
 
 export const columns: ColumnDef<Payment>[] = [
   {

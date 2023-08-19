@@ -14,6 +14,7 @@ export const stocks_info = mysqlTable('stocks_info', {
   currency: text('currency'),
   country: text('country'),
   shares: bigint('shares', { mode: 'number' }),
+  market_cap: bigint('market_cap', { mode: 'number' }),
   cap_index: text('cap_index'),
   indicies: json('indicies'),
 });
@@ -26,3 +27,12 @@ export const adjustments = mysqlTable('adjustments', {
   original_percents: json('original_percents').notNull(),
   percents: json('percents').notNull(),
 });
+
+export const indicies = mysqlTable('indicies', {
+  date: date('date').notNull(),
+  name: text('name').notNull(),
+  adjustment: date('adjustment'),
+  index_price: float('index_price'),
+  index: float('index'),
+  total_return: float('total_return')
+})

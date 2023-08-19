@@ -1,0 +1,11 @@
+id,symbol,name,currency,country,shares,cap_index,indicies
+699,2706.TSE,Broccoli,JPY,Japan,8747270,Micro Cap,"[video-75,entertainment-100,anime-10]"
+7,3686.TSE,DLE,JPY,Japan,42514200,Small Cap,"[anime-10]"
+8,3791.TSE,IG Port,JPY,Japan,4714370,Micro Cap,"[anime-10]"
+4,4816.TSE,Toei Animation,JPY,Japan,40887600,Mid Cap,"[anime-10]"
+748,6460.TSE,Sega Sammy Holdings,JPY,Japan,220744992,Mid Cap,"[video-75,entertainment-100,tech-100,anime-10]"
+754,6758.TSE,Sony,JPY,Japan,1233980032,Blue Chip,"[video-75,entertainment-100,tech-100,anime-10]"
+994,7832.TSE,Bandai Namco,JPY,Japan,660049984,Blue Chip,"[tech-100,entertainment-100,video-75,anime-10]"
+995,7860.TSE,Avex,JPY,Japan,45148500,"null","[anime-10]"
+6,9404.TSE,Nippon Television Holdings,JPY,Japan,255083008,Mid Cap,"[anime-10]"
+762,9468.TSE,Kadokawa,JPY,Japan,140604000,Mid Cap,"[video-75,entertainment-100,anime-10]"

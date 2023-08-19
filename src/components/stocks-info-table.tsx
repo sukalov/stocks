@@ -29,29 +29,40 @@ import {
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 
-export type IndexName = 'kpop-25' | 'cosmetics-15' | 'anime-10' | 'consumer-50' | 'tech-100' |'entertainment-100' | 'video-75';
+export type IndexName =
+  | 'kpop-25'
+  | 'cosmetics-15'
+  | 'anime-10'
+  | 'consumer-50'
+  | 'tech-100'
+  | 'entertainment-100'
+  | 'video-75';
 
 export type StockInfo = {
-  name: string,
-  symbol: string,
-  country: string,
-  currency: string,
-  shares: number,
-  cap_index: string,
-  indicies: IndexName[],
-  [otherOptions: string]: any
-}
+  name: string;
+  symbol: string;
+  country: string;
+  currency: string;
+  shares: number;
+  cap_index: string;
+  indicies: IndexName[];
+  [otherOptions: string]: any;
+};
 
 export const columns: ColumnDef<StockInfo>[] = [
   {
     accessorKey: 'name',
     header: ({ column }) => {
       return (
-        <div className='w-[150px]'>
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Name
-          <ArrowUpDown className="ml-1 h-4 w-4" />
-        </Button>
+        <div className="w-[150px]">
+          <Button
+            variant="ghost"
+            className="text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Name
+            <ArrowUpDown className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       );
     },
@@ -61,11 +72,15 @@ export const columns: ColumnDef<StockInfo>[] = [
     accessorKey: 'symbol',
     header: ({ column }) => {
       return (
-        <div className=''>
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Symbol
-          <ArrowUpDown className="ml-1 h-4 w-4" />
-        </Button>
+        <div className="">
+          <Button
+            variant="ghost"
+            className="text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Symbol
+            <ArrowUpDown className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       );
     },
@@ -75,11 +90,15 @@ export const columns: ColumnDef<StockInfo>[] = [
     accessorKey: 'country',
     header: ({ column }) => {
       return (
-        <div className=''>
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Country
-          <ArrowUpDown className="ml-1 h-4 w-4" />
-        </Button>
+        <div className="">
+          <Button
+            variant="ghost"
+            className="text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Country
+            <ArrowUpDown className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       );
     },
@@ -89,7 +108,11 @@ export const columns: ColumnDef<StockInfo>[] = [
     accessorKey: 'shares',
     header: ({ column }) => {
       return (
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
+        <Button
+          variant="ghost"
+          className="text-xs"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
           Shares
           <ArrowUpDown className="ml-1 h-4 w-4" />
         </Button>
@@ -98,20 +121,22 @@ export const columns: ColumnDef<StockInfo>[] = [
     cell: ({ row }) => {
       const shares = parseFloat(row.getValue('shares'));
       const formatted = new Intl.NumberFormat().format(shares);
-      
-     return (
-     <div className="ml-4 w-24">{formatted}</div>
-     )
-    }
+
+      return <div className="ml-4 w-24">{formatted}</div>;
+    },
   },
   {
     accessorKey: 'currency',
     header: ({ column }) => {
       return (
-          <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-            Currency
-            <ArrowUpDown className="ml-1 h-4 w-4" />
-          </Button>
+        <Button
+          variant="ghost"
+          className="text-xs"
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+        >
+          Currency
+          <ArrowUpDown className="ml-1 h-4 w-4" />
+        </Button>
       );
     },
     cell: ({ row }) => {
@@ -125,10 +150,14 @@ export const columns: ColumnDef<StockInfo>[] = [
     header: ({ column }) => {
       return (
         <div className=" w-28">
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Cap Index
-          <ArrowUpDown className="ml-1 h-4 w-4" />
-        </Button>
+          <Button
+            variant="ghost"
+            className="text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Cap Index
+            <ArrowUpDown className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       );
     },
@@ -139,28 +168,31 @@ export const columns: ColumnDef<StockInfo>[] = [
     header: ({ column }) => {
       return (
         <div className="w-36">
-        <Button variant="ghost" className='text-xs' onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-          Indicies
-          <ArrowUpDown className="ml-1 h-4 w-4" />
-        </Button>
+          <Button
+            variant="ghost"
+            className="text-xs"
+            onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+          >
+            Indicies
+            <ArrowUpDown className="ml-1 h-4 w-4" />
+          </Button>
         </div>
       );
     },
     cell: ({ row }) => {
-      const indicies = row.getValue('indicies') as IndexName[]
-      return (
-        <div className="ml-4 w-36">
-          {indicies ? indicies.join('\r\n') : null}
-        </div>
-      )
-    }
+      const indicies = row.getValue('indicies') as IndexName[];
+      return <div className="ml-4 w-36">{indicies ? indicies.join('\r\n') : null}</div>;
+    },
   },
 ];
 
-export function StocksInfoTable({ data }: {data: StockInfo[]}) {
+export function StocksInfoTable({ data }: { data: StockInfo[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({
+    shares: false,
+    currency: false,
+  });
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
@@ -226,11 +258,14 @@ export function StocksInfoTable({ data }: {data: StockInfo[]}) {
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
+                <TableHead>№</TableHead>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
-                    </TableHead>
+                    <>
+                      <TableHead key={header.id}>
+                        {header.isPlaceholder ? null : flexRender(header.column.columnDef.header, header.getContext())}
+                      </TableHead>
+                    </>
                   );
                 })}
               </TableRow>
@@ -238,11 +273,14 @@ export function StocksInfoTable({ data }: {data: StockInfo[]}) {
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
+              table.getRowModel().rows.map((row, i) => (
                 <TableRow key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
-                  ))}
+                  <TableCell>{i + 1}</TableCell>
+                  {row.getVisibleCells().map((cell) => {
+                    return (
+                      <TableCell key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</TableCell>
+                    );
+                  })}
                 </TableRow>
               ))
             ) : (

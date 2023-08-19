@@ -85,3 +85,16 @@ export function getQuarterlyStartDates(start_date: string) {
   }
   return convertedDates;
 }
+
+export function compareDates(date1: Date, date2: Date) {
+  const d1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
+  const d2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+  if (d1 < d2) {
+    return -1;
+  } else if (d1 > d2) {
+    return 1;
+  } else {
+    return 0;
+  }
+}

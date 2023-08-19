@@ -36,6 +36,11 @@ interface ResponseHistorical {
   volume: number;
 }
 
+interface ResponseDividents {
+  date: string;
+  value: string;
+}
+
 interface DataSharesInitialDay {
   symbol: string;
   currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
@@ -62,6 +67,12 @@ interface DataShareAdjusted {
   [otherOptions: string]: any;
 }
 
+interface DataDividents {
+  [date: string]: {
+    [symbol: string]: number
+  }
+}
+
 interface CurrenciesPrice {
   date: Date | string;
   KRW: number;
@@ -71,14 +82,19 @@ interface CurrenciesPrice {
 
 interface IndexDay {
   date: string;
+  name: string | undefined;
+  adjustment: string | undefined;
+  index_price: number | undefined;
+  index: number | undefined;
+  total_return: number | undefined;
   [otherOptions: string]: any;
 }
 
 interface DataTotal {
   date: string;
-  index: number;
+  index: number | null;
   price: number;
-  index_adjusted: number;
+  index_adjusted: number | null;
   index_shares: string[];
   refactor: null | {
     new_index: number;
@@ -87,4 +103,3 @@ interface DataTotal {
     shares_removed: string[];
   };
 }
-

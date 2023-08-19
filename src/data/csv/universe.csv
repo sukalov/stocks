@@ -1,573 +1,571 @@
-name,country,symbol,cap
-Taiwan Semiconductor (TSMC),Taiwan,TSM,Blue Chip
-Samsung,South Korea,005930.KO,Blue Chip
-Toyota,Japan,TM,Blue Chip
-Keyence,Japan,6861.TSE,Blue Chip
-Sony,Japan,SONY,Blue Chip
-LG Energy Solution,South Korea,373220.KO,Blue Chip
-NTT (Nippon Telegraph & Telephone),Japan,NPPXF,Blue Chip
-Mitsubishi UFJ Financial,Japan,MUFG,Blue Chip
-Fast Retailing,Japan,9983.TSE,Blue Chip
-Mitsubishi Corporation,Japan,8058.TSE,Blue Chip
-SoftBank,Japan,9984.TSE,Blue Chip
-Tokyo Electron,Japan,8035.TSE,Blue Chip
-Shin-Etsu Chemical,Japan,4063.TSE,Blue Chip
-KDDI,Japan,9433.TSE,Blue Chip
-Daiichi Sankyō,Japan,4568.TSE,Blue Chip
-SK Hynix,South Korea,000660.KO,Blue Chip
-Mitsui Bussan,Japan,8031.TSE,Blue Chip
-Oriental Land,Japan,4661.TSE,Blue Chip
-Daikin,Japan,6367.TSE,Blue Chip
-Itōchū Shōji,Japan,8001.TSE,Blue Chip
-Hitachi,Japan,6501.TSE,Blue Chip
-Sumitomo Mitsui Financial Group,Japan,SMFG,Blue Chip
-Honda,Japan,HMC,Blue Chip
-Recruit,Japan,6098.TSE,Blue Chip
-Nintendo,Japan,7974.TSE,Blue Chip
-Foxconn (Hon Hai Precision Industry),Taiwan,2317.TW,Blue Chip
-Takeda Pharmaceutical,Japan,TAK,Blue Chip
-Denso,Japan,6902.TSE,Blue Chip
-Chugai Pharmaceutical,Japan,4519.TSE,Blue Chip
-Tokio Marine,Japan,8766.TSE,Blue Chip
-Hoya,Japan,7741.TSE,Blue Chip
-LG Chem,South Korea,051910.KO,Blue Chip
-Samsung Biologics,South Korea,207940.KO,Blue Chip
-MediaTek,Taiwan,2454.TW,Blue Chip
-Japan Tobacco,Japan,2914.TSE,Blue Chip
-Mizuho Financial Group,Japan,MFG,Blue Chip
-7-Eleven,Japan,3382.TSE,Blue Chip
-SMC corp,Japan,6273.TSE,Blue Chip
-Hyundai,South Korea,HYMTF,Blue Chip
-Murata Manufacturing (Murata Seisakusho),Japan,6981.TSE,Blue Chip
-Samsung SDI,South Korea,006405.KO,Blue Chip
-Fanuc,Japan,6954.TSE,Blue Chip
-Renesas Electronics,Japan,6723.TSE,Blue Chip
-Nidec,Japan,6594.TSE,Blue Chip
-Chunghwa Telecom,Taiwan,CHT,Blue Chip
-Delta Electronics,Taiwan,2308.TW,Blue Chip
-Coupang,South Korea,CPNG,Blue Chip
-Marubeni,Japan,8002.TSE,Blue Chip
-Mitsubishi Electric,Japan,6503.TSE,Blue Chip
-Bridgestone,Japan,5108.TSE,Blue Chip
-Japan Post Bank,Japan,7182.TSE,Blue Chip
-Astellas Pharma,Japan,4503.TSE,Blue Chip
-Panasonic,Japan,6752.TSE,Blue Chip
-Canon,Japan,7751.TSE,Blue Chip
-Formosa Petrochemical,Taiwan,6505.TW,Blue Chip
-Sumitomo,Japan,8053.TSE,Blue Chip
-Advantest,Japan,6857.TSE,Blue Chip
-Kia,South Korea,000270.KO,Blue Chip
-Komatsu,Japan,6301.TSE,Blue Chip
-Japan Post Holdings,Japan,6178.TSE,Blue Chip
-Central Japan Railway,Japan,9022.TSE,Blue Chip
-Fubon Financial,Taiwan,2881.TW,Blue Chip
-Fujitsu,Japan,6702.TSE,Blue Chip
-Fujifilm,Japan,4901.TSE,Blue Chip
-Terumo,Japan,4543.TSE,Blue Chip
-POSCO Chemical,South Korea,003670.KO,Blue Chip
-Unicharm,Japan,8113.TSE,Blue Chip
-POSCO,South Korea,PKX,Blue Chip
-Toyota Industries,Japan,6201.TSE,Blue Chip
-Naver,South Korea,035420.KO,Blue Chip
-United Microelectronics,Taiwan,UMC,Blue Chip
-Ajinomoto,Japan,2802.TSE,Blue Chip
-Otsuka Holdings,Japan,4578.TSE,Blue Chip
-Cathay Financial Holding,Taiwan,2882.TW,Blue Chip
-East Japan Railway,Japan,9020.TSE,Blue Chip
-Olympus,Japan,7733.TSE,Blue Chip
-NTT Data,Japan,9613.TSE,Blue Chip
-Asahi Group,Japan,2502.TSE,Blue Chip
-Nan Ya Plastics,Taiwan,1303.TW,Blue Chip
-ORIX,Japan,IX,Blue Chip
-Kyocera,Japan,6971.TSE,Blue Chip
-Shiseido,Japan,4911.TSE,Blue Chip
-Nippon Paint,Japan,4612.TSE,Blue Chip
-Quanta Computer,Taiwan,2382.TW,Blue Chip
-MS&AD Insurance,Japan,8725.TSE,Blue Chip
-Eisai,Japan,4523.TSE,Blue Chip
-Z Holdings,Japan,4689.TSE,Blue Chip
-Formosa Plastics,Taiwan,1301.TW,Blue Chip
-Mitsui Fudosan,Japan,8801.TSE,Blue Chip
-Dai-ichi Life Holdings,Japan,8750.TSE,Blue Chip
-Nippon Steel,Japan,5401.TSE,Blue Chip
-ASE Group,Taiwan,ASX,Blue Chip
-Kubota,Japan,6326.TSE,Blue Chip
-Disco Corp.,Japan,6146.TSE,Blue Chip
-Toyota Tsusho,Japan,8015.TSE,Blue Chip
-Celltrion,South Korea,068270.KO,Blue Chip
-Daiwa House,Japan,1925.TSE,Blue Chip
-Kaō,Japan,4452.TSE,Blue Chip
-Nexon,Japan,3659.TSE,Blue Chip
-Suzuki Motor,Japan,7269.TSE,Blue Chip
-Kakao,South Korea,035720.KO,Blue Chip
-Aeon,Japan,8267.TSE,Blue Chip
-MFHC,Taiwan,2886.TW,Blue Chip
-Nomura Research Institute,Japan,4307.TSE,Blue Chip
-LG Electronics,South Korea,066570.KO,Blue Chip
-Mitsubishi Heavy Industries,Japan,7011.TSE,Blue Chip
-Bandai Namco,Japan,7832.TSE,Blue Chip
-Mitsubishi Estate,Japan,8802.TSE,Blue Chip
-CTBC Financial Holding,Taiwan,2891.TW,Blue Chip
-Hyundai Mobis,South Korea,012330.KO,Blue Chip
-"M3, Inc",Japan,2413.TSE,Blue Chip
-Shimano,Japan,7309.TSE,Blue Chip
-TDK,Japan,6762.TSE,Blue Chip
-Inpex,Japan,1605.TSE,Blue Chip
-Sompo Holdings,Japan,8630.TSE,Blue Chip
-China Steel,Taiwan,2002A.TW,Blue Chip
-Nissan,Japan,7201.TSE,Blue Chip
-OBIC,Japan,4684.TSE,Blue Chip
-Sysmex,Japan,6869.TSE,Blue Chip
-Uni-President Enterprises,Taiwan,1216.TW,Blue Chip
-Hotai Motor,Taiwan,2207.TW,Blue Chip
-Secom,Japan,9735.TSE,Blue Chip
-Subaru,Japan,7270.TSE,Blue Chip
-KB Financial Group,South Korea,KB,Blue Chip
-Lasertec,Japan,6920.TSE,Blue Chip
-Toshiba,Japan,6502.TSE,Blue Chip
-Shinhan Financial Group,South Korea,SHG,Blue Chip
-Nitori Holdings,Japan,9843.TSE,Blue Chip
-NEC Corp,Japan,6701.TSE,Blue Chip
-Sekisui House,Japan,1928.TSE,Blue Chip
-Ecopro,South Korea,086520.KO,Blue Chip
-Shionogi,Japan,4507.TSE,Blue Chip
-Sumitomo Mitsui Trust Holdings,Japan,8309.TSE,Blue Chip
-Shinkin Central Bank,Japan,8421.TSE,Blue Chip
-Formosa Chemicals & Fibre,Taiwan,1326.TW,Blue Chip
-E.SUN Bank,Taiwan,2884.TW,Blue Chip
-Taiwan Cooperative Financial,Taiwan,5880.TW,Blue Chip
-SK Innovation,South Korea,096775.KO,Blue Chip
-Yaskawa,Japan,6506.TSE,Blue Chip
-Kirin Holdings,Japan,2503.TSE,Blue Chip
-Sumitomo Realty & Development,Japan,8830.TSE,Blue Chip
-Omron,Japan,6645.TSE,Blue Chip
-Nomura Holdings,Japan,NMR,Blue Chip
-First Financial Holding,Taiwan,2892.TW,Blue Chip
-Suntory,Japan,2587.TSE,Blue Chip
-Kikkoman,Japan,2801.TSE,Blue Chip
-Resona Holdings,Japan,8308.TSE,Blue Chip
-KEPCO,Japan,9503.TSE,Blue Chip
-ANA Holdings,Japan,9202.TSE,Blue Chip
-Nippon Y≈´sen,Japan,9101.TSE,Blue Chip
-Evergreen Marine,Taiwan,2603.TW,Blue Chip
-Nitto Denko,Japan,6988.TSE,Blue Chip
-LG Corp,South Korea,003550.KO,Blue Chip
-Oracle Corp Japan,Japan,4716.TSE,Blue Chip
-Pan Pacific,Japan,7532.TSE,Blue Chip
-Advantech,Taiwan,2395.TW,Blue Chip
-kyowa Kirin,Japan,4151.TSE,Blue Chip
-West Japan Railway,Japan,9021.TSE,Blue Chip
-Chailease Holding,Taiwan,5871.TW,Blue Chip
-ENEOS Holdings,Japan,5020.TSE,Blue Chip
-Yakult,Japan,2267.TSE,Blue Chip
-Hua Nan Financial Holdings,Taiwan,2880.TW,Mid Cap
-Yuanta Financial Holding,Taiwan,2885.TW,Mid Cap
-Yamaha Motor,Japan,7272.TSE,Mid Cap
-Isuzu,Japan,7202.TSE,Mid Cap
-Asahi Kasei,Japan,3407.TSE,Mid Cap
-President Chain Store (PSCS),Taiwan,2912.TW,Mid Cap
-HYBE,South Korea,352820.KO,Mid Cap
-Nippon Sanso,Japan,4091.TSE,Mid Cap
-Doosan Enerbility,South Korea,034020.KO,Mid Cap
-Tōkyō Gas,Japan,9531.TSE,Mid Cap
-Ono Pharmaceutical,Japan,4528.TSE,Mid Cap
-Sumitomo Denki K≈çgy≈ç,Japan,5802.TSE,Mid Cap
-Japan Airlines,Japan,9201.TSE,Mid Cap
-Rohm,Japan,6963.TSE,Mid Cap
-Shimadzu,Japan,7701.TSE,Mid Cap
-Taiwan Mobile,Taiwan,3045.TW,Mid Cap
-Japan Exchange Group,Japan,8697.TSE,Mid Cap
-SG Holdings,Japan,9143.TSE,Mid Cap
-Unimicron,Taiwan,3037.TW,Mid Cap
-Korea Electric Power,South Korea,KEP,Mid Cap
-Largan Precision,Taiwan,3008.TW,Mid Cap
-Sumitomo Metal Mining,Japan,5713.TSE,Mid Cap
-Samsung Life Insurance,South Korea,032830.KO,Mid Cap
-KakaoBank,South Korea,323410.KO,Mid Cap
-Chubu Electric Power,Japan,9502.TSE,Mid Cap
-Novatek Microelectronics,Taiwan,3034.TW,Mid Cap
-Hana Financial Group,South Korea,086790.KO,Mid Cap
-Taiwan Cement,Taiwan,1101.TW,Mid Cap
-Toray Industries,Japan,3402.TSE,Mid Cap
-Dentsu,Japan,4324.TSE,Mid Cap
-Nissin Foods,Japan,2897.TSE,Mid Cap
-Samsung Electro-Mechanics,South Korea,009155.KO,Mid Cap
-Capcom,Japan,9697.TSE,Mid Cap
-Mitsui O.S.K. Lines,Japan,9104.TSE,Mid Cap
-Mitsubishi Chemical Holdings,Japan,4188.TSE,Mid Cap
-JFE Holdings,Japan,5411.TSE,Mid Cap
-Daifuku,Japan,6383.TSE,Mid Cap
-Aisin Seiki,Japan,7259.TSE,Mid Cap
-T&D Holdings,Japan,8795.TSE,Mid Cap
-MatsukiyoCocokara,Japan,3088.TSE,Mid Cap
-Far EasTone,Taiwan,4904.TW,Mid Cap
-MinebeaMitsumi,Japan,6479.TSE,Mid Cap
-AGC,Japan,5201.TSE,Mid Cap
-Hankyu Hanshin Holdings,Japan,9042.TSE,Mid Cap
-Ibiden,Japan,4062.TSE,Mid Cap
-SK Telecom,South Korea,SKM,Mid Cap
-Hamamatsu,Japan,6965.TSE,Mid Cap
-Makita,Japan,6586.TSE,Mid Cap
-Dai Nippon Printing,Japan,7912.TSE,Mid Cap
-Otsuka,Japan,4768.TSE,Mid Cap
-Wistron Corporation,Taiwan,3231.TW,Mid Cap
-ASUS,Taiwan,2357.TW,Mid Cap
-Nanya Technology,Taiwan,2408.TW,Mid Cap
-Tokyu,Japan,9005.TSE,Mid Cap
-Korea Zinc,South Korea,010130.KO,Mid Cap
-Daiwa Securities Group,Japan,8601.TSE,Mid Cap
-Rakuten,Japan,4755.TSE,Mid Cap
-Taishin Financial Holdings,Taiwan,2887.TW,Mid Cap
-KT&G (Korea Tobacco),South Korea,033780.KO,Mid Cap
-Krafton,South Korea,259960.KO,Mid Cap
-Shanghai Commercial and Savings Bank,Taiwan,5876.TW,Mid Cap
-Kajima,Japan,1812.TSE,Mid Cap
-Toppan,Japan,7911.TSE,Mid Cap
-HMM,South Korea,011200.KO,Mid Cap
-Konami Holdings,Japan,9766.TSE,Mid Cap
-Global Unichip Corp.,Taiwan,3443.TW,Mid Cap
-Trend Micro,Japan,4704.TSE,Mid Cap
-EVA Air,Taiwan,2618.TW,Mid Cap
-Daito Trust Construction,Japan,1878.TSE,Mid Cap
-GlobalWafers,Taiwan,6488.TWO,Mid Cap
-Yang Ming,Taiwan,2609.TW,Mid Cap
-SK Group,South Korea,034730.KO,Mid Cap
-Korean Air Lines,South Korea,003495.KO,Mid Cap
-Wiwynn,Taiwan,6669.TW,Mid Cap
-Nippon Building Fund,Japan,8951.TSE,Mid Cap
-Toho Co.,Japan,9602.TSE,Mid Cap
-China Development Financial,Taiwan,2883.TW,Mid Cap
-Kintetsu GHD,Japan,9041.TSE,Mid Cap
-Sinopac Financial Holdings,Taiwan,2890.TW,Mid Cap
-Yamaha,Japan,7951.TSE,Mid Cap
-Woori Financial Group,South Korea,WF,Mid Cap
-Hulic,Japan,3003.TSE,Mid Cap
-AirTAC International,Taiwan,1590.TW,Mid Cap
-Monotaro,Japan,3064.TSE,Mid Cap
-Hikari Tsushin,Japan,9435.TSE,Mid Cap
-Pegatron,Taiwan,4938.TW,Mid Cap
-Yageo,Taiwan,2327.TW,Mid Cap
-Yamato Holdings,Japan,9064.TSE,Mid Cap
-Osaka Gas,Japan,9532.TSE,Mid Cap
-Realtek,Taiwan,2379.TW,Mid Cap
-Accton Technology,Taiwan,2345.TW,Mid Cap
-DSME (Daewoo Shipbuilding),South Korea,042660.KO,Mid Cap
-Chang Hwa Commercial Bank,Taiwan,2801.TW,Mid Cap
-Meiji Holdings,Japan,2269.TSE,Mid Cap
-ZOZO,Japan,3092.TSE,Mid Cap
-Industrial Bank of Korea (IBK),South Korea,024110.KO,Mid Cap
-S-OIL,South Korea,010950.KO,Mid Cap
-TIS,Japan,3626.TSE,Mid Cap
-Square Enix,Japan,9684.TSE,Mid Cap
-GMO Payment Gateway,Japan,3769.TSE,Mid Cap
-Koito Manufacturing,Japan,7276.TSE,Mid Cap
-Sekisui Chemical,Japan,4204.TSE,Mid Cap
-MISUMI Group,Japan,9962.TSE,Mid Cap
-Nissan Chemical,Japan,4021.TSE,Mid Cap
-Mazda,Japan,7261.TSE,Mid Cap
-Obayashi,Japan,1802.TSE,Mid Cap
-Hitachi Construction Machinery,Japan,6305.TSE,Mid Cap
-Hanwha Solutions,South Korea,009830.KO,Mid Cap
-KT Corporation,South Korea,KT,Mid Cap
-Taiwan High Speed Rail,Taiwan,2633.TW,Mid Cap
-Itochu Techno-Solutions,Japan,4739.TSE,Mid Cap
-Idemitsu Kosan,Japan,5019.TSE,Mid Cap
-LOTTE Chemical,South Korea,011170.KO,Mid Cap
-LG Household & Health Care,South Korea,051905.KO,Mid Cap
-Nippon Prologis REIT,Japan,3283.TSE,Mid Cap
-Kosé,Japan,4922.TSE,Mid Cap
-Nan Ya PCB,Taiwan,8046.TW,Mid Cap
-Japan Post Insurance,Japan,7181.TSE,Mid Cap
-Kobe Bussan,Japan,3038.TSE,Mid Cap
-Far Eastern New Century,Taiwan,1402.TW,Mid Cap
-"""K"" Line",Japan,9107.TSE,Mid Cap
-ASICS Corporation,Japan,7936.TSE,Mid Cap
-Hyundai Glovis,South Korea,086280.KO,Mid Cap
-Chiba Bank,Japan,CHBAY,Mid Cap
-Tobu Railway,Japan,9001.TSE,Mid Cap
-China Airlines,Taiwan,2610.TW,Mid Cap
-Wan Hai Lines,Taiwan,2615.TW,Mid Cap
-McDonald's Japan,Japan,2702.TSE,Mid Cap
-Koei Tecmo,Japan,3635.TSE,Mid Cap
-Hanwha Aerospace,South Korea,012450.KO,Mid Cap
-Nomura Real Estate Master Fund,Japan,3462.TSE,Mid Cap
-eMemory Technology,Taiwan,3529.TWO,Mid Cap
-Rohto Pharmaceutical,Japan,4527.TSE,Mid Cap
-Asahi Intecc,Japan,7747.TSE,Mid Cap
-SBI Holdings,Japan,8473.TSE,Mid Cap
-Japan Real Estate Investment,Japan,8952.TSE,Mid Cap
-Odakyu Electric Railway,Japan,9007.TSE,Mid Cap
-TOTO,Japan,5332.TSE,Mid Cap
-Nippon Express,Japan,9147.TSE,Mid Cap
-Mitsubishi Motors,Japan,7211.TSE,Mid Cap
-Innolux,Taiwan,3481.TW,Mid Cap
-SCSK Corporation,Japan,9719.TSE,Mid Cap
-Asia Cement,Taiwan,1102.TW,Mid Cap
-Kakao Pay,South Korea,377300.KO,Mid Cap
-Sumitomo Chemical,Japan,4005.TSE,Mid Cap
-Ricoh Company,Japan,7752.TSE,Mid Cap
-Sojitz Corporation,Japan,2768.TSE,Mid Cap
-Amorepacific,South Korea,090430.KO,Mid Cap
-GLP J-REIT,Japan,3281.TSE,Mid Cap
-LG Display,South Korea,LPL,Mid Cap
-momo.com Inc.,Taiwan,8454.TW,Mid Cap
-Toyo Suisan,Japan,2875.TSE,Mid Cap
-NCsoft,South Korea,036570.KO,Mid Cap
-Iida Group,Japan,3291.TSE,Mid Cap
-Ebara Corporation,Japan,6361.TSE,Mid Cap
-Sega Sammy Holdings,Japan,6460.TSE,Mid Cap
-Vanguard International Semiconductor,Taiwan,5347.TWO,Mid Cap
-ABC-Mart,Japan,2670.TSE,Mid Cap
-Nikon,Japan,NINOY,Mid Cap
-Tokyo Century,Japan,8439.TSE,Mid Cap
-Shin Kong Financial Holding,Taiwan,2888.TW,Mid Cap
-Japan Airport Terminal,Japan,9706.TSE,Mid Cap
-Lawson,Japan,2651.TSE,Mid Cap
-Tokyu Fudosan Holdings,Japan,3289.TSE,Mid Cap
-KOBAYASHI Pharmaceutical,Japan,4967.TSE,Mid Cap
-Welcia Holdings,Japan,3141.TSE,Mid Cap
-Doosan Bobcat,South Korea,241560.KO,Mid Cap
-Alchip Technologies,Taiwan,3661.TW,Mid Cap
-IHI Corporation,Japan,7013.TSE,Mid Cap
-Powerchip Semiconductor Manufacturing,Taiwan,6770.TW,Mid Cap
-Korea Aerospace Industries,South Korea,047810.KO,Mid Cap
-Ecopro BM,South Korea,247540.KO,Mid Cap
-Toei Animation,Japan,4816.TSE,Mid Cap
-CyberAgent,Japan,4751.TSE,Mid Cap
-ORION,South Korea,271560.KO,Mid Cap
-Isetan Mitsukoshi Holdings,Japan,3099.TSE,Mid Cap
-COSMOS Pharmaceutical,Japan,3349.TSE,Mid Cap
-Mercari,Japan,4385.TSE,Mid Cap
-Acom,Japan,8572.TSE,Mid Cap
-F&F Co,South Korea,383220.KO,Mid Cap
-Nisshin Seifun Group,Japan,2002.TSE,Mid Cap
-Taiyo Yuden,Japan,6976.TSE,Mid Cap
-Tsuruha Holdings,Japan,3391.TSE,Mid Cap
-Fukuoka Financial Group,Japan,8354.TSE,Mid Cap
-Sharp Corporation,Japan,6753.TSE,Mid Cap
-Taiwan Business Bank,Taiwan,2834.TW,Mid Cap
-NOF Corporation,Japan,4403.TSE,Mid Cap
-Kadokawa,Japan,9468.TSE,Mid Cap
-Pola Orbis Holdings,Japan,4927.TSE,Mid Cap
-Kansai Paint,Japan,4613.TSE,Mid Cap
-JYP Entertainment,South Korea,035900.KO,Mid Cap
-Netmarble,South Korea,251270.KO,Mid Cap
-Harmonic Drive Systems,Japan,6324.TSE,Mid Cap
-Acer,Taiwan,2353.TW,Mid Cap
-Santen Pharmaceutical,Japan,4536.TSE,Mid Cap
-Meitetsu,Japan,9048.TSE,Mid Cap
-Hankook Tire,South Korea,161390.KO,Mid Cap
-Synnex Technology International,Taiwan,2347.TW,Mid Cap
-Yuhan,South Korea,000100.KO,Mid Cap
-Rinnai Corporation,Japan,5947.TSE,Mid Cap
-Tohoku Electric Power,Japan,9506.TSE,Mid Cap
-Taisho Pharmaceutical,Japan,4581.TSE,Mid Cap
-Nippon Shinyaku,Japan,4516.TSE,Mid Cap
-Sino-American Silicon Products,Taiwan,5483.TWO,Mid Cap
-Workman,Japan,7564.TSE,Mid Cap
-ALSOK,Japan,2331.TSE,Mid Cap
-Sanwa Holdings,Japan,5929.TSE,Mid Cap
-Lion Corp,Japan,4912.TSE,Mid Cap
-VisEra Technologies,Taiwan,6789.TW,Mid Cap
-International Games System,Taiwan,3293.TWO,Mid Cap
-Nifco Inc.,Japan,7988.TSE,Mid Cap
-Kangwon Land,South Korea,035250.KO,Mid Cap
-Kumho Petrochemical,South Korea,011780.KO,Mid Cap
-Ryohin Keikaku,Japan,7453.TSE,Mid Cap
-TechnoPro Holdings,Japan,6028.TSE,Mid Cap
-Coway,South Korea,021240.KO,Mid Cap
-Samsung Heavy Industries,South Korea,010145.KO,Mid Cap
-Nippon Television Holdings,Japan,9404.TSE,Mid Cap
-Mitsui High-tec,Japan,6966.TSE,Mid Cap
-BGF Retail,South Korea,282330.KO,Mid Cap
-INFRONEER Holdings,Japan,5076.TSE,Mid Cap
-WIN Semiconductors,Taiwan,3105.TWO,Mid Cap
-Fancl Corp.,Japan,4921.TSE,Mid Cap
-AEON REIT Investment,Japan,3292.TSE,Mid Cap
-SM Entertainment,South Korea,041510.KO,Mid Cap
-Pan Ocean,South Korea,028670.KO,Mid Cap
-Formosa Sumco Technology,Taiwan,3532.TW,Mid Cap
-Mitsui Fudosan Logistics Park,Japan,3471.TSE,Mid Cap
-PeptiDream,Japan,4587.TSE,Mid Cap
-Sapporo,Japan,2501.TSE,Mid Cap
-Toyo Tire,Japan,5105.TSE,Mid Cap
-CASIO,Japan,6952.TSE,Small Cap
-Merida Industry,Taiwan,9914.TW,Small Cap
-Net One Systems,Japan,7518.TSE,Small Cap
-Hansol Chemical,South Korea,014680.KO,Small Cap
-Tokai Carbon,Japan,5301.TSE,Small Cap
-Nakanishi,Japan,7716.TSE,Small Cap
-Nongshim,South Korea,004370.KO,Small Cap
-Toho Gas,Japan,9533.TSE,Small Cap
-Adeka Corporation,Japan,4401.TSE,Small Cap
-Sumitomo Dainippon Pharma,Japan,4506.TSE,Small Cap
-Maruwa,Japan,5344.TSE,Small Cap
-Hanmi Pharmaceutical,South Korea,008930.KO,Small Cap
-Fila,South Korea,081660.KO,Small Cap
-Pigeon,Japan,7956.TSE,Small Cap
-TODA corp,Japan,1860.TSE,Small Cap
-Citizen Watch,Japan,7762.TSE,Small Cap
-LEENO Industrial,South Korea,058470.KO,Small Cap
-Korea Gas,South Korea,036460.KO,Small Cap
-TS TECH,Japan,7313.TSE,Small Cap
-Kokuyo,Japan,7984.TSE,Small Cap
-CJ Group,South Korea,001040.KO,Small Cap
-Formosa Taffeta,Taiwan,1434.TW,Small Cap
-Doosan Fuel Cell,South Korea,336260.KO,Small Cap
-LOTTE Corporation,South Korea,004990.KO,Small Cap
-AS ONE Corporation,Japan,7476.TSE,Small Cap
-DeNA,Japan,2432.TSE,Small Cap
-Mixi,Japan,2121.TSE,Small Cap
-Daiseki,Japan,9793.TSE,Small Cap
-"Studio Dragon ",South Korea,253450.KO,Small Cap
-Aica Kogyo Company,Japan,4206.TSE,Small Cap
-Shinsegae,South Korea,004170.KO,Small Cap
-Sakata Seed,Japan,1377.TSE,Small Cap
-Dexerials Corporation,Japan,4980.TSE,Small Cap
-CJ ENM,South Korea,035760.KO,Small Cap
-Pilot Corporation,Japan,7846.TSE,Small Cap
-Himax,Taiwan,HIMX,Small Cap
-Digital Garage,Japan,4819.TSE,Small Cap
-GungHo Online Entertainment,Japan,3765.TSE,Small Cap
-MIRAIT ONE Corporation,Japan,1417.TSE,Small Cap
-Ottogi,South Korea,007310.KO,Small Cap
-Doosan,South Korea,000150.KO,Small Cap
-KCC Corp,South Korea,002380.KO,Small Cap
-HiteJinro,South Korea,000080.KO,Small Cap
-YG Entertainment,South Korea,122870.KO,Small Cap
-Glory Ltd.,Japan,6457.TSE,Small Cap
-Toagosei,Japan,4045.TSE,Small Cap
-SD BioSensor,South Korea,137310.KO,Small Cap
-DLE,Japan,3686.TSE,Small Cap
-Monex Group,Japan,8698.TSE,Small Cap
-ChipMOS Technologies,Taiwan,IMOS,Small Cap
-Riken Keiki,Japan,7734.TSE,Small Cap
-Jeju Air,South Korea,089590.KO,Small Cap
-"BML, Inc.",Japan,4694.TSE,Small Cap
-Earth Corporation,Japan,4985.TSE,Small Cap
-Cosmax,South Korea,192820.KO,Small Cap
-Gree,Japan,3632.TSE,Small Cap
-Gogoro,Taiwan,GGR,Small Cap
-Neowiz Games,South Korea,095660.KO,Small Cap
-West Holdings,Japan,1407.TSE,Small Cap
-Asiana Airlines,South Korea,020560.KO,Small Cap
-KYORIN Pharmaceutical,Japan,4569.TSE,Small Cap
-AfreecaTV,South Korea,067160.KO,Small Cap
-Com2uS,South Korea,078340.KO,Small Cap
-NHN Corp,South Korea,181710.KO,Small Cap
-Jin Air,South Korea,272450.KO,Small Cap
-Nitta Corporation,Japan,5186.TSE,Small Cap
-Samyang Foods,South Korea,003230.KO,Small Cap
-Shinpoong Pharm,South Korea,019170.KO,Small Cap
-Cathay Real Estate Development,Taiwan,2501.TW,Small Cap
-COLOPL,Japan,3668.TSE,Small Cap
-Perfect Corp.,Taiwan,PERF,Small Cap
-CJ CGV,South Korea,079160.KO,Small Cap
-KEYEAST,South Korea,054780.KO,Small Cap
-DoubleUGames,South Korea,192080.KO,Small Cap
-Wemade,South Korea,112040.KO,Small Cap
-Chlitina Holding,Taiwan,4137.TW,Small Cap
-T‚Äôway Air,South Korea,091810.KO,Small Cap
-Pearl Abyss,South Korea,263750.KO,Small Cap
-Mandom Corp.,Japan,4917.TSE,Small Cap
-Meiko Electronics,Japan,6787.TSE,Small Cap
-Cube Entertainment,South Korea,182360.KO,Small Cap
-Gamania Digital,Taiwan,6180.TWO,Small Cap
-Fujimori Kogyo,Japan,7917.TSE,Small Cap
-Gravity Co.,South Korea,GRVY,Small Cap
-Computer Engineering & Consulting,Japan,9692.TSE,Small Cap
-OPTiM,Japan,3694.TSE,Small Cap
-Chorokbaem Media,South Korea,047820.KO,Small Cap
-Bushiroad,Japan,7803.TSE,Small Cap
-Bafang Yunji,Taiwan,2753.TW,Small Cap
-Soft-World International,Taiwan,5478.TWO,Small Cap
-Eiken Chemical,Japan,4549.TSE,Small Cap
-SWCC Corporation,Japan,5805.TSE,Small Cap
-J.S.B.Co.,Japan,3480.TSE,Small Cap
-YAKUODO HOLDINGS,Japan,7679.TSE,Small Cap
-Webzen,South Korea,069080.KO,Small Cap
-World Holdings,Japan,2429.TSE,Small Cap
-Happinet,Japan,7552.TSE,Small Cap
-GIANTSTEP,South Korea,289220.KO,Small Cap
-Air Busan,South Korea,298690.KO,Small Cap
-SRA Holdings,Japan,3817.TSE,Small Cap
-Marvelous,Japan,7844.TSE,Small Cap
-Sun Corp,Japan,6736.TSE,Small Cap
-Kyokuyo,Japan,1301.TSE,Small Cap
-Fujibo Holdings,Japan,3104.TSE,Small Cap
-"PLAID,Inc.",Japan,4165.TSE,Micro Cap
-Softstar Entertainment,Taiwan,6111.TWO,Micro Cap
-Maruzen,Japan,5982.TSE,Micro Cap
-UNITED,Japan,2497.TSE,Micro Cap
-It's Hanbul,South Korea,226320.KO,Micro Cap
-FuRyu,Japan,6238.TSE,Micro Cap
-Dexter Studios,South Korea,206560.KO,Micro Cap
-SM Culture & Contents,South Korea,048550.KO,Micro Cap
-Kolmar Korea Holdings,South Korea,024720.KO,Micro Cap
-Akatsuki Inc,Japan,3932.TSE,Micro Cap
-gumi,Japan,3903.TSE,Micro Cap
-AlphaPolis,Japan,9467.TSE,Micro Cap
-Genie Music,South Korea,043610.KO,Micro Cap
-Serverworks,Japan,4434.TSE,Micro Cap
-SYLA Technologies,Japan,SYT,Micro Cap
-Bank of Innovation,Japan,4393.TSE,Micro Cap
-Showbox,South Korea,086980.KO,Micro Cap
-X-Legend Entertainment,Taiwan,4994.TW,Micro Cap
-Next Entertainment World,South Korea,160550.KO,Micro Cap
-Able C&C,South Korea,078520.KO,Micro Cap
-Yuke's,Japan,4334.TSE,Micro Cap
-ASTORY,South Korea,241840.KO,Micro Cap
-Drecom,Japan,3793.TSE,Micro Cap
-Koh Young Technology,South Korea,098460.KO,Micro Cap
-Userjoy Technology,Taiwan,3546.TWO,Micro Cap
-Chinese Gamer International,Taiwan,3083.TWO,Micro Cap
-Gorilla Technology,Taiwan,GRRR,Micro Cap
-Aiming Inc,Japan,3911.TSE,Micro Cap
-IG Port,Japan,3791.TSE,Micro Cap
-RaemongRaein,South Korea,200350.KO,Micro Cap
-SBS Contents Hub,South Korea,046140.KO,Micro Cap
-RBW (RAINBOW BRIDGE WORLD),South Korea,361570.KO,Micro Cap
-Kayak Inc,Japan,3904.TSE,Micro Cap
-MacroWell OMG Digital Entertainment,Taiwan,3687.TWO,Micro Cap
-Tonymoly,South Korea,214420.KO,Micro Cap
-KLab,Japan,3656.TSE,Micro Cap
-CAVE Interactive,Japan,3760.TSE,Micro Cap
-Johnson Chemical Pharmaceutical Works,Taiwan,4747.TWO,Micro Cap
-Nihon Falcom,Japan,3723.TSE,Micro Cap
-Broccoli,Japan,2706.TSE,Micro Cap
-Ateam,Japan,3662.TSE,Micro Cap
-Samhwa Networks,South Korea,046390.KO,Micro Cap
-Akatsuki Corp.,Japan,8737.TSE,Micro Cap
-Gamesparcs,Taiwan,6542.TWO,Micro Cap
-CROOZ,Japan,2138.TSE,Micro Cap
-Imagineer,Japan,4644.TSE,Micro Cap
-Gala Incorporated,Japan,4777.TSE,Micro Cap
-NHN BUGS,South Korea,104200.KO,Micro Cap
-Aeria,Japan,3758.TSE,Micro Cap
-Pan Entertainment,South Korea,068050.KO,Micro Cap
-geechs,Japan,7060.TSE,Micro Cap
-Wayi International Digital Entertainment,Taiwan,3086.TWO,Micro Cap
-enish,Japan,3667.TSE,Micro Cap
-Mobile Factory,Japan,3912.TSE,Micro Cap
-coly,Japan,4175.TSE,Micro Cap
-IHQ,South Korea,003560.KO,Micro Cap
-Nippon Ichi Software,Japan,3851.TSE,Micro Cap
-Tose Software,Japan,4728.TSE,Micro Cap
-CyberStep,Japan,3810.TSE,Micro Cap
-Appirits,Japan,4174.TSE,Micro Cap
-Silicon Studio,Japan,3907.TSE,Micro Cap
-TENDA,Japan,4198.TSE,Micro Cap
-AltPlus,Japan,3672.TSE,Micro Cap
-NJ Holdings,Japan,9421.TSE,Micro Cap
-Fun Yours Technology,Taiwan,6482.TWO,Micro Cap
-Mobcast,Japan,3664.TSE,Micro Cap
-Edia,Japan,3935.TSE,Micro Cap
-Axel Mark,Japan,3624.TSE,Micro Cap
-Netmarble Joybomb,Taiwan,6468.TWO,Micro Cap
-Mynet,Japan,3928.TSE,Micro Cap
-WonderPlanet,Japan,4199.TSE,Micro Cap
-Astro Corporation,Taiwan,3064.TWO,Micro Cap
-GAME HOURS,Taiwan,6626.TWO,Micro Cap
-InterServ International,Taiwan,6169.TWO,Micro Cap
-GigaMedia,Taiwan,GIGM,Micro Cap
-Voltage,Japan,3639.TSE,Micro Cap
+symbol,name,country,cap,shares,currency,
+086520.KQ,Ecopro,South Korea,Blue Chip,0,KRW,
+247540.KQ,Ecopro BM,South Korea,Mid Cap,0,KRW,
+035900.KQ,JYP Entertainment,South Korea,Mid Cap,0,KRW,
+041510.KQ,SM Entertainment,South Korea,Mid Cap,0,KRW,
+058470.KQ,LEENO Industrial,South Korea,Small Cap,0,KRW,
+253450.KQ,Studio Dragon,South Korea,Small Cap,0,KRW,
+035760.KQ,CJ ENM,South Korea,Small Cap,0,KRW,
+122870.KQ,YG Entertainment,South Korea,Small Cap,0,KRW,
+095660.KQ,Neowiz Games,South Korea,Small Cap,0,KRW,
+067160.KQ,AfreecaTV,South Korea,Small Cap,0,KRW,
+078340.KQ,Com2uS,South Korea,Small Cap,0,KRW,
+054780.KQ,KEYEAST,South Korea,Small Cap,0,KRW,
+112040.KQ,Wemade,South Korea,Small Cap,0,KRW,
+263750.KQ,Pearl Abyss,South Korea,Small Cap,0,KRW,
+182360.KQ,Cube Entertainment,South Korea,Small Cap,0,KRW,
+047820.KQ,Chorokbaem Media,South Korea,Small Cap,0,KRW,
+069080.KQ,Webzen,South Korea,Small Cap,0,KRW,
+289220.KQ,GIANTSTEP,South Korea,Small Cap,0,KRW,
+206560.KQ,Dexter Studios,South Korea,Micro Cap,0,KRW,
+048550.KQ,SM Culture & Contents,South Korea,Micro Cap,0,KRW,
+043610.KQ,Genie Music,South Korea,Micro Cap,0,KRW,
+086980.KQ,Showbox,South Korea,Micro Cap,0,KRW,
+160550.KQ,Next Entertainment World,South Korea,Micro Cap,0,KRW,
+241840.KQ,ASTORY,South Korea,Micro Cap,0,KRW,
+098460.KQ,Koh Young Technology,South Korea,Micro Cap,0,KRW,
+200350.KQ,RaemongRaein,South Korea,Micro Cap,0,KRW,
+046140.KQ,SBS Contents Hub,South Korea,Micro Cap,0,KRW,
+361570.KQ,RBW (RAINBOW BRIDGE WORLD),South Korea,Micro Cap,0,KRW,
+046390.KQ,Samhwa Networks,South Korea,Micro Cap,0,KRW,
+104200.KQ,NHN BUGS,South Korea,Micro Cap,0,KRW,
+068050.KQ,Pan Entertainment,South Korea,Micro Cap,0,KRW,
+010145.KO,Samsung Heavy Industries,South Korea,Mid Cap,114845,KRW,
+3471.TSE,Mitsui Fudosan Logistics Park,Japan,Mid Cap,576000,JPY,
+8421.TSE,Shinkin Central Bank,Japan,Blue Chip,708222,JPY,
+003495.KO,Korean Air Lines,South Korea,Mid Cap,1110790,KRW,
+096775.KO,SK Innovation,South Korea,Blue Chip,1248130,KRW,
+8952.TSE,Japan Real Estate Investment,Japan,Mid Cap,1385210,JPY,
+006405.KO,Samsung SDI,South Korea,Blue Chip,1439500,KRW,
+8951.TSE,Nippon Building Fund,Japan,Mid Cap,1700990,JPY,
+3292.TSE,AEON REIT Investment,Japan,Mid Cap,2044470,JPY,
+051905.KO,LG Household & Health Care,South Korea,Mid Cap,2096260,KRW,
+4198.TSE,TENDA,Japan,Micro Cap,2169500,JPY,
+4199.TSE,WonderPlanet,Japan,Micro Cap,2541780,JPY,
+3283.TSE,Nippon Prologis REIT,Japan,Mid Cap,2838900,JPY,
+009155.KO,Samsung Electro-Mechanics,South Korea,Mid Cap,2906980,KRW,
+3907.TSE,Silicon Studio,Japan,Micro Cap,2948880,JPY,
+007310.KO,Ottogi,South Korea,Small Cap,3736500,KRW,
+4393.TSE,Bank of Innovation,Japan,Micro Cap,4002970,JPY,
+4174.TSE,Appirits,Japan,Micro Cap,4101360,JPY,
+3281.TSE,GLP J-REIT,Japan,Mid Cap,4712140,JPY,
+3791.TSE,IG Port,Japan,Micro Cap,4714370,JPY,
+3462.TSE,Nomura Real Estate Master Fund,Japan,Mid Cap,4715200,JPY,
+3851.TSE,Nippon Ichi Software,Japan,Micro Cap,5040540,JPY,
+9421.TSE,NJ Holdings,Japan,Micro Cap,5292850,JPY,
+4175.TSE,coly,Japan,Micro Cap,5502820,JPY,
+004370.KO,Nongshim,South Korea,Small Cap,5782620,KRW,
+3935.TSE,Edia,Japan,Micro Cap,6127860,JPY,
+3639.TSE,Voltage,Japan,Micro Cap,6422090,JPY,
+3760.TSE,CAVE Interactive,Japan,Micro Cap,6466970,JPY,
+GRVY,Gravity Co.,South Korea,Small Cap,6948900,USD,
+002380.KO,KCC Corp,South Korea,Small Cap,7354170,KRW,
+003230.KO,Samyang Foods,South Korea,Small Cap,7458130,KRW,
+4728.TSE,Tose Software,Japan,Micro Cap,7579940,JPY,
+4434.TSE,Serverworks,Japan,Micro Cap,7794960,JPY,
+3912.TSE,Mobile Factory,Japan,Micro Cap,7881340,JPY,
+4334.TSE,Yuke's,Japan,Micro Cap,8364960,JPY,
+3928.TSE,Mynet,Japan,Micro Cap,8438710,JPY,
+2706.TSE,Broccoli,Japan,Micro Cap,8747270,JPY,
+004170.KO,Shinsegae,South Korea,Small Cap,9436410,KRW,
+4644.TSE,Imagineer,Japan,Micro Cap,9598000,JPY,
+9467.TSE,AlphaPolis,Japan,Micro Cap,9687130,JPY,
+7060.TSE,geechs,Japan,Micro Cap,10021200,JPY,
+3723.TSE,Nihon Falcom,Japan,Micro Cap,10279800,JPY,
+3480.TSE,J.S.B.Co.,Japan,Small Cap,10506900,JPY,
+3624.TSE,Axel Mark,Japan,Micro Cap,10646300,JPY,
+1301.TSE,Kyokuyo,Japan,Small Cap,10716600,JPY,
+3810.TSE,CyberStep,Japan,Micro Cap,10803500,JPY,
+014680.KO,Hansol Chemical,South Korea,Small Cap,10878300,KRW,
+GIGM,GigaMedia,Taiwan,Micro Cap,11052200,USD,
+2138.TSE,CROOZ,Japan,Micro Cap,11122400,JPY,
+192820.KO,Cosmax,South Korea,Small Cap,11345700,KRW,
+3104.TSE,Fujibo Holdings,Japan,Small Cap,11467400,JPY,
+6468.TWO,Netmarble Joybomb,Taiwan,Micro Cap,12074000,TWD,
+5344.TSE,Maruwa,Japan,Small Cap,12338000,JPY,
+3817.TSE,SRA Holdings,Japan,Small Cap,12417000,JPY,
+000150.KO,Doosan,South Korea,Small Cap,13523000,KRW,
+3932.TSE,Akatsuki Inc,Japan,Micro Cap,13592800,JPY,
+3904.TSE,Kayak Inc,Japan,Micro Cap,15960200,JPY,
+5982.TSE,Maruzen,Japan,Micro Cap,16208000,JPY,
+192080.KO,DoubleUGames,South Korea,Small Cap,16525700,KRW,
+3667.TSE,enish,Japan,Micro Cap,17243500,JPY,
+282330.KO,BGF Retail,South Korea,Mid Cap,17275000,KRW,
+3672.TSE,AltPlus,Japan,Micro Cap,17440200,JPY,
+2429.TSE,World Holdings,Japan,Small Cap,17540200,JPY,
+226320.KO,It's Hanbul,South Korea,Micro Cap,17616700,KRW,
+024720.KO,Kolmar Korea Holdings,South Korea,Micro Cap,18385600,KRW,
+3662.TSE,Ateam,Japan,Micro Cap,18533000,JPY,
+7917.TSE,Fujimori Kogyo,Japan,Small Cap,18810800,JPY,
+6482.TWO,Fun Yours Technology,Taiwan,Micro Cap,18863200,TWD,
+7679.TSE,YAKUODO HOLDINGS,Japan,Small Cap,19595000,JPY,
+010130.KO,Korea Zinc,South Korea,Mid Cap,19863200,KRW,
+036570.KO,NCsoft,South Korea,Mid Cap,20307400,KRW,
+4985.TSE,Earth Corporation,Japan,Small Cap,22127300,JPY,
+3758.TSE,Aeria,Japan,Micro Cap,22162400,JPY,
+7552.TSE,Happinet,Japan,Small Cap,22188700,JPY,
+6736.TSE,Sun Corp,Japan,Small Cap,22206400,JPY,
+3086.TWO,Wayi International Digital Entertainment,Taiwan,Micro Cap,22274000,TWD,
+7734.TSE,Riken Keiki,Japan,Small Cap,23283400,JPY,
+6169.TWO,InterServ International,Taiwan,Micro Cap,23395000,TWD,
+011780.KO,Kumho Petrochemical,South Korea,Mid Cap,23627100,KRW,
+214420.KO,Tonymoly,South Korea,Micro Cap,23902700,KRW,
+4777.TSE,Gala Incorporated,Japan,Micro Cap,25035700,JPY,
+6787.TSE,Meiko Electronics,Japan,Small Cap,25644300,JPY,
+078520.KO,Able C&C,South Korea,Micro Cap,26014200,KRW,
+6238.TSE,FuRyu,Japan,Micro Cap,26440000,JPY,
+001040.KO,CJ Group,South Korea,Small Cap,27058500,KRW,
+6626.TWO,GAME HOURS,Taiwan,Micro Cap,27177000,TWD,
+5186.TSE,Nitta Corporation,Japan,Small Cap,27848800,JPY,
+3793.TSE,Drecom,Japan,Micro Cap,28492200,JPY,
+5805.TSE,SWCC Corporation,Japan,Small Cap,29881900,JPY,
+4747.TWO,Johnson Chemical Pharmaceutical Works,Taiwan,Micro Cap,30019000,TWD,
+3687.TWO,MacroWell OMG Digital Entertainment,Taiwan,Micro Cap,30060000,TWD,
+8737.TSE,Akatsuki Corp.,Japan,Micro Cap,30781500,JPY,
+9692.TSE,Computer Engineering & Consulting,Japan,Small Cap,33616200,JPY,
+181710.KO,NHN Corp,South Korea,Small Cap,33705800,KRW,
+7476.TSE,AS ONE Corporation,Japan,Small Cap,36187900,JPY,
+IMOS,ChipMOS Technologies,Taiwan,Small Cap,36362000,USD,
+6966.TSE,Mitsui High-tec,Japan,Mid Cap,36607200,JPY,
+4549.TSE,Eiken Chemical,Japan,Small Cap,37028800,JPY,
+086280.KO,Hyundai Glovis,South Korea,Mid Cap,37500000,KRW,
+2497.TSE,UNITED,Japan,Micro Cap,38081600,JPY,
+383220.KO,F&F Co,South Korea,Mid Cap,38142700,KRW,
+2002A.TW,China Steel,Taiwan,Blue Chip,38268000,TWD,
+3903.TSE,gumi,Japan,Micro Cap,39249200,JPY,
+7846.TSE,Pilot Corporation,Japan,Small Cap,39449400,JPY,
+271560.KO,ORION,South Korea,Mid Cap,39528800,KRW,
+3349.TSE,COSMOS Pharmaceutical,Japan,Mid Cap,39598900,JPY,
+3911.TSE,Aiming Inc,Japan,Micro Cap,40133500,JPY,
+3656.TSE,KLab,Japan,Micro Cap,40450700,JPY,
+1407.TSE,West Holdings,Japan,Small Cap,40664500,JPY,
+4816.TSE,Toei Animation,Japan,Mid Cap,40887600,JPY,
+352820.KO,HYBE,South Korea,Mid Cap,41649100,KRW,
+6542.TWO,Gamesparcs,Taiwan,Micro Cap,42000600,TWD,
+011170.KO,LOTTE Chemical,South Korea,Mid Cap,42490400,KRW,
+3686.TSE,DLE,Japan,Small Cap,42514200,JPY,
+1377.TSE,Sakata Seed,Japan,Small Cap,44347800,JPY,
+9435.TSE,Hikari Tsushin,Japan,Mid Cap,44540600,JPY,
+3664.TSE,Mobcast,Japan,Micro Cap,44638400,JPY,
+4917.TSE,Mandom Corp.,Japan,Small Cap,44965400,JPY,
+4819.TSE,Digital Garage,Japan,Small Cap,45813600,JPY,
+259960.KO,Krafton,South Korea,Mid Cap,46212100,KRW,
+079160.KO,CJ CGV,South Korea,Small Cap,47728500,KRW,
+3546.TWO,Userjoy Technology,Taiwan,Micro Cap,48177000,TWD,
+3391.TSE,Tsuruha Holdings,Japan,Mid Cap,48601800,JPY,
+9793.TSE,Daiseki,Japan,Small Cap,49118200,JPY,
+019170.KO,Shinpoong Pharm,South Korea,Small Cap,49271000,KRW,
+012450.KO,Hanwha Aerospace,South Korea,Mid Cap,50569400,KRW,
+272450.KO,Jin Air,South Korea,Small Cap,51533600,KRW,
+3694.TSE,OPTiM,Japan,Small Cap,55052500,JPY,
+034730.KO,SK Group,South Korea,Mid Cap,55201900,KRW,
+6457.TSE,Glory Ltd.,Japan,Small Cap,55591300,JPY,
+4922.TSE,Kosé,Japan,Mid Cap,57050500,JPY,
+4569.TSE,KYORIN Pharmaceutical,Japan,Small Cap,57303900,JPY,
+4980.TSE,Dexerials Corporation,Japan,Small Cap,57986000,JPY,
+090430.KO,Amorepacific,South Korea,Mid Cap,58460800,KRW,
+3765.TSE,GungHo Online Entertainment,Japan,Small Cap,59896300,JPY,
+081660.KO,Fila,South Korea,Small Cap,60095800,KRW,
+7844.TSE,Marvelous,Japan,Small Cap,60468600,JPY,
+4206.TSE,Aica Kogyo Company,Japan,Small Cap,63963400,JPY,
+6273.TSE,SMC corp,Japan,Blue Chip,64500600,JPY,
+336260.KO,Doosan Fuel Cell,South Korea,Small Cap,65482700,KRW,
+2753.TW,Bafang Yunji,Taiwan,Small Cap,66345000,TWD,
+4516.TSE,Nippon Shinyaku,Japan,Mid Cap,67353504,JPY,
+GRRR,Gorilla Technology,Taiwan,Micro Cap,67601504,USD,
+7803.TSE,Bushiroad,Japan,Small Cap,67892096,JPY,
+008930.KO,Hanmi Pharmaceutical,South Korea,Small Cap,67996096,KRW,
+1878.TSE,Daito Trust Construction,Japan,Mid Cap,68190200,JPY,
+000080.KO,HiteJinro,South Korea,Small Cap,68649400,KRW,
+000100.KO,Yuhan,South Korea,Mid Cap,70259800,KRW,
+051910.KO,LG Chem,South Korea,Blue Chip,70592304,KRW,
+004990.KO,LOTTE Corporation,South Korea,Small Cap,70805296,KRW,
+207940.KO,Samsung Biologics,South Korea,Blue Chip,71174000,KRW,
+021240.KO,Coway,South Korea,Mid Cap,72555600,KRW,
+2121.TSE,Mixi,Japan,Small Cap,72973000,JPY,
+3661.TW,Alchip Technologies,Taiwan,Mid Cap,73889296,TWD,
+020560.KO,Asiana Airlines,South Korea,Small Cap,74411800,KRW,
+3529.TWO,eMemory Technology,Taiwan,Mid Cap,74622000,TWD,
+3769.TSE,GMO Payment Gateway,Japan,Mid Cap,75842600,JPY,
+4967.TSE,KOBAYASHI Pharmaceutical,Japan,Mid Cap,76128000,JPY,
+089590.KO,Jeju Air,South Korea,Small Cap,76923800,KRW,
+003670.KO,POSCO Chemical,South Korea,Blue Chip,77419504,KRW,
+2501.TSE,Sapporo,Japan,Mid Cap,78026200,JPY,
+4137.TW,Chlitina Holding,Taiwan,Small Cap,78989000,TWD,
+6111.TWO,Softstar Entertainment,Taiwan,Micro Cap,79427000,TWD,
+4403.TSE,NOF Corporation,Japan,Mid Cap,80378304,JPY,
+7564.TSE,Workman,Japan,Mid Cap,81610304,JPY,
+251270.KO,Netmarble,South Korea,Mid Cap,81934600,KRW,
+4581.TSE,Taisho Pharmaceutical,Japan,Mid Cap,81985696,JPY,
+7518.TSE,Net One Systems,Japan,Small Cap,82194400,JPY,
+2670.TSE,ABC-Mart,Japan,Mid Cap,82539104,JPY,
+7716.TSE,Nakanishi,Japan,Small Cap,85154304,JPY,
+036460.KO,Korea Gas,South Korea,Small Cap,85827000,KRW,
+3083.TWO,Chinese Gamer International,Taiwan,Micro Cap,86433000,TWD,
+9147.TSE,Nippon Express,Japan,Mid Cap,88579904,JPY,
+4684.TSE,OBIC,Japan,Blue Chip,88680096,JPY,
+6920.TSE,Lasertec,Japan,Blue Chip,90180704,JPY,
+7309.TSE,Shimano,Japan,Blue Chip,90403696,JPY,
+012330.KO,Hyundai Mobis,South Korea,Blue Chip,91110200,KRW,
+6361.TSE,Ebara Corporation,Japan,Mid Cap,92315504,JPY,
+9706.TSE,Japan Airport Terminal,Japan,Mid Cap,93136400,JPY,
+6324.TSE,Harmonic Drive Systems,Japan,Mid Cap,95064400,JPY,
+1417.TSE,MIRAIT ONE Corporation,Japan,Small Cap,95628000,JPY,
+047810.KO,Korea Aerospace Industries,South Korea,Mid Cap,97475104,KRW,
+6963.TSE,Rohm,Japan,Mid Cap,98142600,JPY,
+2651.TSE,Lawson,Japan,Mid Cap,100078000,JPY,
+241560.KO,Doosan Bobcat,South Korea,Mid Cap,100153000,KRW,
+7988.TSE,Nifco Inc.,Japan,Mid Cap,100190000,JPY,
+2897.TSE,Nissin Foods,Japan,Mid Cap,101346000,JPY,
+PERF,Perfect Corp.,Taiwan,Small Cap,101475000,USD,
+2875.TSE,Toyo Suisan,Japan,Mid Cap,102128000,JPY,
+137310.KO,SD BioSensor,South Korea,Small Cap,102322000,KRW,
+4401.TSE,Adeka Corporation,Japan,Small Cap,102504000,JPY,
+9533.TSE,Toho Gas,Japan,Small Cap,105120000,JPY,
+6028.TSE,TechnoPro Holdings,Japan,Mid Cap,107726000,JPY,
+6146.TSE,Disco Corp.,Japan,Blue Chip,108302000,JPY,
+4994.TW,X-Legend Entertainment,Taiwan,Micro Cap,110639000,TWD,
+2432.TSE,DeNA,Japan,Small Cap,111340000,JPY,
+010950.KO,S-OIL,South Korea,Mid Cap,112583000,KRW,
+9843.TSE,Nitori Holdings,Japan,Blue Chip,113012000,JPY,
+7984.TSE,Kokuyo,Japan,Small Cap,115528000,JPY,
+033780.KO,KT&G (Korea Tobacco),South Korea,Mid Cap,116280000,KRW,
+298690.KO,Air Busan,South Korea,Small Cap,116582000,KRW,
+4045.TSE,Toagosei,Japan,Small Cap,118969000,JPY,
+7956.TSE,Pigeon,Japan,Small Cap,119657000,JPY,
+9684.TSE,Square Enix,Japan,Mid Cap,119729000,JPY,
+4921.TSE,Fancl Corp.,Japan,Mid Cap,120923000,JPY,
+5478.TWO,Soft-World International,Taiwan,Small Cap,121338000,TWD,
+161390.KO,Hankook Tire,South Korea,Mid Cap,121989000,KRW,
+8439.TSE,Tokyo Century,Japan,Mid Cap,122401000,JPY,
+6976.TSE,Taiyo Yuden,Japan,Mid Cap,124608000,JPY,
+7313.TSE,TS TECH,Japan,Small Cap,127505000,JPY,
+4716.TSE,Oracle Corp Japan,Japan,Blue Chip,128157000,JPY,
+3668.TSE,COLOPL,Japan,Small Cap,128276000,JPY,
+4587.TSE,PeptiDream,Japan,Mid Cap,129831000,JPY,
+2702.TSE,McDonald's Japan,Japan,Mid Cap,132959000,JPY,
+3008.TW,Largan Precision,Taiwan,Mid Cap,133468000,TWD,
+377300.KO,Kakao Pay,South Korea,Mid Cap,133905000,KRW,
+3443.TW,Global Unichip Corp.,Taiwan,Mid Cap,134011000,TWD,
+9766.TSE,Konami Holdings,Japan,Mid Cap,135559008,JPY,
+4704.TSE,Trend Micro,Japan,Mid Cap,135760992,JPY,
+3088.TSE,MatsukiyoCocokara,Japan,Mid Cap,139400992,JPY,
+4062.TSE,Ibiden,Japan,Mid Cap,139608000,JPY,
+4021.TSE,Nissan Chemical,Japan,Mid Cap,139979008,JPY,
+9468.TSE,Kadokawa,Japan,Mid Cap,140604000,JPY,
+3293.TWO,International Games System,Taiwan,Mid Cap,140900992,TWD,
+068270.KO,Celltrion,South Korea,Blue Chip,141922000,KRW,
+6988.TSE,Nitto Denko,Japan,Blue Chip,142928992,JPY,
+CHBAY,Chiba Bank,Japan,Mid Cap,144916000,USD,
+5947.TSE,Rinnai Corporation,Japan,Mid Cap,145275008,JPY,
+035420.KO,Naver,South Korea,Blue Chip,150564000,KRW,
+7013.TSE,IHI Corporation,Japan,Mid Cap,151288000,JPY,
+5105.TSE,Toyo Tire,Japan,Mid Cap,153939008,JPY,
+003550.KO,LG Corp,South Korea,Blue Chip,154586000,KRW,
+6965.TSE,Hamamatsu,Japan,Mid Cap,154852000,JPY,
+2267.TSE,Yakult,Japan,Blue Chip,156070000,JPY,
+4385.TSE,Mercari,Japan,Mid Cap,161652992,JPY,
+066570.KO,LG Electronics,South Korea,Blue Chip,162884992,KRW,
+7951.TSE,Yamaha,Japan,Mid Cap,168788992,JPY,
+009830.KO,Hanwha Solutions,South Korea,Mid Cap,169508992,KRW,
+5332.TSE,TOTO,Japan,Mid Cap,169592000,JPY,
+3632.TSE,Gree,Japan,Small Cap,173364992,JPY,
+HIMX,Himax,Taiwan,Small Cap,174400000,USD,
+6669.TW,Wiwynn,Taiwan,Mid Cap,174840992,TWD,
+9602.TSE,Toho Co.,Japan,Mid Cap,174916992,JPY,
+6180.TWO,Gamania Digital,Taiwan,Small Cap,175494000,TWD,
+032830.KO,Samsung Life Insurance,South Korea,Mid Cap,179575008,KRW,
+7936.TSE,ASICS Corporation,Japan,Mid Cap,183160000,JPY,
+6857.TSE,Advantest,Japan,Blue Chip,184214000,JPY,
+8354.TSE,Fukuoka Financial Group,Japan,Mid Cap,187707008,JPY,
+6702.TSE,Fujitsu,Japan,Blue Chip,188339008,JPY,
+4768.TSE,Otsuka,Japan,Mid Cap,189600992,JPY,
+9041.TSE,Kintetsu GHD,Japan,Mid Cap,190180000,JPY,
+2801.TSE,Kikkoman,Japan,Blue Chip,191279008,JPY,
+9048.TSE,Meitetsu,Japan,Mid Cap,196528992,JPY,
+9022.TSE,Central Japan Railway,Japan,Blue Chip,196799008,JPY,
+6645.TSE,Omron,Japan,Blue Chip,197427008,JPY,
+1590.TW,AirTAC International,Taiwan,Mid Cap,200000000,TWD,
+091810.KO,T‚Äôway Air,South Korea,Small Cap,200566000,KRW,
+035250.KO,Kangwon Land,South Korea,Mid Cap,202739008,KRW,
+9001.TSE,Tobu Railway,Japan,Mid Cap,206716000,JPY,
+9697.TSE,Capcom,Japan,Mid Cap,209112992,JPY,
+3141.TSE,Welcia Holdings,Japan,Mid Cap,209231008,JPY,
+6869.TSE,Sysmex,Japan,Blue Chip,209279008,JPY,
+6305.TSE,Hitachi Construction Machinery,Japan,Mid Cap,212648992,JPY,
+9735.TSE,Secom,Japan,Blue Chip,213012992,JPY,
+5301.TSE,Tokai Carbon,Japan,Small Cap,213195008,JPY,
+5201.TSE,AGC,Japan,Mid Cap,215500992,JPY,
+042660.KO,DSME (Daewoo Shipbuilding),South Korea,Mid Cap,216856992,KRW,
+8454.TW,momo.com Inc.,Taiwan,Mid Cap,218491008,TWD,
+3038.TSE,Kobe Bussan,Japan,Mid Cap,219108992,JPY,
+6460.TSE,Sega Sammy Holdings,Japan,Mid Cap,220744992,JPY,
+5929.TSE,Sanwa Holdings,Japan,Mid Cap,221015008,JPY,
+4927.TSE,Pola Orbis Holdings,Japan,Mid Cap,221232000,JPY,
+2768.TSE,Sojitz Corporation,Japan,Mid Cap,226232992,JPY,
+4613.TSE,Kansai Paint,Japan,Mid Cap,227564992,JPY,
+4527.TSE,Rohto Pharmaceutical,Japan,Mid Cap,228139008,JPY,
+4739.TSE,Itochu Techno-Solutions,Japan,Mid Cap,231075008,JPY,
+IX,ORIX,Japan,Blue Chip,233787008,USD,
+373220.KO,LG Energy Solution,South Korea,Blue Chip,234000000,KRW,
+6952.TSE,CASIO,Japan,Small Cap,236034000,JPY,
+003560.KO,IHQ,South Korea,Micro Cap,239696992,KRW,
+3626.TSE,TIS,Japan,Mid Cap,241798000,JPY,
+9042.TSE,Hankyu Hanshin Holdings,Japan,Mid Cap,242056000,JPY,
+6861.TSE,Keyence,Japan,Blue Chip,242526000,JPY,
+WF,Woori Financial Group,South Korea,Mid Cap,242686000,USD,
+9021.TSE,West Japan Railway,Japan,Blue Chip,243800992,JPY,
+7762.TSE,Citizen Watch,Japan,Small Cap,243807008,JPY,
+GGR,Gogoro,Taiwan,Small Cap,244195008,USD,
+9107.TSE,K Line,Japan,Mid Cap,247274000,JPY,
+9404.TSE,Nippon Television Holdings,Japan,Mid Cap,255083008,JPY,
+7912.TSE,Dai Nippon Printing,Japan,Mid Cap,255130000,JPY,
+8698.TSE,Monex Group,Japan,Small Cap,256364992,JPY,
+5076.TSE,INFRONEER Holdings,Japan,Mid Cap,261260992,JPY,
+6506.TSE,Yaskawa,Japan,Blue Chip,261470000,JPY,
+7453.TSE,Ryohin Keikaku,Japan,Mid Cap,263727008,JPY,
+4324.TSE,Dentsu,Japan,Mid Cap,264375008,JPY,
+6701.TSE,NEC Corp,Japan,Blue Chip,266348000,JPY,
+6586.TSE,Makita,Japan,Mid Cap,269343008,JPY,
+7259.TSE,Aisin Seiki,Japan,Mid Cap,269523008,JPY,
+7747.TSE,Asahi Intecc,Japan,Mid Cap,271625984,JPY,
+8473.TSE,SBI Holdings,Japan,Mid Cap,272415008,JPY,
+5713.TSE,Sumitomo Metal Mining,Japan,Mid Cap,274764992,JPY,
+2269.TSE,Meiji Holdings,Japan,Mid Cap,275500992,JPY,
+3291.TSE,Iida Group,Japan,Mid Cap,280379008,JPY,
+9962.TSE,MISUMI Group,Japan,Mid Cap,281827008,JPY,
+4912.TSE,Lion Corp,Japan,Mid Cap,284232000,JPY,
+5019.TSE,Idemitsu Kosan,Japan,Mid Cap,285824000,JPY,
+4523.TSE,Eisai,Japan,Blue Chip,286793984,JPY,
+086790.KO,Hana Financial Group,South Korea,Mid Cap,288016992,KRW,
+6367.TSE,Daikin,Japan,Blue Chip,292684992,JPY,
+4507.TSE,Shionogi,Japan,Blue Chip,294305984,JPY,
+7701.TSE,Shimadzu,Japan,Mid Cap,294671008,JPY,
+2002.TSE,Nisshin Seifun Group,Japan,Mid Cap,297379008,JPY,
+9914.TW,Merida Industry,Taiwan,Small Cap,298984000,TWD,
+3092.TSE,ZOZO,Japan,Mid Cap,299856992,JPY,
+PKX,POSCO,South Korea,Blue Chip,303504992,USD,
+9983.TSE,Fast Retailing,Japan,Blue Chip,306652000,JPY,
+2587.TSE,Suntory,Japan,Blue Chip,309000000,JPY,
+1860.TSE,TODA corp,Japan,Small Cap,309926016,JPY,
+6201.TSE,Toyota Industries,Japan,Blue Chip,310479008,JPY,
+9719.TSE,SCSK Corporation,Japan,Mid Cap,312300000,JPY,
+3635.TSE,Koei Tecmo,Japan,Mid Cap,315369984,JPY,
+6789.TW,VisEra Technologies,Taiwan,Mid Cap,315776992,TWD,
+7276.TSE,Koito Manufacturing,Japan,Mid Cap,321492992,JPY,
+7911.TSE,Toppan,Japan,Mid Cap,326420000,JPY,
+8630.TSE,Sompo Holdings,Japan,Blue Chip,332776992,JPY,
+7272.TSE,Yamaha Motor,Japan,Mid Cap,334643008,JPY,
+7011.TSE,Mitsubishi Heavy Industries,Japan,Blue Chip,335704992,JPY,
+NINOY,Nikon,Japan,Mid Cap,347696000,USD,
+8015.TSE,Toyota Tsusho,Japan,Blue Chip,351864992,JPY,
+6971.TSE,Kyocera,Japan,Blue Chip,353107008,JPY,
+7741.TSE,Hoya,Japan,Blue Chip,353572000,JPY,
+9064.TSE,Yamato Holdings,Japan,Mid Cap,359116000,JPY,
+9104.TSE,Mitsui O.S.K. Lines,Japan,Mid Cap,361750016,JPY,
+9007.TSE,Odakyu Electric Railway,Japan,Mid Cap,363379008,JPY,
+8309.TSE,Sumitomo Mitsui Trust Holdings,Japan,Blue Chip,363712992,JPY,
+7181.TSE,Japan Post Insurance,Japan,Mid Cap,366204000,JPY,
+4536.TSE,Santen Pharmaceutical,Japan,Mid Cap,369918016,JPY,
+9020.TSE,East Japan Railway,Japan,Blue Chip,376639008,JPY,
+6383.TSE,Daifuku,Japan,Mid Cap,378056992,JPY,
+6762.TSE,TDK,Japan,Blue Chip,379281984,JPY,
+3099.TSE,Isetan Mitsukoshi Holdings,Japan,Mid Cap,381911008,JPY,
+KB,KB Financial Group,South Korea,Blue Chip,384248000,USD,
+3532.TW,Formosa Sumco Technology,Taiwan,Mid Cap,387848000,TWD,
+SKM,SK Telecom,South Korea,Mid Cap,393644992,USD,
+000270.KO,Kia,South Korea,Blue Chip,395081984,KRW,
+4506.TSE,Sumitomo Dainippon Pharma,Japan,Small Cap,397292000,JPY,
+4911.TSE,Shiseido,Japan,Blue Chip,399548000,JPY,
+4901.TSE,Fujifilm,Japan,Blue Chip,401097984,JPY,
+6479.TSE,MinebeaMitsumi,Japan,Mid Cap,408380992,JPY,
+9532.TSE,Osaka Gas,Japan,Mid Cap,415680000,JPY,
+2327.TW,Yageo,Taiwan,Mid Cap,417468000,TWD,
+3105.TWO,WIN Semiconductors,Taiwan,Mid Cap,423940000,TWD,
+9531.TSE,Tōkyō Gas,Japan,Mid Cap,425406016,JPY,
+4204.TSE,Sekisui Chemical,Japan,Mid Cap,426539008,JPY,
+4091.TSE,Nippon Sanso,Japan,Mid Cap,432860992,JPY,
+6502.TSE,Toshiba,Japan,Blue Chip,432886016,JPY,
+6488.TWO,GlobalWafers,Taiwan,Mid Cap,435236992,TWD,
+9201.TSE,Japan Airlines,Japan,Mid Cap,437007008,JPY,
+035720.KO,Kakao,South Korea,Blue Chip,444983008,KRW,
+4452.TSE,Kaō,Japan,Blue Chip,464833984,JPY,
+8035.TSE,Tokyo Electron,Japan,Blue Chip,466875008,JPY,
+9202.TSE,ANA Holdings,Japan,Blue Chip,470462016,JPY,
+8830.TSE,Sumitomo Realty & Development,Japan,Blue Chip,473939008,JPY,
+323410.KO,KakaoBank,South Korea,Mid Cap,476235008,KRW,
+1812.TSE,Kajima,Japan,Mid Cap,482124992,JPY,
+7269.TSE,Suzuki Motor,Japan,Blue Chip,485097984,JPY,
+4528.TSE,Ono Pharmaceutical,Japan,Mid Cap,488334016,JPY,
+011200.KO,HMM,South Korea,Mid Cap,489039008,KRW,
+KT,KT Corporation,South Korea,Mid Cap,492836992,USD,
+3064.TSE,Monotaro,Japan,Mid Cap,496907008,JPY,
+9506.TSE,Tohoku Electric Power,Japan,Mid Cap,500012000,JPY,
+4751.TSE,CyberAgent,Japan,Mid Cap,506076992,JPY,
+2331.TSE,ALSOK,Japan,Mid Cap,506172992,JPY,
+2502.TSE,Asahi Group,Japan,Blue Chip,506672992,JPY,
+9101.TSE,Nippon Y≈´sen,Japan,Blue Chip,508174016,JPY,
+2379.TW,Realtek,Taiwan,Mid Cap,512863008,TWD,
+SHG,Shinhan Financial Group,South Korea,Blue Chip,518347008,USD,
+8697.TSE,Japan Exchange Group,Japan,Mid Cap,520432992,JPY,
+2802.TSE,Ajinomoto,Japan,Blue Chip,521760000,JPY,
+HYMTF,Hyundai,South Korea,Blue Chip,523849984,USD,
+028670.KO,Pan Ocean,South Korea,Mid Cap,534569984,KRW,
+8725.TSE,MS&AD Insurance,Japan,Blue Chip,534577984,JPY,
+4151.TSE,kyowa Kirin,Japan,Blue Chip,537472000,JPY,
+4578.TSE,Otsuka Holdings,Japan,Blue Chip,542633984,JPY,
+8795.TSE,T&D Holdings,Japan,Mid Cap,545262016,JPY,
+2207.TW,Hotai Motor,Taiwan,Blue Chip,546179008,TWD,
+2345.TW,Accton Technology,Taiwan,Mid Cap,557948992,TWD,
+6594.TSE,Nidec,Japan,Blue Chip,575073024,JPY,
+5411.TSE,JFE Holdings,Japan,Mid Cap,580944000,JPY,
+5483.TWO,Sino-American Silicon Products,Taiwan,Mid Cap,586222016,TWD,
+4307.TSE,Nomura Research Institute,Japan,Blue Chip,589827968,JPY,
+8113.TSE,Unicharm,Japan,Blue Chip,591464000,JPY,
+7532.TSE,Pan Pacific,Japan,Blue Chip,596563968,JPY,
+9005.TSE,Tokyu,Japan,Mid Cap,600320000,JPY,
+3034.TW,Novatek Microelectronics,Taiwan,Mid Cap,608512000,TWD,
+7752.TSE,Ricoh Company,Japan,Mid Cap,609075008,JPY,
+9143.TSE,SG Holdings,Japan,Mid Cap,628348032,JPY,
+6981.TSE,Murata Manufacturing (Murata Seisakusho),Japan,Blue Chip,629724032,JPY,
+7261.TSE,Mazda,Japan,Mid Cap,629963008,JPY,
+034020.KO,Doosan Enerbility,South Korea,Mid Cap,640465024,KRW,
+8046.TW,Nan Ya PCB,Taiwan,Mid Cap,646166016,TWD,
+6753.TSE,Sharp Corporation,Japan,Mid Cap,649273984,JPY,
+1928.TSE,Sekisui House,Japan,Blue Chip,652556032,JPY,
+1925.TSE,Daiwa House,Japan,Blue Chip,657072000,JPY,
+7832.TSE,Bandai Namco,Japan,Blue Chip,660049984,JPY,
+5108.TSE,Bridgestone,Japan,Blue Chip,684353024,JPY,
+000660.KO,SK Hynix,South Korea,Blue Chip,708217024,KRW,
+3289.TSE,Tokyu Fudosan Holdings,Japan,Mid Cap,709622976,JPY,
+LPL,LG Display,South Korea,Mid Cap,715630976,USD,
+1802.TSE,Obayashi,Japan,Mid Cap,716896000,JPY,
+2357.TW,ASUS,Taiwan,Mid Cap,742760000,TWD,
+4543.TSE,Terumo,Japan,Blue Chip,744608000,JPY,
+6902.TSE,Denso,Japan,Blue Chip,748822016,JPY,
+9502.TSE,Chubu Electric Power,Japan,Mid Cap,756142976,JPY,
+7270.TSE,Subaru,Japan,Blue Chip,758840000,JPY,
+3003.TSE,Hulic,Japan,Mid Cap,762105024,JPY,
+7202.TSE,Isuzu,Japan,Mid Cap,775134976,JPY,
+CHT,Chunghwa Telecom,Taiwan,Blue Chip,775745024,USD,
+2395.TW,Advantech,Taiwan,Blue Chip,778486976,TWD,
+5802.TSE,Sumitomo Denki K≈çgy≈ç,Japan,Mid Cap,779873024,JPY,
+024110.KO,Industrial Bank of Korea (IBK),South Korea,Mid Cap,797425984,KRW,
+2503.TSE,Kirin Holdings,Japan,Blue Chip,811793024,JPY,
+3659.TSE,Nexon,Japan,Blue Chip,854155008,JPY,
+8267.TSE,Aeon,Japan,Blue Chip,854844992,JPY,
+3382.TSE,7-Eleven,Japan,Blue Chip,883225024,JPY,
+9503.TSE,KEPCO,Japan,Blue Chip,892483968,JPY,
+5401.TSE,Nippon Steel,Japan,Blue Chip,920840000,JPY,
+8801.TSE,Mitsui Fudosan,Japan,Blue Chip,933502976,JPY,
+6501.TSE,Hitachi,Japan,Blue Chip,934174016,JPY,
+6301.TSE,Komatsu,Japan,Blue Chip,945593984,JPY,
+6954.TSE,Fanuc,Japan,Blue Chip,952918976,JPY,
+8750.TSE,Dai-ichi Life Holdings,Japan,Blue Chip,987188992,JPY,
+7751.TSE,Canon,Japan,Blue Chip,999128000,JPY,
+2912.TW,President Chain Store (PSCS),Taiwan,Mid Cap,1039619968,TWD,
+2501.TW,Cathay Real Estate Development,Taiwan,Small Cap,1159559936,TWD,
+7974.TSE,Nintendo,Japan,Blue Chip,1164230016,JPY,
+6326.TSE,Kubota,Japan,Blue Chip,1181069952,JPY,
+8053.TSE,Sumitomo,Japan,Blue Chip,1221580032,JPY,
+SONY,Sony,Japan,Blue Chip,1233980032,USD,
+7733.TSE,Olympus,Japan,Blue Chip,1253580032,JPY,
+KEP,Korea Electric Power,South Korea,Mid Cap,1283929984,USD,
+8802.TSE,Mitsubishi Estate,Japan,Blue Chip,1284009984,JPY,
+1605.TSE,Inpex,Japan,Blue Chip,1306899968,JPY,
+TM,Toyota,Japan,Blue Chip,1354819968,USD,
+3407.TSE,Asahi Kasei,Japan,Mid Cap,1386070016,JPY,
+9613.TSE,NTT Data,Japan,Blue Chip,1402489984,JPY,
+8058.TSE,Mitsubishi Corporation,Japan,Blue Chip,1415129984,JPY,
+4188.TSE,Mitsubishi Chemical Holdings,Japan,Mid Cap,1422099968,JPY,
+8601.TSE,Daiwa Securities Group,Japan,Mid Cap,1453059968,JPY,
+8001.TSE,Itōchū Shōji,Japan,Blue Chip,1455260032,JPY,
+9984.TSE,SoftBank,Japan,Blue Chip,1464039936,JPY,
+7211.TSE,Mitsubishi Motors,Japan,Mid Cap,1487849984,JPY,
+8031.TSE,Mitsui Bussan,Japan,Blue Chip,1515110016,JPY,
+3037.TW,Unimicron,Taiwan,Mid Cap,1523800064,TWD,
+8572.TSE,Acom,Japan,Mid Cap,1566610048,JPY,
+5871.TW,Chailease Holding,Taiwan,Blue Chip,1582909952,TWD,
+6098.TSE,Recruit,Japan,Blue Chip,1584220032,JPY,
+2454.TW,MediaTek,Taiwan,Blue Chip,1591800064,TWD,
+3402.TSE,Toray Industries,Japan,Mid Cap,1601020032,JPY,
+CPNG,Coupang,South Korea,Blue Chip,1604060032,USD,
+4005.TSE,Sumitomo Chemical,Japan,Mid Cap,1635369984,JPY,
+4661.TSE,Oriental Land,Japan,Blue Chip,1638089984,JPY,
+5347.TWO,Vanguard International Semiconductor,Taiwan,Mid Cap,1638979968,TWD,
+4519.TSE,Chugai Pharmaceutical,Japan,Blue Chip,1644320000,JPY,
+HMC,Honda,Japan,Blue Chip,1650269952,USD,
+2347.TW,Synnex Technology International,Taiwan,Mid Cap,1667949952,TWD,
+1434.TW,Formosa Taffeta,Taiwan,Small Cap,1682470016,TWD,
+8002.TSE,Marubeni,Japan,Blue Chip,1686640000,JPY,
+6723.TSE,Renesas Electronics,Japan,Blue Chip,1765200000,JPY,
+2914.TSE,Japan Tobacco,Japan,Blue Chip,1774850048,JPY,
+4503.TSE,Astellas Pharma,Japan,Blue Chip,1796760064,JPY,
+4568.TSE,Daiichi Sankyō,Japan,Blue Chip,1917340032,JPY,
+8766.TSE,Tokio Marine,Japan,Blue Chip,1984999936,JPY,
+4063.TSE,Shin-Etsu Chemical,Japan,Blue Chip,2017549952,JPY,
+6503.TSE,Mitsubishi Electric,Japan,Blue Chip,2108899968,JPY,
+2603.TW,Evergreen Marine,Taiwan,Blue Chip,2116419968,TWD,
+4755.TSE,Rakuten,Japan,Mid Cap,2135209984,JPY,
+ASX,ASE Group,Taiwan,Blue Chip,2150249984,USD,
+9433.TSE,KDDI,Japan,Blue Chip,2157309952,JPY,
+6752.TSE,Panasonic,Japan,Blue Chip,2334109952,JPY,
+4612.TSE,Nippon Paint,Japan,Blue Chip,2348430080,JPY,
+8308.TSE,Resona Holdings,Japan,Blue Chip,2361639936,JPY,
+UMC,United Microelectronics,Taiwan,Blue Chip,2500630016,USD,
+2308.TW,Delta Electronics,Taiwan,Blue Chip,2597540096,TWD,
+4938.TW,Pegatron,Taiwan,Mid Cap,2666650112,TWD,
+3231.TW,Wistron Corporation,Taiwan,Mid Cap,2794749952,TWD,
+2615.TW,Wan Hai Lines,Taiwan,Mid Cap,2806149888,TWD,
+3045.TW,Taiwan Mobile,Taiwan,Mid Cap,2820480000,TWD,
+2353.TW,Acer,Taiwan,Mid Cap,3001110016,TWD,
+5020.TSE,ENEOS Holdings,Japan,Blue Chip,3014569984,JPY,
+NMR,Nomura Holdings,Japan,Blue Chip,3048260096,USD,
+2408.TW,Nanya Technology,Taiwan,Mid Cap,3098040064,TWD,
+TAK,Takeda Pharmaceutical,Japan,Blue Chip,3109060096,USD,
+4904.TW,Far EasTone,Taiwan,Mid Cap,3258500096,TWD,
+6178.TSE,Japan Post Holdings,Japan,Blue Chip,3459810048,JPY,
+2609.TW,Yang Ming,Taiwan,Mid Cap,3492100096,TWD,
+1102.TW,Asia Cement,Taiwan,Mid Cap,3545929984,TWD,
+7182.TSE,Japan Post Bank,Japan,Blue Chip,3617530112,JPY,
+2382.TW,Quanta Computer,Taiwan,Blue Chip,3854520064,TWD,
+7201.TSE,Nissan,Japan,Blue Chip,3917360128,JPY,
+6770.TW,Powerchip Semiconductor Manufacturing,Taiwan,Mid Cap,4065649920,TWD,
+5876.TW,Shanghai Commercial and Savings Bank,Taiwan,Mid Cap,4850209792,TWD,
+TSM,Taiwan Semiconductor (TSMC),Taiwan,Blue Chip,5186400256,USD,
+1402.TW,Far Eastern New Century,Taiwan,Mid Cap,5352099840,TWD,
+2618.TW,EVA Air,Taiwan,Mid Cap,5369129984,TWD,
+2633.TW,Taiwan High Speed Rail,Taiwan,Mid Cap,5628290048,TWD,
+1326.TW,Formosa Chemicals & Fibre,Taiwan,Blue Chip,5849019904,TWD,
+1216.TW,Uni-President Enterprises,Taiwan,Blue Chip,5862009856,TWD,
+005930.KO,Samsung,South Korea,Blue Chip,5969780224,KRW,
+2610.TW,China Airlines,Taiwan,Mid Cap,6011460096,TWD,
+1301.TW,Formosa Plastics,Taiwan,Blue Chip,6365740032,TWD,
+SMFG,Sumitomo Mitsui Financial Group,Japan,Blue Chip,6670709760,USD,
+1101.TW,Taiwan Cement,Taiwan,Mid Cap,7132179968,TWD,
+4689.TSE,Z Holdings,Japan,Blue Chip,7530570240,JPY,
+1303.TW,Nan Ya Plastics,Taiwan,Blue Chip,7930820096,TWD,
+2834.TW,Taiwan Business Bank,Taiwan,Mid Cap,8029689856,TWD,
+3481.TW,Innolux,Taiwan,Mid Cap,9035650048,TWD,
+6505.TW,Formosa Petrochemical,Taiwan,Blue Chip,9525959680,TWD,
+2801.TW,Chang Hwa Commercial Bank,Taiwan,Mid Cap,10593500160,TWD,
+MUFG,Mitsubishi UFJ Financial,Japan,Blue Chip,12022299648,USD,
+2890.TW,Sinopac Financial Holdings,Taiwan,Mid Cap,12133799936,TWD,
+2881.TW,Fubon Financial,Taiwan,Blue Chip,12395200512,TWD,
+2885.TW,Yuanta Financial Holding,Taiwan,Mid Cap,12501600256,TWD,
+MFG,Mizuho Financial Group,Japan,Blue Chip,12671099904,USD,
+2887.TW,Taishin Financial Holdings,Taiwan,Mid Cap,13001100288,TWD,
+2892.TW,First Financial Holding,Taiwan,Blue Chip,13223400448,TWD,
+2880.TW,Hua Nan Financial Holdings,Taiwan,Mid Cap,13642699776,TWD,
+2317.TW,Foxconn (Hon Hai Precision Industry),Taiwan,Blue Chip,13861499904,TWD,
+2886.TW,MFHC,Taiwan,Blue Chip,13939800064,TWD,
+5880.TW,Taiwan Cooperative Financial,Taiwan,Blue Chip,14008899584,TWD,
+2882.TW,Cathay Financial Holding,Taiwan,Blue Chip,14669200384,TWD,
+2884.TW,E.SUN Bank,Taiwan,Blue Chip,15075099648,TWD,
+2888.TW,Shin Kong Financial Holding,Taiwan,Mid Cap,15487599616,TWD,
+2883.TW,China Development Financial,Taiwan,Mid Cap,16504699904,TWD,
+2891.TW,CTBC Financial Holding,Taiwan,Blue Chip,19583600640,TWD,
+NPPXF,NTT (Nippon Telegraph & Telephone),Japan,Blue Chip,85262196736,USD,
+2413.TSE,M3 Inc,Japan,Blue Chip,678921984,JPY
+4165.TSE,PLAID Inc.,Japan,Micro Cap,39185500,JPY
+4694.TSE,BML," Inc.",Japan,Small Cap,38642700,JPY

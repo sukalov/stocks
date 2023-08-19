@@ -1,0 +1,8 @@
+{
+    "crons": [
+      {
+        "path": "/api/update-everything",
+        "schedule": "1 0 * * *"
+      }
+    ]
+  }

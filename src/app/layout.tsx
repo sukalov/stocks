@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <ThemeProvider disableTransitionOnChange attribute="class" enableSystem={false} defaultTheme="light">
           <GlobalNav className="min-w-[300px]" />
-          <main className="mt-16 sm:px-8 md:px-16 min-w-[300px]">{children}</main>
+          <main className="mt-16 sm:px-8 md:px-16 min-w-[300px] relative">{children}</main>
         </ThemeProvider>
       </body>
     </html>

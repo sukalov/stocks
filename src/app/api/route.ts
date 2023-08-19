@@ -10,9 +10,9 @@ import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
 import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
+import getDividents from '@/lib/data-manipulations/get-dividents';
 
 export async function GET(request: Request) {
-
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
     const newData: Array<DataInitialPrices> = [];
     const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
@@ -211,7 +211,7 @@ export async function GET(request: Request) {
     const shares = lastElement.index_shares;
 
     lastElement.refactor = {
-      new_index: dataNew[0]!.index,
+      new_index: dataNew[0]!.index ?? 0,
       new_price: dataNew[0]!.share_price_usd,
       shares_removed: findUnique(shares, shares2)[0],
       shares_added: findUnique(shares, shares2)[1],
@@ -226,8 +226,8 @@ export async function GET(request: Request) {
         newDataTotal.push({
           date: el.date ?? '',
           price: el.share_price_usd,
-          index: el.index,
-          index_adjusted: el.index,
+          index: el.index ?? null,
+          index_adjusted: el.index ?? null,
           index_shares: shares2,
           refactor: null,
         });
@@ -309,78 +309,91 @@ export async function GET(request: Request) {
   // const res = await getIndexHistory(dataShareAdjusted, currenciesData)
   // const res = getInitialIndexDates()
   
-  // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-28');
+  // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
 
+  // const data2 = await csv.read('universe') as DataOnlySymbol[];
+  // const res = await getSharesOutstanding(data2, 'universe');
 
-
-  // const data2 = await csv.read('entertainment-100') as DataOnlySymbol[];
-  // const res = await getSharesOutstanding(data2, 'tech-100');
-
-  
-  //  ==============  REMOVE DUPLICATE INDICIES FROM DB ================
+  //  =====================  REMOVE DUPLICATE INDICIES FROM DB =====================
   // const data = await db.select().from(stocks_info)
   //   for (let index = 0; index < data.length; index++) {
   //     const element = data[index];
   //     await db.update(stocks_info).set({indicies: [...new Set(element.indicies)]}).where(eq(stocks_info.id, element.id))
   //   }
+  //===============================================================================
 
-    // const data2 = await csv.read('tech-100') as DataOnlySymbol[];
-    //   const topush = []
-    //   for (let i = 0; i < data2.length; i++) {
-    //     let element = data2[i]!;
-    //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
-        
-    //     if (search.length === 0) {
-    //       element.indicies = ['tech-100']
-    //       topush.push(element)
-    //     }
-    //     else {
-    //       console.log(search[0]?.indicies.concat(element.indicies))
-    //       const theId = search[0].id
-    //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
-    //   };}
-    //   if (topush.length > 0) await db.insert(stocks_info).values(topush)
-    //   topush.forEach(e => console.log(e));
+  // const indexName = 'semiconductors-25'
+  // const data2 = await csv.read(indexName) as DataOnlySymbol[];
+  //   const topush = []
+  //   for (let i = 0; i < data2.length; i++) {
+  //     let element = data2[i]!;
+  //     const search = await db.select().from(stocks_info).where(eq(stocks_info.symbol, element.symbol))
 
-    //================================  COMPARE DB WITH CSV  ========================================
-    // const indexName = 'cosmetics-15'
-    // const index = `"${indexName}"`
-    // const stocks = await db.select().from(stocks_info).where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`) as any[]
-    // const stockshere = await csv.read(indexName) as any[]
-    // const i1 = stocks.map(el => el.symbol)
-    // const i2 = stockshere.map(el => el.symbol)
-    // const arr = i2.filter(el => !i1.includes(el))
-    // console.log(i1.length, i2.length, arr);
-    
-    // await csv.write('entertainment-DB-RES', stocks)
+  //     if (search.length === 0) {
+  //       element.indicies = indexName
+  //       topush.push(element)
+  //     }
+  //     else {
+  //       console.log(search[0]?.indicies.concat(element.indicies))
+  //       const theId = search[0].id
+  //       await db.update(stocks_info).set({indicies: search[0]?.indicies.concat(element.indicies)}).where(eq(stocks_info.id, theId))
+  //   };}
+  //   if (topush.length > 0) {
+  //   // await db.insert(stocks_info).values(topush)
+  //   }
+  //   console.log('=============')
+  //   topush.forEach(e => console.log(e));
 
+  //================================  COMPARE DB WITH CSV  ========================================
+  // const indexName = 'semiconductors-25';
+  // const index = `"${indexName}"`;
+  // const stocks = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${index})`)) as any[];
+  // const stockshere = await csv.read(indexName) as any[]
+  // const i1 = stocks.map(el => el.symbol)
+  // const i2 = stockshere.map(el => el.symbol)
+  // const arr = i2.filter(el => !i1.includes(el))
+  // console.log(i1.length, i2.length, arr);
+  // await csv.write(`${indexName}_RESULT`, stocks)
+  //================================================================================================
 
-  // const indexName = 'video-75';
+  // const indexName = 'cosmetics-15';
   // const nameForSQL = `"${indexName}"`;
+  //   const stocks = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as any[];
   // const dataSharesOutstanding = (await db
   //   .select()
   //   .from(stocks_info)
   //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  // const currData = await db.select().from(currencies);
+  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
+  // // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
+  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
+
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-29', indexName);
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices)
   // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName)
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName))
   // await db.insert(adjustments).values(newAdjustments)
-  const res = await initialSteps();
+  // const res = await initialSteps();
 
-// const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
-  return new Response(JSON.stringify([]), {
+  const res = ['type one of four api\'s [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in']
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
-      'Content-Type': 'text/plain',
+      'Content-Type': 'text/json',
     },
   });
 }
