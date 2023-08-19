@@ -14,6 +14,7 @@ export const stocks_info = mysqlTable('stocks_info', {
   currency: text('currency'),
   country: text('country'),
   shares: bigint('shares', { mode: 'number' }),
+  market_cap: bigint('market_cap', { mode: 'number' }),
   cap_index: text('cap_index'),
   indicies: json('indicies'),
 });

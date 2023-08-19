@@ -82,19 +82,19 @@ interface CurrenciesPrice {
 
 interface IndexDay {
   date: string;
-  name: string,
-  adjustment: string,
-  index_price: number,
-  index: number,
-  total_return: number,
+  name: string | undefined;
+  adjustment: string | undefined;
+  index_price: number | undefined;
+  index: number | undefined;
+  total_return: number | undefined;
   [otherOptions: string]: any;
 }
 
 interface DataTotal {
   date: string;
-  index: number;
+  index: number | null;
   price: number;
-  index_adjusted: number;
+  index_adjusted: number | null;
   index_shares: string[];
   refactor: null | {
     new_index: number;

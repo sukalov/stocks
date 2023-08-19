@@ -1,0 +1,1 @@
+ALTER TABLE `stocks_info` ADD `market_cap` bigint;

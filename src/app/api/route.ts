@@ -211,7 +211,7 @@ export async function GET(request: Request) {
     const shares = lastElement.index_shares;
 
     lastElement.refactor = {
-      new_index: dataNew[0]!.index,
+      new_index: dataNew[0]!.index ?? 0,
       new_price: dataNew[0]!.share_price_usd,
       shares_removed: findUnique(shares, shares2)[0],
       shares_added: findUnique(shares, shares2)[1],
@@ -226,8 +226,8 @@ export async function GET(request: Request) {
         newDataTotal.push({
           date: el.date ?? '',
           price: el.share_price_usd,
-          index: el.index,
-          index_adjusted: el.index,
+          index: el.index ?? null,
+          index_adjusted: el.index ?? null,
           index_shares: shares2,
           refactor: null,
         });
@@ -359,17 +359,17 @@ export async function GET(request: Request) {
   // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
 
-  const indexName = 'cosmetics-15';
-  const nameForSQL = `"${indexName}"`;
-    const stocks = (await db
-    .select()
-    .from(stocks_info)
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as any[];
-  const dataSharesOutstanding = (await db
-    .select()
-    .from(stocks_info)
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  // const indexName = 'cosmetics-15';
+  // const nameForSQL = `"${indexName}"`;
+  //   const stocks = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as any[];
+  // const dataSharesOutstanding = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
@@ -377,16 +377,17 @@ export async function GET(request: Request) {
   //   .orderBy(adjustments.date);
   // // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28', indexName);
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
   // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName));
   // await db.insert(adjustments).values(newAdjustments);
 
-  const res = await getDividents(stocks, currData, '2022-12-31');
+  // const res = await getDividents(stocks, currData, '2022-12-31');
+  // const res = await initialSteps()
 
-  // const res = ['type one of three api\'s [stocks-info, adjustments, index] followed by the name of the index you are interested in']
+  const res = ['type one of four api\'s [stocks-info, adjustments, index, dividents] followed by the name of the index you are interested in']
   return new Response(JSON.stringify(res), {
     status: 200,
     headers: {

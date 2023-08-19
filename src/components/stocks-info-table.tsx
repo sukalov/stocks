@@ -189,7 +189,10 @@ export const columns: ColumnDef<StockInfo>[] = [
 export function StocksInfoTable({ data }: { data: StockInfo[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({
+    shares: false,
+    currency: false,
+  });
   const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
