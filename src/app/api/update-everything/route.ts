@@ -9,7 +9,9 @@ import { indexNames } from '@/lib/index-names';
 
 export async function GET(request: any, context: any) {
   initialSteps();
-  const indexName = String(indexNames[0])
+  let newData = [] as any[]
+  for (let i = 0; i < indexNames.length; i++) {
+    const indexName = String(indexNames[i]);
   const nameForSQL = `"${indexName}"`;
   const dataSharesOutstanding = (await db
     .select()
@@ -24,11 +26,14 @@ export async function GET(request: any, context: any) {
   const dataDividents = await getDividents(dataSharesOutstanding, currData, '2022-12-31');
 
   const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, dataDividents, indexName);
+  const indexHistory = getIndexHistory(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[]
+  newData = [...newData, ...indexHistory]
 
-  // await db.insert(indicies).values(indexHistory)
+  await db.delete(indicies).where(eq(indicies.name, indexName))
+  await db.insert(indicies).values(indexHistory)
+  }
 
-  return new Response(JSON.stringify(indexHistory), {
+  return new Response(JSON.stringify(newData), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
