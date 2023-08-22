@@ -46,6 +46,10 @@ export default function getIndexHistory(
         //   console.log(symbol, day[symbol], percents[symbol])
         //   console.log({day})
         // };
+        if (dataDividents[day.date] !== undefined && dataDividents[day.date]?.[symbol] !== undefined && percents[symbol] !== undefined) {
+          // console.log(day.date, symbol, dataDividents[day.date][symbol])
+          dividents += (dataDividents[day.date]?.[symbol] ?? 0) * percents[symbol];
+        }
       });
       basePercent = (index_price / baseIndexPrice) * basePercent;
       basePercentWithDividents = ((index_price + dividents) / baseIndexPrice) * basePercentWithDividents;
@@ -56,7 +60,7 @@ export default function getIndexHistory(
     let index_price = 0;
     Object.keys(percents).forEach((symbol) => {
       index_price += day[symbol] * percents[symbol];
-      if (dataDividents[day.date] !== undefined && dataDividents[day.date]?.[symbol] !== undefined) {
+      if (dataDividents[day.date] !== undefined && dataDividents[day.date]?.[symbol] !== undefined && percents[symbol] !== undefined) {
         // console.log(day.date, symbol, dataDividents[day.date][symbol])
         dividents += (dataDividents[day.date]?.[symbol] ?? 0) * percents[symbol];
       }
