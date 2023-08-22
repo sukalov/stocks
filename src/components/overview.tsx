@@ -56,16 +56,18 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
                     <span className="text-[.9rem] uppercase text-muted-foreground">DATE</span>
                     <span className="font-bold text-right">{payload[0]?.payload.name}</span>
                   </div>
-                  <Separator className='my-1'/>
+                  <Separator className="my-1" />
                   <div className=" grid grid-cols-2">
-                      <span className="text-[.9rem] uppercase text-muted-foreground">TOTAL RETURN</span>
-                      <span className="font-bold text-muted-foreground text-right">{payload[0]?.payload.total_return}</span>
-                      <span className="text-[.9rem] uppercase text-muted-foreground">
-                        {String(indexName.split('-').join(' ')).toUpperCase()}
-                      </span>
-                      <span className="font-bold text-right text-primary">{payload[0]?.value}</span>
-                    </div>
+                    <span className="text-[.9rem] uppercase text-muted-foreground">TOTAL RETURN</span>
+                    <span className="font-bold text-muted-foreground text-right">
+                      {payload[0]?.payload.total_return}
+                    </span>
+                    <span className="text-[.9rem] uppercase text-muted-foreground">
+                      {String(indexName.split('-').join(' ')).toUpperCase()}
+                    </span>
+                    <span className="font-bold text-right text-primary">{payload[0]?.value}</span>
                   </div>
+                </div>
               );
             }
 

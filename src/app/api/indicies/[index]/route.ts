@@ -7,9 +7,8 @@ import { stocks_info, currencies, adjustments, indicies } from '@/lib/db/schema'
 import { sql, eq } from 'drizzle-orm';
 
 export async function GET(request: any, context: any) {
-
   const indexName = context.params.index;
-  const indexHistory = await db.select().from(indicies).where(eq(indicies.name, indexName)).orderBy(indicies.date)
+  const indexHistory = await db.select().from(indicies).where(eq(indicies.name, indexName)).orderBy(indicies.date);
 
   return new Response(JSON.stringify(indexHistory), {
     status: 200,

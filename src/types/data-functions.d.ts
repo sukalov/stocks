@@ -69,8 +69,8 @@ interface DataShareAdjusted {
 
 interface DataDividents {
   [date: string]: {
-    [symbol: string]: number
-  }
+    [symbol: string]: number;
+  };
 }
 
 interface CurrenciesPrice {

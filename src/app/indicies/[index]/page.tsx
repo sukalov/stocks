@@ -6,7 +6,6 @@ import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
 export default function KpopIndex() {
-
   const pathname = usePathname();
   const indexName = pathname.split('/')[2] ?? '';
   const [data, setData] = useState<LineChartProps[]>([]);
@@ -14,13 +13,17 @@ export default function KpopIndex() {
 
   useEffect(() => {
     fetch(`/api/indicies/${indexName}`)
-    .then((res) => res.json() as Promise<IndexDay[]>)
-    .then((data) => {
+      .then((res) => res.json() as Promise<IndexDay[]>)
+      .then((data) => {
         setData(
           data.map((el: IndexDay) => {
             const date = new Date(el.date);
             const date2 = date.toISOString().slice(0, 10);
-            return { name: date2, index: Number(el.index).toFixed(2), total_return: Number(el.total_return).toFixed(2) };
+            return {
+              name: date2,
+              index: Number(el.index).toFixed(2),
+              total_return: Number(el.total_return).toFixed(2),
+            };
           })
         );
         setLoading(false);
@@ -37,7 +40,7 @@ export default function KpopIndex() {
 
   return (
     <div className="py-8 -ml-12">
-        <Overview data={data} indexName={indexName} />
+      <Overview data={data} indexName={indexName} />
     </div>
   );
 }

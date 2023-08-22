@@ -34,5 +34,5 @@ export const indicies = mysqlTable('indicies', {
   adjustment: date('adjustment'),
   index_price: float('index_price'),
   index: float('index'),
-  total_return: float('total_return')
-})
+  total_return: float('total_return'),
+});

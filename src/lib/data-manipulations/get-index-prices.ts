@@ -2,11 +2,7 @@ import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 import { getInitialIndexDates, addMissingValues } from '../utils';
 
-export default async function getIndexPrices(
-  data: DataSharesOutstanding[],
-  currenciesData: any[],
-  startDate: string
-) {
+export default async function getIndexPrices(data: DataSharesOutstanding[], currenciesData: any[], startDate: string) {
   try {
     const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
     const responses = await Promise.all(requests);
@@ -40,7 +36,7 @@ export default async function getIndexPrices(
 
     completeData.forEach((day: IndexDay, i: number) => {
       data.forEach((stock: DataSharesOutstanding) => {
-        day[stock.symbol] = toUSD(day[stock.symbol], stock.currency, day.date, currenciesData );
+        day[stock.symbol] = toUSD(day[stock.symbol], stock.currency, day.date, currenciesData);
       });
     });
 

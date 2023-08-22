@@ -16,7 +16,7 @@ export default function Home() {
               <Link href={`/api/stocks-info/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>info</Button>
               </Link>
-              <Link href={`/api/adjustments/${indexName}`} prefetch={false}>  
+              <Link href={`/api/adjustments/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>adjustments</Button>
               </Link>
               <Link href={`/api/indicies/${indexName}`} prefetch={false}>

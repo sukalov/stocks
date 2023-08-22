@@ -161,8 +161,7 @@ export const columns: ColumnDef<StockInfo>[] = [
     },
     cell: ({ row }) => {
       const market_cap = parseFloat(row.getValue('market_cap'));
-      const formatted =
-      new Intl.NumberFormat().format(market_cap)
+      const formatted = new Intl.NumberFormat().format(market_cap);
 
       return <div className="ml-4 w-24">{formatted}</div>;
     },

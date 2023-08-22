@@ -6,7 +6,6 @@ export default function getIndexHistory(
   dataDividents: DataDividents,
   indexName: any
 ) {
-
   while (new Date(dataIndexPrices[0].date) < new Date('2022-12-31')) {
     dataIndexPrices.shift();
   }
@@ -16,7 +15,14 @@ export default function getIndexHistory(
   let switchDay = false;
   let i = 0;
   let dividents = 0;
-  let indexHistory: { date: any; adjustment: any; index_price: number; index: number; name: string, total_return: number }[] = [];
+  let indexHistory: {
+    date: any;
+    adjustment: any;
+    index_price: number;
+    index: number;
+    name: string;
+    total_return: number;
+  }[] = [];
 
   dataIndexPrices.forEach((day: IndexDay, ind: number) => {
     const dayDate = new Date(day.date);
@@ -52,7 +58,7 @@ export default function getIndexHistory(
       index_price += day[symbol] * percents[symbol];
       if (dataDividents[day.date] !== undefined && dataDividents[day.date]?.[symbol] !== undefined) {
         // console.log(day.date, symbol, dataDividents[day.date][symbol])
-        dividents += (dataDividents[day.date]?.[symbol] ?? 0) * percents[symbol]
+        dividents += (dataDividents[day.date]?.[symbol] ?? 0) * percents[symbol];
       }
     });
     if (ind === 0 || switchDay) {

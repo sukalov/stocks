@@ -322,18 +322,17 @@ export async function GET(request: Request) {
   //   }
   //===============================================================================
 
-
   //========================  cap index, renames =====================
-  const data = await db.select().from(stocks_info)
-    for (let index = 0; index < data.length; index++) {
-      const element = data[index];
-      let capIndexName
-      const elMarketCap = element?.market_cap ?? 0;
-      if (elMarketCap > 10000000000) capIndexName = 'Blue Chip'
-      else if (elMarketCap > 250000000) capIndexName = 'Mid/Small Cap'
-      else capIndexName = null
-      await db.update(stocks_info).set({cap_index:  capIndexName}).where(eq(stocks_info.id, element!.id))
-    }
+  const data = await db.select().from(stocks_info);
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    let capIndexName;
+    const elMarketCap = element?.market_cap ?? 0;
+    if (elMarketCap > 10000000000) capIndexName = 'Blue Chip';
+    else if (elMarketCap > 250000000) capIndexName = 'Mid/Small Cap';
+    else capIndexName = null;
+    await db.update(stocks_info).set({ cap_index: capIndexName }).where(eq(stocks_info.id, element!.id));
+  }
   //===============================================================================
 
   // const indexName = 'semiconductors-25'
@@ -401,9 +400,9 @@ export async function GET(request: Request) {
   // const res = await getDividents(stocks, currData, '2022-12-31');
   // const res = await initialSteps()
 
-
-
-  const res = ['type one of four api\'s [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in']
+  const res = [
+    "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
+  ];
   return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
