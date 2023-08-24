@@ -24,7 +24,7 @@ export const initialSteps = async () => {
     for (let i = 0; i < stocks.length; i++) {
       const element = stocks[i];
       const sym = element?.symbol ?? '';
-      if (lastPrices[sym] !== null) {
+      if (lastPrices[sym] !== undefined && lastPrices[sym] !== null) {
         const newCap = lastPrices[sym] * element!.shares;
         // console.log(!isNaN(newCap) && element!.market_cap !== null, !isNaN(newCap), element!.market_cap)
         if (isNaN(newCap)) console.log(sym);

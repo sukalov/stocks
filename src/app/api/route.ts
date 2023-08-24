@@ -311,8 +311,6 @@ export async function GET(request: Request) {
 
   // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
 
-  // const data2 = await csv.read('universe') as DataOnlySymbol[];
-  // const res = await getSharesOutstanding(data2, 'universe');
 
   //  =====================  REMOVE DUPLICATE INDICIES FROM DB =====================
   // const data = await db.select().from(stocks_info)
@@ -371,6 +369,27 @@ export async function GET(request: Request) {
   // console.log(i1.length, i2.length, arr);
   // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
+  const currData = await db.select().from(currencies)
+  const errors = [];
+
+  let data2 = await csv.read('universe') as DataOnlySymbol[] as DataSharesOutstanding[]
+  for (let i = 0; i < data2.length; i++) {
+    const element = data2[i];
+    const prices = await get.historical(element!.symbol)
+    const currentPrice = prices.at(-1)
+    const usdPrice = toUSD(currentPrice!.adjusted_close, element!.currency, currentPrice!.date, currData)
+    element!.market_cap = Math.round(usdPrice * element!.shares)
+    const el = {
+      ...element,
+      name: String(element!.name),
+      symbol: element!.symbol
+    }
+    try {
+      await db.insert(stocks_info).values(el)
+    } catch (err) {
+      errors.push(err)
+    }//
+  }
 
   // const indexName = 'cosmetics-15';
   // const nameForSQL = `"${indexName}"`;
@@ -400,10 +419,12 @@ export async function GET(request: Request) {
   // const res = await getDividents(stocks, currData, '2022-12-31');
   // const res = await initialSteps()
 
+  console.log(errors[0])
+
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
   ];
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify({data: data2, errors: errors}), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
