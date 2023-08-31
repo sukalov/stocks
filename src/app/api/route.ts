@@ -243,7 +243,6 @@ export async function GET(request: Request) {
 
   // const res = await mainWIthGivenSharesOutstanding('cosmetics-15', '2022-12-29');
 
-
   //  =====================  REMOVE DUPLICATE INDICIES FROM DB =====================
   // const data = await db.select().from(stocks_info)
   //   for (let index = 0; index < data.length; index++) {
@@ -325,10 +324,8 @@ export async function GET(request: Request) {
 
   const indexName = 'mid-small-cap-250';
   const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding = (await db
-    .select()
-    .from(stocks_info)) as DataSharesOutstanding[];
-    // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  const dataSharesOutstanding = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
+  // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   const oldAdjustments = await db
     .select()
@@ -337,9 +334,9 @@ export async function GET(request: Request) {
     .orderBy(adjustments.date);
   // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
-  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
-  const newAdjustments = getCapAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
+  // const newAdjustments = getCapAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
 
   await db.delete(adjustments).where(eq(adjustments.index, indexName));
   await db.insert(adjustments).values(newAdjustments);
@@ -352,7 +349,7 @@ export async function GET(request: Request) {
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
   ];
-  return new Response(JSON.stringify(newAdjustments), {
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

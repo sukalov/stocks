@@ -32,9 +32,8 @@ export const initialSteps = async () => {
     //     // if (!isNaN(newCap)) await db.update(stocks_info).set({market_cap: newCap}).where(eq(stocks_info.symbol, sym))
     //   }
     // }
-  }
-  else {
-    data = await db.select().from(currencies).orderBy(currencies.date)
+  } else {
+    data = await db.select().from(currencies).orderBy(currencies.date);
   }
   return data;
 };

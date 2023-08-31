@@ -102,7 +102,7 @@ interface DataTotal {
     shares_added: string[];
     shares_removed: string[];
   };
-};
+}
 
 interface DataPrices {
   date: string;

@@ -30,7 +30,7 @@ export function addMissingValues(data: any) {
       const prevDay = newData[i - 1];
       if (prevDay !== undefined) {
         newObj[key] = obj[key] || newData[i - 1]![key];
-      } else if (obj[key] != null){
+      } else if (obj[key] != null) {
         newObj[key] = obj[key] || 0;
       } else {
         newObj[key] = 0;

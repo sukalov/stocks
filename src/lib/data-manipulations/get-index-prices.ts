@@ -2,11 +2,14 @@ import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 import { getInitialIndexDates, addMissingValues } from '../utils';
 
-export default async function getIndexPrices(data: DataSharesOutstanding[], currenciesData: any[], startDate: string): Promise<DataPrices[]> {
-
+export default async function getIndexPrices(
+  data: DataSharesOutstanding[],
+  currenciesData: any[],
+  startDate: string
+): Promise<DataPrices[]> {
   function timeout(ms: any) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
   try {
     const batchSize = 50;
@@ -14,15 +17,14 @@ export default async function getIndexPrices(data: DataSharesOutstanding[], curr
     const result: ResponseHistorical[][] = [];
 
     for (let i = 0; i < data.length; i += batchSize) {
-      await timeout(1000)
+      await timeout(1000);
       const batch = data.slice(i, i + batchSize);
       const batchRequests = batch.map((stock) => get.historicalAsync(stock.symbol, startDate));
       requests.push(batchRequests);
     }
 
     for (const batchRequests of requests) {
-      await timeout(1000)
-      console.log('1')
+      await timeout(1000);
       const batchResponses = await Promise.all(batchRequests);
       const errors = batchResponses.filter((response) => !response.ok);
 
@@ -65,5 +67,5 @@ export default async function getIndexPrices(data: DataSharesOutstanding[], curr
   } catch (error) {
     console.error(error);
   }
-  return []
+  return [];
 }

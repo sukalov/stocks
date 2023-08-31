@@ -11,7 +11,6 @@ export const indexNames: string[] = [
   'semiconductors-25',
 ];
 
-
 const indexNames2: string[] = [
   'blue-chips-150',
   'mid-small-cap-250',
