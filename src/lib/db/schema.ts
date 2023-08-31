@@ -36,3 +36,8 @@ export const indicies = mysqlTable('indicies', {
   index: float('index'),
   total_return: float('total_return'),
 });
+
+export const dividents = mysqlTable('dividents', {
+  date: date('date').notNull(),
+  dividents: json('dividents').notNull(),
+});

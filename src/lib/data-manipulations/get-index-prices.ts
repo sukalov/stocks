@@ -2,17 +2,38 @@ import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 import { getInitialIndexDates, addMissingValues } from '../utils';
 
-export default async function getIndexPrices(data: DataSharesOutstanding[], currenciesData: any[], startDate: string) {
-  try {
-    const requests = data.map((stock) => get.historicalAsync(stock.symbol, startDate));
-    const responses = await Promise.all(requests);
-    const errors = responses.filter((response: Response) => !response.ok);
+export default async function getIndexPrices(data: DataSharesOutstanding[], currenciesData: any[], startDate: string): Promise<DataPrices[]> {
 
-    if (errors.length > 0) {
-      throw errors.map((response: Response) => Error(response.statusText));
+  function timeout(ms: any) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
-    const json = responses.map((response: Response) => response.json());
-    const result = (await Promise.all(json)) as Array<ResponseHistorical[]>;
+
+  try {
+    const batchSize = 50;
+    const requests = [];
+    const result: ResponseHistorical[][] = [];
+
+    for (let i = 0; i < data.length; i += batchSize) {
+      await timeout(1000)
+      const batch = data.slice(i, i + batchSize);
+      const batchRequests = batch.map((stock) => get.historicalAsync(stock.symbol, startDate));
+      requests.push(batchRequests);
+    }
+
+    for (const batchRequests of requests) {
+      await timeout(1000)
+      console.log('1')
+      const batchResponses = await Promise.all(batchRequests);
+      const errors = batchResponses.filter((response) => !response.ok);
+
+      if (errors.length > 0) {
+        throw errors.map((response) => Error(response.statusText));
+      }
+
+      const batchJson = batchResponses.map((response) => response.json());
+      const batchResult = (await Promise.all(batchJson)) as ResponseHistorical[][];
+      result.push(...batchResult);
+    }
 
     const indexHistory = getInitialIndexDates(startDate) as any[];
 
@@ -44,4 +65,5 @@ export default async function getIndexPrices(data: DataSharesOutstanding[], curr
   } catch (error) {
     console.error(error);
   }
+  return []
 }

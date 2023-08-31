@@ -11,6 +11,8 @@ import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import getSharesOutstanding from '@/lib/data-manipulations/get-shares-outstanding';
 import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import getDividents from '@/lib/data-manipulations/get-dividents';
+import { getAdjustments } from '@/lib/data-manipulations/get-adjustments';
+import { getCapAdjustments } from '@/lib/data-manipulations/get-cap-adjustments';
 
 export async function GET(request: Request) {
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
@@ -101,76 +103,6 @@ export async function GET(request: Request) {
     const adjustmentDates = getQuarterlyStartDates('2022-12-29');
     const adjustmentDaysFull = indexPriceHistory.filter((day: any) => adjustmentDates.includes(day.date));
     return adjustmentDaysFull;
-  };
-
-  const getAdjustments = (dataForAdjustments: any, dataSharesOutstanding: any, indexName: any) => {
-    const indexVolume = Number(indexName.split('-')[1]);
-    const newAdjustments: any[] = [];
-    dataForAdjustments.forEach((adjDay: any) => {
-      const data = JSON.parse(JSON.stringify(dataSharesOutstanding)) as any[];
-      data.forEach((stock) => {
-        stock.MC = adjDay[stock.symbol] * stock.shares;
-      });
-      data.sort((a, b) => Number(b.MC) - Number(a.MC)).splice(indexVolume);
-
-      const totalMC = data.reduce((acc: number, current: DataSharesInitialDay) => {
-        if (current.MC) return acc + current.MC;
-        else return acc;
-      }, 0);
-
-      data.forEach((stock: DataSharesInitialDay, i: number) => {
-        stock.share = Number(stock.MC) / totalMC;
-        stock.share_adj = Number(stock.MC) / totalMC;
-      });
-
-      const dataCopy = JSON.parse(JSON.stringify(data)) as DataShareAdjusted[];
-      let remainingSUM = totalMC;
-      data.forEach((stock, i: number) => {
-        if (stock.share > 0.1) {
-          stock.share_adj = 0.1;
-          const remains = stock.MC - totalMC / 10; // то что надо раскидать по всем оставшимся акциям
-          remainingSUM -= stock.MC;
-          stock.MC = totalMC / 10;
-          data.forEach((el: DataSharesInitialDay, j: number) => {
-            if (j > i) {
-              const addition = (el.MC / remainingSUM) * remains;
-              el.MC = el.MC + addition;
-              el.share = el.MC / totalMC;
-            }
-          });
-          remainingSUM = remainingSUM + remains;
-        } else {
-          stock.share_adj = stock.share;
-        }
-      });
-
-      data.forEach((stock, i) => {
-        stock.MC = dataCopy[i]?.MC ?? 0;
-        stock.share = dataCopy[i]?.share ?? 0;
-      });
-
-      const adjustment = data.reduce((acc, current, i) => {
-        acc.capitalizations = acc?.capitalizations || {};
-        acc.original_percents = acc?.original_percents || {};
-        acc.percents = acc?.percents || {};
-
-        acc.capitalizations[current.symbol] = current.MC;
-        acc.original_percents[current.symbol] = current.share;
-        acc.percents[current.symbol] = current.share_adj;
-
-        return acc;
-      }, {});
-
-      const finalAdjustment = {
-        date: adjDay.date,
-        index: indexName,
-        ...adjustment,
-      };
-
-      newAdjustments.push(finalAdjustment);
-    });
-
-    return newAdjustments;
   };
 
   const mergeIndicies = (
@@ -369,62 +301,58 @@ export async function GET(request: Request) {
   // console.log(i1.length, i2.length, arr);
   // await csv.write(`${indexName}_RESULT`, stocks)
   //================================================================================================
-  const currData = await db.select().from(currencies)
-  const errors = [];
+  // const currData = await db.select().from(currencies)
+  // const errors = [];
 
-  let data2 = await csv.read('universe') as DataOnlySymbol[] as DataSharesOutstanding[]
-  for (let i = 0; i < data2.length; i++) {
-    const element = data2[i];
-    const prices = await get.historical(element!.symbol)
-    const currentPrice = prices.at(-1)
-    const usdPrice = toUSD(currentPrice!.adjusted_close, element!.currency, currentPrice!.date, currData)
-    element!.market_cap = Math.round(usdPrice * element!.shares)
-    const el = {
-      ...element,
-      name: String(element!.name),
-      symbol: element!.symbol
-    }
-    try {
-      await db.insert(stocks_info).values(el)
-    } catch (err) {
-      errors.push(err)
-    }//
-  }
+  // let data2 = await csv.read('universe') as DataOnlySymbol[] as DataSharesOutstanding[]
+  // for (let i = 0; i < data2.length; i++) {
+  //   const element = data2[i];
+  //   const prices = await get.historical(element!.symbol)
+  //   const currentPrice = prices.at(-1)
+  //   const usdPrice = toUSD(currentPrice!.adjusted_close, element!.currency, currentPrice!.date, currData)
+  //   element!.market_cap = Math.round(usdPrice * element!.shares)
+  //   const el = {
+  //     ...element,
+  //     name: String(element!.name),
+  //     symbol: element!.symbol
+  //   }
+  //   try {
+  //     await db.insert(stocks_info).values(el)
+  //   } catch (err) {
+  //     errors.push(err)
+  //   }//
+  // }
 
-  // const indexName = 'cosmetics-15';
-  // const nameForSQL = `"${indexName}"`;
-  //   const stocks = (await db
-  //   .select()
-  //   .from(stocks_info)
-  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as any[];
-  // const dataSharesOutstanding = (await db
-  //   .select()
-  //   .from(stocks_info)
-  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
-  // const oldAdjustments = await db
-  //   .select()
-  //   .from(adjustments)
-  //   .where(eq(adjustments.index, indexName))
-  //   .orderBy(adjustments.date);
-  // // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
+  const indexName = 'mid-small-cap-250';
+  const nameForSQL = `"${indexName}"`;
+  const dataSharesOutstanding = (await db
+    .select()
+    .from(stocks_info)) as DataSharesOutstanding[];
+    // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  const oldAdjustments = await db
+    .select()
+    .from(adjustments)
+    .where(eq(adjustments.index, indexName))
+    .orderBy(adjustments.date);
+  // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
-  // const newAdjustments = getAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
+  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
+  const newAdjustments = getCapAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
 
-  // await db.delete(adjustments).where(eq(adjustments.index, indexName));
-  // await db.insert(adjustments).values(newAdjustments);
+  await db.delete(adjustments).where(eq(adjustments.index, indexName));
+  await db.insert(adjustments).values(newAdjustments);
 
   // const res = await getDividents(stocks, currData, '2022-12-31');
   // const res = await initialSteps()
 
-  console.log(errors[0])
+  // console.log(errors[0])
 
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
   ];
-  return new Response(JSON.stringify({data: data2, errors: errors}), {
+  return new Response(JSON.stringify(newAdjustments), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

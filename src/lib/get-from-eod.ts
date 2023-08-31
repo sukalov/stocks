@@ -12,7 +12,7 @@ const fundamental = async (symbol: string): Promise<ResponseFundamental> => {
   return (await res.json()) as ResponseFundamental;
 };
 
-const historical = async (symbol: string, startDate?: string, endDate?: string): Promise<ResponseHistorical[]> => {
+const historical = async (symbol: string, startDate?: string, endDate?: string): Promise<ResponseHistorical> => {
   const from = startDate !== undefined ? `&from=${startDate}` : '';
   const to = endDate !== undefined ? `&to=${endDate}` : '';
   const link = `${url_eod}${symbol}?api_token=${process.env.EOD_API_KEY}${from}${to}&fmt=json`;
@@ -30,14 +30,14 @@ const fundamentalAsync = async (symbol: string): Promise<Response> => {
 const historicalAsync = async (symbol: string, startDate?: string): Promise<Response> => {
   const from = `&from=${startDate}` ?? '';
   const res = await fetch(`${url_eod}${symbol}?api_token=${process.env.EOD_API_KEY}${from}&fmt=json`);
-  if (!res.ok) throw new Error(res.url);
+  if (!res.ok) throw new Error(JSON.stringify(res.statusText));
   return res;
 };
 
 const dividentsAsync = async (symbol: string, startDate?: string): Promise<Response> => {
   const from = `&from=${startDate}` ?? '';
   const res = await fetch(`${url_div}${symbol}?api_token=${process.env.EOD_API_KEY}${from}&fmt=json`);
-  if (!res.ok) throw new Error('failed to fetch data from EOD');
+  if (!res.ok) throw new Error(JSON.stringify(res.statusText));
   return res;
 };
 
