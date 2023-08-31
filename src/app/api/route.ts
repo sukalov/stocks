@@ -338,8 +338,8 @@ export async function GET(request: Request) {
   // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
   // const newAdjustments = getCapAdjustments(dataForAdjustments, dataSharesOutstanding, indexName);
 
-  await db.delete(adjustments).where(eq(adjustments.index, indexName));
-  await db.insert(adjustments).values(newAdjustments);
+  // await db.delete(adjustments).where(eq(adjustments.index, indexName));
+  // await db.insert(adjustments).values(newAdjustments);
 
   // const res = await getDividents(stocks, currData, '2022-12-31');
   // const res = await initialSteps()
