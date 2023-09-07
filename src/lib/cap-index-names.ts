@@ -1,1 +1,1 @@
-export const capIndexNames: string[] = ['blue-chips-150', 'mid-small-cap-250'];
+export const capIndexNames: string[] = ['blue-chip-150', 'mid-small-cap-250'];

@@ -3,7 +3,7 @@ import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
-import { stocks_info, currencies, adjustments } from '@/lib/db/schema';
+import { stocks_info, currencies, adjustments, dividents } from '@/lib/db/schema';
 import { eq, gte, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
@@ -13,6 +13,10 @@ import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import getDividents from '@/lib/data-manipulations/get-dividents';
 import { getAdjustments } from '@/lib/data-manipulations/get-adjustments';
 import { getCapAdjustments } from '@/lib/data-manipulations/get-cap-adjustments';
+import { json } from 'd3';
+import getDividentsFromDB from '@/lib/data-manipulations/get-dividents-from-db';
+import getAllDataAsCSV from '@/lib/get-data-as-csv';
+import getIndexHistory2 from '@/lib/data-manipulations/get-index-history2';
 
 export async function GET(request: Request) {
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
@@ -322,9 +326,10 @@ export async function GET(request: Request) {
   //   }//
   // }
 
-  const indexName = 'mid-small-cap-250';
+  const indexName = 'kpop-25';
   const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
+  const dataSharesOutstanding = (await db.select().from(stocks_info)
+   ) as DataSharesOutstanding[];
   // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   const oldAdjustments = await db
@@ -332,6 +337,16 @@ export async function GET(request: Request) {
     .from(adjustments)
     .where(eq(adjustments.index, indexName))
     .orderBy(adjustments.date);
+  const divs = await db.select().from(dividents) as DividentsDB[]
+  const dataDivs = await getDividentsFromDB()
+
+  const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28') as IndexDay[]
+  const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
+
+
+// ================= export data as CSV for manual checking ===================
+// const res = getAllDataAsCSV(indexPrices, divs, oldAdjustments)
+
   // const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
 
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
@@ -346,13 +361,13 @@ export async function GET(request: Request) {
 
   // console.log(errors[0])
 
-  const res = [
-    "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
-  ];
-  return new Response(JSON.stringify(res), {
+  // const res = [
+    // "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
+  // ];
+  return new Response(JSON.stringify(indexHistory), {
     status: 200,
     headers: {
-      'Content-Type': 'text/json',
+      'Content-Type': 'text/json; charset=utf-8',
     },
   });
 }

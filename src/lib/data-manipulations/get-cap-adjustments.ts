@@ -6,6 +6,7 @@ export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding
     data2.forEach((stock) => {
       stock.MC = adjDay[stock.symbol] * stock.shares;
     });
+    // const data = data2.filter((el) => el.MC > 10000000000);
     const data = data2.filter((el) => el.MC < 10000000000 && el.MC > 250000000);
 
     data.sort((a, b) => Number(b.MC) - Number(a.MC)).splice(indexVolume);

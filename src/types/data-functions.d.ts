@@ -73,6 +73,13 @@ interface DataDividents {
   };
 }
 
+interface DividentsDB {
+  date: Date;
+  dividents: {
+    [ticker: string]: number
+  };
+}
+
 interface CurrenciesPrice {
   date: Date | string;
   KRW: number;
@@ -84,7 +91,6 @@ interface IndexDay {
   date: string;
   name: string | undefined;
   adjustment: string | undefined;
-  index_price: number | undefined;
   index: number | undefined;
   total_return: number | undefined;
   [otherOptions: string]: any;

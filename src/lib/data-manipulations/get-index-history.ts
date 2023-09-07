@@ -24,6 +24,8 @@ export default function getIndexHistory(
     total_return: number;
   }[] = [];
 
+  // return dataIndexPrices
+
   dataIndexPrices.forEach((day: IndexDay, ind: number) => {
     const dayDate = new Date(day.date);
     const today = new Date();
