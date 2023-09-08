@@ -326,22 +326,22 @@ export async function GET(request: Request) {
   //   }//
   // }
 
-  const indexName = 'kpop-25';
-  const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding = (await db.select().from(stocks_info)
-   ) as DataSharesOutstanding[];
-  // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
-  const oldAdjustments = await db
-    .select()
-    .from(adjustments)
-    .where(eq(adjustments.index, indexName))
-    .orderBy(adjustments.date);
-  const divs = await db.select().from(dividents) as DividentsDB[]
-  const dataDivs = await getDividentsFromDB()
+  // const indexName = 'kpop-25';
+  // const nameForSQL = `"${indexName}"`;
+  // const dataSharesOutstanding = (await db.select().from(stocks_info)
+  //  ) as DataSharesOutstanding[];
+  // // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  // const oldAdjustments = await db
+  //   .select()
+  //   .from(adjustments)
+  //   .where(eq(adjustments.index, indexName))
+  //   .orderBy(adjustments.date);
+  // const divs = await db.select().from(dividents) as DividentsDB[]
+  // const dataDivs = await getDividentsFromDB()
 
-  const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28') as IndexDay[]
-  const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
+  // const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28') as IndexDay[]
+  // const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
 
 
 // ================= export data as CSV for manual checking ===================
@@ -361,10 +361,10 @@ export async function GET(request: Request) {
 
   // console.log(errors[0])
 
-  // const res = [
-    // "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
-  // ];
-  return new Response(JSON.stringify(indexHistory), {
+  const res = [
+    "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
+  ];
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/json; charset=utf-8',
