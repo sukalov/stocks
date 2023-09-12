@@ -51,6 +51,7 @@ export async function GET(request: any, context: any) {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
+      'Cache-Control': 'no-store',
     },
   });
 }
