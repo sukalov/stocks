@@ -76,7 +76,7 @@ interface DataDividents {
 interface DividentsDB {
   date: Date;
   dividents: {
-    [ticker: string]: number
+    [ticker: string]: number;
   };
 }
 
@@ -113,4 +113,13 @@ interface DataTotal {
 interface DataPrices {
   date: string;
   [symbol: string]: number;
+}
+
+interface DataAdjustments {
+  id: number;
+  date: Date;
+  index: string;
+  capitalizations: { [symbol: string]: number };
+  original_percents: { [symbol: string]: number };
+  percents: { [symbol: string]: number };
 }

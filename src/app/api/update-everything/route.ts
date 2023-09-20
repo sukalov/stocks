@@ -9,6 +9,7 @@ import { sql, eq } from 'drizzle-orm';
 import { indexNames } from '@/lib/index-names';
 import { compareDates } from '@/lib/utils';
 import getIndexHistory2 from '@/lib/data-manipulations/get-index-history2';
+import { updateMarketCaps } from '@/lib/data-manipulations/update-market-caps';
 
 export async function GET(request: any, context: any) {
   await initialSteps();
@@ -19,6 +20,14 @@ export async function GET(request: any, context: any) {
   let a = [];
   const today = new Date();
   let newData = [] as any[];
+
+  const indexName = 'kpop-25';
+  const nameForSQL = `"${indexName}"`;
+  const dataSharesOutstanding2 = (await db
+    .select()
+    .from(stocks_info)
+    //  ) as DataSharesOutstanding[];
+    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
 
   const dataSharesOutstanding = (await db
     .select()
@@ -46,6 +55,8 @@ export async function GET(request: any, context: any) {
     await db.delete(indicies).where(eq(indicies.name, indexName));
     await db.insert(indicies).values(indexHistory);
   }
+
+  const test = await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
 
   return new Response(JSON.stringify(newData), {
     status: 200,

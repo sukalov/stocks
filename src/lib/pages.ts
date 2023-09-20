@@ -13,6 +13,11 @@ export const pages: Item[] = [
   {
     name: 'Indicies',
     slug: 'indicies',
-    description: 'Testing line chart for kpop-25 index',
+    description: 'Line charts for all indicies',
+  },
+  {
+    name: 'Admin',
+    slug: 'admin',
+    description: 'Admin dashboard for editing index composition',
   },
 ];
