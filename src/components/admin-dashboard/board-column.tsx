@@ -8,6 +8,7 @@ import { cva } from "class-variance-authority";
 import { Card, CardContent, CardHeader } from "../ui/card";
 import { Button } from "../ui/button";
 import { GripVertical } from "lucide-react";
+import { ScrollArea } from "../ui/scroll-area";
 
 export interface Column {
   id: UniqueIdentifier;
@@ -56,7 +57,7 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
   };
 
   const variants = cva(
-    "h-[500px] max-h-[500px] w-[350px] max-w-full bg-secondary flex flex-col flex-shrink-0 snap-center",
+    "w-[340px] h-[650px] bg-secondary flex flex-col gap-0 flex-shrink pb-4",
     {
       variants: {
         dragging: {
@@ -79,11 +80,19 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
       <CardHeader className="p-4 font-semibold border-b-2 text-left flex flex-row space-between items-center">
         <span className="ml-auto"> {column.title}</span>
       </CardHeader>
-      <CardContent className="flex flex-grow flex-col gap-4 p-2 overflow-y-auto overflow-x-hidden">
+      <CardContent className="flex flex-grow flex-col gap-2 px-2">
         <SortableContext items={tasksIds}>
-          {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
+         <ScrollArea className="h-[550px] w-full">
+          {tasks.map((task, i) => (
+            <div className='py-1' key={task.id}>
+              <TaskCard  task={task} index={i}/>
+            </div>
           ))}
+          {tasks.length === 0 && 
+          <div className="w-full py-8 text-center text-primary/50">
+            No stock in the list
+          </div>}
+          </ScrollArea>
         </SortableContext>
       </CardContent>
     </Card>

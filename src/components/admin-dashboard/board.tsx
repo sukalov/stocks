@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 import { BoardColumn, BoardContainer } from "./board-column";
@@ -23,6 +23,7 @@ import { type Task, TaskCard } from "./symbol-card";
 import type { Column } from "./board-column";
 import { hasDraggableData } from "./utils";
 import { coordinateGetter } from "./multipleContainersKeyboardPreset";
+import { ScrollArea } from "../ui/scroll-area";
 
 const defaultCols = [
   {
@@ -38,6 +39,22 @@ const defaultCols = [
 export type ColumnId = (typeof defaultCols)[number]["id"];
 
 export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
+
+    useEffect(() => {
+        setTasks(
+            Object.keys(adjustment.capitalizations).reduce((prev: any[], current: string, i: number) => {
+                const symbol: Task = {
+                        id: current,
+                        columnId: 'todo',
+                        symbol: current,
+                        market_cap: adjustment.capitalizations[current]!.toFixed(2),
+                    }
+                prev.push(symbol)
+                return prev
+              }, [])
+        )
+    }, [adjustment])
+
   const [columns, setColumns] = useState<Column[]>(defaultCols);
   const pickedUpTaskColumn = useRef<ColumnId | null>(null);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
@@ -54,17 +71,16 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
     })
   );
 
-  const initialTasks = Object.keys(adjustment.capitalizations).reduce((prev: any[], current: string, i: number) => {
-    const symbol = {
-        id: current,
-        columnId: 'todo',
-        content: `${current}  ${adjustment.capitalizations[current]?.toFixed(2)}`
-    }
+  const [tasks, setTasks] = useState<Task[]>(Object.keys(adjustment.capitalizations).reduce((prev: any[], current: string, i: number) => {
+    const symbol: Task = {
+            id: current,
+            columnId: 'todo',
+            symbol: current,
+            market_cap: adjustment.capitalizations[current]!.toFixed(2),
+        }
     prev.push(symbol)
     return prev
-  }, [])
-
-  const [tasks, setTasks] = useState<Task[]>(initialTasks);
+  }, []));
 
   function getDraggingTaskData(taskId: UniqueIdentifier, columnId: ColumnId) {
     const tasksInColumn = tasks.filter((task) => task.columnId === columnId);
@@ -93,7 +109,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
           pickedUpTaskColumn.current
         );
         return `Picked up Task ${
-          active.data.current.task.content
+          active.data.current.task.symbol
         } at position: ${taskPosition + 1} of ${
           tasksInColumn.length
         } in column ${column?.title}`;
@@ -120,7 +136,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
         );
         if (over.data.current.task.columnId !== pickedUpTaskColumn.current) {
           return `Task ${
-            active.data.current.task.content
+            active.data.current.task.symbol
           } was moved over column ${column?.title} in position ${
             taskPosition + 1
           } of ${tasksInColumn.length}`;
@@ -184,6 +200,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
     >
       <BoardContainer>
         <SortableContext items={columnsId}>
+            <div className="w-full flex flex-shrink gap-2 ">
           {columns.map((col) => (
             <BoardColumn
               key={col.id}
@@ -191,6 +208,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
               tasks={tasks.filter((task) => task.columnId === col.id)}
             />
           ))}
+          </div>
         </SortableContext>
       </BoardContainer>
 
@@ -206,7 +224,8 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
                 )}
               />
             )}
-            {activeTask && <TaskCard task={activeTask} isOverlay />}
+            
+            {activeTask && <TaskCard task={activeTask} isOverlay index={0}/>}
           </DragOverlay>,
           document.body
         )}

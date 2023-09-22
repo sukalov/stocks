@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import type { UniqueIdentifier } from "@dnd-kit/core";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -11,12 +12,14 @@ import { ColumnId } from "./board";
 export interface Task {
   id: UniqueIdentifier;
   columnId: ColumnId;
-  content: string;
+  symbol: string;
+  market_cap: string;
 }
 
 interface TaskCardProps {
   task: Task;
   isOverlay?: boolean;
+  index: number;
 }
 
 export type TaskType = "Task";
@@ -26,7 +29,7 @@ export interface TaskDragData {
   task: Task;
 }
 
-export function TaskCard({ task, isOverlay }: TaskCardProps) {
+export function TaskCard({ task, isOverlay, index }: TaskCardProps) {
   const {
     setNodeRef,
     attributes,
@@ -69,9 +72,18 @@ export function TaskCard({ task, isOverlay }: TaskCardProps) {
         dragging: isOverlay ? "overlay" : isDragging ? "over" : undefined,
       })}
     >
-      <CardContent className="px-3 pt-3 pb-3 text-left whitespace-pre-wrap">
+      <CardContent className="px-3 pt-3 pb-3 text-left whitespace-pre-wrap flex justify-start w-full items-baseline">
           <span className="sr-only">Move task</span>
-          {task.content}
+          <span className=" text-sm pr-2 text-primary/50 w-4">
+            {index + 1}.
+          </span>
+          <span className="font-bold ml-4 mr-2 w-28">
+            {task.symbol}
+          </span>
+          <span className="">
+            {task.market_cap}
+          </span>
+
       </CardContent>
     </Card>
   );

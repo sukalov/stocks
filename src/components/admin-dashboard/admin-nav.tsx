@@ -10,6 +10,7 @@ interface AdminNavProps {
 export default function AdminNav ({data, indexNames, functions}: AdminNavProps) {
     return (
         <div className="flex flex-wrap gap-2 justify-center w-full">
+            <div className="w-full"></div>
         {indexNames.map((index) => {
           return (
             <div key={index}>
@@ -26,7 +27,7 @@ export default function AdminNav ({data, indexNames, functions}: AdminNavProps) 
                         <DropdownMenuItem
                           key={el.date.toISOString()}
                           className="w-full flex justify-center"
-                          onClick={() => functions.selectAdj(el)}
+                          onClick={(event) => functions.selectAdj(el, event)}
                         >
                           {el.date.toISOString().slice(0, 10)}
                         </DropdownMenuItem>
