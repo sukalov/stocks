@@ -55,8 +55,8 @@ export async function GET(request: any, context: any) {
   //   await db.delete(indicies).where(eq(indicies.name, indexName));
   //   await db.insert(indicies).values(indexHistory);
   // }
-
-  // const test = await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
+ 
+  //  await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
 
   return new Response(JSON.stringify(newData), {
     status: 200,

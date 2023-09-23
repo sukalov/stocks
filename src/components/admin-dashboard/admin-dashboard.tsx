@@ -1,14 +1,6 @@
 'use client';
 
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '../ui/button';
 import { useEffect, useRef, useState } from 'react';
-import { DndContext, useDraggable, useDroppable } from '@dnd-kit/core';
 import AdminNav from './admin-nav';
 import { KanbanBoard } from './board';
 
@@ -66,7 +58,7 @@ export default function AdminDashboard({ adjustments,  }: AdminDashboardProps) {
             <h1 ref={ref} className="font-bold text-4xl pl-8 pt-24 capitalize">{selectedAdjustment?.index.split('-').join(' ')}</h1>
             <h2 className="pl-8 text-xl">{selectedAdjustment?.date.toISOString().slice(0, 10)}</h2>
             <div className=' py-8 w-full'>
-              <KanbanBoard adjustment={selectedAdjustment}/>
+              <KanbanBoard adjustment={selectedAdjustment} />
             </div>
           </div>
           :
@@ -74,7 +66,6 @@ export default function AdminDashboard({ adjustments,  }: AdminDashboardProps) {
             <h1 ref={ref} className='font-bold text-4xl pl-8 pt-24 capitalize"'></h1>
           </div>
         }
-        <footer> - </footer>
     </div>
   );
 }

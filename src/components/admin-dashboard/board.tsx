@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useRouter } from "next/router";
 
 import { BoardColumn, BoardContainer } from "./board-column";
 import {
@@ -18,6 +19,7 @@ import {
   TouchSensor,
   MouseSensor,
 } from "@dnd-kit/core";
+
 import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { type Task, TaskCard } from "./symbol-card";
 import type { Column } from "./board-column";
@@ -47,7 +49,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
                         id: current,
                         columnId: 'todo',
                         symbol: current,
-                        market_cap: adjustment.capitalizations[current]!.toFixed(2),
+                        market_cap: adjustment.capitalizations[current]!.toFixed(2)
                     }
                 prev.push(symbol)
                 return prev
@@ -71,7 +73,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
     })
   );
 
-  const [tasks, setTasks] = useState<Task[]>(Object.keys(adjustment.capitalizations).reduce((prev: any[], current: string, i: number) => {
+  const initialAdjustent = Object.keys(adjustment.capitalizations).reduce((prev: any[], current: string, i: number) => {
     const symbol: Task = {
             id: current,
             columnId: 'todo',
@@ -80,7 +82,21 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
         }
     prev.push(symbol)
     return prev
-  }, []));
+  }, [])
+
+  const [tasks, setTasks] = useState<Task[]>(initialAdjustent);
+  const [changeHappened, setChangeHappened] = useState<boolean>(false)
+  useEffect(() => {
+    let isIt = false
+    tasks.forEach(task => {
+        const initialTaskState = initialAdjustent.find(el => task.id === el.id)
+        if (initialTaskState?.columnId !== task.columnId) {
+            setChangeHappened(true)
+        isIt = true}
+    })
+    if (!isIt) setChangeHappened(false)
+
+  }, [initialAdjustent, tasks])
 
   function getDraggingTaskData(taskId: UniqueIdentifier, columnId: ColumnId) {
     const tasksInColumn = tasks.filter((task) => task.columnId === columnId);
@@ -189,6 +205,7 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
   };
 
   return (
+    <div>
     <DndContext
       accessibility={{
         announcements,
@@ -206,6 +223,8 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
               key={col.id}
               column={col}
               tasks={tasks.filter((task) => task.columnId === col.id)}
+              initialTasks={initialAdjustent}
+
             />
           ))}
           </div>
@@ -222,14 +241,22 @@ export function KanbanBoard({adjustment}: {adjustment: DataAdjustments}) {
                 tasks={tasks.filter(
                   (task) => task.columnId === activeColumn.id
                 )}
+                initialTasks={initialAdjustent}
               />
             )}
             
-            {activeTask && <TaskCard task={activeTask} isOverlay index={0}/>}
+            {activeTask && <TaskCard task={activeTask} isOverlay index={0} bg={false}/>}
           </DragOverlay>,
           document.body
         )}
     </DndContext>
+    <div>
+        {
+            changeHappened &&
+            <p>CHANGE HAPPENED</p>
+        }
+    </div>
+    </div>
   );
 
   function onDragStart(event: DragStartEvent) {

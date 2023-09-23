@@ -25,10 +25,11 @@ export interface ColumnDragData {
 interface BoardColumnProps {
   column: Column;
   tasks: Task[];
+  initialTasks: Task[];
   isOverlay?: boolean;
 }
 
-export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
+export function BoardColumn({ column, tasks, isOverlay, initialTasks }: BoardColumnProps) {
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
   }, [tasks]);
@@ -83,14 +84,17 @@ export function BoardColumn({ column, tasks, isOverlay }: BoardColumnProps) {
       <CardContent className="flex flex-grow flex-col gap-2 px-2">
         <SortableContext items={tasksIds}>
          <ScrollArea className="h-[550px] w-full">
-          {tasks.map((task, i) => (
+          {tasks.map((task, i) => {
+            const initialTaskState = initialTasks.find(el => task.id === el.id)
+            const bg = initialTaskState?.columnId === task.columnId
+            return (
             <div className='py-1' key={task.id}>
-              <TaskCard  task={task} index={i}/>
+              <TaskCard  task={task} index={i} bg={bg}/>
             </div>
-          ))}
+          )})}
           {tasks.length === 0 && 
           <div className="w-full py-8 text-center text-primary/50">
-            No stock in the list
+            No stocks in the list
           </div>}
           </ScrollArea>
         </SortableContext>
