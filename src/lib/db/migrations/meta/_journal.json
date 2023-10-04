@@ -29,6 +29,13 @@
       "when": 1693331237844,
       "tag": "0003_curved_jasper_sitwell",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1696084078107,
+      "tag": "0004_square_shocker",
+      "breakpoints": true
     }
   ]
 }

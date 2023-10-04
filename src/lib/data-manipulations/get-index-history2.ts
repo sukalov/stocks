@@ -8,6 +8,8 @@ export default function getIndexHistory2(
     dataIndexPrices.shift();
   }
 
+  // return dataIndexPrices
+
   let index = 100; // ex basePercent
   let index_prev = 100;
   let total_return = 100; // ex basePercentWithDividents

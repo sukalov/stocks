@@ -1,15 +1,17 @@
 export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding: any, indexName: any) {
   const indexVolume = Number(indexName.split('-').at(-1));
+  console.log(indexVolume);
   const newAdjustments: any[] = [];
   dataForAdjustments.forEach((adjDay: any) => {
-    const data2 = JSON.parse(JSON.stringify(dataSharesOutstanding)) as any[];
-    data2.forEach((stock) => {
+    let data = JSON.parse(JSON.stringify(dataSharesOutstanding)) as any[];
+    data.forEach((stock) => {
       stock.MC = adjDay[stock.symbol] * stock.shares;
     });
-    // const data = data2.filter((el) => el.MC > 10000000000);
-    const data = data2.filter((el) => el.MC < 10000000000 && el.MC > 250000000);
+    if (indexName === 'blue-chip-150') data = data.filter((el) => el.MC > 10000000000);
+    if (indexName === 'mid-small-cap-250') data = data.filter((el) => el.MC < 10000000000 && el.MC > 250000000);
 
     data.sort((a, b) => Number(b.MC) - Number(a.MC)).splice(indexVolume);
+    if (indexName === 'blue-chip-150') console.log(data);
 
     const totalMC = data.reduce((acc: number, current: DataSharesInitialDay) => {
       if (current.MC) return acc + current.MC;

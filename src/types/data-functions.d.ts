@@ -122,4 +122,5 @@ interface DataAdjustments {
   capitalizations: { [symbol: string]: number };
   original_percents: { [symbol: string]: number };
   percents: { [symbol: string]: number };
+  is_quartile: boolean;
 }

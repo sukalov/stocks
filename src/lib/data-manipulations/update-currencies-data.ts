@@ -15,7 +15,7 @@ export const initialSteps = async () => {
 
   let indexPrices = [];
   let data;
-  if (compareDates(today, last_date[0]!.date) === 1) {
+  if (true) {
     // === 1 means data needs to be updated
     data = await getCurrenencyPrices();
     // const currData = await db.select().from(currencies);

@@ -47,6 +47,7 @@ export default async function getIndexPrices(
     result.forEach((stockHistory: ResponseHistorical[], i: number) => {
       stockHistory.forEach((day) => {
         const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
+        if (data[i]?.symbol === '003560.KO') console.log(day.adjusted_close);
         indexHistory[destinationIndex] = {
           ...indexHistory[destinationIndex],
           date: indexHistory[destinationIndex]!.date,
@@ -56,6 +57,8 @@ export default async function getIndexPrices(
     });
 
     const completeData = addMissingValues(indexHistory);
+
+    // return {completeData, data, currenciesData}
 
     completeData.forEach((day: IndexDay, i: number) => {
       data.forEach((stock: DataSharesOutstanding) => {

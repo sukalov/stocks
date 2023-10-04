@@ -1,4 +1,4 @@
-import { mysqlTable, serial, text, date, json, bigint, float } from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, text, date, json, bigint, float, boolean } from 'drizzle-orm/mysql-core';
 
 export const currencies = mysqlTable('currencies', {
   date: date('date').primaryKey(),
@@ -26,6 +26,7 @@ export const adjustments = mysqlTable('adjustments', {
   capitalizations: json('capitalizations').notNull(),
   original_percents: json('original_percents').notNull(),
   percents: json('percents').notNull(),
+  is_quartile: boolean('is_quartile'),
 });
 
 export const indicies = mysqlTable('indicies', {
