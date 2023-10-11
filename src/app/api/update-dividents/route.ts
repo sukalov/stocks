@@ -7,17 +7,17 @@ export async function GET(req: Request) {
   const dataCurrencies = (await db.select().from(currencies)) as CurrenciesPrice[];
   const dataDividents = await getDividents(dataSharesOutstanding, dataCurrencies, '2022-12-29');
 
-  const divs: DividentsDB[] = [];
-  Object.keys(dataDividents).forEach((dateStr) => {
-    const date = new Date(dateStr);
-    const divDay = { date, dividents: dataDividents[dateStr] };
-    divs.push(divDay);
-  });
+  // const divs: DividentsDB[] = [];
+  // Object.keys(dataDividents).forEach((dateStr) => {
+  //   const date = new Date(dateStr);
+  //   const divDay = { date, dividents: dataDividents[dateStr] };
+  //   divs.push(divDay);
+  // });
 
-  await db.delete(dividents);
-  await db.insert(dividents).values(divs);
+  // await db.delete(dividents);
+  // await db.insert(dividents).values(divs);
 
-  return new Response(JSON.stringify(divs), {
+  return new Response(JSON.stringify('endpoint suspended'), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',

@@ -6,14 +6,13 @@ export async function GET(request: Request) {
 
   let res = '';
   for (let i in adjes) {
-    let thisAdj = adjes[i]
+    let thisAdj: any = adjes[i]
     let arr: [string, unknown][] = [];
-  Object.entries(thisAdj).forEach((element, i) => {
+  Object.entries(thisAdj).forEach((element: any, i) => {
     if (typeof element[1] !== 'object') {
       arr.push(element);
     } else {
-      console.log(element);
-      const newIter = Object.entries(element[1]);
+      const newIter = Object.entries(element![1]);
       newIter.forEach((el) => {
         el[0] = `${el[0]}-${element[0]}`;
         arr.push(el);
