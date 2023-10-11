@@ -10,6 +10,19 @@ interface DataSharesOutstanding extends d3.DSVRowString {
   [otherOptions: string]: unknown;
 }
 
+interface StocksInfo {
+  id: number;
+  symbol: string;
+  name: string;
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
+  country: 'Japan' | 'Taiwan' | 'South Korea';
+  shares: number;
+  market_cap: number;
+  cap_index: 'Blue Chip' | 'Mid/Small Cap' | null;
+  indicies: Array<string>;
+  is_delisted: boolean;
+}
+
 interface DataInitialPrices extends d3.DSVRowString {
   symbol: string;
   initial_price: number;

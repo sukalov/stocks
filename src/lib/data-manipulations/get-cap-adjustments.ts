@@ -11,7 +11,6 @@ export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding
     if (indexName === 'mid-small-cap-250') data = data.filter((el) => el.MC < 10000000000 && el.MC > 250000000);
 
     data.sort((a, b) => Number(b.MC) - Number(a.MC)).splice(indexVolume);
-    if (indexName === 'blue-chip-150') console.log(data);
 
     const totalMC = data.reduce((acc: number, current: DataSharesInitialDay) => {
       if (current.MC) return acc + current.MC;
@@ -61,6 +60,7 @@ export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding
       return acc;
     }, {});
 
+    console.log({indexName, date: adjDay.date})
     const finalAdjustment = {
       date: adjDay.date,
       index: indexName,

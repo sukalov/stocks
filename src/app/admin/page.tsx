@@ -7,8 +7,8 @@ import { gt } from 'drizzle-orm';
 import { FormEvent } from 'react';
 
 export default async function Admin() {
-  const date: any = new Date()
-  const adjustmentsData = await db.select().from(adjustments).where(gt(date, adjustments.date)) as DataAdjustments[];
+  const date: any = new Date();
+  const adjustmentsData = (await db.select().from(adjustments).where(gt(date, adjustments.date))) as DataAdjustments[];
 
   const handleSubmit = async (e: FormData) => {
     'use server';

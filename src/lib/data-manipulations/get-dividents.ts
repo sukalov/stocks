@@ -7,16 +7,35 @@ export default async function getDividents(
   currencies: CurrenciesPrice[],
   startDate: string
 ) {
-  try {
-    const requests = data.map((stock) => get.dividentsAsync(stock.symbol, startDate));
-    const responses = await Promise.all(requests);
-    const errors = responses.filter((response: Response) => !response.ok);
+  function timeout(ms: any) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 
-    if (errors.length > 0) {
-      throw errors.map((response: Response) => Error(response.statusText));
+  try {
+    const batchSize = 1000;
+    const requests = [];
+    const result: ResponseDividents[][] = [];
+
+    for (let i = 0; i < data.length; i += batchSize) {
+      await timeout(500);
+      const batch = data.slice(i, i + batchSize);
+      const batchRequests = batch.map((stock) => get.dividentsAsync(stock.symbol, startDate));
+      requests.push(batchRequests);
     }
-    const json = responses.map((response: Response) => response.json());
-    const result = (await Promise.all(json)) as Array<ResponseDividents[]>;
+
+    for (const batchRequests of requests) {
+      await timeout(500);
+      const batchResponses = await Promise.all(batchRequests);
+      const errors = batchResponses.filter((response) => !response.ok);
+
+      if (errors.length > 0) {
+        throw errors.map((response) => Error(response.statusText));
+      }
+
+      const batchJson = batchResponses.map((response) => response.json());
+      const batchResult = (await Promise.all(batchJson)) as ResponseDividents[][];
+      result.push(...batchResult);
+    }
 
     let newData: any[] = [];
     result.forEach((divs, i) => {

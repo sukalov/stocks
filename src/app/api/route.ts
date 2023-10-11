@@ -4,7 +4,7 @@ import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments, dividents } from '@/lib/db/schema';
-import { eq, gte, sql } from 'drizzle-orm';
+import { eq, gte, isNull, ne, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
@@ -330,21 +330,21 @@ export async function GET(request: Request) {
 
   // const indexName = 'video-75';
   // const nameForSQL = `"${indexName}"`;
-  // const dataSharesOutstanding = (await db
-  //   .select()
-  //   .from(stocks_info)
-  //    ) as DataSharesOutstanding[];
-  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  const dataSharesOutstanding = (await db
+    .select()
+    .from(stocks_info)
+    //  ) as StocksInfo[];
+    .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
+  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
   // const divs = (await db.select().from(dividents)) as DividentsDB[];
-  // const dataDivs = await getDividentsFromDB();
+  const dataDivs = await getDividentsFromDB();
 
-  // const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28') as IndexDay[]
+  const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
   // const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
 
   // ================= export data as CSV for manual checking ===================
@@ -352,38 +352,46 @@ export async function GET(request: Request) {
 
   // const stocks = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
 
-  // const result: any = []
-  // for (let i in indexNames) {
-  //   const name = indexNames[i] as string
-  //   console.log(name)
-  //   const nameForSQL = `"${name}"`;
-  //   const dataSharesOutstanding = (await db
-  //     .select()
-  //     .from(stocks_info)
-  //     //  ) as DataSharesOutstanding[];
-  //     .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
-  //   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
-  //   const oldAdjustments = await db
-  //     .select()
-  //     .from(adjustments)
-  //     .where(eq(adjustments.index, name))
-  //     .orderBy(adjustments.date);
-  //   const divs = (await db.select().from(dividents)) as DividentsDB[];
-  //   const dataDivs = await getDividentsFromDB();
+  let result: any = {};
+  for (let i in indexNames) {
+    const name = indexNames[i] as string;
+    console.log(name);
+    const oldAdjustments = await db
+      .select()
+      .from(adjustments)
+      .where(eq(adjustments.index, name))
+      .orderBy(adjustments.date);
 
-  // let dataIndexPrices
-  // if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  // else {
-  //   dataIndexPrices = indexPrices
-  //   console.log(dataIndexPrices)
-  // }
-  // const dataForAdjustments = getDataForAdjustments(dataIndexPrices);
-  // console.log({name})
-  // const newAdjustments = getCapAdjustments(dataForAdjustments, dataSharesOutstanding, name);
-  // result.push(newAdjustments)
+    let dataSharesOutstandingFiltered = dataSharesOutstanding;
+    if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
+      dataSharesOutstandingFiltered = dataSharesOutstandingFiltered.filter((stock) => {
+        if (stock.indicies) return stock.indicies.includes(name);
+        else return false;
+      });
+    }
 
-  // await db.insert(adjustments).values(newAdjustments);
-  // }
+    const dataForAdjustments = getDataForAdjustments(indexPrices) as any[]; //=========================================
+
+    let dataForAdjustmentsFiltered = dataForAdjustments;
+    if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
+      dataForAdjustmentsFiltered = dataForAdjustments.reduce((prev, curr) => {
+        let filteredData: any = {};
+        Object.keys(curr).forEach((symbol) => {
+          if (symbol === 'date') filteredData[symbol] = curr[symbol]
+          else {
+            const stockInfoIndex = dataSharesOutstandingFiltered.findIndex((stock) => stock.symbol === symbol);
+            if (stockInfoIndex >= 0) filteredData[symbol] = curr[symbol];
+          }
+        });
+        return [...prev, filteredData];
+      }, []);
+    }
+
+    const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
+    result[name] = newAdjustments;
+
+    // await db.insert(adjustments).values(newAdjustments);
+  }
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName));
 
@@ -392,21 +400,44 @@ export async function GET(request: Request) {
 
   // console.log(errors[0])
 
-  // const resFromMainCollectingSharesOutstanding = await mainCollectingSharesOutstanding('JAKOTA_revised7', '2022-12-29')
+  // const resFromMainCollectingSharesOutstanding = await mainCollectingSharesOutstanding('JAKOTA_revised8', '2022-12-29')
 
-  // const revised = await csv.read('JAKOTA_revised')
-  // const revised_EOD = await csv.read('JAKOTA_revised_step1')
-  // const total = revised_EOD.filter((el: any) => {
-  //   const i  = stocks.findIndex((el2: any) => el2.symbol === el.symbol)
-  //   return (i < 0)
+  // const revised = await csv.read('addition_FINAL1')
+  // // const revised_EOD = await csv.read('JAKOTA_revised_step1')
+  // const total = revised.map((el: any) => {
+  //   let newEl = {...el}
+  //   newEl.indicies = JSON.parse(el.indicies)
+  //   newEl.shares = Number(el.shares)
+  //   return newEl
   // })
 
-  // await csv.write('JAKOTA_filtered', total)
+  // await csv.write('JAKOTA_revised8', total)
+
+  //   async function processArrayInBatches(array: any) {
+  //     console.log('initial', array.length)
+  // let counter = 0
+  //     const batchSize = 100;
+  //     const totalBatches = Math.ceil(array.length / batchSize);
+
+  //     for (let i = 0; i < totalBatches; i++) {
+  //       const start = i * batchSize;
+  //       const end = start + batchSize;
+  //       const batch = array.slice(start, end);
+  //       counter += batch.length
+
+  //       await db.insert(stocks_info).values(batch)
+  //       console.log(counter, 'done')
+  //     }
+
+  //     console.log('final', counter)
+  //   }
+
+  // await processArrayInBatches(total)
 
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
   ];
-  return new Response(JSON.stringify(res), {
+  return new Response(JSON.stringify(result), {
     status: 200,
     headers: {
       'Content-Type': 'text/json; charset=utf-8',

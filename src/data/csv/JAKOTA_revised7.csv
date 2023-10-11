@@ -1,63 +1,60 @@
-name,symbol,country,industry,Market Capitalization,Total Revenue ,Shares Outstanding (mm)
-Airoha Technology Corp. ,6526.TWO,Taiwan,Semiconductors,2571,458,146
-STARLUX Airlines Co. Ltd. ,2646.TWO,Taiwan,Passenger Airlines,1524,405,2089
-FADU Inc. ,440110.KQ,South Korea,Semiconductors,1271,48,49
-Caliway Biopharmaceuticals Co. Ltd. ,6919.TWO,Taiwan,Pharmaceuticals,869,1,62
-Okaya & Co. Ltd. ,7485.NSE,Japan,Steel,792,7199,10
-Cathay No.1 REIT (01002.TW),01002.TW,Taiwan,Diversified REITs,772,25,1393
-Shin Kong No. 1 REIT (01003.TW),01003.TW,Taiwan,Diversified REITs,764,25,1130
-Century Wind Power Co. Ltd. ,2072.TWO,Taiwan,Construction and Engineering,697,121,120
-Advanced Echem Materials Company Limited ,4749.TWO,Taiwan,Semiconductors,675,81,81
-Gongwin Biopharm Holdings Co. Ltd. ,6617.TWO,Taiwan,Biotechnology,672,0,113
-Handa Pharmaceuticals Inc. ,6620.TWO,Taiwan,Pharmaceuticals,670,23,140
-Infinite Finance Co. Ltd. ,6958.TWO,Taiwan,Specialized Finance,584,214,351
-Fositek Corp. ,6805.TWO,Taiwan,Electronic Components,580,148,61
-TRYT Inc. ,9164.TSE,Japan,Human Resource and Employment Services,541,341,103
-GENDA Inc. ,9166.TSE,Japan,Leisure Facilities,536,354,34
-King's Town Millerful No.1 Real Estate Investment Trust (01010.TW),01010.TW,Taiwan,Diversified REITs,515,30,1658
-Philenergy Co. Ltd. ,378340.KQ,South Korea,Electrical Components and Equipment,504,179,21
-CUC Inc. ,9158.TSE,Japan,Health Care Services,479,226,30
-CHO Pharma Inc. ,6586.TWO,Taiwan,Pharmaceuticals,467,0,184
-Ever Supreme Bio Technology Co. Ltd ,6712.TWO,Taiwan,Biotechnology,466,20,75
-Farglory Life Insurance Co. Ltd. ,5859.TWO,Taiwan,Life and Health Insurance,465,1840,1255
-GI Innovation Inc. ,358570.KQ,South Korea,Biotechnology,431,3,22
-Cashbox Partyworld Co. Ltd. ,8359.TWO,Taiwan,Movies and Entertainment,421,121,137
-Tigerair Taiwan Co. Ltd. ,6757.TW,Taiwan,Passenger Airlines,420,208,449
-Amita Technologies Inc. ,5233.TWO,Taiwan,Electrical Components and Equipment,406,41,277
-Vizionfocus Inc. ,4771.TWO,Taiwan,Health Care Supplies,391,68,53
-SuperAlloy Industrial Co. Ltd. ,1563.TWO,Taiwan,Automotive Parts and Equipment,389,217,214
-Cathay No.2 REIT (01007.TW),01007.TW,Taiwan,Office REITs,384,16,720
-Skytech Inc. ,6937.TWO,Taiwan,Semiconductor Materials and Equipment,373,59,61
-HD Renewable Energy Co. Ltd. ,6873.TW,Taiwan,Renewable Electricity,349,192,100
-Manyo Factory Co. Ltd ,439090.KQ,South Korea,Personal Care Products,344,81,16
-ALMAC Co. Ltd. ,354320.KQ,South Korea,Automotive Parts and Equipment,342,167,6
-PlayNitride Inc. ,6854.TW,Taiwan,Semiconductors,340,18,107
-Acer E-Enabling Service Business Inc. ,6811.TWO,Taiwan,IT Consulting and Other Services,332,242,41
-ABEJA Inc. ,5574.TSE,Japan,Application Software,328,14,9
-BRIM Biotechnology Inc. ,6885.TWO,Taiwan,Biotechnology,324,-,138
-Pharmosa Biopharm Inc. ,6875.TWO,Taiwan,Biotechnology,320,-,117
-Lumosa Therapeutics Co. Ltd. ,6535.TWO,Taiwan,Pharmaceuticals,316,1,163
-Fubon No.2 Real Estate Investment Trust (01004.TW),01004.TW,Taiwan,Office REITs,310,17,730
-Taiwan Speciality Chemicals Corporation ,4772.TWO,Taiwan,Specialty Chemicals,310,14,138
-TEMC Co. Ltd. ,425040.KQ,South Korea,Semiconductor Materials and Equipment,308,283,11
-Motrex Co. Ltd ,118990.KQ,South Korea,Automotive Parts and Equipment,302,470,24
-Neuromeka Co.Ltd. ,348340.KQ,South Korea,Industrial Machinery and Supplies and Components,302,7,10
-Gus Technology Co. Ltd. ,6940.TWO,Taiwan,Electrical Components and Equipment,293,1,214
-Analog Integrations Corporation ,6291.TWO,Taiwan,Semiconductors,288,52,42
-EuBiologics Co. Ltd. ,206650.KQ,South Korea,Biotechnology,283,47,36
-PSS Co.Ltd. ,6914.TWO,Taiwan,Electronic Equipment and Instruments,283,123,60
-Mercury Biopharmaceutical Corporation ,6932.TWO,Taiwan,Pharmaceuticals,278,0,416
-CHUNGTAI RESOURCE Technology CORP. ,6923.TWO,Taiwan,Environmental and Facilities Services,277,34,83
-Alar Pharmaceuticals Inc. ,6785.TWO,Taiwan,Pharmaceuticals,277,0,57
-Ever Fortune.AI Co. Ltd. ,6841.TWO,Taiwan,Health Care Technology,271,2,89
-Taiwan Puritic Corp. ,6826.TWO,Taiwan,Semiconductor Materials and Equipment,270,494,61
-Jiu Han System Technology Co. Ltd. ,6903.TWO,Taiwan,Construction and Engineering,264,114,61
-Mega Union Technology Inc. ,6944.TWO,Taiwan,Industrial Machinery and Supplies and Components,262,309,61
-Tfe Inc. ,425420.KQ,South Korea,Semiconductor Materials and Equipment,256,50,11
-Lin BioScience Inc. ,6696.TWO,Taiwan,Biotechnology,256,-,73
-Jong Shyn Shipbuilding Co. Ltd. ,2644.TWO,Taiwan,Construction Machinery and Heavy Transportation Equipment,255,129,80
-Millie Seojae. ,418470.KQ,South Korea,Publishing,249,39,8
-Meiko Trans Co. Ltd. ,9357.NSE,Japan,Marine Ports and Services,248,567,30
-Ingentec Corporation ,4768.TWO,Taiwan,Specialty Chemicals,247,36,39
-Aichi Electric Co. Ltd. ,6623.NSE,Japan,Electrical Components and Equipment,245,792,10
-Green World Fintech Service Co. Ltd. ,6763.TWO,Taiwan,Transaction and Payment Processing Services,241,50,18
+name,symbol,country,industry,Market Capitalization,"Total Revenue ",Shares Outstanding (mm)
+"Airoha Technology Corp. ",6526.TWO,Taiwan,Semiconductors,2571,458,146
+"STARLUX Airlines Co. Ltd. ",2646.TWO,Taiwan,Passenger Airlines,1524,405,2089
+"FADU Inc. ",440110.KQ,South Korea,Semiconductors,1271,48,49
+"Caliway Biopharmaceuticals Co. Ltd. ",6919.TWO,Taiwan,Pharmaceuticals,869,1,62
+Cathay No.1 REIT,01002T.TW,Taiwan,Diversified REITs,772,25,1393
+Shin Kong No. 1 REIT,01003T.TW,Taiwan,Diversified REITs,764,25,1130
+"Century Wind Power Co. Ltd. ",2072.TWO,Taiwan,Construction and Engineering,697,121,120
+"Advanced Echem Materials Company Limited ",4749.TWO,Taiwan,Semiconductors,675,81,81
+"Gongwin Biopharm Holdings Co. Ltd. ",6617.TWO,Taiwan,Biotechnology,672,0,113
+"Handa Pharmaceuticals Inc. ",6620.TWO,Taiwan,Pharmaceuticals,670,23,140
+"Infinite Finance Co. Ltd. ",6958.TWO,Taiwan,Specialized Finance,584,214,351
+"Fositek Corp. ",6805.TWO,Taiwan,Electronic Components,580,148,61
+"TRYT Inc. ",9164.TSE,Japan,Human Resource and Employment Services,541,341,103
+"GENDA Inc. ",9166.TSE,Japan,Leisure Facilities,536,354,34
+King's Town Millerful No.1 Real Estate Investment Trust,01010T.TW,Taiwan,Diversified REITs,515,30,1658
+"Philenergy Co. Ltd. ",378340.KQ,South Korea,Electrical Components and Equipment,504,179,21
+"CUC Inc. ",9158.TSE,Japan,Health Care Services,479,226,30
+"CHO Pharma Inc. ",6586.TWO,Taiwan,Pharmaceuticals,467,0,184
+"Ever Supreme Bio Technology Co. Ltd ",6712.TWO,Taiwan,Biotechnology,466,20,75
+"Farglory Life Insurance Co. Ltd. ",5859.TWO,Taiwan,Life and Health Insurance,465,1840,1255
+"GI Innovation Inc. ",358570.KQ,South Korea,Biotechnology,431,3,22
+"Cashbox Partyworld Co. Ltd. ",8359.TWO,Taiwan,Movies and Entertainment,421,121,137
+"Tigerair Taiwan Co. Ltd. ",6757.TW,Taiwan,Passenger Airlines,420,208,449
+"Amita Technologies Inc. ",5233.TWO,Taiwan,Electrical Components and Equipment,406,41,277
+"Vizionfocus Inc. ",4771.TWO,Taiwan,Health Care Supplies,391,68,53
+"SuperAlloy Industrial Co. Ltd. ",1563.TWO,Taiwan,Automotive Parts and Equipment,389,217,214
+Cathay No.2 REIT,01007T.TW,Taiwan,Office REITs,384,16,720
+"Skytech Inc. ",6937.TWO,Taiwan,Semiconductor Materials and Equipment,373,59,61
+"HD Renewable Energy Co. Ltd. ",6873.TW,Taiwan,Renewable Electricity,349,192,100
+"Manyo Factory Co. Ltd ",439090.KQ,South Korea,Personal Care Products,344,81,16
+"ALMAC Co. Ltd. ",354320.KQ,South Korea,Automotive Parts and Equipment,342,167,6
+"PlayNitride Inc. ",6854.TW,Taiwan,Semiconductors,340,18,107
+"Acer E-Enabling Service Business Inc. ",6811.TWO,Taiwan,IT Consulting and Other Services,332,242,41
+"ABEJA Inc. ",5574.TSE,Japan,Application Software,328,14,9
+"BRIM Biotechnology Inc. ",6885.TWO,Taiwan,Biotechnology,324,-,138
+"Pharmosa Biopharm Inc. ",6875.TWO,Taiwan,Biotechnology,320,-,117
+"Lumosa Therapeutics Co. Ltd. ",6535.TWO,Taiwan,Pharmaceuticals,316,1,163
+Fubon No.2 Real Estate Investment Trust,01004T.TW,Taiwan,Office REITs,310,17,730
+"Taiwan Speciality Chemicals Corporation ",4772.TWO,Taiwan,Specialty Chemicals,310,14,138
+"TEMC Co. Ltd. ",425040.KQ,South Korea,Semiconductor Materials and Equipment,308,283,11
+"Motrex Co. Ltd ",118990.KQ,South Korea,Automotive Parts and Equipment,302,470,24
+"Neuromeka Co.Ltd. ",348340.KQ,South Korea,Industrial Machinery and Supplies and Components,302,7,10
+"Gus Technology Co. Ltd. ",6940.TWO,Taiwan,Electrical Components and Equipment,293,1,214
+"Analog Integrations Corporation ",6291.TWO,Taiwan,Semiconductors,288,52,42
+"EuBiologics Co. Ltd. ",206650.KQ,South Korea,Biotechnology,283,47,36
+"PSS Co.Ltd. ",6914.TWO,Taiwan,Electronic Equipment and Instruments,283,123,60
+"Mercury Biopharmaceutical Corporation ",6932.TWO,Taiwan,Pharmaceuticals,278,0,416
+"CHUNGTAI RESOURCE Technology CORP. ",6923.TWO,Taiwan,Environmental and Facilities Services,277,34,83
+"Alar Pharmaceuticals Inc. ",6785.TWO,Taiwan,Pharmaceuticals,277,0,57
+"Ever Fortune.AI Co. Ltd. ",6841.TWO,Taiwan,Health Care Technology,271,2,89
+"Taiwan Puritic Corp. ",6826.TWO,Taiwan,Semiconductor Materials and Equipment,270,494,61
+"Jiu Han System Technology Co. Ltd. ",6903.TWO,Taiwan,Construction and Engineering,264,114,61
+"Mega Union Technology Inc. ",6944.TWO,Taiwan,Industrial Machinery and Supplies and Components,262,309,61
+"Tfe Inc. ",425420.KQ,South Korea,Semiconductor Materials and Equipment,256,50,11
+"Lin BioScience Inc. ",6696.TWO,Taiwan,Biotechnology,256,-,73
+"Jong Shyn Shipbuilding Co. Ltd. ",2644.TWO,Taiwan,Construction Machinery and Heavy Transportation Equipment,255,129,80
+"Millie Seojae. ",418470.KQ,South Korea,Publishing,249,39,8
+"Ingentec Corporation ",4768.TWO,Taiwan,Specialty Chemicals,247,36,39
+"Green World Fintech Service Co. Ltd. ",6763.TWO,Taiwan,Transaction and Payment Processing Services,241,50,18

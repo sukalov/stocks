@@ -17,6 +17,7 @@ export const stocks_info = mysqlTable('stocks_info', {
   market_cap: bigint('market_cap', { mode: 'number' }),
   cap_index: text('cap_index'),
   indicies: json('indicies'),
+  is_delisted: boolean('is_delisted'),
 });
 
 export const adjustments = mysqlTable('adjustments', {

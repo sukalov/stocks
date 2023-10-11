@@ -7,7 +7,7 @@ export const indexNames: string[] = [
   'kpop-25',
   'cosmetics-15',
   'video-75',
-  'anime-10',
+  'anime-15',
   'semiconductors-25',
 ];
 

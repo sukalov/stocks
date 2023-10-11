@@ -10,6 +10,7 @@ import { indexNames } from '@/lib/index-names';
 import { compareDates } from '@/lib/utils';
 import getIndexHistory2 from '@/lib/data-manipulations/get-index-history2';
 import { updateMarketCaps } from '@/lib/data-manipulations/update-market-caps';
+import { csv } from '@/lib/read-write-csv';
 
 export async function GET(request: any, context: any) {
   await initialSteps();
@@ -41,22 +42,23 @@ export async function GET(request: any, context: any) {
     prev[date] = curr.dividents;
     return prev;
   }, {});
-  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  const dataIndexPrices = await csv.readJSON('indexPrices');
 
-  for (let i = 0; i < indexNames.length; i++) {
-    const indexName = String(indexNames[i]);
-    const oldAdjustments = await db
-      .select()
-      .from(adjustments)
-      .where(eq(adjustments.index, indexName))
-      .orderBy(adjustments.date);
-    const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
-    newData = [...newData, ...indexHistory];
-    await db.delete(indicies).where(eq(indicies.name, indexName));
-    await db.insert(indicies).values(indexHistory);
-  }
+  // for (let i = 0; i < indexNames.length; i++) {
+  //   const indexName = String(indexNames[i]);
+  //   const oldAdjustments = await db
+  //     .select()
+  //     .from(adjustments)
+  //     .where(eq(adjustments.index, indexName))
+  //     .orderBy(adjustments.date);
+  //   const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
+  //   newData = [...newData, ...indexHistory];
+  //   await db.delete(indicies).where(eq(indicies.name, indexName));
+  //   await db.insert(indicies).values(indexHistory);
+  // }
 
-  //  await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
+  // await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
 
   return new Response(JSON.stringify(newData), {
     status: 200,
