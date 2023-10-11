@@ -335,16 +335,16 @@ export async function GET(request: Request) {
     .from(stocks_info)
     //  ) as StocksInfo[];
     .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
-  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
   // const divs = (await db.select().from(dividents)) as DividentsDB[];
-  const dataDivs = await getDividentsFromDB();
+  // const dataDivs = await getDividentsFromDB();
 
-  const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
+  // const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
   // const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
 
   // ================= export data as CSV for manual checking ===================
@@ -352,46 +352,62 @@ export async function GET(request: Request) {
 
   // const stocks = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
 
-  let result: any = {};
-  for (let i in indexNames) {
-    const name = indexNames[i] as string;
-    console.log(name);
-    const oldAdjustments = await db
-      .select()
-      .from(adjustments)
-      .where(eq(adjustments.index, name))
-      .orderBy(adjustments.date);
+// =
+// =
+// =
+// =
+// =
+// =
+// =
+// =
 
-    let dataSharesOutstandingFiltered = dataSharesOutstanding;
-    if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
-      dataSharesOutstandingFiltered = dataSharesOutstandingFiltered.filter((stock) => {
-        if (stock.indicies) return stock.indicies.includes(name);
-        else return false;
-      });
-    }
+  // let result: any = {};
+  // for (let i in indexNames) {
+  //   const name = indexNames[i] as string;
+  //   console.log(name);
+  //   const oldAdjustments = await db
+  //     .select()
+  //     .from(adjustments)
+  //     .where(eq(adjustments.index, name))
+  //     .orderBy(adjustments.date);
 
-    const dataForAdjustments = getDataForAdjustments(indexPrices) as any[]; //=========================================
+  //   let dataSharesOutstandingFiltered = dataSharesOutstanding;
+  //   if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
+  //     dataSharesOutstandingFiltered = dataSharesOutstandingFiltered.filter((stock) => {
+  //       if (stock.indicies) return stock.indicies.includes(name);
+  //       else return false;
+  //     });
+  //   }
 
-    let dataForAdjustmentsFiltered = dataForAdjustments;
-    if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
-      dataForAdjustmentsFiltered = dataForAdjustments.reduce((prev, curr) => {
-        let filteredData: any = {};
-        Object.keys(curr).forEach((symbol) => {
-          if (symbol === 'date') filteredData[symbol] = curr[symbol]
-          else {
-            const stockInfoIndex = dataSharesOutstandingFiltered.findIndex((stock) => stock.symbol === symbol);
-            if (stockInfoIndex >= 0) filteredData[symbol] = curr[symbol];
-          }
-        });
-        return [...prev, filteredData];
-      }, []);
-    }
+    // const dataForAdjustments = getDataForAdjustments(indexPrices) as any[]; //=========================================
 
-    const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
-    result[name] = newAdjustments;
+    // let dataForAdjustmentsFiltered = dataForAdjustments;
+    // if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
+    //   dataForAdjustmentsFiltered = dataForAdjustments.reduce((prev, curr) => {
+    //     let filteredData: any = {};
+    //     Object.keys(curr).forEach((symbol) => {
+    //       if (symbol === 'date') filteredData[symbol] = curr[symbol]
+    //       else {
+    //         const stockInfoIndex = dataSharesOutstandingFiltered.findIndex((stock) => stock.symbol === symbol);
+    //         if (stockInfoIndex >= 0) filteredData[symbol] = curr[symbol];
+    //       }
+    //     });
+    //     return [...prev, filteredData];
+    //   }, []);
+    // }
+
+    // const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
+    // result[name] = newAdjustments;
 
     // await db.insert(adjustments).values(newAdjustments);
-  }
+  // }
+  // =
+  // =
+  // =
+  // =
+  // =
+  // =
+  // =
 
   // await db.delete(adjustments).where(eq(adjustments.index, indexName));
 
@@ -437,7 +453,7 @@ export async function GET(request: Request) {
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",
   ];
-  return new Response(JSON.stringify(result), {
+  return new Response(JSON.stringify(res), {
     status: 200,
     headers: {
       'Content-Type': 'text/json; charset=utf-8',
