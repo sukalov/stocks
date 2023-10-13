@@ -3,7 +3,7 @@ import { csv } from '@/lib/read-write-csv';
 import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
-import { stocks_info, currencies, adjustments, dividents } from '@/lib/db/schema';
+import { stocks_info, currencies, adjustments, dividents, indicies } from '@/lib/db/schema';
 import { eq, gte, isNull, ne, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
@@ -18,6 +18,7 @@ import getDividentsFromDB from '@/lib/data-manipulations/get-dividents-from-db';
 import getAllDataAsCSV from '@/lib/get-data-as-csv';
 import getIndexHistory2 from '@/lib/data-manipulations/get-index-history2';
 import { indexNames } from '@/lib/index-names';
+import getSplits from '@/lib/data-manipulations/get-splits';
 
 export async function GET(request: Request) {
   const getInitialPrices = async (data: Array<DataSharesOutstanding>, startDate: string, indexName: string) => {
@@ -352,6 +353,9 @@ export async function GET(request: Request) {
 
   // const stocks = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
 
+
+  // const splits = await getSplits(dataSharesOutstanding, '2023-06-01')
+  // await csv.writeJSON('splits', splits)
 // =
 // =
 // =
