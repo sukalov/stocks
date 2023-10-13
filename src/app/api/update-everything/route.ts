@@ -66,7 +66,7 @@ export async function GET(request: any, context: any) {
   //   await db.insert(indicies).values(indexHistory);
   // }
 
-  await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
+  // await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
 
   return new Response(JSON.stringify(newData), {
     status: 200,
