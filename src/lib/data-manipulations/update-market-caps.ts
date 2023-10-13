@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm';
 import { db } from '../db';
 import { stocks_info } from '../db/schema';
 
-export const updateMarketCaps = async (dataSharesOutstanding: DataSharesOutstanding[], indexPrices: DataPrices[]) => {
+export const updateMarketCaps = async (dataSharesOutstanding: StocksInfo[], indexPrices: DataPrices[]) => {
   const todayPrices = indexPrices.at(-1) as DataPrices;
   const res: any = [];
   let count = 0;

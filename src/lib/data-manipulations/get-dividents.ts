@@ -1,9 +1,10 @@
+import { StockInfo } from '@/components/data-table';
 import { currencies } from '../db/schema';
 import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 
 export default async function getDividents(
-  data: DataSharesOutstanding[],
+  data: StocksInfo[],
   currencies: CurrenciesPrice[],
   startDate: string
 ) {
@@ -12,17 +13,19 @@ export default async function getDividents(
   }
 
   try {
-    const batchSize = 1000;
+    const batchSize = 50;
     const requests = [];
     const result: ResponseDividents[][] = [];
 
     for (let i = 0; i < data.length; i += batchSize) {
-      await timeout(500);
+      await timeout(1600);
       const batch = data.slice(i, i + batchSize);
       const batchRequests = batch.map((stock) => get.dividentsAsync(stock.symbol, startDate));
       requests.push(batchRequests);
+      console.log('1/6. requests', i, 'of', data.length);
     }
 
+    let counter = 1
     for (const batchRequests of requests) {
       await timeout(500);
       const batchResponses = await Promise.all(batchRequests);
@@ -35,6 +38,8 @@ export default async function getDividents(
       const batchJson = batchResponses.map((response) => response.json());
       const batchResult = (await Promise.all(batchJson)) as ResponseDividents[][];
       result.push(...batchResult);
+      console.log('2/6. parse responses', counter, ' of ', requests.length);
+      counter += 1
     }
 
     let newData: any[] = [];

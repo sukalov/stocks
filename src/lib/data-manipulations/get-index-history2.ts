@@ -34,6 +34,7 @@ export default function getIndexHistory2(
       checkAdjDate = tomorrow;
     }
     if (dayDate.toLocaleDateString() === checkAdjDate.toLocaleDateString()) {
+      console.log(dataAdjustments[i])
       i += 1;
     }
 
@@ -41,7 +42,10 @@ export default function getIndexHistory2(
     let index_change = 0;
     let index_return_change = 0;
     Object.keys(percents).forEach((symbol) => {
-      const symbol_change = (day[symbol] / day_previous[symbol]) * percents[symbol];
+      let symbol_change = (day[symbol] / day_previous[symbol]) * percents[symbol];
+      if (isNaN(symbol_change)) symbol_change = 0
+      if (isNaN(symbol_change)) console.log(symbol, percents[symbol], day_previous[symbol], day[symbol])
+      if (symbol === '420770.KQ') console.log({symbol}, percents[symbol], day_previous[symbol], day[symbol], {index_change, symbol_change, ADJ: dataAdjustments[i].date})
       index_change += symbol_change;
       let symbol_return_change;
       if (
@@ -65,6 +69,7 @@ export default function getIndexHistory2(
     //   switchDay = false;
     // }
     index = index_prev * index_change;
+    // console.log(ind, index_prev, index_change)
     index_prev = index;
     total_return = total_return_prev * index_return_change;
     total_return_prev = total_return;
@@ -75,7 +80,6 @@ export default function getIndexHistory2(
       adjustment: dataAdjustments[i].date.toISOString().slice(0, 10),
       index,
       total_return,
-      // check: `${index_price}, ${baseIndexPrice}, ${basePercent}`,
     });
   });
 

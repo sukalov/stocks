@@ -4,7 +4,7 @@ import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments, dividents, indicies } from '@/lib/db/schema';
-import { eq, gte, isNull, ne, sql } from 'drizzle-orm';
+import { eq, gt, gte, inArray, isNull, ne, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
@@ -106,7 +106,7 @@ export async function GET(request: Request) {
   };
 
   const getDataForAdjustments = (indexPriceHistory: any) => {
-    const adjustmentDates = ['2023-09-30'];
+    const adjustmentDates = getQuarterlyStartDates('2022-12-28');
     const adjustmentDaysFull = indexPriceHistory.filter((day: any) => adjustmentDates.includes(day.date));
     return adjustmentDaysFull;
   };
@@ -334,18 +334,32 @@ export async function GET(request: Request) {
   const dataSharesOutstanding = (await db
     .select()
     .from(stocks_info)
-    //  ) as StocksInfo[];
-    .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
-  // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
+     ) as StocksInfo[];
+    // .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
+  const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
   //   .from(adjustments)
   //   .where(eq(adjustments.index, indexName))
   //   .orderBy(adjustments.date);
   // const divs = (await db.select().from(dividents)) as DividentsDB[];
-  // const dataDivs = await getDividentsFromDB();
+  const dataDivs = await getDividentsFromDB();
 
-  // const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
+  // const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28')
+  // await csv.writeJSON('indexPrices', indexPrices)
+  const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
+
+
+  // -------------------- DIVIDENTS -------------------
+  // const divs = await csv.readJSON('dividents')
+  // const divsForDB: {date: Date, dividents: any}[] = Object.keys(divs).map(date => {
+  //   return {date: new Date(date), dividents: divs[date]}
+  // })
+
+  // await db.delete(dividents)
+  // await db.insert(dividents).values(divsForDB)
+  // ---------------------------------------------------------------------
+  
   // const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
 
   // ================= export data as CSV for manual checking ===================
@@ -355,7 +369,10 @@ export async function GET(request: Request) {
 
 
   // const splits = await getSplits(dataSharesOutstanding, '2023-06-01')
-  // await csv.writeJSON('splits', splits)
+  // const splits = await csv.readJSON('splits')
+  // const stocksForCheck: Array<string> = splits.map((el: {symbol: string}) => el.symbol)
+  // const splitsStocks = await db.select().from(stocks_info).where(inArray(stocks_info.symbol, stocksForCheck))
+  // await csv.write('STOCKS_WITH_SPLITS', splitsStocks)
 // =
 // =
 // =
@@ -364,6 +381,7 @@ export async function GET(request: Request) {
 // =
 // =
 // =
+
 
   // let result: any = {};
   // for (let i in indexNames) {
@@ -376,34 +394,39 @@ export async function GET(request: Request) {
   //     .orderBy(adjustments.date);
 
   //   let dataSharesOutstandingFiltered = dataSharesOutstanding;
-  //   if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
+  //   if (name !== 'blue-chips-150' && name !== 'mid-small-cap-2000') {
   //     dataSharesOutstandingFiltered = dataSharesOutstandingFiltered.filter((stock) => {
   //       if (stock.indicies) return stock.indicies.includes(name);
   //       else return false;
   //     });
   //   }
 
-    // const dataForAdjustments = getDataForAdjustments(indexPrices) as any[]; //=========================================
+  //   const dataForAdjustments = getDataForAdjustments(indexPrices) as any[]; //=========================================
 
-    // let dataForAdjustmentsFiltered = dataForAdjustments;
-    // if (name !== 'blue-chip-150' && name !== 'mid-small-cap-250') {
-    //   dataForAdjustmentsFiltered = dataForAdjustments.reduce((prev, curr) => {
-    //     let filteredData: any = {};
-    //     Object.keys(curr).forEach((symbol) => {
-    //       if (symbol === 'date') filteredData[symbol] = curr[symbol]
-    //       else {
-    //         const stockInfoIndex = dataSharesOutstandingFiltered.findIndex((stock) => stock.symbol === symbol);
-    //         if (stockInfoIndex >= 0) filteredData[symbol] = curr[symbol];
-    //       }
-    //     });
-    //     return [...prev, filteredData];
-    //   }, []);
-    // }
+  //   let dataForAdjustmentsFiltered = dataForAdjustments;
+  //   if (name !== 'blue-chips-150' && name !== 'mid-small-cap-2000') {
+  //     dataForAdjustmentsFiltered = dataForAdjustments.reduce((prev, curr) => {
+  //       let filteredData: any = {};
+  //       Object.keys(curr).forEach((symbol) => {
+  //         if (symbol === 'date') filteredData[symbol] = curr[symbol]
+  //         else  {
+  //           const stockInfoIndex = dataSharesOutstandingFiltered.findIndex((stock) => stock.symbol === symbol);
+  //           if (stockInfoIndex >= 0) {
+  //             if (curr[symbol] !== 0) filteredData[symbol] = curr[symbol];
+  //             // else console.log({symbol, date: curr.date})
+  //           }
+  //         } 
+  //       });
+  //       return [...prev, filteredData];
+  //     }, []);
+  //   }
+  
+  //   console.log(dataForAdjustmentsFiltered)
+  //   const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
+  //   result[name] = newAdjustments;
 
-    // const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
-    // result[name] = newAdjustments;
-
-    // await db.insert(adjustments).values(newAdjustments);
+  //   await db.delete(adjustments).where(eq(adjustments.index, name))
+  //   await db.insert(adjustments).values(newAdjustments);
   // }
   // =
   // =
@@ -453,6 +476,8 @@ export async function GET(request: Request) {
   //   }
 
   // await processArrayInBatches(total)
+
+  // await db.delete(indicies)
 
   const res = [
     "type one of four api's [stocks-info, adjustments, indicies, dividents] followed by the name of the index you are interested in",

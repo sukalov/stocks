@@ -4,7 +4,7 @@ import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments, indicies, dividents } from '@/lib/db/schema';
-import { sql, eq } from 'drizzle-orm';
+import { sql, eq, inArray } from 'drizzle-orm';
 // import { capIndexNames as indexNames} from '@/lib/cap-index-names';
 import { indexNames } from '@/lib/index-names';
 import { compareDates } from '@/lib/utils';
@@ -14,26 +14,29 @@ import { csv } from '@/lib/read-write-csv';
 
 export async function GET(request: any, context: any) {
   await initialSteps();
-  const last_date = await db
-    .select()
-    .from(currencies)
-    .orderBy(sql`${currencies.date} desc limit 7`);
-  let a = [];
+  // const last_date = await db
+  //   .select()
+  //   .from(currencies)
+  //   .orderBy(sql`${currencies.date} desc limit 7`);
+  // let a = [];
   const today = new Date();
   let newData = [] as any[];
 
-  const indexName = 'anime-10';
-  const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding2 = (await db
-    .select()
-    .from(stocks_info)
-    //  ) as DataSharesOutstanding[];
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+  // const indexName = 'anime-10';
+  // const nameForSQL = `"${indexName}"`;
+  // const dataSharesOutstanding2 = (await db
+  //   .select()
+  //   .from(stocks_info)
+  //   //  ) as DataSharesOutstanding[];
+  //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
 
   const dataSharesOutstanding = (await db
     .select()
     .from(stocks_info)
-    .orderBy(stocks_info.market_cap)) as DataSharesOutstanding[];
+    // .where(inArray(stocks_info.symbol, ['5574.TSE', '420770.KQ', '408900.KO', '5253.TSE', '439090.KQ', '6757.TW', '9166.TSE', '6757.TW', '406820.KQ']))
+    ) as StocksInfo[];
+
+
 
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   const dbDataDividents = await db.select().from(dividents);
@@ -43,6 +46,7 @@ export async function GET(request: any, context: any) {
     return prev;
   }, {});
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  // await csv.writeJSON('indexPrices', dataIndexPrices)
   const dataIndexPrices = await csv.readJSON('indexPrices');
 
   // for (let i = 0; i < indexNames.length; i++) {
@@ -51,14 +55,18 @@ export async function GET(request: any, context: any) {
   //     .select()
   //     .from(adjustments)
   //     .where(eq(adjustments.index, indexName))
-  //     .orderBy(adjustments.date);
+
+  //   oldAdjustments.sort(function(a,b){
+  //     return new Date(b.date) + new Date(a.date);
+  //   });
+
   //   const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
   //   newData = [...newData, ...indexHistory];
   //   await db.delete(indicies).where(eq(indicies.name, indexName));
   //   await db.insert(indicies).values(indexHistory);
   // }
 
-  // await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
+  await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
 
   return new Response(JSON.stringify(newData), {
     status: 200,

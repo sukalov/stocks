@@ -3,7 +3,7 @@ import toUSD from '../translate-to-usd';
 import { getInitialIndexDates, addMissingValues } from '../utils';
 
 export default async function getIndexPrices(
-  data: DataSharesOutstanding[],
+  data: StocksInfo[],
   currenciesData: any[],
   startDate: string
 ): Promise<DataPrices[]> {
@@ -23,9 +23,10 @@ export default async function getIndexPrices(
       const batch = data.slice(i, i + batchSize);
       const batchRequests = batch.map((stock) => get.historicalAsync(stock.symbol, startDate));
       requests.push(batchRequests);
-      console.log('first loop. batch', i, 'of', data.length / 50);
+      console.log('1/6. requests', i, 'of', data.length / 50);
     }
 
+    let counter = 1
     for (const batchRequests of requests) {
       await timeout(800);
       const batchResponses = await Promise.all(batchRequests);
@@ -38,7 +39,8 @@ export default async function getIndexPrices(
       const batchJson = batchResponses.map((response) => response.json());
       const batchResult = (await Promise.all(batchJson)) as ResponseHistorical[][];
       result.push(...batchResult);
-      console.log('second loop', batchRequests.length);
+      console.log('2/6. parse responses', counter, ' of ', requests.length);
+      counter += 1
     }
 
     const indexHistory = getInitialIndexDates(startDate) as any[];
@@ -47,6 +49,8 @@ export default async function getIndexPrices(
       const i = indexHistory.findIndex((day) => day.date === cur.date);
       indexHistory[i] = cur;
     });
+
+    console.log('3/6')
 
     result.forEach((stockHistory: ResponseHistorical[], i: number) => {
       stockHistory.forEach((day) => {
@@ -58,16 +62,21 @@ export default async function getIndexPrices(
         };
       });
     });
+  console.log('4/6')
 
     const completeData = addMissingValues(indexHistory);
+
+    console.log('5/6')
 
     // return {completeData, data, currenciesData}
 
     completeData.forEach((day: IndexDay, i: number) => {
-      data.forEach((stock: DataSharesOutstanding) => {
+      data.forEach((stock: StocksInfo) => {
         day[stock.symbol] = toUSD(day[stock.symbol], stock.currency, day.date, currenciesData);
       });
     });
+
+    console.log('completed!')
 
     return completeData;
     resData = completeData;
