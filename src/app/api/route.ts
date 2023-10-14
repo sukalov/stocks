@@ -262,8 +262,9 @@ export async function GET(request: Request) {
   // const data = await db.select().from(stocks_info);
   // const dataMidSmall = await db.select().from(adjustments).where(and(eq(adjustments.date, new Date('2023-09-30')), eq(adjustments.index,'mid-small-cap-2000'))) as any[]
   // const dataBlueChips = await db.select().from(adjustments).where(and(eq(adjustments.date, new Date('2023-09-30')), eq(adjustments.index,'blue-chips-150'))) as any[]
-  // const midSmall = Object.keys(dataMidSmall[0].percents)
-  // const blueChips = Object.keys(dataBlueChips[0].percents)
+  // const midSmall = Object.keys(dataMidSmall[0].capitalizations)
+  // const blueChips = Object.keys(dataBlueChips[0].capitalizations)
+  // const caps = {...dataBlueChips[0].capitalizations, ...dataMidSmall[0].capitalizations}
   
   // for (let i in data) {
   //   const stock: any = data[i]
@@ -276,6 +277,22 @@ export async function GET(request: Request) {
   //   }
   //   console.log('processed', i, 'of', data.length )
   // }
+
+
+         //#############      exporting ajustment capitalisations to a csv    ############
+  // let stocksInfoAdjustmentsDay = [];
+  // for (let i in data) {
+  //   const stock = JSON.parse(JSON.stringify(data[i])) as any
+  //   if (midSmall.includes(stock.symbol)) {
+  //     stock.market_cap_september_30 = caps[stock.symbol]
+  //     stocksInfoAdjustmentsDay.push(stock)
+  //   } else if (blueChips.includes(stock.symbol)) {
+  //     stock.market_cap_september_30 = caps[stock.symbol]
+  //     stocksInfoAdjustmentsDay.push(stock)
+  //   }
+  // }
+
+  // await csv.write('stocks_info_with_september_caps', stocksInfoAdjustmentsDay)
   //===============================================================================
 
   // const indexName = 'semiconductors-25'
