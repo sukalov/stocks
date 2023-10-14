@@ -43,6 +43,13 @@
       "when": 1696853572175,
       "tag": "0005_wet_captain_flint",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1697240449696,
+      "tag": "0006_outgoing_white_queen",
+      "breakpoints": true
     }
   ]
 }

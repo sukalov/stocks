@@ -4,7 +4,7 @@ import toUSD from '@/lib/translate-to-usd';
 import { getInitialIndexDates, addMissingValues, findUnique, getQuarterlyStartDates } from '@/lib/utils';
 import { db } from '@/lib/db';
 import { stocks_info, currencies, adjustments, dividents, indicies } from '@/lib/db/schema';
-import { eq, gt, gte, inArray, isNull, ne, sql } from 'drizzle-orm';
+import { and, eq, gt, gte, inArray, isNull, ne, sql } from 'drizzle-orm';
 import getCurrenencyPrices from '@/lib/data-manipulations/get-currencies';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
@@ -260,14 +260,21 @@ export async function GET(request: Request) {
 
   //========================  cap index, renames =====================
   // const data = await db.select().from(stocks_info);
-  // for (let index = 0; index < data.length; index++) {
-  //   const element = data[index];
-  //   let capIndexName;
-  //   const elMarketCap = element?.market_cap ?? 0;
-  //   if (elMarketCap > 10000000000) capIndexName = 'Blue Chip';
-  //   else if (elMarketCap > 250000000) capIndexName = 'Mid/Small Cap';
-  //   else capIndexName = null;
-  //   await db.update(stocks_info).set({ cap_index: capIndexName }).where(eq(stocks_info.id, element!.id));
+  // const dataMidSmall = await db.select().from(adjustments).where(and(eq(adjustments.date, new Date('2023-09-30')), eq(adjustments.index,'mid-small-cap-2000'))) as any[]
+  // const dataBlueChips = await db.select().from(adjustments).where(and(eq(adjustments.date, new Date('2023-09-30')), eq(adjustments.index,'blue-chips-150'))) as any[]
+  // const midSmall = Object.keys(dataMidSmall[0].percents)
+  // const blueChips = Object.keys(dataBlueChips[0].percents)
+  
+  // for (let i in data) {
+  //   const stock: any = data[i]
+  //   if (midSmall.includes(stock.symbol)) {
+  //     await db.update(stocks_info).set({ cap_index: 'Mid/Small Cap' }).where(eq(stocks_info.id, stock.id));
+  //   } else if (blueChips.includes(stock.symbol)) {
+  //     await db.update(stocks_info).set({ cap_index: 'Blue Chips' }).where(eq(stocks_info.id, stock.id));
+  //   } else {
+  //     await db.update(stocks_info).set({ cap_index: null }).where(eq(stocks_info.id, stock.id));
+  //   }
+  //   console.log('processed', i, 'of', data.length )
   // }
   //===============================================================================
 

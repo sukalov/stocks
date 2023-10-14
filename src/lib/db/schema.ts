@@ -31,10 +31,10 @@ export const adjustments = mysqlTable('adjustments', {
 });
 
 export const indicies = mysqlTable('indicies', {
+  id: serial('id').primaryKey(),
   date: date('date').notNull(),
   name: text('name').notNull(),
   adjustment: date('adjustment'),
-  index_price: float('index_price'),
   index: float('index'),
   total_return: float('total_return'),
 });
