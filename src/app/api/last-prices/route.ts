@@ -10,10 +10,13 @@ export async function GET(request: Request) {
   const yesterday = dataIndexPrices.at(-2)
   const today = dataIndexPrices.at(-1)
 
-  const result: string[] = []
+
+  const result: string[] = [`date, ${yesterday.date}, ${today.date}, difference`]
   Object.keys(yesterday).forEach(key => {
-    const day = `${key}, ${yesterday[key]}, ${today[key]}`
+    if (key !== 'date') {
+    const day = `${key}, ${yesterday[key]}, ${today[key]}, ${yesterday[key] / today[key]}`
     result.push(day)
+    }
   })
 
   const csv = result.join('\r\n')
@@ -21,7 +24,7 @@ export async function GET(request: Request) {
   return new Response(csv, {
     status: 200,
     headers: {
-      'content-type': 'text/plain; charset=utf-8',
+      'content-type': 'text/csv',
     },
   });
 }
