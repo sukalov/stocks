@@ -42,6 +42,7 @@ export function addMissingValues(data: any) {
         }
       } else {
         if (obj[key] === undefined || obj[key] === null) {
+          // console.log({code: 'BAD', objKEY: obj[key], key, date: obj.date})
           newObj[key] = prevDay[key];
         } else {
           newObj[key] = obj[key];

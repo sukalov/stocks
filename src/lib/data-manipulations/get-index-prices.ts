@@ -1,4 +1,5 @@
 import get from '../get-from-eod';
+import { csv } from '../read-write-csv';
 import toUSD from '../translate-to-usd';
 import { getInitialIndexDates, addMissingValues } from '../utils';
 
@@ -52,6 +53,9 @@ export default async function getIndexPrices(
 
     console.log('3/6')
 
+    // const result = await csv.readJSON('indexPricesInitial')
+    await csv.writeJSON('indexPricesInitial', result)
+
     result.forEach((stockHistory: ResponseHistorical[], i: number) => {
       stockHistory.forEach((day) => {
         const destinationIndex = indexHistory.findIndex((row) => row.date === day.date);
@@ -65,6 +69,7 @@ export default async function getIndexPrices(
   console.log('4/6')
 
     const completeData = addMissingValues(indexHistory);
+    // const completeData = indexHistory;
 
     console.log('5/6')
 

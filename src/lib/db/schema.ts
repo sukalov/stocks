@@ -1,4 +1,4 @@
-import { mysqlTable, serial, text, date, json, bigint, float, boolean } from 'drizzle-orm/mysql-core';
+import { mysqlTable, serial, text, date, json, bigint, float, boolean, varchar } from 'drizzle-orm/mysql-core';
 
 export const currencies = mysqlTable('currencies', {
   date: date('date').primaryKey(),
@@ -43,3 +43,12 @@ export const dividents = mysqlTable('dividents', {
   date: date('date').notNull(),
   dividents: json('dividents').notNull(),
 });
+
+export const indexnames = mysqlTable('indexnames', {
+  id: varchar('id', {length: 20}).primaryKey(),
+});
+
+export const indexprices = mysqlTable('indexprices', {
+  type: varchar('type', {length: 20}),
+  json: json('json')
+})

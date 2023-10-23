@@ -3,8 +3,8 @@ import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
 import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 import { db } from '@/lib/db';
-import { stocks_info, currencies, adjustments, indicies, dividents } from '@/lib/db/schema';
-import { sql, eq, inArray } from 'drizzle-orm';
+import { stocks_info, currencies, adjustments, indicies, dividents, indexprices } from '@/lib/db/schema';
+import { sql, eq, inArray, ne, isNull, gt } from 'drizzle-orm';
 // import { capIndexNames as indexNames} from '@/lib/cap-index-names';
 import { indexNames } from '@/lib/index-names';
 import { compareDates } from '@/lib/utils';
@@ -34,8 +34,13 @@ export async function GET(request: any, context: any) {
     .select()
     .from(stocks_info)
     // .where(inArray(stocks_info.symbol, ['5574.TSE', '420770.KQ', '408900.KO', '5253.TSE', '439090.KQ', '6757.TW', '9166.TSE', '6757.TW', '406820.KQ']))
+    // .where(inArray(stocks_info.symbol, ['5574.TSE', '420770.KQ']))
     ) as StocksInfo[];
-
+    const dataSharesOutstandingNoDelisted = (await db
+      .select()
+      .from(stocks_info)
+      .where(isNull(stocks_info.is_delisted))
+      ) as StocksInfo[];
 
 
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
@@ -45,10 +50,18 @@ export async function GET(request: any, context: any) {
     prev[date] = curr.dividents;
     return prev;
   }, {});
+  
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  // await csv.writeJSON('indexPrices', dataIndexPrices)
-  const dataIndexPrices = await csv.readJSON('indexPrices');
+  // await db.delete(indexprices)
+  // await db.insert(indexprices).values({type: 'indexprices', json: dataIndexPrices})
 
+  // const dataIndexPricesDB = await db.select().from(indexprices)
+  // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
+
+
+
+
+  
   // for (let i = 0; i < indexNames.length; i++) {
   //   const indexName = String(indexNames[i]);
   //   const oldAdjustments = await db
@@ -64,9 +77,12 @@ export async function GET(request: any, context: any) {
   //   newData = [...newData, ...indexHistory];
   //   await db.delete(indicies).where(eq(indicies.name, indexName));
   //   await db.insert(indicies).values(indexHistory);
+  //   console.log({indexName, status: 'done'})
   // }
 
-  // await updateMarketCaps(dataSharesOutstanding, dataIndexPrices);
+  // await updateMarketCaps(dataSharesOutstandingNoDelisted, dataIndexPrices);
+
+  // await db.delete(indicies)
 
   return new Response(JSON.stringify(newData), {
     status: 200,

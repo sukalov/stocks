@@ -34,7 +34,6 @@ export default function getIndexHistory2(
       checkAdjDate = tomorrow;
     }
     if (dayDate.toLocaleDateString() === checkAdjDate.toLocaleDateString()) {
-      console.log(dataAdjustments[i])
       i += 1;
     }
 
@@ -44,8 +43,8 @@ export default function getIndexHistory2(
     Object.keys(percents).forEach((symbol) => {
       let symbol_change = (day[symbol] / day_previous[symbol]) * percents[symbol];
       if (isNaN(symbol_change)) symbol_change = 0
-      if (isNaN(symbol_change)) console.log(symbol, percents[symbol], day_previous[symbol], day[symbol])
-      if (symbol === '420770.KQ') console.log({symbol}, percents[symbol], day_previous[symbol], day[symbol], {index_change, symbol_change, ADJ: dataAdjustments[i].date})
+      // if (isNaN(symbol_change)) console.log(symbol, percents[symbol], day_previous[symbol], day[symbol])
+      // if (symbol === '420770.KQ') console.log({symbol}, percents[symbol], day_previous[symbol], day[symbol], {index_change, symbol_change, ADJ: dataAdjustments[i].date})
       index_change += symbol_change;
       let symbol_return_change;
       if (
