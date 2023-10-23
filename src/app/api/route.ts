@@ -371,7 +371,7 @@ export async function GET(request: Request) {
 
   // const indexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28')
   // await csv.writeJSON('indexPrices', indexPrices)
-  const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
+  // const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
 
 
   // -------------------- DIVIDENTS -------------------
