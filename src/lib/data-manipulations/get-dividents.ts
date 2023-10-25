@@ -2,15 +2,13 @@ import { StockInfo } from '@/components/data-table';
 import { currencies } from '../db/schema';
 import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
+import { timeout } from '../utils';
 
 export default async function getDividents(
   data: StocksInfo[],
   currencies: CurrenciesPrice[],
   startDate: string
 ) {
-  function timeout(ms: any) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 
   try {
     const batchSize = 50;

@@ -7,7 +7,7 @@ import { stocks_info, currencies, adjustments, indicies, dividents, indexprices 
 import { sql, eq, inArray, ne, isNull, gt } from 'drizzle-orm';
 // import { capIndexNames as indexNames} from '@/lib/cap-index-names';
 import { indexNames } from '@/lib/index-names';
-import { compareDates } from '@/lib/utils';
+import { compareDates, timeout } from '@/lib/utils';
 import getIndexHistory2 from '@/lib/data-manipulations/get-index-history2';
 import { updateMarketCaps } from '@/lib/data-manipulations/update-market-caps';
 import { csv } from '@/lib/read-write-csv';
@@ -50,15 +50,15 @@ export async function GET(request: any, context: any) {
     prev[date] = curr.dividents;
     return prev;
   }, {});
-  
+
   // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  // await db.delete(indexprices)
+  // await csv.writeJSON('indexPrices', dataIndexPrices)
+  // await db.delete(indexprices).where(eq(indexprices.type, 'indexprices'))
+  // await timeout(1000)
   // await db.insert(indexprices).values({type: 'indexprices', json: dataIndexPrices})
 
-  // const dataIndexPricesDB = await db.select().from(indexprices)
+  // const dataIndexPricesDB = await db.select().from(indexprices).where(eq(indexprices.type, 'indexprices'))
   // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
-
-
 
 
   

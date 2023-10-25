@@ -73,6 +73,10 @@ export function findUnique(array1: any[], array2: any[]): [string[], string[]] {
   return [uniqueInArray1, uniqueInArray2];
 }
 
+export function timeout(ms: any) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export function getQuarterlyStartDates(start_date: string) {
   const quarterlyStartDates = [start_date];
   const today = new Date();

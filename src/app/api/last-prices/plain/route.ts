@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   return new Response(csv, {
     status: 200,
     headers: {
-      'content-type': 'text/csv',
+      'content-type': 'text/plain',
       'Cache-Control': 'no-store',
     },
   });

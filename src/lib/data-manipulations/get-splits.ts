@@ -1,13 +1,11 @@
 import { currencies } from '../db/schema';
 import get from '../get-from-eod';
+import { timeout } from '../utils';
 
 export default async function getSplits(
   data: StocksInfo[],
   startDate: string
 ) {
-  function timeout(ms: any) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 
   try {
     const batchSize = 50;
