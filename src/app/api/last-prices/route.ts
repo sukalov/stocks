@@ -11,14 +11,17 @@ export async function GET(request: Request) {
   const today = dataIndexPrices.at(-1)
 
 
-  const result: string[] = [`date, ${yesterday.date}, ${today.date}, difference`]
+  const resultArr: any[][]= []
   Object.keys(yesterday).forEach(key => {
     if (key !== 'date') {
-    const day = `${key}, ${yesterday[key]}, ${today[key]}, ${yesterday[key] / today[key]}`
-    result.push(day)
+    const day = [key, yesterday[key], today[key], (yesterday[key] / today[key] - 1) * 100 ]
+    resultArr.push(day)
     }
   })
 
+  resultArr.sort((a, b) => (a.at(-1) - b.at(-1)) )
+  const result = resultArr.map(el => el.join(', '))
+  result.unshift(`date, ${yesterday.date}, ${today.date}, change (%)`)
   const csv = result.join('\r\n')
 
   return new Response(csv, {
