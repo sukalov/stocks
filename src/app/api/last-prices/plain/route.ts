@@ -2,6 +2,9 @@ import { db } from "@/lib/db";
 import { indexprices } from "@/lib/db/schema";
 import { csv } from "@/lib/read-write-csv";
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function GET(request: Request) {
   
   const dataIndexPricesDB = await db.select().from(indexprices)
