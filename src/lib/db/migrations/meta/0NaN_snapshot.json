@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "a8be606d-edbb-4b20-9964-f6768495cb52",
-  "prevId": "13b2f793-d2cc-4f4a-a4af-6ec3b22b4c99",
+  "id": "e81a1a54-5a22-4670-b32b-809f534adf29",
+  "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "adjustments": {
       "name": "adjustments",
@@ -48,6 +48,13 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "is_quartile": {
+          "name": "is_quartile",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -55,7 +62,9 @@
       "compositePrimaryKeys": {
         "adjustments_id": {
           "name": "adjustments_id",
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       },
       "uniqueConstraints": {}
@@ -97,7 +106,9 @@
       "compositePrimaryKeys": {
         "currencies_date": {
           "name": "currencies_date",
-          "columns": ["date"]
+          "columns": [
+            "date"
+          ]
         }
       },
       "uniqueConstraints": {}
@@ -125,9 +136,62 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
+    "indexnames": {
+      "name": "indexnames",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "indexnames_id": {
+          "name": "indexnames_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "indexprices": {
+      "name": "indexprices",
+      "columns": {
+        "type": {
+          "name": "type",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "json": {
+          "name": "json",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "indicies": {
       "name": "indicies",
       "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
         "date": {
           "name": "date",
           "type": "date",
@@ -149,13 +213,6 @@
           "notNull": false,
           "autoincrement": false
         },
-        "index_price": {
-          "name": "index_price",
-          "type": "float",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
         "index": {
           "name": "index",
           "type": "float",
@@ -173,7 +230,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "indicies_id": {
+          "name": "indicies_id",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {}
     },
     "stocks_info": {
@@ -228,6 +292,13 @@
           "notNull": false,
           "autoincrement": false
         },
+        "last_price": {
+          "name": "last_price",
+          "type": "float",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
         "cap_index": {
           "name": "cap_index",
           "type": "text",
@@ -241,6 +312,13 @@
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false
+        },
+        "is_delisted": {
+          "name": "is_delisted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
@@ -248,13 +326,17 @@
       "compositePrimaryKeys": {
         "stocks_info_symbol": {
           "name": "stocks_info_symbol",
-          "columns": ["symbol"]
+          "columns": [
+            "symbol"
+          ]
         }
       },
       "uniqueConstraints": {
         "stocks_info_id_unique": {
           "name": "stocks_info_id_unique",
-          "columns": ["id"]
+          "columns": [
+            "id"
+          ]
         }
       }
     }
