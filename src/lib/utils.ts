@@ -21,17 +21,32 @@ export function getInitialIndexDates(startDate: string) {
 }
 
 export function addMissingValues(data: any) {
-  const keys = Object.keys(data[0]);
+  const keys = data.reduce((prev: string[], curr: { [symbol: string]: number }) => {
+    const arr = [...prev];
+    Object.keys(curr).forEach((key) => {
+      if (!arr.includes(key)) arr.push(key);
+    });
+    return arr;
+  }, []);
 
   let newData: any[] = [];
   data.forEach((obj: any, i: number) => {
-    const newObj = {} as any[];
+    const newObj = {} as any;
+    const prevDay = newData[i - 1];
     keys.forEach((key: any) => {
-      const prevDay = newData[i - 1];
-      if (prevDay !== undefined) {
-        newObj[key] = obj[key] || newData[i - 1]![key];
+      if (prevDay === undefined) {
+        if (obj[key] === undefined || obj[key] === null) {
+          newObj[key] = 0;
+        } else {
+          newObj[key] = obj[key];
+        }
       } else {
-        newObj[key] = obj[key] || 0;
+        if (obj[key] === undefined || obj[key] === null) {
+          // console.log({code: 'BAD', objKEY: obj[key], key, date: obj.date})
+          newObj[key] = prevDay[key];
+        } else {
+          newObj[key] = obj[key];
+        }
       }
     });
     newData.push(newObj);
@@ -56,6 +71,10 @@ export function findUnique(array1: any[], array2: any[]): [string[], string[]] {
   }
 
   return [uniqueInArray1, uniqueInArray2];
+}
+
+export function timeout(ms: any) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export function getQuarterlyStartDates(start_date: string) {

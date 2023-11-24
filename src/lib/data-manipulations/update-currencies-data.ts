@@ -13,23 +13,27 @@ export const initialSteps = async () => {
   let a = [];
   const today = new Date();
 
-  let indexPrices = []
-  if (compareDates(today, last_date[0]!.date) === 1) { // === 1 means it data needs to be updated
-    await getCurrenencyPrices();
-    const currData = await db.select().from(currencies)
-    const stocks = await db.select().from(stocks_info) as DataSharesOutstanding[];
-    indexPrices = await getIndexPrices(stocks, currData, last_date[1]!.date.toISOString().slice(0,10)) ?? [];
-    const lastPrices = indexPrices[0];
-    for (let i = 0; i < stocks.length; i++) {
-      const element = stocks[i];
-      const sym = element?.symbol ?? '';
-      if (lastPrices[sym] !== null) {
-        const newCap = lastPrices[sym] * element!.shares;
-        // console.log(!isNaN(newCap) && element!.market_cap !== null, !isNaN(newCap), element!.market_cap)
-        if (isNaN(newCap)) console.log(sym)
-        // if (!isNaN(newCap)) await db.update(stocks_info).set({market_cap: newCap}).where(eq(stocks_info.symbol, sym))
-      }
-    }
+  let indexPrices = [];
+  let data;
+  if (true) {
+    // === 1 means data needs to be updated
+    data = await getCurrenencyPrices();
+    // const currData = await db.select().from(currencies);
+    // const stocks = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
+    // indexPrices = (await getIndexPrices(stocks, currData, last_date[1]!.date.toISOString().slice(0, 10))) ?? [];
+    // const lastPrices = indexPrices[0];
+    // for (let i = 0; i < stocks.length; i++) {
+    //   const element = stocks[i];
+    //   const sym = element?.symbol ?? '';
+    //   if (lastPrices[sym] !== undefined && lastPrices[sym] !== null) {
+    //     const newCap = lastPrices[sym] * element!.shares;
+    //     // console.log(!isNaN(newCap) && element!.market_cap !== null, !isNaN(newCap), element!.market_cap)
+    //     if (isNaN(newCap)) console.log(sym);
+    //     // if (!isNaN(newCap)) await db.update(stocks_info).set({market_cap: newCap}).where(eq(stocks_info.symbol, sym))
+    //   }
+    // }
+  } else {
+    data = await db.select().from(currencies).orderBy(currencies.date);
   }
-  return indexPrices[0];
+  return data;
 };
