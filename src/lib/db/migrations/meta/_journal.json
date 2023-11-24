@@ -22,6 +22,55 @@
       "when": 1692454426650,
       "tag": "0002_wide_the_stranger",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693331237844,
+      "tag": "0003_curved_jasper_sitwell",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1696084078107,
+      "tag": "0004_square_shocker",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1696853572175,
+      "tag": "0005_wet_captain_flint",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1697240449696,
+      "tag": "0006_outgoing_white_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1697535988273,
+      "tag": "0007_sharp_daimon_hellstrom",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1698053414860,
+      "tag": "0008_tricky_zaran",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1699894924195,
+      "tag": "0009_strange_warbound",
+      "breakpoints": true
     }
   ]
 }

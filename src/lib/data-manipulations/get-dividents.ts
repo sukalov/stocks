@@ -1,22 +1,44 @@
+import { StockInfo } from '@/components/data-table';
 import { currencies } from '../db/schema';
 import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
+import { timeout } from '../utils';
 
 export default async function getDividents(
-  data: DataSharesOutstanding[],
+  data: StocksInfo[],
   currencies: CurrenciesPrice[],
   startDate: string
 ) {
-  try {
-    const requests = data.map((stock) => get.dividentsAsync(stock.symbol, startDate));
-    const responses = await Promise.all(requests);
-    const errors = responses.filter((response: Response) => !response.ok);
 
-    if (errors.length > 0) {
-      throw errors.map((response: Response) => Error(response.statusText));
+  try {
+    const batchSize = 50;
+    const requests = [];
+    const result: ResponseDividents[][] = [];
+
+    for (let i = 0; i < data.length; i += batchSize) {
+      await timeout(1600);
+      const batch = data.slice(i, i + batchSize);
+      const batchRequests = batch.map((stock) => get.dividentsAsync(stock.symbol, startDate));
+      requests.push(batchRequests);
+      console.log('1/6. requests', i, 'of', data.length);
     }
-    const json = responses.map((response: Response) => response.json());
-    const result = (await Promise.all(json)) as Array<ResponseDividents[]>;
+
+    let counter = 1
+    for (const batchRequests of requests) {
+      await timeout(500);
+      const batchResponses = await Promise.all(batchRequests);
+      const errors = batchResponses.filter((response) => !response.ok);
+
+      if (errors.length > 0) {
+        throw errors.map((response) => Error(response.statusText));
+      }
+
+      const batchJson = batchResponses.map((response) => response.json());
+      const batchResult = (await Promise.all(batchJson)) as ResponseDividents[][];
+      result.push(...batchResult);
+      console.log('2/6. parse responses', counter, ' of ', requests.length);
+      counter += 1
+    }
 
     let newData: any[] = [];
     result.forEach((divs, i) => {

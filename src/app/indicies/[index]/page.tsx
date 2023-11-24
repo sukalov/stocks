@@ -2,7 +2,6 @@
 
 import { LineChartProps, Overview } from '@/components/overview';
 import { useEffect, useState } from 'react';
-import { ResponsiveContainer } from 'recharts';
 import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -14,18 +13,22 @@ export default function KpopIndex() {
 
   useEffect(() => {
     fetch(`/api/indicies/${indexName}`)
-      .then((res) => res.json() as Promise<any[]>)
+      .then((res) => res.json() as Promise<IndexDay[]>)
       .then((data) => {
         setData(
-          data.map((el) => {
+          data.map((el: IndexDay) => {
             const date = new Date(el.date);
             const date2 = date.toISOString().slice(0, 10);
-            return { name: date2, index: Number(el.index).toFixed(2), total_return: Number(el.total_return).toFixed(2) };
+            return {
+              name: date2,
+              index: Number(el.index).toFixed(2),
+              total_return: Number(el.total_return).toFixed(2),
+            };
           })
         );
         setLoading(false);
       });
-  }, []);
+  }, [indexName]);
 
   if (isLoading)
     return (
@@ -37,9 +40,7 @@ export default function KpopIndex() {
 
   return (
     <div className="py-8 -ml-12">
-      <ResponsiveContainer>
-        <Overview data={data} indexName={indexName} />
-      </ResponsiveContainer>
+      <Overview data={data} indexName={indexName} />
     </div>
   );
 }

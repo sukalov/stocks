@@ -10,6 +10,19 @@ interface DataSharesOutstanding extends d3.DSVRowString {
   [otherOptions: string]: unknown;
 }
 
+interface StocksInfo {
+  id: number;
+  symbol: string;
+  name: string;
+  currency: 'TWD' | 'JPY' | 'USD' | 'KRW';
+  country: 'Japan' | 'Taiwan' | 'South Korea';
+  shares: number;
+  market_cap: number;
+  cap_index: 'Blue Chip' | 'Mid/Small Cap' | null;
+  indicies: Array<string>;
+  is_delisted: boolean;
+}
+
 interface DataInitialPrices extends d3.DSVRowString {
   symbol: string;
   initial_price: number;
@@ -69,8 +82,15 @@ interface DataShareAdjusted {
 
 interface DataDividents {
   [date: string]: {
-    [symbol: string]: number
-  }
+    [symbol: string]: number;
+  };
+}
+
+interface DividentsDB {
+  date: Date;
+  dividents: {
+    [ticker: string]: number;
+  };
 }
 
 interface CurrenciesPrice {
@@ -84,7 +104,6 @@ interface IndexDay {
   date: string;
   name: string | undefined;
   adjustment: string | undefined;
-  index_price: number | undefined;
   index: number | undefined;
   total_return: number | undefined;
   [otherOptions: string]: any;
@@ -102,4 +121,19 @@ interface DataTotal {
     shares_added: string[];
     shares_removed: string[];
   };
+}
+
+interface DataPrices {
+  date: string;
+  [symbol: string]: number;
+}
+
+interface DataAdjustments {
+  id: number;
+  date: Date;
+  index: string;
+  capitalizations: { [symbol: string]: number };
+  original_percents: { [symbol: string]: number };
+  percents: { [symbol: string]: number };
+  is_quartile: boolean;
 }

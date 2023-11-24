@@ -1,0 +1,1 @@
+ALTER TABLE `stocks_info` ADD `is_delisted` boolean;

@@ -13,7 +13,7 @@ export async function GET(request: any, context: any) {
   const dataSharesOutstanding = (await db
     .select()
     .from(stocks_info)
-    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
+    .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as StocksInfo[];
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   const dataDividents = await getDividents(dataSharesOutstanding, currData, '2022-12-31');
 

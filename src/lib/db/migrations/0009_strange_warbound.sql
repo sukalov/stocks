@@ -1,0 +1,1 @@
+ALTER TABLE `stocks_info` ADD `last_price` float;

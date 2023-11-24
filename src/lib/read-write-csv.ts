@@ -38,4 +38,17 @@ const write = async (file: string, data: any[]) => {
   return csvContent;
 };
 
-export const csv = { read, write };
+const readJSON = async (file: string) => {
+  const csvDir = path.join(process.cwd(), 'src/data/json/');
+  const dataFile = await fs.readFile(csvDir + file + '.json', 'utf8');
+  const data = JSON.parse(dataFile) as any;
+  return data;
+};
+
+const writeJSON = async (file: string, data: any) => {
+  const csvDir = path.join(process.cwd(), 'src/data/json/');
+  const dataFile = JSON.stringify(data);
+  await fs.writeFile(csvDir + file + '.json', dataFile, 'utf8');
+};
+
+export const csv = { read, write, readJSON, writeJSON };

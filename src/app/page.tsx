@@ -13,16 +13,16 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <div key={indexName} className="pb-6 grid grid-cols-2">
-              <Link href={`/api/stocks-info/${indexName}`}>
+              <Link href={`/api/stocks-info/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>info</Button>
               </Link>
-              <Link href={`/api/adjustments/${indexName}`}>
+              <Link href={`/api/adjustments/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>adjustments</Button>
               </Link>
-              <Link href={`/api/index/${indexName}`}>
+              <Link href={`/api/indicies/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>index</Button>
               </Link>
-              <Link href={`/api/dividents/${indexName}`}>
+              <Link href={`/api/dividents/${indexName}`} prefetch={false}>
                 <Button variant={'link'}>dividents</Button>
               </Link>
             </div>
