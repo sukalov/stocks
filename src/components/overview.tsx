@@ -45,7 +45,7 @@ export const Overview: React.FC<OverviewProps> = ({ data, indexName }) => {
             return formattedDate;
           }}
         />
-        <YAxis domain={[75, 150]} tickLine={false} tickCount={4} />
+        <YAxis domain={[75, 175]} tickLine={false} tickCount={5} />
 
         <Tooltip
           content={({ active, payload }) => {

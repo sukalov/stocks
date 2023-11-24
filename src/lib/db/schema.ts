@@ -15,6 +15,7 @@ export const stocks_info = mysqlTable('stocks_info', {
   country: text('country'),
   shares: bigint('shares', { mode: 'number' }),
   market_cap: bigint('market_cap', { mode: 'number' }),
+  last_price: float('last_price'),
   cap_index: text('cap_index'),
   indicies: json('indicies'),
   is_delisted: boolean('is_delisted'),

@@ -51,36 +51,38 @@ export async function GET(request: any, context: any) {
     return prev;
   }, {});
 
-  // const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
-  // await csv.writeJSON('indexPrices', dataIndexPrices)
-  // await db.delete(indexprices).where(eq(indexprices.type, 'indexprices'))
-  // await timeout(1000)
-  // await db.insert(indexprices).values({type: 'indexprices', json: dataIndexPrices})
+  // const dataIndexPrices = await csv.readJSON('indexPrices')
 
-  // const dataIndexPricesDB = await db.select().from(indexprices).where(eq(indexprices.type, 'indexprices'))
+  const dataIndexPrices = await getIndexPrices(dataSharesOutstanding, currData, '2022-12-28');
+  await csv.writeJSON('indexPrices', dataIndexPrices)
+  await db.delete(indexprices) //.where(eq(indexprices.type, 'indexprices'))
+  await timeout(1000)
+  await db.insert(indexprices).values({type: 'indexprices', json: dataIndexPrices})
+
+  // const dataIndexPricesDB = await db.select().from(indexprices)
   // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
 
 
   
-  // for (let i = 0; i < indexNames.length; i++) {
-  //   const indexName = String(indexNames[i]);
-  //   const oldAdjustments = await db
-  //     .select()
-  //     .from(adjustments)
-  //     .where(eq(adjustments.index, indexName))
+  for (let i = 0; i < indexNames.length; i++) {
+    const indexName = String(indexNames[i]);
+    const oldAdjustments = await db
+      .select()
+      .from(adjustments)
+      .where(eq(adjustments.index, indexName))
 
-  //   oldAdjustments.sort(function(a,b){
-  //     return new Date(b.date) + new Date(a.date);
-  //   });
+    oldAdjustments.sort(function(a,b){
+      return new Date(b.date) + new Date(a.date);
+    });
 
-  //   const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
-  //   newData = [...newData, ...indexHistory];
-  //   await db.delete(indicies).where(eq(indicies.name, indexName));
-  //   await db.insert(indicies).values(indexHistory);
-  //   console.log({indexName, status: 'done'})
-  // }
+    const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
+    newData = [...newData, ...indexHistory];
+    await db.delete(indicies).where(eq(indicies.name, indexName));
+    await db.insert(indicies).values(indexHistory);
+    console.log({indexName, status: 'done'})
+  }
 
-  // await updateMarketCaps(dataSharesOutstandingNoDelisted, dataIndexPrices);
+  await updateMarketCaps(dataSharesOutstandingNoDelisted, dataIndexPrices);
 
   // await db.delete(indicies)
 

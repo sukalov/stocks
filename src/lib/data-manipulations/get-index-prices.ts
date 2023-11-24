@@ -16,34 +16,34 @@ export default async function getIndexPrices(
   let resData: any = [];
 
   try {
-    // const batchSize = 50;
-    // const requests = [];
-    // const result: ResponseHistorical[][] = [];
+    const batchSize = 50;
+    const requests = [];
+    const result: ResponseHistorical[][] = [];
 
-    // for (let i = 0; i < data.length; i += batchSize) {
-    //   await timeout(1900);
-    //   const batch = data.slice(i, i + batchSize);
-    //   const batchRequests = batch.map((stock) => get.historicalAsync(stock.symbol, startDate));
-    //   requests.push(batchRequests);
-    //   console.log('1/6. requests', i, 'of', data.length / 50);
-    // }
+    for (let i = 0; i < data.length; i += batchSize) {
+      await timeout(1900);
+      const batch = data.slice(i, i + batchSize);
+      const batchRequests = batch.map((stock) => get.historicalAsync(stock.symbol, startDate));
+      requests.push(batchRequests);
+      console.log('1/6. requests', i, 'of', data.length / 50);
+    }
 
-    // let counter = 1
-    // for (const batchRequests of requests) {
-    //   await timeout(800);
-    //   const batchResponses = await Promise.all(batchRequests);
-    //   const errors = batchResponses.filter((response) => !response.ok);
+    let counter = 1
+    for (const batchRequests of requests) {
+      await timeout(800);
+      const batchResponses = await Promise.all(batchRequests);
+      const errors = batchResponses.filter((response) => !response.ok);
 
-    //   if (errors.length > 0) {
-    //     throw errors.map((response) => Error(response.statusText));
-    //   }
+      if (errors.length > 0) {
+        throw errors.map((response) => Error(response.statusText));
+      }
 
-    //   const batchJson = batchResponses.map((response) => response.json());
-    //   const batchResult = (await Promise.all(batchJson)) as ResponseHistorical[][];
-    //   result.push(...batchResult);
-    //   console.log('2/6. parse responses', counter, ' of ', requests.length);
-    //   counter += 1
-    // }
+      const batchJson = batchResponses.map((response) => response.json());
+      const batchResult = (await Promise.all(batchJson)) as ResponseHistorical[][];
+      result.push(...batchResult);
+      console.log('2/6. parse responses', counter, ' of ', requests.length);
+      counter += 1
+    }
 
     const indexHistory = getInitialIndexDates(startDate) as any[];
 
@@ -54,10 +54,10 @@ export default async function getIndexPrices(
 
     console.log('3/6')
 
-    // await csv.writeJSON('indexPricesInitial', result)
-    const result = await csv.readJSON('indexPricesInitial')
-    await db.delete(indexprices).where(eq(indexprices.type, 'result'))
-    await timeout(2000)
+    await csv.writeJSON('indexPricesInitial', result)
+    // const result = await csv.readJSON('indexPricesInitial')
+    // await db.delete(indexprices).where(eq(indexprices.type, 'result'))
+    // await timeout(2000)
     // await db.insert(indexprices).values({type: 'result', json: result})
     // await timeout(2000)
 
