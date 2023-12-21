@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import getDividents from '@/lib/data-manipulations/get-dividents';
 import getIndexHistory from '@/lib/data-manipulations/get-index-history';
 import getIndexPrices from '@/lib/data-manipulations/get-index-prices';
@@ -61,7 +62,7 @@ export async function GET(request: any, context: any) {
 
   // const dataIndexPricesDB = await db.select().from(indexprices)
   // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
-  // await db.delete(indicies)
+
 
   
   for (let i = 0; i < indexNames.length; i++) {
@@ -71,9 +72,11 @@ export async function GET(request: any, context: any) {
       .from(adjustments)
       .where(eq(adjustments.index, indexName))
 
-    oldAdjustments.sort(function(a,b){
-      return new Date(b.date) + new Date(a.date);
-    });
+      oldAdjustments.sort(function(a: any,b: any){
+        if (new Date(b.date) > new Date(a.date)) return 1;
+        if (new Date(b.date) < new Date(a.date)) return -1;
+        else return 0;
+       });
 
     const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any[];
     newData = [...newData, ...indexHistory];

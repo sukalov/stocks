@@ -83,7 +83,7 @@ export default function getIndexHistory2(
   });
 
   const indexHistoryNoWeekends = indexHistory.filter(
-    (day, i) => i === 0 || (new Date(day.date).getDay() !== 0 && new Date(day.date).getDay() !== 6)
+    (day, i) => i === 0 || (new Date(day.date).getDay() !== 5 && new Date(day.date).getDay() !== 6)
   );
 
   return indexHistoryNoWeekends;

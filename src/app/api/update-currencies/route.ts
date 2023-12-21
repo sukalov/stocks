@@ -3,7 +3,7 @@ import { initialSteps } from '@/lib/data-manipulations/update-currencies-data';
 export async function GET(request: any, context: any) {
   // const newData = await initialSteps();
 
-  return new Response(JSON.stringify('newData'), {
+  return new Response(JSON.stringify('endpoint suspended'), {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
