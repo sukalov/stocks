@@ -3,9 +3,9 @@ import get from '../get-from-eod';
 
 
 export default async function getTodaysPrices(
-    data: {symbol: string}[],
+    data: {symbol: string, currency: undefined | string}[],
     currenciesData: any[]
-  ): Promise<DataPrices[]> {
+  ): Promise<ResponseHistorical[][]> {
   
     let resData: any = [];
     const now = new Date();

@@ -7,10 +7,10 @@ export const revalidate = 0;
 
 export async function GET(request: any, context: any) {
 
-    const currenciesData = (await db.select().from(currencies)) as CurrenciesPrice[];
-    const lastTwoPrices = await getTodaysPrices([{symbol: '005930.KO', currency: 'USD'}], currenciesData)
+    // const currenciesData = (await db.select().from(currencies)) as CurrenciesPrice[];
+    // const lastTwoPrices = await getTodaysPrices([{symbol: '005930.KO', currency: 'USD'}], currenciesData)
 
-return new Response(JSON.stringify(lastTwoPrices), {
+return new Response('enpoint unavailible for public usage', {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
