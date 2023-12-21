@@ -3,7 +3,7 @@ import { db } from '@/lib/db';
 import { currencies, dividents, stocks_info } from '@/lib/db/schema';
 
 export async function GET(req: Request) {
-  const dataSharesOutstanding = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
+  const dataSharesOutstanding = (await db.select().from(stocks_info)) as StocksInfo[];
   const dataCurrencies = (await db.select().from(currencies)) as CurrenciesPrice[];
   const dataDividents = await getDividents(dataSharesOutstanding, dataCurrencies, '2022-12-29');
 
