@@ -9,9 +9,9 @@ export async function GET(req: Request) {
 
   // const divs: DividentsDB[] = [];
   // Object.keys(dataDividents).forEach((dateStr) => {
-    // const date = new Date(dateStr);
-    // const divDay = { date, dividents: dataDividents[dateStr] };
-    // divs.push(divDay);
+  // const date = new Date(dateStr);
+  // const divDay = { date, dividents: dataDividents[dateStr] };
+  // divs.push(divDay);
   // });
 
   // await db.delete(dividents);

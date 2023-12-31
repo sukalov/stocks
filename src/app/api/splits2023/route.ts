@@ -1,8 +1,7 @@
-import { csv } from "@/lib/read-write-csv";
+import { csv } from '@/lib/read-write-csv';
 
 export async function GET(request: Request) {
-  
-    const splits = await csv.readJSON('splits')
+  const splits = await csv.readJSON('splits');
 
   return new Response(JSON.stringify(splits), {
     status: 200,

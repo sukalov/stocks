@@ -30,7 +30,7 @@ const fundamentalAsync = async (symbol: string): Promise<Response> => {
 
 const historicalAsync = async (symbol: string, startDate?: string): Promise<Response> => {
   const from = `&from=${startDate}` ?? '';
-  const string = `${url_eod}${symbol}?api_token=${process.env.EOD_API_KEY}${from}&fmt=json`
+  const string = `${url_eod}${symbol}?api_token=${process.env.EOD_API_KEY}${from}&fmt=json`;
   const res = await fetch(string);
   if (!res.ok) throw new Error(res.url);
   return res;

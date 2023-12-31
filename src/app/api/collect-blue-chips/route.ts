@@ -11,14 +11,14 @@ export async function GET(request: any, context: any) {
     .select()
     .from(stocks_info)
     // .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as StocksInfo[];
-    .where(eq(stocks_info.cap_index, 'Blue Chips'))) as StocksInfo[]
+    .where(eq(stocks_info.cap_index, 'Blue Chips'))) as StocksInfo[];
 
-    console.log(dataSharesOutstanding.length)
+  console.log(dataSharesOutstanding.length);
 
-    for (let i in dataSharesOutstanding) {
-        const data = 0
-    }
-    const testStock = dataSharesOutstanding[0];
+  for (let i in dataSharesOutstanding) {
+    const data = 0;
+  }
+  const testStock = dataSharesOutstanding[0];
 
   return new Response(JSON.stringify([]), {
     status: 200,

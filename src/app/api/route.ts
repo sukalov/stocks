@@ -265,7 +265,7 @@ export async function GET(request: Request) {
   // const midSmall = Object.keys(dataMidSmall[0].capitalizations)
   // const blueChips = Object.keys(dataBlueChips[0].capitalizations)
   // const caps = {...dataBlueChips[0].capitalizations, ...dataMidSmall[0].capitalizations}
-  
+
   // for (let i in data) {
   //   const stock: any = data[i]
   //   if (midSmall.includes(stock.symbol)) {
@@ -278,8 +278,7 @@ export async function GET(request: Request) {
   //   console.log('processed', i, 'of', data.length )
   // }
 
-
-         //#############      exporting ajustment capitalisations to a csv    ############
+  //#############      exporting ajustment capitalisations to a csv    ############
   // let stocksInfoAdjustmentsDay = [];
   // for (let i in data) {
   //   const stock = JSON.parse(JSON.stringify(data[i])) as any
@@ -355,11 +354,8 @@ export async function GET(request: Request) {
 
   // const indexName = 'video-75';
   // const nameForSQL = `"${indexName}"`;
-  const dataSharesOutstanding = (await db
-    .select()
-    .from(stocks_info)
-     ) as StocksInfo[];
-    // .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
+  const dataSharesOutstanding = (await db.select().from(stocks_info)) as StocksInfo[];
+  // .where(isNull(stocks_info.is_delisted))) as StocksInfo[];
   const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const oldAdjustments = await db
   //   .select()
@@ -373,7 +369,6 @@ export async function GET(request: Request) {
   // await csv.writeJSON('indexPrices', indexPrices)
   // const indexPrices = (await csv.readJSON('indexPrices')) as DataPrices[];
 
-
   // -------------------- DIVIDENTS -------------------
   // const divs = await csv.readJSON('dividents')
   // const divsForDB: {date: Date, dividents: any}[] = Object.keys(divs).map(date => {
@@ -383,7 +378,7 @@ export async function GET(request: Request) {
   // await db.delete(dividents)
   // await db.insert(dividents).values(divsForDB)
   // ---------------------------------------------------------------------
-  
+
   // const indexHistory = getIndexHistory2(indexPrices, oldAdjustments, dataDivs, indexName)
 
   // ================= export data as CSV for manual checking ===================
@@ -391,21 +386,19 @@ export async function GET(request: Request) {
 
   // const stocks = (await db.select().from(stocks_info)) as DataSharesOutstanding[];
 
-
   // const splits = await getSplits(dataSharesOutstanding, '2023-06-01')
   // const splits = await csv.readJSON('splits')
   // const stocksForCheck: Array<string> = splits.map((el: {symbol: string}) => el.symbol)
   // const splitsStocks = await db.select().from(stocks_info).where(inArray(stocks_info.symbol, stocksForCheck))
   // await csv.write('STOCKS_WITH_SPLITS', splitsStocks)
-// =
-// =
-// =
-// =
-// =
-// =
-// =
-// =
-
+  // =
+  // =
+  // =
+  // =
+  // =
+  // =
+  // =
+  // =
 
   // let result: any = {};
   // for (let i in indexNames) {
@@ -439,12 +432,12 @@ export async function GET(request: Request) {
   //             if (curr[symbol] !== 0) filteredData[symbol] = curr[symbol];
   //             // else console.log({symbol, date: curr.date})
   //           }
-  //         } 
+  //         }
   //       });
   //       return [...prev, filteredData];
   //     }, []);
   //   }
-  
+
   //   console.log(dataForAdjustmentsFiltered)
   //   const newAdjustments = getCapAdjustments(dataForAdjustmentsFiltered, dataSharesOutstandingFiltered, name);
   //   result[name] = newAdjustments;

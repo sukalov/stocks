@@ -46,10 +46,10 @@ export const dividents = mysqlTable('dividents', {
 });
 
 export const indexnames = mysqlTable('indexnames', {
-  id: varchar('id', {length: 20}).primaryKey(),
+  id: varchar('id', { length: 20 }).primaryKey(),
 });
 
 export const indexprices = mysqlTable('indexprices', {
-  type: varchar('type', {length: 20}),
-  json: json('json')
-})
+  type: varchar('type', { length: 20 }),
+  json: json('json'),
+});

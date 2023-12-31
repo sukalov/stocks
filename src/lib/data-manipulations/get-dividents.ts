@@ -4,12 +4,7 @@ import get from '../get-from-eod';
 import toUSD from '../translate-to-usd';
 import { timeout } from '../utils';
 
-export default async function getDividents(
-  data: StocksInfo[],
-  currencies: CurrenciesPrice[],
-  startDate: string
-) {
-
+export default async function getDividents(data: StocksInfo[], currencies: CurrenciesPrice[], startDate: string) {
   try {
     const batchSize = 50;
     const requests = [];
@@ -23,7 +18,7 @@ export default async function getDividents(
       console.log('1/6. requests', i, 'of', data.length);
     }
 
-    let counter = 1
+    let counter = 1;
     for (const batchRequests of requests) {
       await timeout(500);
       const batchResponses = await Promise.all(batchRequests);
@@ -37,7 +32,7 @@ export default async function getDividents(
       const batchResult = (await Promise.all(batchJson)) as ResponseDividents[][];
       result.push(...batchResult);
       console.log('2/6. parse responses', counter, ' of ', requests.length);
-      counter += 1
+      counter += 1;
     }
 
     let newData: any[] = [];

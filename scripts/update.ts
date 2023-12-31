@@ -29,11 +29,13 @@ export async function GET(request: any, context: any) {
   //   //  ) as DataSharesOutstanding[];
   //   .where(sql`JSON_CONTAINS(${stocks_info.indicies}, ${nameForSQL})`)) as DataSharesOutstanding[];
 
-  const dataSharesOutstanding = await db.select().from(stocks_info) as any
+  const dataSharesOutstanding = (await db.select().from(stocks_info)) as any;
   // .where(inArray(stocks_info.symbol, ['5574.TSE', '420770.KQ', '408900.KO', '5253.TSE', '439090.KQ', '6757.TW', '9166.TSE', '6757.TW', '406820.KQ']))
   // .where(inArray(stocks_info.symbol, ['5574.TSE', '420770.KQ']))
-  ;
-  const dataSharesOutstandingNoDelisted = await db.select().from(stocks_info).where(isNull(stocks_info.is_delisted)) as any;
+  const dataSharesOutstandingNoDelisted = (await db
+    .select()
+    .from(stocks_info)
+    .where(isNull(stocks_info.is_delisted))) as any;
 
   const currData = await db.select().from(currencies);
   const dbDataDividents = await db.select().from(dividents);
@@ -54,16 +56,15 @@ export async function GET(request: any, context: any) {
   // const dataIndexPricesDB = await db.select().from(indexprices)
   // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
 
-
   for (let i = 0; i < indexNames.length; i++) {
     const indexName = String(indexNames[i]);
     const oldAdjustments = await db.select().from(adjustments).where(eq(adjustments.index, indexName));
 
-    oldAdjustments.sort(function(a: any,b: any){
+    oldAdjustments.sort(function (a: any, b: any) {
       if (new Date(b.date) > new Date(a.date)) return 1;
       if (new Date(b.date) < new Date(a.date)) return -1;
       else return 0;
-     });
+    });
 
     const indexHistory = getIndexHistory2(dataIndexPrices, oldAdjustments, dataDividents, indexName) as any;
     newData = [...newData, ...indexHistory];
@@ -80,7 +81,7 @@ export async function GET(request: any, context: any) {
     status: 200,
     headers: {
       'Content-Type': 'text/json',
-      'Cache-Control': 'no-store'
-    }
+      'Cache-Control': 'no-store',
+    },
   });
 }

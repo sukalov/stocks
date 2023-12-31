@@ -42,7 +42,6 @@ export async function GET(request: any, context: any) {
   //     .where(isNull(stocks_info.is_delisted))
   //     ) as StocksInfo[];
 
-
   // const currData = (await db.select().from(currencies)) as CurrenciesPrice[];
   // const dbDataDividents = await db.select().from(dividents);
   // const dataDividents = dbDataDividents.reduce((prev: DataDividents, curr: any) => {
@@ -63,7 +62,6 @@ export async function GET(request: any, context: any) {
   // const dataIndexPrices = dataIndexPricesDB[0]?.json as any[]
   // await db.delete(indicies)
 
-  
   // for (let i = 0; i < indexNames.length; i++) {
   //   const indexName = String(indexNames[i]);
   //   const oldAdjustments = await db

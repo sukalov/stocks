@@ -62,9 +62,7 @@
       "compositePrimaryKeys": {
         "adjustments_id": {
           "name": "adjustments_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -106,9 +104,7 @@
       "compositePrimaryKeys": {
         "currencies_date": {
           "name": "currencies_date",
-          "columns": [
-            "date"
-          ]
+          "columns": ["date"]
         }
       },
       "uniqueConstraints": {}
@@ -152,9 +148,7 @@
       "compositePrimaryKeys": {
         "indexnames_id": {
           "name": "indexnames_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -233,9 +227,7 @@
       "compositePrimaryKeys": {
         "indicies_id": {
           "name": "indicies_id",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {}
@@ -326,17 +318,13 @@
       "compositePrimaryKeys": {
         "stocks_info_symbol": {
           "name": "stocks_info_symbol",
-          "columns": [
-            "symbol"
-          ]
+          "columns": ["symbol"]
         }
       },
       "uniqueConstraints": {
         "stocks_info_id_unique": {
           "name": "stocks_info_id_unique",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       }
     }

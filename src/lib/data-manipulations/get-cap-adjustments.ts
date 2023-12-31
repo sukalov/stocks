@@ -8,14 +8,13 @@ export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding
       stock.MC = adjDay[stock.symbol] * stock.shares;
     });
 
-    data = data.filter(el => el.MC > 0)
-    
-    data.sort((a, b) => Number(b.MC) - Number(a.MC))
-    if (indexName === 'blue-chips-150') data = data.slice(0,150)
+    data = data.filter((el) => el.MC > 0);
+
+    data.sort((a, b) => Number(b.MC) - Number(a.MC));
+    if (indexName === 'blue-chips-150') data = data.slice(0, 150);
     if (indexName === 'mid-small-cap-2000') data = data.slice(150, 2150);
 
-    data.splice(indexVolume)
-
+    data.splice(indexVolume);
 
     const totalMC = data.reduce((acc: number, current: DataSharesInitialDay) => {
       if (current.MC) return acc + current.MC;
@@ -64,8 +63,12 @@ export function getCapAdjustments(dataForAdjustments: any, dataSharesOutstanding
 
       return acc;
     }, {});
-    
-    console.log({indexName, length: Object.keys(adjustment.percents).length, percents420770: adjustment.percents['420770.KQ']})
+
+    console.log({
+      indexName,
+      length: Object.keys(adjustment.percents).length,
+      percents420770: adjustment.percents['420770.KQ'],
+    });
     const finalAdjustment = {
       date: adjDay.date,
       index: indexName,

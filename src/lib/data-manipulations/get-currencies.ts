@@ -1,4 +1,3 @@
-
 import { db } from '../db';
 import { csv } from '../read-write-csv';
 import get from '@/lib/get-from-eod';
@@ -50,7 +49,10 @@ export default async function getCurrenencyPrices(
     const newData2 = addMissingValues(indexHistory) as any[];
 
     await db.delete(currencies);
-    await db.insert(currencies).values(newData2).onDuplicateKeyUpdate({ set: { date: sql`date` } });;
+    await db
+      .insert(currencies)
+      .values(newData2)
+      .onDuplicateKeyUpdate({ set: { date: sql`date` } });
 
     return newData2;
   } catch (error) {

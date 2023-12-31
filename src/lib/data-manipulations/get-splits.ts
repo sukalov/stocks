@@ -2,11 +2,7 @@ import { currencies } from '../db/schema';
 import get from '../get-from-eod';
 import { timeout } from '../utils';
 
-export default async function getSplits(
-  data: StocksInfo[],
-  startDate: string
-) {
-
+export default async function getSplits(data: StocksInfo[], startDate: string) {
   try {
     const batchSize = 50;
     const requests = [];
@@ -20,7 +16,7 @@ export default async function getSplits(
       console.log('first loop.', i, 'of', data.length);
     }
 
-    let counter = 1
+    let counter = 1;
     for (const batchRequests of requests) {
       await timeout(1000);
       const batchResponses = await Promise.all(batchRequests);
@@ -33,18 +29,18 @@ export default async function getSplits(
       const batchJson = batchResponses.map((response) => response.json());
       const batchResult = (await Promise.all(batchJson)) as ResponseDividents[][];
       result.push(...batchResult);
-      console.log('second loop', counter, ' of ', requests.length)
-      counter += 1
+      console.log('second loop', counter, ' of ', requests.length);
+      counter += 1;
     }
 
     let newData: any[] = [];
     result.forEach((splits, i) => {
       if (splits.length) {
         const stockSplits = {
-            symbol: data[i]?.symbol,
-            splits
-          }
-        newData.push(stockSplits)
+          symbol: data[i]?.symbol,
+          splits,
+        };
+        newData.push(stockSplits);
       }
     });
 
