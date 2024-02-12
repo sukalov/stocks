@@ -9,6 +9,7 @@ export const indexNames: string[] = [
   'games-75',
   'anime-20',
   'semicon-75',
+  'om-60',
 ];
 
 const indexNamesOld: string[] = [
