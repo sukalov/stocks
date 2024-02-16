@@ -14,11 +14,11 @@ export function IndiciesNav({ className }: { className?: string }) {
     <>
       <div
         className={cn(
-          `fixed top-16 z-10 w-full flex h-12 flex-1 px-3 flex-row backdrop-blur-sm bg-background/70`,
+          `w-full flex h-12 flex-1 px-3 flex-row backdrop-blur-sm bg-background/70`,
           className
         )}
       >
-        <nav className="px-2 align-bottom flex flex-row">
+        <nav className="px-2 align-bottom flex flex-row flex-wrap">
           {indexNames.map((item) => {
             return (
               <div key={item} className="mb-2 px-2 text-xs font-semibold uppercase tracking-wider text-gray-400/80">
